@@ -22,7 +22,7 @@ task('js', () => {
 });
 
 task('css', () => {
-    return src('./sass/**/*.scss')
+    return src('./styles/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(addsrc.append('styles/*.css'))
         .pipe(concat('style.css'))
@@ -38,13 +38,13 @@ task('clean', () => {
 
 task('inject', () => {
     return src('index.html')
-        .pipe(inject(src('js/*'), {
+        .pipe(inject(src('dist/js/*'), {
             addRootSlash: false,
             transform: function (file) {
                 return '<script src="' + file + '" defer></script>';
             }
         }))
-        .pipe(inject(src('css/*'), {
+        .pipe(inject(src('dist/css/*'), {
             addRootSlash: false,
         }))
         .pipe(dest('dist'));
