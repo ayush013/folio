@@ -1,2 +1,20 @@
-@import 'custom/variables';
-@import 'custom/styles';
+
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "bootstrap/reboot";
+
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+
+@import "bootstrap/mixins/breakpoints";
+@import "bootstrap/mixins/grid-framework";
+@import "bootstrap/mixins/grid";
+
+@import "bootstrap/grid";
+@import "bootstrap/utilities/display";
+@import "bootstrap/utilities/flex";
+@import "bootstrap/utilities/spacing";
+
+@import "custom/variables";
+@import "custom/styles";
