@@ -10,8 +10,9 @@ var addsrc = require('gulp-add-src');
 var browserSync = require('browser-sync').create();
 
 task('js', () => {
-    return src(['./src/scripts/jquery-3.4.1.js',
+    return src(['node_modules/jquery/dist/jquery.min.js',
         './src/scripts/graphemescope.js',
+        'node_modules/typed.js/lib/typed.js',
         './src/scripts/custom.js'])
         .pipe(concat('main.js'))
         .pipe(minify({

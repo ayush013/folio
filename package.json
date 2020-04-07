@@ -21,5 +21,8 @@
     "gulp-sass": "^4.0.2",
     "node-sass": "^4.13.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "typed.js": "^2.0.11"
+  }
 }

@@ -1,3 +1,5 @@
+@import "../bootstrap/variables";
+
 html {
   box-sizing: border-box;
   -ms-overflow-style: scrollbar;
@@ -17,12 +19,53 @@ html {
 body {
   font-family: 'Movement';
   background-color : black;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #494949;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(112, 112, 112);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(112, 112, 112);
 }
 
 #background {
   position: fixed;
   top: 0;
-  width: 100vw;
-  height: 100vh;
+  z-index: -1;
 }
 
+.section {
+  min-height: 100vh;
+  padding: 30px 0;
+}
+
+.main-section {
+  color: $white;
+  p {
+    text-align: center;
+    font-family: 'Karla';
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+  h1 {
+    text-align: center;
+    font-variation-settings: "wght" 700, "SPAC" 100;
+    font-size: 7rem;
+    line-height: 1;
+    animation: main-heading 5s infinite alternate ease-in;
+  }
+}
+
+@keyframes main-heading {
+	0% {font-variation-settings: "wght" 500, "SPAC" 110;}
+	100% {font-variation-settings: "wght" 700, "SPAC" 100;}
+}
