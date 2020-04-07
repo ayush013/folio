@@ -1,0 +1,28 @@
+html {
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+@font-face {
+  font-family: 'Movement';
+  src: url('/assets/MovementV.ttf') format('truetype');
+}
+
+body {
+  font-family: 'Movement';
+  background-color : black;
+}
+
+#background {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+

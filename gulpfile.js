@@ -1,4 +1,4 @@
-const { series, parallel, src, dest, task } = require('gulp');
+const { series, parallel, src, dest, task, watch } = require('gulp');
 var concat = require('gulp-concat');
 var minify = require('gulp-minify');
 var cleanCss = require('gulp-clean-css');
@@ -7,9 +7,12 @@ var inject = require('gulp-inject');
 var clean = require('gulp-clean');
 var sass = require('gulp-sass');
 var addsrc = require('gulp-add-src');
+var browserSync = require('browser-sync').create();
 
 task('js', () => {
-    return src(['./scripts/*.js'])
+    return src(['./src/scripts/jquery-3.4.1.js',
+        './src/scripts/graphemescope.js',
+        './src/scripts/custom.js'])
         .pipe(concat('main.js'))
         .pipe(minify({
             ext: {
@@ -22,7 +25,7 @@ task('js', () => {
 });
 
 task('css', () => {
-    return src('./styles/**/*.scss')
+    return src('./src/styles/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(addsrc.append('styles/*.css'))
         .pipe(concat('style.css'))
@@ -31,23 +34,42 @@ task('css', () => {
         .pipe(dest('dist/css'))
 });
 
+task('assets', () => {
+    return src(['./src/assets/**'])
+        .pipe(dest('dist/assets'))
+});
+
 task('clean', () => {
     return src('dist')
         .pipe(clean());
 });
 
 task('inject', () => {
-    return src('index.html')
+    return src('./src/index.html')
         .pipe(inject(src('dist/js/*'), {
             addRootSlash: false,
+            ignorePath: '/dist',
             transform: function (file) {
                 return '<script src="' + file + '" defer></script>';
             }
         }))
         .pipe(inject(src('dist/css/*'), {
             addRootSlash: false,
+            ignorePath: '/dist',
         }))
-        .pipe(dest('dist'));
+        .pipe(dest('dist'))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
 });
 
-exports.build = series('clean', parallel('css', 'js'), 'inject');
+task('default', series('clean', parallel('css', 'js', 'assets'), 'inject'));
+
+task('watch', () => {
+    browserSync.init({
+        server: {
+            baseDir: 'dist'
+        },
+    });
+    watch("src/**", { ignoreInitial: false }, series('default'));
+});

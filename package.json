@@ -9,6 +9,7 @@
   "author": "Ayush",
   "license": "ISC",
   "devDependencies": {
+    "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
     "gulp-add-src": "^1.0.0",
     "gulp-clean": "^0.4.0",
