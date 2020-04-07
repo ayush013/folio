@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "jquery": "^3.4.1",
+    "rellax": "^1.12.1",
     "typed.js": "^2.0.11"
   }
 }

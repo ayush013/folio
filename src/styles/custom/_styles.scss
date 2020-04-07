@@ -12,13 +12,13 @@ html {
 }
 
 @font-face {
-  font-family: 'Movement';
-  src: url('/assets/MovementV.ttf') format('truetype');
+  font-family: "Movement";
+  src: url("/assets/MovementV.ttf") format("truetype");
 }
 
 body {
-  font-family: 'Movement';
-  background-color : black;
+  font-family: "Movement";
+  background-color: black;
   padding: 0;
   overflow-x: hidden;
 }
@@ -27,14 +27,20 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #494949;
+  background: rgba(94, 94, 94, 0.5);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(112, 112, 112);
+  background: rgb(170, 170, 170);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(112, 112, 112);
+::-moz-selection {
+  color: $white;
+  background: $gray-900;
+}
+
+::selection {
+  color: $white;
+  background: $gray-900;
 }
 
 #background {
@@ -43,16 +49,54 @@ body {
   z-index: -1;
 }
 
+nav {
+  position: fixed;
+  height: 70px;
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
 .section {
   min-height: 100vh;
-  padding: 30px 0;
+  padding: 70px 0;
+  background: rgba($color: $black, $alpha: 0.2);
+  position: relative;
+  color: $white;
+  .title {
+    font-size: 2rem;
+    font-variation-settings: "wght" 700, "SPAC" 100;
+  }
+  .overlay-text {
+    -webkit-text-stroke: $white;
+    color: transparent;
+    -webkit-text-stroke-width: 1px;
+    font-variation-settings: "wght" 800, "SPAC" 100;
+    font-size: 10rem;
+    display: block;
+    position: absolute;
+    line-height: 1;
+    animation: flicker 10s ease-in-out infinite alternate;
+  }
+  .line {
+    width: 10rem;
+    height: 2px;
+    margin: 0;
+    background-color: $white;
+    animation: line-width 4s ease-in-out infinite alternate;
+  }
 }
 
 .main-section {
-  color: $white;
   p {
     text-align: center;
-    font-family: 'Karla';
+    font-family: "Karla";
     font-weight: 700;
     font-size: 1.5rem;
   }
@@ -63,9 +107,119 @@ body {
     line-height: 1;
     animation: main-heading 5s infinite alternate ease-in;
   }
+  .scroll-btn {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    & > *:hover {
+      color: $white;
+      opacity: 0.8;
+    }
+    .mouse {
+      position: relative;
+      display: block;
+      width: 17px;
+      height: 34px;
+      margin: 0 auto 10px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      border: 1px solid $white;
+      border-radius: 23px;
+      & > * {
+        position: absolute;
+        display: block;
+        top: 29%;
+        left: 50%;
+        width: 8px;
+        height: 8px;
+        margin: -4px 0 0 -4px;
+        background: $white;
+        border-radius: 50%;
+        animation: ani-mouse 2.5s linear infinite;
+      }
+    }
+    p {
+      display: block;
+      font-weight: 700;
+      font-size: 10px;
+      color: $white;
+      letter-spacing: 2px;
+    }
+  }
+}
+
+.about-section {
+  .overlay-text {
+    transform: rotate(-90deg) translate(-40%, -100%);
+  }
+
+  .description {
+    font-size: 1rem;
+    font-family: Karla;
+    line-height: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.075em;
+  }
 }
 
 @keyframes main-heading {
-	0% {font-variation-settings: "wght" 500, "SPAC" 110;}
-	100% {font-variation-settings: "wght" 700, "SPAC" 100;}
+  0% {
+    font-variation-settings: "wght" 500, "SPAC" 110;
+  }
+  100% {
+    font-variation-settings: "wght" 700, "SPAC" 100;
+  }
+}
+
+@keyframes ani-mouse {
+  0% {
+    opacity: 1;
+    top: 29%;
+  }
+  15% {
+    opacity: 1;
+    top: 50%;
+  }
+  50% {
+    opacity: 0;
+    top: 50%;
+  }
+  100% {
+    opacity: 0;
+    top: 29%;
+  }
+}
+
+@keyframes line-width {
+  0% {
+    width: 10rem;
+  }
+  100% {
+    width: 15rem;
+  }
+}
+
+@keyframes flicker {
+  97% {
+    -webkit-text-stroke: $white;
+    color: transparent;
+    -webkit-text-stroke-width: 1px;
+  }
+  98% {
+    color: white;
+    -webkit-text-stroke-width: 0;
+  }
+  99% {
+    -webkit-text-stroke: $white;
+    color: transparent;
+    -webkit-text-stroke-width: 1px;
+  }
+  100% {
+    color: white;
+    -webkit-text-stroke-width: 0;
+  }
 }

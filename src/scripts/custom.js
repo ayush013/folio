@@ -9,6 +9,8 @@ window.addEventListener('DOMContentLoaded', function () {
     var background = $("#background");
     var scope = new Graphemescope(background[0]);
     var index = 0;
+    scope.ease = 0.05;
+    scope.radiusFactor = 0.8;
 
     function changePicture() {
         scope.setImage(images[index]);
@@ -45,5 +47,16 @@ window.addEventListener('DOMContentLoaded', function () {
         backSpeed: 50,
         backDelay: 4000,
         loop: true,
+    });
+});
+
+
+window.addEventListener('DOMContentLoaded', function () {
+    var rellax = new Rellax('.rellax', {
+        center: false,
+        wrapper: null,
+        round: true,
+        vertical: true,
+        horizontal: false
     });
 });

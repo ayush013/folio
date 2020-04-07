@@ -13,6 +13,7 @@ task('js', () => {
     return src(['node_modules/jquery/dist/jquery.min.js',
         './src/scripts/graphemescope.js',
         'node_modules/typed.js/lib/typed.js',
+        'node_modules/rellax/rellax.js',
         './src/scripts/custom.js'])
         .pipe(concat('main.js'))
         .pipe(minify({
@@ -66,7 +67,7 @@ task('inject', () => {
 
 task('default', series('clean', parallel('css', 'js', 'assets'), 'inject'));
 
-task('watch', () => {
+task('serve', () => {
     browserSync.init({
         server: {
             baseDir: 'dist'
