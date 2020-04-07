@@ -37,10 +37,8 @@ window.addEventListener('DOMContentLoaded', function () {
     $(window).resize();
     $(window).click(changePicture);
 
-});
 
 
-window.addEventListener('DOMContentLoaded', function () {
     var typed = new Typed('.main-typed', {
         strings: ["I design and develop things.", "I design and develop web apps.", "I design and develop UI/UX.", "I design and develop motion."],
         typeSpeed: 50,
@@ -48,11 +46,8 @@ window.addEventListener('DOMContentLoaded', function () {
         backDelay: 4000,
         loop: true,
     });
-});
 
 
-window.addEventListener('DOMContentLoaded', function () {
-    var scroll = new LocomotiveScroll({
-        smooth: true
-    });
+    
+    luxy.init();
 });

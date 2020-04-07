@@ -13,7 +13,7 @@ task('js', () => {
     return src(['node_modules/jquery/dist/jquery.min.js',
         './src/scripts/graphemescope.js',
         'node_modules/typed.js/lib/typed.js',
-        'node_modules/locomotive-scroll/dist/locomotive-scroll.min.js',
+        'node_modules/luxy.js/dist/js/luxy.min.js',
         './src/scripts/custom.js'])
         .pipe(concat('main.js'))
         .pipe(minify({
@@ -27,9 +27,7 @@ task('js', () => {
 });
 
 task('css', () => {
-    return src(['./src/styles/**/*.scss',
-    'node_modules/locomotive-scroll/dist/locomotive-scroll.css'
-])
+    return src(['./src/styles/**/*.scss'])
         .pipe(sass().on('error', sass.logError))
         .pipe(addsrc.append('styles/*.css'))
         .pipe(concat('style.css'))

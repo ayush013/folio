@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "jquery": "^3.4.1",
-    "locomotive-scroll": "^3.3.11",
+    "luxy.js": "^0.1.0",
     "typed.js": "^2.0.11"
   }
 }
