@@ -52,11 +52,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
 window.addEventListener('DOMContentLoaded', function () {
-    var rellax = new Rellax('.rellax', {
-        center: false,
-        wrapper: null,
-        round: true,
-        vertical: true,
-        horizontal: false
+    var scroll = new LocomotiveScroll({
+        smooth: true
     });
+
+    $('.scroll-btn').click(scroll.scrollTo(document.querySelector('#about')));
+
 });

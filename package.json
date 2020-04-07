@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "jquery": "^3.4.1",
+    "locomotive-scroll": "^3.3.11",
     "rellax": "^1.12.1",
     "typed.js": "^2.0.11"
   }
