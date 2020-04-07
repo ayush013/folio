@@ -55,7 +55,4 @@ window.addEventListener('DOMContentLoaded', function () {
     var scroll = new LocomotiveScroll({
         smooth: true
     });
-
-    $('.scroll-btn').click(scroll.scrollTo(document.querySelector('#about')));
-
 });

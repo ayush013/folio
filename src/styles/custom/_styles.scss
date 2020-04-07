@@ -24,7 +24,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 2px;
 }
 ::-webkit-scrollbar-track {
   background: rgba(94, 94, 94, 0.5);
@@ -53,6 +53,7 @@ nav {
   position: fixed;
   height: 70px;
   width: 100%;
+  z-index: 10;
 }
 
 .h-100 {
