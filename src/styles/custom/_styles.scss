@@ -49,6 +49,9 @@ body {
   position: fixed;
   top: 0;
   z-index: -1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 nav {
@@ -178,6 +181,13 @@ nav {
   }
 }
 
+.skills-section {
+  .overlay-text {
+    transform: rotate(-90deg) translate(-80%, -100%);
+  }
+
+}
+
 @keyframes main-heading {
   0% {
     font-variation-settings: "wght" 500, "SPAC" 110;
@@ -256,199 +266,199 @@ nav {
 }
 
 .outer-menu {
-	z-index: 1;
-	.checkbox-toggle {
-		position: absolute;
-		top: 0;
-		right: 0;
-		z-index: 2;
-		cursor: pointer;
-		width: 60px;
-		height: 60px;
-		opacity: 0;
-		&:checked {
-			+ {
-				.hamburger {
-					>div {
-						transform: rotate(135deg);
-						&:before {
-							top: 0;
-							transform: rotate(90deg);
-						}
-						&:after {
-							top: 0;
-							transform: rotate(90deg);
-							opacity: 0;
-						}
-					}
-				}
-			}
-			~ {
-				.menu {
-					pointer-events: auto;
-					visibility: visible;
-					>div {
-						transform: scale(1);
-						transition-duration: 0.75s;
-						>div {
-							opacity: 1;
-							transition: opacity 0.4s ease 0.4s;
-						}
-					}
-				}
-			}
-			&:hover {
-				+ {
-					.hamburger {
-						>div {
-							transform: rotate(225deg);
-						}
-					}
-				}
-			}
-		}
-		&:hover {
-			+ {
-				.hamburger {
-					box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-				}
-			}
-		}
-	}
-	.hamburger {
-		position: absolute;
-		top: 0;
-		right: 0;
-		z-index: 1;
-		width: 60px;
-		height: 60px;
-		padding: 0.5em 1em;
-		border-radius: 0 0.12em 0.12em 0;
-		cursor: pointer;
-		transition: box-shadow 0.4s ease;
-		backface-visibility: hidden;
-		display: flex;
-		-webkit-box-align: center;
-		align-items: center;
-		justify-content: center;
-		>div {
-			position: relative;
-			flex: none;
-			width: 100%;
-			height: 2px;
-			background: #FEFEFE;
-			transition: all 0.4s ease;
-			display: flex;
-			align-items: center;
-			-webkit-box-pack: center;
-			justify-content: center;
-			&:before {
-				content: '';
-				position: absolute;
-				z-index: 1;
-				top: -10px;
-				left: 0;
-				width: 100%;
-				height: 2px;
-				background: inherit;
-				transition: all 0.4s ease;
-			}
-			&:after {
-				content: '';
-				position: absolute;
-				z-index: 1;
-				top: -10px;
-				left: 0;
-				width: 100%;
-				height: 2px;
-				background: inherit;
-				-webkit-transition: all 0.4s ease;
-				transition: all 0.4s ease;
-				top: 10px;
-			}
-		}
-	}
-	.menu {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		pointer-events: none;
-		visibility: hidden;
-		overflow: hidden;
-		backface-visibility: hidden;
-		outline: 1px solid transparent;
-		display: -webkit-box;
-		display: flex;
-		-webkit-box-align: center;
-		align-items: center;
-		-webkit-box-pack: center;
-		justify-content: center;
-		>div {
-			width: 200vw;
-			height: 200vw;
-			color: #FEFEFE;
-			background: rgba(0, 0, 0, 0.815);
-			border-radius: 50%;
-			transition: all 0.4s ease;
-			flex: none;
-			-webkit-transform: scale(0);
-			transform: scale(0);
-			backface-visibility: hidden;
-			overflow: hidden;
-			display: -webkit-box;
-			display: flex;
-			-webkit-box-align: center;
-			align-items: center;
-			-webkit-box-pack: center;
-			justify-content: center;
-			>div {
-				text-align: center;
-				max-width: 90vw;
-				max-height: 100vh;
-				opacity: 0;
-				-webkit-transition: opacity 0.4s ease;
-				transition: opacity 0.4s ease;
-				overflow-y: auto;
-				-webkit-box-flex: 0;
-				flex: none;
-				display: -webkit-box;
-				display: flex;
-				-webkit-box-align: center;
-				align-items: center;
-				-webkit-box-pack: center;
-				justify-content: center;
-				>ul {
-					list-style: none;
-					padding: 0 1em;
-					margin: 0;
-					display: block;
-					max-height: 100vh;
-					>li {
-						padding: 0;
-						margin: 1em;
-						font-size: 24px;
-						display: block;
-						>a {
-							position: relative;
-							display: inline;
-							cursor: pointer;
+  z-index: 1;
+  .checkbox-toggle {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    z-index: 2;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+    &:checked {
+      + {
+        .hamburger {
+          > div {
+            transform: rotate(135deg);
+            &:before {
+              top: 0;
+              transform: rotate(90deg);
+            }
+            &:after {
+              top: 0;
+              transform: rotate(90deg);
+              opacity: 0;
+            }
+          }
+        }
+      }
+      ~ {
+        .menu {
+          pointer-events: auto;
+          visibility: visible;
+          > div {
+            transform: scale(1);
+            transition-duration: 0.75s;
+            > div {
+              opacity: 1;
+              transition: opacity 0.4s ease 0.4s;
+            }
+          }
+        }
+      }
+      &:hover {
+        + {
+          .hamburger {
+            > div {
+              transform: rotate(225deg);
+            }
+          }
+        }
+      }
+    }
+    &:hover {
+      + {
+        .hamburger {
+          box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+  }
+  .hamburger {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    padding: 0.5em;
+    border-radius: 0 0.12em 0.12em 0;
+    cursor: pointer;
+    transition: box-shadow 0.4s ease;
+    backface-visibility: hidden;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    justify-content: center;
+    > div {
+      position: relative;
+      flex: none;
+      width: 100%;
+      height: 2px;
+      background: #fefefe;
+      transition: all 0.4s ease;
+      display: flex;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      &:before {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        top: -10px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: inherit;
+        transition: all 0.4s ease;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        top: -10px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: inherit;
+        -webkit-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        top: 10px;
+      }
+    }
+  }
+  .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    visibility: hidden;
+    overflow: hidden;
+    backface-visibility: hidden;
+    outline: 1px solid transparent;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    > div {
+      width: 200vw;
+      height: 200vw;
+      color: #fefefe;
+      background: rgba(0, 0, 0, 0.815);
+      border-radius: 50%;
+      transition: all 0.4s ease;
+      flex: none;
+      -webkit-transform: scale(0);
+      transform: scale(0);
+      backface-visibility: hidden;
+      overflow: hidden;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      > div {
+        text-align: center;
+        max-width: 90vw;
+        max-height: 100vh;
+        opacity: 0;
+        -webkit-transition: opacity 0.4s ease;
+        transition: opacity 0.4s ease;
+        overflow-y: auto;
+        -webkit-box-flex: 0;
+        flex: none;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        > ul {
+          list-style: none;
+          padding: 0 1em;
+          margin: 0;
+          display: block;
+          max-height: 100vh;
+          > li {
+            padding: 0;
+            margin: 1em;
+            font-size: 24px;
+            display: block;
+            > a {
+              position: relative;
+              display: inline;
+              cursor: pointer;
               transition: color 0.4s ease;
               -webkit-text-stroke: $white;
               color: transparent;
               -webkit-text-stroke-width: 1px;
               font-variation-settings: "wght" 800, "SPAC" 100;
               font-size: 3rem;
-							&:hover {
+              &:hover {
                 color: #e5e5e5;
                 text-decoration: none;
                 -webkit-text-stroke-width: 0;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

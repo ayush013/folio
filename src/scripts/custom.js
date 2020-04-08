@@ -25,7 +25,7 @@ window.addEventListener('DOMContentLoaded', function () {
     var scope = new Graphemescope(background[0]);
     var index = 0;
     scope.ease = 0.05;
-    scope.radiusFactor = 0.8;
+    scope.radiusFactor = 0.4;
 
     function changePicture() {
         scope.setImage(images[index]);
@@ -44,8 +44,8 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     var resizeHandler = function () {
-        background.height($(window).height());
-        background.width($(window).width());
+        background.height(2*window.innerHeight);
+        background.width(2*window.innerWidth);
     };
 
     $(window).resize(resizeHandler);
@@ -68,6 +68,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // SPLITTING AND SCROLLOUT ANIMS
     Splitting();
-    ScrollOut({offset:400});
+    ScrollOut({targets: '.title1', offset:400});
+    ScrollOut({targets: '.title2', offset:1100});
 
 });
