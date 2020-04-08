@@ -8,6 +8,7 @@ var clean = require('gulp-clean');
 var sass = require('gulp-sass');
 var addsrc = require('gulp-add-src');
 var browserSync = require('browser-sync').create();
+const htmlmin = require('gulp-htmlmin');
 
 task('js', () => {
     return src(['node_modules/jquery/dist/jquery.min.js',
@@ -61,6 +62,10 @@ task('inject', () => {
             addRootSlash: false,
             ignorePath: '/dist',
         }))
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+            removeComments: true
+          }))
         .pipe(dest('dist'))
         .pipe(browserSync.reload({
             stream: true

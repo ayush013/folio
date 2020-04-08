@@ -22,6 +22,7 @@
     "node-sass": "^4.13.1"
   },
   "dependencies": {
+    "gulp-htmlmin": "^5.0.1",
     "jquery": "^3.4.1",
     "luxy.js": "^0.1.0",
     "scroll-out": "^2.2.8",
