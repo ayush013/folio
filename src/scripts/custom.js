@@ -87,5 +87,11 @@ window.addEventListener('DOMContentLoaded', function () {
             });
         });
     });
+    
+    $('.js-tilt').tilt({
+        scale: 1.1,
+        maxTilt: 20,
+        perspective: 500
+    })
 
 });

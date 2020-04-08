@@ -17,6 +17,7 @@ task('js', () => {
         'node_modules/luxy.js/dist/js/luxy.min.js',
         'node_modules/splitting/dist/splitting.min.js',
         'node_modules/scroll-out/dist/scroll-out.min.js',
+        'node_modules/tilt.js/dest/tilt.jquery.min.js',
         './src/scripts/custom.js'])
         .pipe(concat('main.js'))
         .pipe(minify({
@@ -31,7 +32,7 @@ task('js', () => {
 
 task('css', () => {
     return src(['./src/styles/**/*.scss'])
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass())
         .pipe(addsrc.append('styles/*.css'))
         .pipe(concat('style.css'))
         .pipe(cleanCss())
