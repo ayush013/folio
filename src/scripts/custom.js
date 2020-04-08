@@ -1,9 +1,20 @@
 window.addEventListener('DOMContentLoaded', function () {
     
+    //SCROLLTOP ON RELOAD
     setTimeout(() => {
         $(this).scrollTop(0);
     }, 0);
+    
+    //SMOOTHSCROLL ON LINKS
+    $(document).on('click', 'a[href^="#"]', function (e) {
+        e.preventDefault();
+        $('.checkbox-toggle').prop('checked',false);
+        $('html, body').stop().animate({
+            scrollTop: $($(this).attr('href')).offset().top
+        }, 500, 'linear');
+    });
 
+    //GRAPHEMESCOPE
     var images = [
         "https://images.pexels.com/photos/1936299/pexels-photo-1936299.jpeg?crop=entropy&cs=srgb&dl=screen-web-design-developing-codes-1936299.jpg&fit=crop&fm=jpg&h=853&w=1280",
         "https://images.pexels.com/photos/2505693/pexels-photo-2505693.jpeg?crop=entropy&cs=srgb&dl=blue-and-red-plants-2505693.jpg&fit=crop&fm=jpg&h=1706&w=1280",
@@ -41,8 +52,7 @@ window.addEventListener('DOMContentLoaded', function () {
     $(window).resize();
     $(window).click(changePicture);
 
-
-
+    // TYPED JS
     var typed = new Typed('.main-typed', {
         strings: ["I design and develop things.", "I design and develop web apps.", "I design and develop UI/UX.", "I design and develop motion."],
         typeSpeed: 50,
@@ -51,11 +61,12 @@ window.addEventListener('DOMContentLoaded', function () {
         loop: true,
     });
 
+    //MOMENTUM SCROLL
     if ((typeof window.orientation === "undefined") && (navigator.userAgent.indexOf('IEMobile') === -1)) {
         luxy.init();
     }
 
-
+    // SPLITTING AND SCROLLOUT ANIMS
     Splitting();
     ScrollOut({offset:400});
 
