@@ -1,14 +1,14 @@
 window.addEventListener('DOMContentLoaded', function () {
-    
+
     //SCROLLTOP ON RELOAD
     setTimeout(() => {
         $(this).scrollTop(0);
     }, 0);
-    
+
     //SMOOTHSCROLL ON LINKS
     $(document).on('click', 'a[href^="#"]', function (e) {
         e.preventDefault();
-        $('.checkbox-toggle').prop('checked',false);
+        $('.checkbox-toggle').prop('checked', false);
         $('html, body').stop().animate({
             scrollTop: $($(this).attr('href')).offset().top
         }, 500, 'linear');
@@ -44,8 +44,8 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     var resizeHandler = function () {
-        background.height(2*window.innerHeight);
-        background.width(2*window.innerWidth);
+        background.height(2 * window.innerHeight);
+        background.width(2 * window.innerWidth);
     };
 
     $(window).resize(resizeHandler);
@@ -68,7 +68,24 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // SPLITTING AND SCROLLOUT ANIMS
     Splitting();
-    ScrollOut({targets: '.title1', offset:400});
-    ScrollOut({targets: '.title2', offset:1100});
+    ScrollOut({ targets: '.title1', offset: 400 });
+    ScrollOut({ targets: '.title2', offset: 1100 });
+
+    // SVG DOM HOVER ACTIONS
+    var colorArray = ['#FFCA28', '#DE0031', '#F16529', '#29A9DF', '#FFB03A', '#F05033', 
+    '#3395F0', '#FDD231', '#FF7C00', '#26C9FF', '#FF2A63', '#D34A47', '#3DF0F0', '#D291FF'];
+
+    colorArray.forEach((color, index) => {
+        document.getElementsByClassName('skill-svg')[index].addEventListener("mouseover", function () {
+            var element = $('.skill-svg')[index].contentDocument.getElementsByClassName('fill');
+            Array.from(element).forEach(path => {
+                path.style.transition = '0.5s';
+                path.style.fill = color;
+                setTimeout(function () {
+                    path.style.fill = "#ffffff";
+                }, 500);
+            });
+        });
+    });
 
 });
