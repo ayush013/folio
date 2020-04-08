@@ -3,6 +3,7 @@
 html {
   box-sizing: border-box;
   -ms-overflow-style: scrollbar;
+  scroll-behavior: smooth;
 }
 
 *,
@@ -21,10 +22,11 @@ body {
   background-color: black;
   padding: 0;
   overflow-x: hidden;
+  color: $white;
 }
 
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 4px;
 }
 ::-webkit-scrollbar-track {
   background: rgba(94, 94, 94, 0.5);
@@ -67,9 +69,7 @@ nav {
 .section {
   min-height: 100vh;
   padding: 70px 0;
-  background: rgba($color: $black, $alpha: 0.2);
   position: relative;
-  color: $white;
   .title {
     font-size: 2rem;
     font-variation-settings: "wght" 700, "SPAC" 100;
@@ -92,6 +92,14 @@ nav {
     background-color: $white;
     animation: line-width 4s ease-in-out infinite alternate;
   }
+}
+
+.divider-200 {
+  height: 200px;
+}
+
+#luxy {
+  background: rgba($color: $black, $alpha: 0.2);
 }
 
 .main-section {
@@ -222,5 +230,24 @@ nav {
   100% {
     color: white;
     -webkit-text-stroke-width: 0;
+  }
+}
+
+.enter {
+  overflow-y: hidden;
+  .char {
+    display: inline-block;
+    transition: transform 0.5s;
+    transition-delay: calc(0.5s * var(--char-index) / var(--char-total));
+  }
+  &[data-scroll="out"] {
+    .char {
+      transform: translateY(100%);
+    }
+  }
+  &[data-scroll="in"] {
+    .char {
+      transform: translateY(0);
+    }
   }
 }

@@ -14,6 +14,8 @@ task('js', () => {
         './src/scripts/graphemescope.js',
         'node_modules/typed.js/lib/typed.js',
         'node_modules/luxy.js/dist/js/luxy.min.js',
+        'node_modules/splitting/dist/splitting.min.js',
+        'node_modules/scroll-out/dist/scroll-out.min.js',
         './src/scripts/custom.js'])
         .pipe(concat('main.js'))
         .pipe(minify({

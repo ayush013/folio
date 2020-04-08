@@ -1,4 +1,8 @@
 window.addEventListener('DOMContentLoaded', function () {
+    
+    setTimeout(() => {
+        $(this).scrollTop(0);
+    }, 0);
 
     var images = [
         "https://images.pexels.com/photos/1936299/pexels-photo-1936299.jpeg?crop=entropy&cs=srgb&dl=screen-web-design-developing-codes-1936299.jpg&fit=crop&fm=jpg&h=853&w=1280",
@@ -47,7 +51,12 @@ window.addEventListener('DOMContentLoaded', function () {
         loop: true,
     });
 
+    if ((typeof window.orientation === "undefined") && (navigator.userAgent.indexOf('IEMobile') === -1)) {
+        luxy.init();
+    }
 
-    
-    luxy.init();
+
+    Splitting();
+    ScrollOut({offset:400});
+
 });
