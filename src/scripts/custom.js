@@ -70,12 +70,14 @@ window.addEventListener('DOMContentLoaded', function () {
     Splitting();
     ScrollOut({ targets: '.title1', offset: 400 });
     ScrollOut({ targets: '.title2', offset: 1100 });
+    ScrollOut({ targets: '.title3', offset: 2000 });
+    ScrollOut({ targets: '.img-enter', offset: 2000 });
 
     // SVG DOM HOVER ACTIONS
-    var colorArray = ['#FFCA28', '#DE0031', '#F16529', '#29A9DF', '#FFB03A', '#F05033', 
-    '#3395F0', '#FDD231', '#FF7C00', '#26C9FF', '#FF2A63', '#D34A47', '#3DF0F0', '#D291FF'];
+    var skillsColorArray = ['#FFCA28', '#DE0031', '#F16529', '#29A9DF', '#FFB03A', '#F05033',
+        '#0ACF83', '#FDD231', '#FF7C00', '#26C9FF', '#FF2A63', '#D34A47', '#3DF0F0', '#D291FF'];
 
-    colorArray.forEach((color, index) => {
+    skillsColorArray.forEach((color, index) => {
         document.getElementsByClassName('skill-svg')[index].addEventListener("mouseover", function () {
             var element = $('.skill-svg')[index].contentDocument.getElementsByClassName('fill');
             Array.from(element).forEach(path => {
@@ -87,10 +89,26 @@ window.addEventListener('DOMContentLoaded', function () {
             });
         });
     });
-    
-    $('.js-tilt').tilt({
-        scale: 1.1,
+
+    var socialColorArray = ['#367fd3', '#3C5A99', '#3EC6EA', '#8A45BE', '#E74D89', '#1769FF'];
+
+    socialColorArray.forEach((color, index) => {
+        document.getElementsByClassName('social-svg')[index].addEventListener("mouseover", function () {
+            var element = $('.social-svg')[index].contentDocument.getElementsByClassName('fill');
+            Array.from(element).forEach(path => {
+                path.style.transition = '0.5s';
+                path.style.fill = color;
+                setTimeout(function () {
+                    path.style.fill = "#ffffff";
+                }, 500);
+            });
+        });
+    });
+
+    // TILT
+    $('.svg-tilt').tilt({
         maxTilt: 20,
+        scale: 1.2,
         perspective: 500
     })
 
