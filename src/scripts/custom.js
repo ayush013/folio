@@ -68,10 +68,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // SPLITTING AND SCROLLOUT ANIMS
     Splitting();
-    ScrollOut({ targets: '.title1', offset: 400 });
-    ScrollOut({ targets: '.title2', offset: 1100 });
-    ScrollOut({ targets: '.title3', offset: 2000 });
-    ScrollOut({ targets: '.img-enter', offset: 2000 });
+    ScrollOut({ targets: '.title1', offset: 0, scope: ".about-section" });
+    ScrollOut({ targets: '.title2', offset: 0, scope: ".skills-section" });
+    ScrollOut({ targets: '.title3', offset: 0, scope: "#luxy" });
+    ScrollOut({ targets: '.img-enter', offset: 0, scope: ".contact-section" });
 
     // SVG DOM HOVER ACTIONS
     var skillsColorArray = ['#FFCA28', '#DE0031', '#F16529', '#29A9DF', '#FFB03A', '#F05033',
@@ -110,6 +110,6 @@ window.addEventListener('DOMContentLoaded', function () {
         maxTilt: 20,
         scale: 1.2,
         perspective: 500
-    })
+    });
 
 });

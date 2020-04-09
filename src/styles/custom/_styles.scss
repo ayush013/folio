@@ -187,6 +187,14 @@ nav {
   }
 }
 
+.projects-section {
+  .overlay-text {
+    transform: rotate(-90deg) translate(-50%, -170%);
+    font-size: 8rem;
+  }
+
+}
+
 .contact-section {
   .overlay-text {
     transform: rotate(-90deg) translate(-50%, -170%);
