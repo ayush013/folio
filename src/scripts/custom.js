@@ -68,9 +68,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // SPLITTING AND SCROLLOUT ANIMS
     Splitting();
-    ScrollOut({ targets: '.title1', offset: 0, scope: ".about-section" });
-    ScrollOut({ targets: '.title2', offset: 0, scope: ".skills-section" });
-    ScrollOut({ targets: '.title3', offset: 0, scope: "#luxy" });
+    ScrollOut({ targets: '.about-title', offset: 0, scope: ".about-section" });
+    ScrollOut({ targets: '.skills-title', offset: 0, scope: ".skills-section" });
+    ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section" }); 
+    ScrollOut({ targets: '.contact-title', offset: 0, scope: ".contact-section" });
     ScrollOut({ targets: '.img-enter', offset: 0, scope: ".contact-section" });
 
     // SVG DOM HOVER ACTIONS

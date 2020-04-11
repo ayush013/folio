@@ -169,7 +169,7 @@ nav {
 
 .about-section {
   .overlay-text {
-    transform: rotate(-90deg) translate(-40%, -100%);
+    transform: rotate(-90deg) translate(-60%, -100%);
   }
 
   .description {
@@ -183,21 +183,31 @@ nav {
 
 .skills-section {
   .overlay-text {
-    transform: rotate(-90deg) translate(-80%, -100%);
+    transform: rotate(-90deg) translate(-100%, -100%);
+  }
+  .category {
+    span {
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+  }
+  .skill-svg {
+    height: 50px;
   }
 }
 
 .projects-section {
   .overlay-text {
-    transform: rotate(-90deg) translate(-50%, -170%);
+    transform: rotate(-90deg) translate(-110%, -170%);
     font-size: 8rem;
   }
 
 }
 
 .contact-section {
+  padding-bottom: 30px;
   .overlay-text {
-    transform: rotate(-90deg) translate(-50%, -170%);
+    transform: rotate(-90deg) translate(-130%, -170%);
     font-size: 8rem;
   }
   .img-wrapper {
@@ -224,6 +234,15 @@ nav {
     font-size: 1.5rem;
     a {
       color: $white;
+    }
+  }
+  .with-love {
+    font-size: 1rem;
+    font-family: Karla;
+    text-align: center;
+    img {
+      height: 0.9rem;
+      display: inline-block;
     }
   }
 }
