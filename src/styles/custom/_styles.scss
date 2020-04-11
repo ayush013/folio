@@ -465,7 +465,8 @@ nav {
       width: 200vw;
       height: 200vw;
       color: $white;
-      background: rgba(0, 0, 0, 0.815);
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.5);
       border-radius: 50%;
       transition: all 0.4s ease;
       flex: none;
