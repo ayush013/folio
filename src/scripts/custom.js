@@ -112,4 +112,7 @@ window.addEventListener('DOMContentLoaded', function () {
         perspective: 500
     });
 
+    // MAIN THREAD EXECUTION COMPLETE
+    $('body').addClass('loaded');
+
 });

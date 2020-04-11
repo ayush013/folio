@@ -5,10 +5,197 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayush Singh</title>
+
+    <style>
+        body,
+        .loader-container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+        }
+
+        .loader-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .outer-circle {
+            position: absolute;
+            top: calc(50% - 35px);
+            left: calc(50% - 35px);
+            width: 70px;
+            height: 70px;
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0px 0px 0px #fff;
+            animation: animateOuterCircle cubic-bezier(0.4, 0, 0.2, 1) 2s infinite;
+        }
+
+        .inner-circle {
+            position: absolute;
+            top: calc(50% - 25px);
+            left: calc(50% - 25px);
+            width: 50px;
+            height: 50px;
+            background-color: #000;
+            border-radius: 50%;
+            box-shadow: 0px 0px 0px #000 inset;
+            animation: animateInnerCircle cubic-bezier(0.4, 0, 0.2, 1) 2s infinite;
+        }
+
+        @keyframes animateOuterCircle {
+            0% {
+                width: 50px;
+                height: 50px;
+                top: calc(50% - 25px);
+                left: calc(50% - 25px);
+                box-shadow: 0px 0px 0px #fff;
+            }
+
+            45% {
+                width: 70px;
+                height: 70px;
+                top: calc(50% - 35px);
+                left: calc(50% - 35px);
+                box-shadow: 0px 0px 10px #fff, 0px 0px 12px #fff;
+            }
+
+            90% {
+                width: 70px;
+                height: 70px;
+                top: calc(50% - 35px);
+                left: calc(50% - 35px);
+                box-shadow: 0px 0px 0px #fff;
+            }
+
+            100% {
+                width: 50px;
+                height: 50px;
+                top: calc(50% - 25px);
+                left: calc(50% - 25px);
+                box-shadow: 0px 0px 0px #fff;
+            }
+        }
+
+        @keyframes animateInnerCircle {
+            0% {
+                width: 55px;
+                height: 55px;
+                top: calc(50% - 27.5px);
+                left: calc(50% - 27.5px);
+                box-shadow: 0px 0px 0px #000 inset;
+            }
+
+            45% {
+                width: 50px;
+                height: 50px;
+                top: calc(50% - 25px);
+                left: calc(50% - 25px);
+                box-shadow: 0px 0px 4px #fff inset, 0px 0px 8px #fff inset;
+            }
+
+            99% {
+                width: 120px;
+                height: 120px;
+                top: calc(50% - 60px);
+                left: calc(50% - 60px);
+                box-shadow: 0px 0px 0px #000 inset;
+            }
+
+            100% {
+                width: 55px;
+                height: 55px;
+                top: calc(50% - 27.5px);
+                left: calc(50% - 27.5px);
+                box-shadow: 0px 0px 0px #000 inset;
+            }
+        }
+
+
+        .loader-section {
+            position: fixed;
+            top: 0;
+            width: 51%;
+            height: 100%;
+            background: black;
+            z-index: 1000;
+        }
+
+        .loader-section.section-left {
+            left: 0;
+        }
+
+        .loader-section.section-right {
+            right: 0;
+        }
+
+        .loaded {
+            overflow-y: scroll;
+        }
+
+        .loaded .section-left {
+            -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+        }
+
+        .loaded .section-right {
+            -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+        }
+
+        .loaded .loader {
+            -webkit-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+            opacity: 0;
+        }
+
+        .loaded .loader-wrapper {
+            visibility: hidden;
+            -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+            -webkit-transition: all 0.3s 1s ease-out;
+            transition: all 0.3s 1s ease-out;
+        }
+
+        .loaded .loader-container {
+            -webkit-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+            opacity: 0;
+        }
+    </style>
+
     <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <div class="loader-wrapper">
+        <div class="loader-container">
+            <div class="outer-circle">
+                <div class="inner-circle"></div>
+            </div>
+        </div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+
     <div id="background"></div>
     <nav>
         <div class="container d-flex justify-content-between align-items-center h-100">
