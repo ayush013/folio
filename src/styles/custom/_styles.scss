@@ -61,6 +61,18 @@ nav {
   z-index: 10;
   .container {
     position: relative;
+    .logo {
+      a {
+        .logo-title {
+          font-variation-settings: "wght" 700, "SPAC" 100;
+          letter-spacing: 1px;
+          color: $white;
+        }
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
   }
 }
 
@@ -105,7 +117,7 @@ nav {
 }
 
 #luxy {
-  background: rgba($color: $black, $alpha: 0.3);
+  background: rgba($color: $black, $alpha: 0.4);
 }
 
 .main-section {
@@ -515,6 +527,11 @@ nav {
   overflow: hidden;
   position: relative;
 }
+html[data-scroll-dir-y="-1"] {
+  .img-enter[data-scroll="out"] .bg {
+    visibility: visible;
+  }
+}
 .img-enter[data-scroll="in"] .bg {
   transition-delay: 0.5s;
 }
@@ -527,7 +544,7 @@ nav {
   right: 0;
   bottom: 0;
   left: 0;
-  background: #ac4d00;
+  background: linear-gradient(to right, #bd4a14, #df9124);
   animation: block 1s ease-in both;
 }
 

@@ -25,7 +25,7 @@ window.addEventListener('DOMContentLoaded', function () {
     var scope = new Graphemescope(background[0]);
     var index = 0;
     scope.ease = 0.05;
-    scope.radiusFactor = 0.4;
+    scope.radiusFactor = 0.35;
 
     function changePicture() {
         scope.setImage(images[index]);
