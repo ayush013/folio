@@ -208,12 +208,35 @@ nav {
   }
 }
 
+.experience-section {
+  min-height: 300vh;
+  .container {
+    padding-top: 70px;
+    position: sticky;
+    top: 0;
+  }
+  .overlay-text {
+    transform: rotate(-90deg) translate(-50%, -170%);
+    font-size: 8rem;
+  }
+  .timeline {
+    height: 70%;
+    svg {
+      height: 100%;
+    }
+  }
+}
+
+.sticky-el {
+  position: relative !important;
+  transform: none !important;
+}
+
 .projects-section {
   .overlay-text {
     transform: rotate(-90deg) translate(-110%, -170%);
     font-size: 8rem;
   }
-
 }
 
 .contact-section {

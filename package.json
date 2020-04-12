@@ -22,6 +22,7 @@
     "node-sass": "^4.13.1"
   },
   "dependencies": {
+    "drawsvg": "^1.1.0",
     "gulp-htmlmin": "^5.0.1",
     "jquery": "^3.4.1",
     "luxy.js": "^0.1.0",

@@ -30,14 +30,14 @@ window.addEventListener('DOMContentLoaded', function () {
     function changePicture() {
         scope.setImage(images[index]);
         index = (index + 1) % images.length;
-    };
+    }
 
     setInterval(changePicture, 10000);
     changePicture();
 
     $(window).mousemove(function (event) {
         var factorx = event.pageX / $(window).width();
-        var factory = event.pageY / $(window).height()
+        var factory = event.pageY / $(window).height();
 
         scope.angleTarget = factorx * 0.25;
         scope.zoomTarget = 1.0 + 0.5 * factory;
@@ -70,8 +70,16 @@ window.addEventListener('DOMContentLoaded', function () {
     Splitting();
     ScrollOut({ targets: '.about-title', offset: 0, scope: ".about-section" });
     ScrollOut({ targets: '.skills-title', offset: 0, scope: ".skills-section" });
-    ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section" }); 
+    ScrollOut({ targets: '.experience-title', offset: 0, scope: ".experience-section" });
+    ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section" });
     ScrollOut({ targets: '.contact-title', offset: 0, scope: ".contact-section" });
+    ScrollOut({ targets: '.experience-section', threshold: 0.33,
+    onShown: function(element, ctx, scrollingElement) {
+        $('#luxy').addClass('sticky-el');
+      },
+      onHidden: function(element, ctx, scrollingElement) {
+        $('#luxy').removeClass('sticky-el');
+      } });
     ScrollOut({ targets: '.img-enter', offset: 0, scope: ".contact-section" });
 
     // SVG DOM HOVER ACTIONS
@@ -111,6 +119,14 @@ window.addEventListener('DOMContentLoaded', function () {
         maxTilt: 20,
         scale: 1.2,
         perspective: 500
+    });
+
+    // TIMELINE PATH
+        $svg = $('svg').drawsvg(),
+        max = $('.experience-section').height() - $(window).height();
+
+    $(window).on('scroll', function () {
+        $svg.drawsvg('progress', $(window).scrollTop() / max);
     });
 
     // MAIN THREAD EXECUTION COMPLETE
