@@ -211,30 +211,23 @@ nav {
 .experience-section {
   min-height: 300vh;
   .container {
-    padding-top: 70px;
-    position: sticky;
-    top: 0;
+    height: 100vh;
   }
   .overlay-text {
-    transform: rotate(-90deg) translate(-50%, -170%);
+    transform: rotate(-90deg) translate(-35%, -170%);
     font-size: 8rem;
   }
   .timeline {
-    height: 70%;
+    height: 50%;
     svg {
       height: 100%;
     }
   }
 }
 
-.sticky-el {
-  position: relative !important;
-  transform: none !important;
-}
-
 .projects-section {
   .overlay-text {
-    transform: rotate(-90deg) translate(-110%, -170%);
+    transform: rotate(-90deg) translate(-180%, -170%);
     font-size: 8rem;
   }
 }
