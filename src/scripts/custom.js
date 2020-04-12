@@ -74,33 +74,6 @@ window.addEventListener('DOMContentLoaded', function () {
     ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section" });
     ScrollOut({ targets: '.contact-title', offset: 0, scope: ".contact-section" });
 
-    //MUTATION OBSERVER FOR STICKY HACK
-    var observer = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutationRecord) {
-            var transformY = new WebKitCSSMatrix($('#luxy').css('-webkit-transform'))['f'];
-            $('.experience-section').css('transform', 'translateY(' + (-transformY - 2113) + 'px)');
-        });
-    });
-    var target = document.getElementById('luxy');
-
-    // TIMELINE PATH
-    var $svg = $('svg').drawsvg();
-    var max = $('.experience-section').height();
-
-    $(window).on('scroll', function () {
-        $svg.drawsvg('progress', ($(window).scrollTop() - $('.experience-section').offset().top)*100 / max);
-    });
-
-    ScrollOut({
-        targets: '.experience-section', threshold: 0.33,
-        onShown: function (element, ctx, scrollingElement) {
-            observer.observe(target, { attributes: true, attributeFilter: ['style'] });
-        },
-        onHidden: function (element, ctx, scrollingElement) {
-            observer.disconnect();
-            $('.experience-section').css('transform', 'translateY('+0+'px)');
-        }
-    });
     ScrollOut({ targets: '.img-enter', offset: 0, scope: ".contact-section" });
 
     // SVG DOM HOVER ACTIONS

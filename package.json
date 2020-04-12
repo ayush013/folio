@@ -15,6 +15,7 @@
     "gulp-clean": "^0.4.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^5.0.1",
     "gulp-inject": "^5.0.5",
     "gulp-minify": "^3.1.0",
     "gulp-rev": "^9.0.0",
@@ -22,8 +23,6 @@
     "node-sass": "^4.13.1"
   },
   "dependencies": {
-    "drawsvg": "^1.1.0",
-    "gulp-htmlmin": "^5.0.1",
     "jquery": "^3.4.1",
     "luxy.js": "^0.1.0",
     "scroll-out": "^2.2.8",

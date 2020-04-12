@@ -209,16 +209,12 @@ nav {
 }
 
 .experience-section {
-  min-height: 300vh;
-  .container {
-    height: 100vh;
-  }
   .overlay-text {
     transform: rotate(-90deg) translate(-35%, -170%);
     font-size: 8rem;
   }
   .timeline {
-    height: 50%;
+    width: 90%;
     svg {
       height: 100%;
     }
