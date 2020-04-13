@@ -62,6 +62,10 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
 
+    // RELLAX
+
+    var rellax = new Rellax('.rellax', {center: true});
+
     // SPLITTING AND SCROLLOUT ANIMS
     Splitting();
     ScrollOut({ targets: '.about-title', offset: 0, scope: ".about-section" });

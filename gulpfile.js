@@ -17,6 +17,7 @@ task('js', () => {
         'node_modules/splitting/dist/splitting.min.js',
         'node_modules/scroll-out/dist/scroll-out.min.js',
         'node_modules/tilt.js/dest/tilt.jquery.min.js',
+        'node_modules/rellax/rellax.min.js',
         './src/scripts/custom.js'])
         .pipe(concat('main.js'))
         .pipe(minify({

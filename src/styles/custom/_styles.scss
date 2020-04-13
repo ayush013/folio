@@ -52,6 +52,16 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  &:before {
+    background: rgba(0,0,0,.4);
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
 }
 
 nav {
@@ -120,10 +130,6 @@ nav {
 
 .divider-200 {
   height: 200px;
-}
-
-.wrapper {
-  background: rgba($color: $black, $alpha: 0.4);
 }
 
 .main-section {

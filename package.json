@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "jquery": "^3.4.1",
+    "rellax": "^1.12.1",
     "scroll-out": "^2.2.8",
     "splitting": "^1.0.6",
     "tilt.js": "^1.2.1",
