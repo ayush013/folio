@@ -88,6 +88,8 @@ nav {
   min-height: 100vh;
   padding: 70px 0;
   position: relative;
+  display: flex;
+  align-items: center;
   .title {
     font-size: 2rem;
     font-variation-settings: "wght" 700, "SPAC" 100;
@@ -100,6 +102,10 @@ nav {
     font-size: 10rem;
     display: block;
     position: absolute;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%) rotate(-90deg);
     line-height: 1;
     animation: flicker 10s ease-in-out infinite alternate;
   }
@@ -116,7 +122,7 @@ nav {
   height: 200px;
 }
 
-#luxy {
+.wrapper {
   background: rgba($color: $black, $alpha: 0.4);
 }
 
@@ -180,10 +186,6 @@ nav {
 }
 
 .about-section {
-  .overlay-text {
-    transform: rotate(-90deg) translate(-60%, -100%);
-  }
-
   .description {
     font-size: 1rem;
     font-family: Karla;
@@ -194,9 +196,6 @@ nav {
 }
 
 .skills-section {
-  .overlay-text {
-    transform: rotate(-90deg) translate(-100%, -100%);
-  }
   .category {
     span {
       font-size: 1rem;
@@ -210,7 +209,6 @@ nav {
 
 .experience-section {
   .overlay-text {
-    transform: rotate(-90deg) translate(-35%, -170%);
     font-size: 8rem;
   }
   .timeline {
@@ -223,7 +221,6 @@ nav {
 
 .projects-section {
   .overlay-text {
-    transform: rotate(-90deg) translate(-180%, -170%);
     font-size: 8rem;
   }
 }
@@ -231,7 +228,6 @@ nav {
 .contact-section {
   padding-bottom: 30px;
   .overlay-text {
-    transform: rotate(-90deg) translate(-130%, -170%);
     font-size: 8rem;
   }
   .img-wrapper {

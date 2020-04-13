@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp serve"
   },
   "author": "Ayush",
   "license": "ISC",
@@ -24,7 +25,6 @@
   },
   "dependencies": {
     "jquery": "^3.4.1",
-    "luxy.js": "^0.1.0",
     "scroll-out": "^2.2.8",
     "splitting": "^1.0.6",
     "tilt.js": "^1.2.1",

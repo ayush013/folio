@@ -61,10 +61,6 @@ window.addEventListener('DOMContentLoaded', function () {
         loop: true,
     });
 
-    //MOMENTUM SCROLL
-    if ((typeof window.orientation === "undefined") && (navigator.userAgent.indexOf('IEMobile') === -1)) {
-        luxy.init();
-    }
 
     // SPLITTING AND SCROLLOUT ANIMS
     Splitting();
