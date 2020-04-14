@@ -16,10 +16,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
     //GRAPHEMESCOPE
     var images = [
-        "https://images.pexels.com/photos/1936299/pexels-photo-1936299.jpeg?crop=entropy&cs=srgb&dl=screen-web-design-developing-codes-1936299.jpg&fit=crop&fm=jpg&h=853&w=1280",
-        "https://images.pexels.com/photos/2505693/pexels-photo-2505693.jpeg?crop=entropy&cs=srgb&dl=blue-and-red-plants-2505693.jpg&fit=crop&fm=jpg&h=1706&w=1280",
-        "https://images.pexels.com/photos/2694037/pexels-photo-2694037.jpeg?crop=entropy&cs=srgb&dl=blue-and-brown-milky-way-galaxy-2694037.jpg&fit=crop&fm=jpg&h=719&w=1280",
-        "https://images.pexels.com/photos/2304895/pexels-photo-2304895.jpeg?crop=entropy&cs=srgb&dl=lighted-tower-beside-building-2304895.jpg&fit=crop&fm=jpg&h=1600&w=1280"
+        "assets/bg/plants.jpg",
+        "assets/bg/pattern2.jpg",
+        "assets/bg/rose.jpg",
+        "assets/bg/pattern1.jpg",
     ];
     var background = $("#background");
     var scope = new Graphemescope(background[0]);
@@ -37,9 +37,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
     $(window).mousemove(function (event) {
         var factorx = event.pageX / $(window).width();
-        //var factory = event.pageY / $(window).height();
+        var factory = event.pageY / $(window).height();
 
         scope.angleTarget = factorx * 0.5;
+        scope.angleTarget = factory * 0.25;
         //  scope.zoomTarget = 1.0 + 0.25 * factory;
     });
 
