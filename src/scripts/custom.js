@@ -155,10 +155,7 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     var lazyLoadInstance2 = new LazyLoad({
-        elements_selector: ".project-lazy",
-        callback_loaded: function(e) {
-            e.parentElement.classList.add('loaded');
-        }
+        elements_selector: ".project-lazy"
     });
 
     // MAIN THREAD EXECUTION COMPLETE
