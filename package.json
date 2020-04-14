@@ -31,6 +31,7 @@
     "scrollmagic": "^2.0.7",
     "splitting": "^1.0.6",
     "tilt.js": "^1.2.1",
-    "typed.js": "^2.0.11"
+    "typed.js": "^2.0.11",
+    "vanilla-lazyload": "^15.1.1"
   }
 }

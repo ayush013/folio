@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', function () {
         //var factory = event.pageY / $(window).height();
 
         scope.angleTarget = factorx * 0.5;
-      //  scope.zoomTarget = 1.0 + 0.25 * factory;
+        //  scope.zoomTarget = 1.0 + 0.25 * factory;
     });
 
     var resizeHandler = function () {
@@ -155,6 +155,10 @@ window.addEventListener('DOMContentLoaded', function () {
             observer.disconnect();
         });
 
+    // LAZY LOADED RESOURCES
+    var lazyLoadInstance = new LazyLoad({
+        elements_selector: ".lazy"
+    });
 
     // MAIN THREAD EXECUTION COMPLETE
     $('body').addClass('loaded');

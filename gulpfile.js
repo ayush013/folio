@@ -21,6 +21,7 @@ task('js', () => {
         'node_modules/gsap/dist/gsap.min.js',
         'node_modules/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
         'node_modules/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js',
+        'node_modules/vanilla-lazyload/dist/lazyload.min.js',
         './src/scripts/custom.js'])
         .pipe(concat('main.js'))
         .pipe(minify({
