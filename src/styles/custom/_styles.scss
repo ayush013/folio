@@ -403,7 +403,6 @@ nav {
 .experience-section {
   .overlay-text {
     font-size: 8rem;
-    transform: translateX(-50%) translateY(-120%) rotate(-90deg);
   }
   .timeline {
     width: 90%;
@@ -415,11 +414,11 @@ nav {
 
 .projects-section {
   width: 5000px;
-  display: block;
   transform: translate(0px, 0px);
+  padding-bottom: 0;
   .sticky-title {
     position: absolute;
-    left: 23vw;
+    left: 27vw;
     top: 10vh;
     z-index: -1;
     .overlay-text {
@@ -480,7 +479,7 @@ nav {
             position: absolute;
             height: 100%;
             width: 100%;
-            background-color: rgba($color: $black, $alpha: 0.2);
+            background: radial-gradient(transparent, rgba(0, 0, 0, 0.4));
             z-index: 10;
           }
         }
@@ -493,7 +492,6 @@ nav {
   padding-bottom: 30px;
   .overlay-text {
     font-size: 8rem;
-    transform: translateX(-50%) translateY(275%) rotate(-90deg);
   }
   .img-wrapper {
     position: relative;
@@ -519,6 +517,18 @@ nav {
     font-size: 1.5rem;
     a {
       color: $white;
+    }
+  }
+  a.social-link {
+    position: relative;
+    display: inline-block;
+    &:after {
+      content: ""; 
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left:0;
     }
   }
   .with-love {

@@ -37,10 +37,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
     $(window).mousemove(function (event) {
         var factorx = event.pageX / $(window).width();
-        var factory = event.pageY / $(window).height();
+        //var factory = event.pageY / $(window).height();
 
-        scope.angleTarget = factorx * 0.25;
-        scope.zoomTarget = 1.0 + 0.25 * factory;
+        scope.angleTarget = factorx * 0.5;
+      //  scope.zoomTarget = 1.0 + 0.25 * factory;
     });
 
     var resizeHandler = function () {
@@ -96,7 +96,7 @@ window.addEventListener('DOMContentLoaded', function () {
     var socialColorArray = ['#367fd3', '#3C5A99', '#3EC6EA', '#8A45BE', '#E74D89', '#1769FF'];
 
     socialColorArray.forEach((color, index) => {
-        document.getElementsByClassName('social-svg')[index].addEventListener("mouseover", function () {
+        document.getElementsByClassName('social-link')[index].addEventListener("mouseover", function () {
             var element = $('.social-svg')[index].contentDocument.getElementsByClassName('fill');
             Array.from(element).forEach(path => {
                 path.style.transition = '0.5s';
