@@ -72,7 +72,7 @@ window.addEventListener('DOMContentLoaded', function () {
     ScrollOut({ targets: '.skills-title', offset: 0, scope: ".skills-section" });
     ScrollOut({ targets: '.experience-title', offset: 0, scope: ".experience-section" });
     ScrollOut({ targets: '.contact-title', offset: 0, scope: ".contact-section" });
-    ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section" });
+    ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section", once: true});
 
     ScrollOut({ targets: '.img-enter', offset: 0, scope: ".contact-section" });
 
@@ -128,17 +128,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // HORIZONTAL SCROLL
     var controller = new ScrollMagic.Controller();
-
     var tl = gsap.timeline();
-
     var elementWidth = document.getElementById('projects').offsetWidth;
-
     var width = window.innerWidth - elementWidth;
-
     var duration = elementWidth / window.innerHeight * 100;
-
     var official = duration + '%';
-
     tl.to('.projects-section', 5, { x: width, ease: Power0.easeNone });
 
     var scene1 = new ScrollMagic.Scene({
@@ -157,7 +151,14 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // LAZY LOADED RESOURCES
     var lazyLoadInstance = new LazyLoad({
-        elements_selector: ".lazy"
+        elements_selector: ".dp-lazy"
+    });
+
+    var lazyLoadInstance2 = new LazyLoad({
+        elements_selector: ".project-lazy",
+        callback_loaded: function(e) {
+            e.parentElement.classList.add('loaded');
+        }
     });
 
     // MAIN THREAD EXECUTION COMPLETE
