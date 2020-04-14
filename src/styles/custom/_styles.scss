@@ -503,7 +503,9 @@ nav {
       position: absolute;
       bottom: 0;
       left: 0;
-      transform: translateZ(30px) scale(0.9);
+      &.loaded {
+        transform: translateZ(30px) translateY(10px) scale(0.9);
+      }
     }
   }
   .subtitle {
@@ -644,26 +646,6 @@ html[data-scroll-dir-y="-1"] {
   bottom: 0;
   left: 0;
   background: linear-gradient(to right, #bd4a14, #df9124);
-  animation: block 1s ease-in both;
-}
-
-.project-enter .bg {
-  visibility: hidden;
-}
-.project-enter.loaded {
-  overflow: hidden;
-  position: relative;
-}
-.project-enter.loaded:after {
-  content: "";
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-image: linear-gradient(to top, #0f2041 0%, #0f1f3d 1%, #283d61 100%);
   animation: block 1s ease-in both;
 }
 
