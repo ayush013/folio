@@ -53,15 +53,14 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   &:before {
-    background: rgba(0,0,0,.4);
-    content: '';
+    background: rgba(0, 0, 0, 0.4);
+    content: "";
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
     width: 100%;
   }
-  
 }
 
 nav {
@@ -130,6 +129,10 @@ nav {
 
 .divider-200 {
   height: 200px;
+}
+
+.divider-100 {
+  height: 100px;
 }
 
 .main-section {
@@ -216,6 +219,7 @@ nav {
 .experience-section {
   .overlay-text {
     font-size: 8rem;
+    transform: translateX(-50%) translateY(-120%) rotate(-90deg);
   }
   .timeline {
     width: 90%;
@@ -226,8 +230,54 @@ nav {
 }
 
 .projects-section {
-  .overlay-text {
-    font-size: 8rem;
+  width: 3000px;
+  display: block;
+  transform: translate(0px, 0px);
+  .sticky-title {
+    position: absolute;
+    left: 23vw;
+    top: 10vh;
+    z-index: -1;
+    .overlay-text {
+      font-size: 8rem;
+      left: 0;
+      transform: translateX(-70%) translateY(118%) rotate(-90deg);
+    }
+  }
+  .horizontal-container {
+    display: flex;
+    padding-left: 27vw;
+    .project-wrappper {
+      position: relative;
+      display: block;
+      width: 400px;
+      margin-right: 3rem;
+      &:hover {
+        .txt {
+            opacity:1;
+            transform:translateY(0);
+        }
+      }
+      img {
+        display: block;
+        width: 100%;
+        z-index: 2;
+      }
+      .txt {
+        padding-left: 1rem;
+        margin-top: 1rem;
+        border-left: 3px solid;
+        opacity: 0;
+        z-index: 1;
+        transform:translateY(-50px);
+        transition: transform 0.2s, opacity 0.5s;
+
+        ul {
+          font-family: Karla;
+          padding-left: 1.5rem;
+        }
+      }
+    }
   }
 }
 

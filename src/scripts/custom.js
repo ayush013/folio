@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', function () {
         var factory = event.pageY / $(window).height();
 
         scope.angleTarget = factorx * 0.25;
-        scope.zoomTarget = 1.0 + 0.5 * factory;
+        scope.zoomTarget = 1.0 + 0.25 * factory;
     });
 
     var resizeHandler = function () {
@@ -64,15 +64,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // RELLAX
 
-    var rellax = new Rellax('.rellax', {center: true});
+    var rellax = new Rellax('.rellax', { center: true });
 
     // SPLITTING AND SCROLLOUT ANIMS
     Splitting();
     ScrollOut({ targets: '.about-title', offset: 0, scope: ".about-section" });
     ScrollOut({ targets: '.skills-title', offset: 0, scope: ".skills-section" });
     ScrollOut({ targets: '.experience-title', offset: 0, scope: ".experience-section" });
-    ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section" });
     ScrollOut({ targets: '.contact-title', offset: 0, scope: ".contact-section" });
+    ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section" });
 
     ScrollOut({ targets: '.img-enter', offset: 0, scope: ".contact-section" });
 
@@ -114,6 +114,47 @@ window.addEventListener('DOMContentLoaded', function () {
         scale: 1.2,
         perspective: 500
     });
+
+
+    // MUTATION OBSERVER FOR POSITION FIXED HACK
+    var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutationRecord) {
+            var transformX = new WebKitCSSMatrix($('#projects').css('-webkit-transform'))['e'];
+            $('.sticky-title').css('transform', 'translateX(' + (-transformX) + 'px)');
+        });
+    });
+    var target = document.getElementById('projects');
+
+
+    // HORIZONTAL SCROLL
+    var controller = new ScrollMagic.Controller();
+
+    var tl = gsap.timeline();
+
+    var elementWidth = document.getElementById('projects').offsetWidth;
+
+    var width = window.innerWidth - elementWidth;
+
+    var duration = elementWidth / window.innerHeight * 100;
+
+    var official = duration + '%';
+
+    tl.to('.projects-section', 5, { x: width, ease: Power0.easeNone });
+
+    var scene1 = new ScrollMagic.Scene({
+        triggerElement: '.projects-section',
+        triggerHook: 0,
+        duration: official,
+    }).setPin('.projects-section')
+        .setTween(tl)
+        .addTo(controller)
+        .on('enter', function (e) {
+            observer.observe(target, { attributes: true, attributeFilter: ['style'] });
+        })
+        .on('leave', function (e) {
+            observer.disconnect();
+        });
+
 
     // MAIN THREAD EXECUTION COMPLETE
     $('body').addClass('loaded');

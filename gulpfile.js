@@ -18,6 +18,9 @@ task('js', () => {
         'node_modules/scroll-out/dist/scroll-out.min.js',
         'node_modules/tilt.js/dest/tilt.jquery.min.js',
         'node_modules/rellax/rellax.min.js',
+        'node_modules/gsap/dist/gsap.min.js',
+        'node_modules/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
+        'node_modules/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js',
         './src/scripts/custom.js'])
         .pipe(concat('main.js'))
         .pipe(minify({
