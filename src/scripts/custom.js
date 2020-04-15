@@ -73,13 +73,14 @@ window.addEventListener('DOMContentLoaded', function () {
     ScrollOut({ targets: '.skills-title', offset: 0, scope: ".skills-section" });
     ScrollOut({ targets: '.experience-title', offset: 0, scope: ".experience-section" });
     ScrollOut({ targets: '.contact-title', offset: 0, scope: ".contact-section" });
-    ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section", once: true});
+    ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section", once: true });
+    ScrollOut({ targets: '.achievements-title', offset: 0, scope: ".achievements-section" });
 
     ScrollOut({ targets: '.img-enter', offset: 0, scope: ".contact-section" });
 
     // SVG DOM HOVER ACTIONS
-    var skillsColorArray = ['#FFCA28', '#DE0031', '#F16529', '#29A9DF', '#FFB03A', '#F05033',
-        '#0ACF83', '#FDD231', '#FF7C00', '#26C9FF', '#FF2A63', '#D34A47', '#3DF0F0', '#D291FF'];
+    var skillsColorArray = ['#FFCA28', '#DE0031', '#F16529', '#29A9DF', '#FFB03A', '#CD6799',
+        '#0ACF83', '#FDD231', '#FF7C00', '#26C9FF', '#FF2A63', '#F05033', '#D34A47', '#3DF0F0', '#D291FF'];
 
     skillsColorArray.forEach((color, index) => {
         document.getElementsByClassName('skill-svg')[index].addEventListener("mouseover", function () {
