@@ -9,6 +9,7 @@ var sass = require('gulp-sass');
 var addsrc = require('gulp-add-src');
 var browserSync = require('browser-sync').create();
 const htmlmin = require('gulp-htmlmin');
+const purgecss = require('gulp-purgecss');
 
 task('js', () => {
     return src(['node_modules/jquery/dist/jquery.min.js',
@@ -37,6 +38,9 @@ task('js', () => {
 task('css', () => {
     return src(['./src/styles/**/*.scss'])
         .pipe(sass())
+        .pipe(purgecss({
+            content: ['**/*.html', 'scripts/*.js']
+        }))
         .pipe(addsrc.append('styles/*.css'))
         .pipe(concat('style.css'))
         .pipe(cleanCss())

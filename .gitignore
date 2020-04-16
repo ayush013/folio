@@ -1,4 +1,5 @@
 node_modules/
 dist/
 debug.log
+src/debug.log
 todo.txt

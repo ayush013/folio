@@ -128,28 +128,32 @@ window.addEventListener('DOMContentLoaded', function () {
     var target = document.getElementById('projects');
 
 
-    // HORIZONTAL SCROLL
-    var controller = new ScrollMagic.Controller();
-    var tl = gsap.timeline();
-    var elementWidth = document.getElementById('projects').offsetWidth;
-    var width = window.innerWidth - elementWidth;
-    var duration = elementWidth / window.innerHeight * 100;
-    var official = duration + '%';
-    tl.to('.projects-section', 5, { x: width, ease: Power0.easeNone });
+    // HORIZONTAL SCROLL ON DESKTOP
 
-    var scene1 = new ScrollMagic.Scene({
-        triggerElement: '.projects-section',
-        triggerHook: 0,
-        duration: official,
-    }).setPin('.projects-section')
-        .setTween(tl)
-        .addTo(controller)
-        .on('enter', function (e) {
-            observer.observe(target, { attributes: true, attributeFilter: ['style'] });
-        })
-        .on('leave', function (e) {
-            observer.disconnect();
-        });
+    if ((typeof window.orientation === "undefined") && (navigator.userAgent.indexOf('IEMobile') === -1)) {
+
+        var controller = new ScrollMagic.Controller();
+        var tl = gsap.timeline();
+        var elementWidth = document.getElementById('projects').offsetWidth;
+        var width = window.innerWidth - elementWidth;
+        var duration = elementWidth / window.innerHeight * 100;
+        var official = duration + '%';
+        tl.to('.projects-section', 5, { x: width, ease: Power0.easeNone });
+    
+        var scene1 = new ScrollMagic.Scene({
+            triggerElement: '.projects-section',
+            triggerHook: 0,
+            duration: official,
+        }).setPin('.projects-section')
+            .setTween(tl)
+            .addTo(controller)
+            .on('enter', function (e) {
+                observer.observe(target, { attributes: true, attributeFilter: ['style'] });
+            })
+            .on('leave', function (e) {
+                observer.disconnect();
+            });
+    }
 
     // LAZY LOADED RESOURCES
     var lazyLoadInstance = new LazyLoad({

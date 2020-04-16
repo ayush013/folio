@@ -489,37 +489,39 @@ nav {
 }
 
 .achievements-section {
-  .overlay-text {
-    font-size: 6rem;
+  .overlay-img {
+    position: sticky;
+    width: 4.5rem;
+    top: 60px;
+    left: 13vw;
   }
   .achievement {
-    font-family: 'Karla';
+    font-family: "Karla";
     position: relative;
     margin: 10px;
     min-width: 310px -60px;
     max-width: 310px;
     width: 100%;
-    color: #ffffff;
+    color: $white;
     text-align: left;
-    background-color: #000000;
+    background-color: $black;
     font-size: 16px;
     overflow: hidden;
     filter: grayscale(1);
+    transition: all 0.4s ease-in;
     margin-bottom: 2rem;
-  
+
     * {
-      -webkit-box-sizing: border-box;
       box-sizing: border-box;
-      -webkit-transition: all 0.4s ease-in;
       transition: all 0.4s ease-in;
     }
-  
+
     img {
       position: relative;
       max-width: 100%;
       vertical-align: top;
     }
-  
+
     figcaption {
       position: absolute;
       top: 0;
@@ -529,42 +531,28 @@ nav {
       z-index: 1;
       opacity: 0;
       padding: 20px 30px;
-  
-      &:before, &:after {
-        width: 1px;
-        height: 0;
-      }
-  
-      &:before {
-        right: 0;
-        top: 0;
-      }
-  
-      &:after {
-        left: 0;
-        bottom: 0;
-      }
     }
-  
-    h3, p {
+
+    h3,
+    p {
       line-height: 1.5em;
     }
-  
+
     h3 {
       margin: 0 0 5px;
       font-weight: 700;
       text-transform: uppercase;
     }
-  
+
     p {
       font-size: 0.8em;
       font-weight: 500;
       margin: 0 0 15px;
     }
-  
+
     .date {
-      background-color: #fff;
-      color: #333;
+      background-color: $white;
+      color: $black;
       font-size: 18px;
       font-weight: 800;
       min-height: 48px;
@@ -575,81 +563,31 @@ nav {
       text-align: center;
       text-transform: uppercase;
       top: 0;
-  
+
       span {
         display: block;
         line-height: 14px;
       }
-  
+
       .month {
         font-size: 11px;
       }
-    }
-  
-    &:before, &:after {
-      position: absolute;
-      content: '';
-      background-color: #ffffff;
-      z-index: 1;
-      -webkit-transition: all 0.4s ease-in;
-      transition: all 0.4s ease-in;
-      opacity: 0.8;
-    }
-  
-    figcaption {
-      &:before, &:after {
-        position: absolute;
-        content: '';
-        background-color: #ffffff;
-        z-index: 1;
-        -webkit-transition: all 0.4s ease-in;
-        transition: all 0.4s ease-in;
-        opacity: 0.8;
-      }
-    }
-  
-    &:before, &:after {
-      height: 1px;
-      width: 0%;
-    }
-  
-    &:before {
-      top: 0;
-      left: 0;
-    }
-  
-    &:after {
-      bottom: 0;
-      right: 0;
     }
 
     &:hover {
       filter: grayscale(0);
     }
-  
-    &:hover img, &.hover img {
+
+    &:hover img {
       opacity: 0.4;
     }
-  
-    &:hover .date, &.hover .date {
-      -webkit-transform: translateY(-100%);
+
+    &:hover .date {
       transform: translateY(-100%);
     }
-  
-    &:hover figcaption, &.hover figcaption {
+
+    &:hover figcaption {
       opacity: 1;
-    }
-  
-    &:hover figcaption:before, &.hover figcaption:before, &:hover figcaption:after, &.hover figcaption:after {
-      height: 100%;
-    }
-  
-    &:hover:before, &.hover:before, &:hover:after, &.hover:after {
-      width: 100%;
-    }
-  
-    &:hover:before, &.hover:before, &:hover:after, &.hover:after, &:hover figcaption:before, &.hover figcaption:before, &:hover figcaption:after, &.hover figcaption:after {
-      opacity: 0.1;
     }
   }
 }
