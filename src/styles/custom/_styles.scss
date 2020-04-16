@@ -23,6 +23,11 @@ body {
   padding: 0;
   overflow-x: hidden;
   color: $white;
+  cursor: none;
+}
+
+a {
+  cursor: none !important;
 }
 
 ::-webkit-scrollbar {
@@ -45,6 +50,72 @@ body {
   background: $gray-900;
 }
 
+.cursor {
+  position: fixed;
+  background-color: $white;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  z-index: 1;
+  transition: 0.2s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+    0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) opacity;
+  user-select: none;
+  pointer-events: none;
+  z-index: 10000;
+  transform: scale(1);
+
+  &.active {
+    opacity: 1;
+    transform: scale(0);
+  }
+
+  &.menu-active {
+    opacity: 1;
+    transform: scale(0);
+  }
+
+  &.hovered {
+    opacity: 1;
+  }
+}
+
+.cursor-follower {
+  position: fixed;
+  border: 1px solid $white;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  z-index: 1;
+  transition: 0.3s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+    0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) opacity,
+    0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) background;
+  user-select: none;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(2px, 2px);
+
+  &.active {
+    opacity: 1;
+    transform: scale(3);
+  }
+
+  &.menu-active {
+    opacity: 1;
+    transform: scale(3);
+  }
+
+  &.hovered {
+    opacity: 1;
+  }
+}
+
+img {
+  -webkit-backface-visibility: hidden; 
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
 #background {
   position: fixed;
   top: 0;
@@ -53,7 +124,7 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   &:before {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.3);
     content: "";
     position: absolute;
     left: 0;
@@ -89,7 +160,6 @@ nav {
         top: 10px;
         right: 0;
         z-index: 2;
-        cursor: pointer;
         width: 40px;
         height: 40px;
         opacity: 0;
@@ -151,7 +221,6 @@ nav {
         height: 40px;
         padding: 0.5em;
         border-radius: 0 0.12em 0.12em 0;
-        cursor: pointer;
         transition: box-shadow 0.4s ease;
         backface-visibility: hidden;
         display: flex;
@@ -247,7 +316,6 @@ nav {
                 > a {
                   position: relative;
                   display: inline;
-                  cursor: pointer;
                   transition: color 0.4s ease;
                   -webkit-text-stroke: $white;
                   color: transparent;
@@ -395,17 +463,56 @@ nav {
       letter-spacing: 1px;
     }
   }
-  .skill-svg {
-    height: 50px;
+  .svg-tilt {
+    position: relative;
+    display: inline-block;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    .skill-svg {
+      height: 50px;
+    }
   }
+
 }
 
 .experience-section {
   .overlay-text {
     font-size: 8rem;
   }
+  .svg-tilt {
+    position: relative;
+    display: inline-block;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    .skill-svg {
+      height: 50px;
+    }
+  }
   .timeline {
-    width: 90%;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 800px;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
     svg {
       height: 100%;
     }

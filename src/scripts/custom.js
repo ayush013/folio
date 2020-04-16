@@ -83,7 +83,7 @@ window.addEventListener('DOMContentLoaded', function () {
         '#0ACF83', '#FDD231', '#FF7C00', '#26C9FF', '#FF2A63', '#F05033', '#D34A47', '#3DF0F0', '#D291FF'];
 
     skillsColorArray.forEach((color, index) => {
-        document.getElementsByClassName('skill-svg')[index].addEventListener("mouseover", function () {
+        document.getElementsByClassName('svg-tilt')[index].addEventListener("mouseover", function () {
             var element = $('.skill-svg')[index].contentDocument.getElementsByClassName('fill');
             Array.from(element).forEach(path => {
                 path.style.transition = '0.5s';
@@ -139,7 +139,7 @@ window.addEventListener('DOMContentLoaded', function () {
         var duration = elementWidth / window.innerHeight * 100;
         var official = duration + '%';
         tl.to('.projects-section', 5, { x: width, ease: Power0.easeNone });
-    
+
         var scene1 = new ScrollMagic.Scene({
             triggerElement: '.projects-section',
             triggerHook: 0,
@@ -162,6 +162,52 @@ window.addEventListener('DOMContentLoaded', function () {
 
     var lazyLoadInstance2 = new LazyLoad({
         elements_selector: ".project-lazy"
+    });
+
+    // CUSTOM CURSOR
+    var cursor = $(".cursor"),
+        follower = $(".cursor-follower");
+
+    var posX = 0,
+        posY = 0;
+
+    var mouseX = 0,
+        mouseY = 0;
+
+    gsap.to({}, 0.016, {
+        repeat: -1,
+        onRepeat: function () {
+            posX += (mouseX - posX) / 9;
+            posY += (mouseY - posY) / 9;
+
+            gsap.set(follower, {
+                css: {
+                    left: posX - 12,
+                    top: posY - 12
+                }
+            });
+
+            gsap.set(cursor, {
+                css: {
+                    left: mouseX,
+                    top: mouseY
+                }
+            });
+        }
+    });
+
+    $(document).on("mousemove", function (e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    $(".link").on("mouseenter", function () {
+        cursor.addClass("active");
+        follower.addClass("active");
+    });
+    $(".link").on("mouseleave", function () {
+        cursor.removeClass("active");
+        follower.removeClass("active");
     });
 
     // MAIN THREAD EXECUTION COMPLETE

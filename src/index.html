@@ -36,7 +36,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1000;
+            z-index: 10000;
         }
 
         .loader-container {
@@ -45,7 +45,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 1001;
+            z-index: 10001;
         }
 
         .outer-circle {
@@ -212,16 +212,19 @@
     </div>
 
     <div id="background"></div>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
     <nav>
         <div class="container d-flex justify-content-between align-items-center h-100">
             <div class="logo">
-                <a href="#home">
+                <a href="#home" class="link">
                     <img src="assets/logo.svg" alt="Logo" class="pr-2">
                     <span class="logo-title">AYUSH SINGH</span>
                 </a>
             </div>
             <div class="outer-menu">
-                <input class="checkbox-toggle" type="checkbox" />
+                <input class="checkbox-toggle link" type="checkbox" />
                 <div class="hamburger">
                     <div></div>
                 </div>
@@ -229,13 +232,13 @@
                     <div>
                         <div>
                             <ul>
-                                <li><a href="#home">Home</a></li>
-                                <li><a href="#about">My Story</a></li>
-                                <li><a href="#skills">Skills</a></li>
-                                <li><a href="#experience">My Journey</a></li>
-                                <li><a href="#projects">Projects</a></li>
-                                <li><a href="#achievements">Achievements</a></li>
-                                <li><a href="#contact">Contact</a></li>
+                                <li><a class="link" href="#home">Home</a></li>
+                                <li><a class="link" href="#about">My Story</a></li>
+                                <li><a class="link" href="#skills">Skills</a></li>
+                                <li><a class="link" href="#experience">My Journey</a></li>
+                                <li><a class="link" href="#projects">Projects</a></li>
+                                <li><a class="link" href="#achievements">Achievements</a></li>
+                                <li><a class="link" href="#contact">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -254,7 +257,7 @@
             </p>
         </div>
         <div class="scroll-btn">
-            <a href="#about">
+            <a href="#about" class="link">
                 <span class="mouse">
                     <span></span>
                 </span>
@@ -407,7 +410,7 @@
             </div>
         </div>
     </section>
-    <section class="section projects-section" id="projects">
+    <section class="section projects-section projects-section-mobile" id="projects">
 
         <div class="sticky-title">
             <h1 class="title projects-title enter" data-scroll="out" data-splitting="">
@@ -423,7 +426,7 @@
 
         <div class="horizontal-container">
             <div class="project-wrappper">
-                <a href="https://www.dltlabs.com" target="_blank">
+                <a class="link" href="https://www.dltlabs.com" target="_blank">
                     <div class="img-wrapper">
                         <img src="assets/projects/pre/bno.jpg" data-src="assets/projects/bno.jpg" alt="project"
                             class="project-lazy">
@@ -439,7 +442,7 @@
                 </a>
             </div>
             <div class="project-wrappper">
-                <a href="https://dlgateway.dltlabs.com" target="_blank">
+                <a class="link" href="https://dlgateway.dltlabs.com" target="_blank">
                     <div class="img-wrapper">
                         <img src="assets/projects/pre/dlg.jpg" data-src="assets/projects/dlg.jpg" alt="project"
                             class="project-lazy">
@@ -455,7 +458,7 @@
                 </a>
             </div>
             <div class="project-wrappper">
-                <a href="https://www.huminos.com" target="_blank">
+                <a class="link" href="https://www.huminos.com" target="_blank">
                     <div class="img-wrapper">
                         <img src="assets/projects/pre/huminos.jpg" data-src="assets/projects/huminos.jpg" alt="project"
                             class="project-lazy">
@@ -474,7 +477,7 @@
                 </a>
             </div>
             <div class="project-wrappper">
-                <a href="#" target="_blank">
+                <a class="link" href="#" target="_blank">
                     <div class="img-wrapper">
                         <img src="assets/projects/pre/alpha.jpg" data-src="assets/projects/alpha.jpg" alt="project"
                             class="project-lazy">
@@ -492,7 +495,7 @@
                 </a>
             </div>
             <div class="project-wrappper">
-                <a href="#" target="_blank">
+                <a class="link" href="#" target="_blank">
                     <div class="img-wrapper">
                         <img src="assets/projects/pre/farewell.jpg" data-src="assets/projects/farewell.jpg"
                             alt="project" class="project-lazy">
@@ -509,7 +512,7 @@
                 </a>
             </div>
             <div class="project-wrappper">
-                <a href="https://www.akgec.ac.in" target="_blank">
+                <a class="link" href="https://www.akgec.ac.in" target="_blank">
                     <div class="img-wrapper">
                         <img src="assets/projects/pre/akgec.jpg" data-src="assets/projects/akgec.jpg" alt="project"
                             class="project-lazy">
@@ -525,7 +528,7 @@
                 </a>
             </div>
             <div class="project-wrappper">
-                <a href="#" target="_blank">
+                <a class="link" href="#" target="_blank">
                     <div class="img-wrapper">
                         <img src="assets/projects/pre/bdc18.jpg" data-src="assets/projects/bdc18.jpg" alt="project"
                             class="project-lazy">
@@ -542,7 +545,7 @@
                 </a>
             </div>
             <div class="project-wrappper">
-                <a href="#" target="_blank">
+                <a class="link" href="#" target="_blank">
                     <div class="img-wrapper">
                         <img src="assets/projects/pre/scrolls17.jpg" data-src="assets/projects/scrolls17.jpg"
                             alt="project" class="project-lazy">
@@ -558,7 +561,7 @@
                 </a>
             </div>
             <div class="project-wrappper">
-                <a href="#" target="_blank">
+                <a class="link" href="#" target="_blank">
                     <div class="img-wrapper">
                         <img src="assets/projects/pre/idealab.jpg" data-src="assets/projects/idealab.jpg" alt="project"
                             class="project-lazy">
@@ -573,14 +576,13 @@
                 </a>
             </div>
             <div class="project-wrappper">
-                <a href="#" target="_blank">
+                <a class="link" href="#" target="_blank">
                     <div class="img-wrapper">
                         <img src="assets/projects/pre/cardize.jpg" data-src="assets/projects/cardize.jpg" alt="project"
                             class="project-lazy">
                     </div>
                     <div class="txt">
-                        <h2>cardize - visitng <br>
-                            card generator</h2>
+                        <h2>cardize - visiting <br> card generator</h2>
                         <ul>
                             <li>Frontend using HTML/CSS</li>
                             <li>JS/jQuery based online interface</li>
@@ -784,37 +786,37 @@
                             <div class="row pb-2">
                                 <div class="col-auto px-2">
                                     <a href="https://www.linkedin.com/in/alphaayush/" target="_blank"
-                                        class="social-link">
+                                        class="social-link link">
                                         <object data="assets/social/linkedin.svg" type="image/svg+xml"
                                             class="social-svg"></object>
                                     </a>
                                 </div>
                                 <div class="col-auto px-2">
-                                    <a href="https://www.facebook.com/ayush013" target="_blank" class="social-link">
+                                    <a href="https://www.facebook.com/ayush013" target="_blank" class="social-link link">
                                         <object data="assets/social/facebook.svg" type="image/svg+xml"
                                             class="social-svg"></object>
                                     </a>
                                 </div>
                                 <div class="col-auto px-2">
-                                    <a href="https://twitter.com/ayush013" target="_blank" class="social-link">
+                                    <a href="https://twitter.com/ayush013" target="_blank" class="social-link link">
                                         <object data="assets/social/twitter.svg" type="image/svg+xml"
                                             class="social-svg"></object>
                                     </a>
                                 </div>
                                 <div class="col-auto px-2">
-                                    <a href="https://www.instagram.com/alphaayush/" target="_blank" class="social-link">
+                                    <a href="https://www.instagram.com/alphaayush/" target="_blank" class="social-link link">
                                         <object data="assets/social/instagram.svg" type="image/svg+xml"
                                             class="social-svg"></object>
                                     </a>
                                 </div>
                                 <div class="col-auto px-2">
-                                    <a href="https://dribbble.com/alphaayush" target="_blank" class="social-link">
+                                    <a href="https://dribbble.com/alphaayush" target="_blank" class="social-link link">
                                         <object data="assets/social/dribbble.svg" type="image/svg+xml"
                                             class="social-svg"></object>
                                     </a>
                                 </div>
                                 <div class="col-auto px-2">
-                                    <a href="https://www.behance.net/alphaayush/" target="_blank" class="social-link">
+                                    <a href="https://www.behance.net/alphaayush/" target="_blank" class="social-link link">
                                         <object data="assets/social/behance.svg" type="image/svg+xml"
                                             class="social-svg"></object>
                                     </a>
@@ -822,10 +824,10 @@
                             </div>
                             <h3 class="subtitle pt-5">Feel Like talking?</h3>
                             <h2 class="description pb-2">
-                                <a href="mailto:ayush.singh.xda@gmail.com">ayush.singh.xda@gmail.com</a>
+                                <a class="link" href="mailto:ayush.singh.xda@gmail.com">ayush.singh.xda@gmail.com</a>
                             </h2>
                             <h3 class="subtitle pt-5">A little formal?</h3>
-                            <h2 class="description"><a href="assets/Ayush_Resume.pdf" target="_blank">Download
+                            <h2 class="description"><a class="link" href="assets/Ayush_Resume.pdf" target="_blank">Download
                                     RESUME</a></h2>
                         </div>
                     </div>
