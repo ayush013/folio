@@ -61,7 +61,7 @@ a {
     0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) opacity;
   user-select: none;
   pointer-events: none;
-  z-index: 10000;
+  z-index: 1000;
   transform: scale(1);
 
   &.active {
@@ -91,7 +91,7 @@ a {
     0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) background;
   user-select: none;
   pointer-events: none;
-  z-index: 10000;
+  z-index: 1000;
   transform: translate(2px, 2px);
 
   &.active {
