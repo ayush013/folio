@@ -79,37 +79,31 @@ window.addEventListener('DOMContentLoaded', function () {
     ScrollOut({ targets: '.img-enter', offset: 0, scope: ".contact-section" });
 
     // SVG DOM HOVER ACTIONS
+
+    function svgHoverFill(colorArray, hoverElClass, targetSvg) {
+        colorArray.forEach((color, index) => {
+            document.getElementsByClassName(hoverElClass)[index].addEventListener("mouseover", function () {
+                var element = $(targetSvg)[index].contentDocument.getElementsByClassName('fill');
+                Array.from(element).forEach(path => {
+                    path.style.transition = '0.5s';
+                    path.style.fill = color;
+                    setTimeout(function () {
+                        path.style.fill = "#ffffff";
+                    }, 500);
+                });
+            }, { passive: true });
+        });
+    }
+
     var skillsColorArray = ['#FFCA28', '#DE0031', '#F16529', '#29A9DF', '#FFB03A', '#CD6799',
         '#0ACF83', '#FDD231', '#FF7C00', '#26C9FF', '#FF2A63', '#F05033', '#D34A47', '#3DF0F0', '#D291FF'];
 
-    skillsColorArray.forEach((color, index) => {
-        document.getElementsByClassName('svg-tilt')[index].addEventListener("mouseover", function () {
-            var element = $('.skill-svg')[index].contentDocument.getElementsByClassName('fill');
-            Array.from(element).forEach(path => {
-                path.style.transition = '0.5s';
-                path.style.fill = color;
-                setTimeout(function () {
-                    path.style.fill = "#ffffff";
-                }, 500);
-            });
-        }, { passive: true });
-    });
-
     var socialColorArray = ['#367fd3', '#3C5A99', '#3EC6EA', '#8A45BE', '#E74D89', '#1769FF'];
 
-    socialColorArray.forEach((color, index) => {
-        document.getElementsByClassName('social-link')[index].addEventListener("mouseover", function () {
-            var element = $('.social-svg')[index].contentDocument.getElementsByClassName('fill');
-            Array.from(element).forEach(path => {
-                path.style.transition = '0.5s';
-                path.style.fill = color;
-                setTimeout(function () {
-                    path.style.fill = "#ffffff";
-                }, 500);
-            });
-        }, { passive: true });
-    });
+    svgHoverFill(skillsColorArray, 'svg-tilt', '.skill-svg');
+    svgHoverFill(socialColorArray, 'social-link', '.social-svg');
 
+    
     // TILT
     $('.svg-tilt').tilt({
         maxTilt: 20,
