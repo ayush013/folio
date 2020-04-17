@@ -73,7 +73,6 @@ window.addEventListener('DOMContentLoaded', function () {
     ScrollOut({ targets: '.skills-title', offset: 0, scope: ".skills-section" });
     ScrollOut({ targets: '.experience-title', offset: 0, scope: ".experience-section" });
     ScrollOut({ targets: '.contact-title', offset: 0, scope: ".contact-section" });
-    ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section", once: true });
     ScrollOut({ targets: '.achievements-title', offset: 0, scope: ".achievements-section" });
 
     ScrollOut({ targets: '.img-enter', offset: 0, scope: ".contact-section" });
@@ -103,7 +102,7 @@ window.addEventListener('DOMContentLoaded', function () {
     svgHoverFill(skillsColorArray, 'svg-tilt', '.skill-svg');
     svgHoverFill(socialColorArray, 'social-link', '.social-svg');
 
-    
+
     // TILT
     $('.svg-tilt').tilt({
         maxTilt: 20,
@@ -112,25 +111,29 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    // MUTATION OBSERVER FOR POSITION FIXED HACK
-    var observer = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutationRecord) {
-            var transformX = new WebKitCSSMatrix($('#projects').css('-webkit-transform'))['e'];
-            $('.sticky-title').css('transform', 'translateX(' + (-transformX) + 'px)');
-        });
-    });
-    var target = document.getElementById('projects');
-
-
     // IS DESKTOP CHECK
 
     function isDesktop() {
-       return (typeof window.orientation === "undefined") && (navigator.userAgent.indexOf('IEMobile') === -1)
+        return (typeof window.orientation === "undefined") && (navigator.userAgent.indexOf('IEMobile') === -1)
     }
 
     // HORIZONTAL SCROLL ON DESKTOP
 
     if (isDesktop()) {
+
+        $('.projects-section-mobile').css('display', 'none');
+        $('.projects-section').attr('id','projects');
+
+        ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section", once: true });
+
+        // MUTATION OBSERVER FOR POSITION FIXED HACK
+        var observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutationRecord) {
+                var transformX = new WebKitCSSMatrix($('#projects').css('-webkit-transform'))['e'];
+                $('.sticky-title').css('transform', 'translateX(' + (-transformX) + 'px)');
+            });
+        });
+        var target = document.getElementById('projects');
 
         var controller = new ScrollMagic.Controller();
         var tl = gsap.timeline();
@@ -153,7 +156,21 @@ window.addEventListener('DOMContentLoaded', function () {
             .on('leave', function (e) {
                 observer.disconnect();
             });
+    } else {
+        // CAROUSEL PROJECTS CONTAINER FOR MOBILE
+        $('.projects-section').css('display', 'none');
+        $('.projects-section-mobile').attr('id','projects');
+
+        ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section-mobile" });
+        $('.project-carousel').owlCarousel({
+            loop:true,
+            margin:10,
+            items: 1,
+            autoplay: true,
+            dots: false
+        });
     }
+
 
     // LAZY LOADED RESOURCES
     var lazyLoadInstance = new LazyLoad({
@@ -212,6 +229,9 @@ window.addEventListener('DOMContentLoaded', function () {
             follower.removeClass("active");
         });
 
+    } else {
+        $(".cursor").css('display', 'none');
+        $(".cursor-follower").css('display', 'none');
     }
 
     // MAIN THREAD EXECUTION COMPLETE

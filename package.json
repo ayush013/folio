@@ -27,6 +27,7 @@
   "dependencies": {
     "gsap": "^3.2.6",
     "jquery": "^3.4.1",
+    "owl.carousel": "^2.3.4",
     "rellax": "^1.12.1",
     "scroll-out": "^2.2.8",
     "scrollmagic": "^2.0.7",

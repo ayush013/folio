@@ -441,7 +441,7 @@ nav {
 .about-section {
   .description {
     font-size: 1rem;
-    font-family: Karla;
+    font-family: "Karla";
     line-height: 1.5rem;
     font-weight: 700;
     letter-spacing: 0.075em;
@@ -558,7 +558,7 @@ nav {
           transition: transform 0.2s, opacity 0.5s;
 
           ul {
-            font-family: Karla;
+            font-family: "Karla";
             padding-left: 1.5rem;
           }
         }
@@ -581,6 +581,37 @@ nav {
             z-index: 10;
           }
         }
+      }
+    }
+  }
+}
+
+.projects-section-mobile {
+  .project-wrappper {
+    position: relative;
+    a {
+      color: $white;
+      .txt {
+        padding-left: 1rem;
+        margin-top: 1rem;
+        border-left: 3px solid;
+        opacity: 0;
+        z-index: 1;
+        transform: translateY(-50px);
+        transition: transform 0.2s, opacity 0.5s;
+
+        ul {
+          font-family: "Karla";
+          padding-left: 1.5rem;
+        }
+      }
+    }
+  }
+  .active {
+    .project-wrappper {
+      .txt {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
       }
     }
   }
@@ -711,12 +742,12 @@ nav {
     }
   }
   .subtitle {
-    font-family: Karla;
+    font-family: "Karla";
     font-weight: 400;
     font-size: 1rem;
   }
   .description {
-    font-family: Karla;
+    font-family: "Karla";
     font-weight: 700;
     font-size: 1.5rem;
     a {
@@ -737,7 +768,7 @@ nav {
   }
   .with-love {
     font-size: 1rem;
-    font-family: Karla;
+    font-family: "Karla";
     text-align: center;
     img {
       height: 0.9rem;

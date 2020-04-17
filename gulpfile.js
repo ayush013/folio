@@ -23,6 +23,7 @@ task('js', () => {
         'node_modules/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
         'node_modules/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js',
         'node_modules/vanilla-lazyload/dist/lazyload.min.js',
+        'node_modules/owl.carousel/dist/owl.carousel.min.js',
         './src/scripts/custom.js'])
         .pipe(concat('main.js'))
         .pipe(minify({
@@ -41,7 +42,7 @@ task('css', () => {
         .pipe(purgecss({
             content: ['**/*.html', 'scripts/*.js']
         }))
-        .pipe(addsrc.append('styles/*.css'))
+        .pipe(addsrc.append('node_modules/owl.carousel/dist/assets/owl.carousel.min.css'))
         .pipe(concat('style.css'))
         .pipe(cleanCss())
         .pipe(rev())
@@ -86,10 +87,10 @@ task('inject', () => {
 task('default', series('clean', parallel('css', 'js', 'assets'), 'inject'));
 
 task('serve', () => {
+    watch("src/**", { ignoreInitial: false }, series('default'));
     browserSync.init({
         server: {
             baseDir: 'dist'
         },
     });
-    watch("src/**", { ignoreInitial: false }, series('default'));
 });
