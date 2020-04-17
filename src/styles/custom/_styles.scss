@@ -53,23 +53,19 @@ a {
 .cursor {
   position: fixed;
   background-color: $white;
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   border-radius: 100%;
   z-index: 1;
   transition: 0.2s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
     0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) opacity;
+  mix-blend-mode: difference;
   user-select: none;
   pointer-events: none;
   z-index: 1000;
   transform: scale(1);
 
   &.active {
-    opacity: 1;
-    transform: scale(0);
-  }
-
-  &.menu-active {
     opacity: 1;
     transform: scale(0);
   }
@@ -82,24 +78,20 @@ a {
 .cursor-follower {
   position: fixed;
   border: 1px solid $white;
-  width: 30px;
-  height: 30px;
+  width: 33px;
+  height: 33px;
   border-radius: 100%;
   z-index: 1;
   transition: 0.3s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
     0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) opacity,
     0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) background;
+  mix-blend-mode: difference;
   user-select: none;
   pointer-events: none;
   z-index: 1000;
-  transform: translate(2px, 2px);
+  transform: translate(3px, 3px);
 
   &.active {
-    opacity: 1;
-    transform: scale(3);
-  }
-
-  &.menu-active {
     opacity: 1;
     transform: scale(3);
   }
@@ -110,7 +102,7 @@ a {
 }
 
 img {
-  -webkit-backface-visibility: hidden; 
+  -webkit-backface-visibility: hidden;
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
@@ -478,7 +470,6 @@ nav {
       height: 50px;
     }
   }
-
 }
 
 .experience-section {

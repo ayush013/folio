@@ -32,7 +32,7 @@ task('js', () => {
             noSource: true
         }))
         .pipe(rev())
-        .pipe(dest('dist/js'))
+        .pipe(dest('dist/js'));
 });
 
 task('css', () => {
@@ -45,12 +45,12 @@ task('css', () => {
         .pipe(concat('style.css'))
         .pipe(cleanCss())
         .pipe(rev())
-        .pipe(dest('dist/css'))
+        .pipe(dest('dist/css'));
 });
 
 task('assets', () => {
     return src(['./src/assets/**'])
-        .pipe(dest('dist/assets'))
+        .pipe(dest('dist/assets'));
 });
 
 task('clean', () => {
@@ -73,7 +73,9 @@ task('inject', () => {
         }))
         .pipe(htmlmin({
             collapseWhitespace: true,
-            removeComments: true
+            removeComments: true,
+            minifyCSS: true,
+            minifyJS: true
         }))
         .pipe(dest('dist'))
         .pipe(browserSync.reload({

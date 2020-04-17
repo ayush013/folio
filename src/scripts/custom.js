@@ -92,7 +92,7 @@ window.addEventListener('DOMContentLoaded', function () {
                     path.style.fill = "#ffffff";
                 }, 500);
             });
-        });
+        }, { passive: true });
     });
 
     var socialColorArray = ['#367fd3', '#3C5A99', '#3EC6EA', '#8A45BE', '#E74D89', '#1769FF'];
@@ -107,7 +107,7 @@ window.addEventListener('DOMContentLoaded', function () {
                     path.style.fill = "#ffffff";
                 }, 500);
             });
-        });
+        }, { passive: true });
     });
 
     // TILT
@@ -128,9 +128,15 @@ window.addEventListener('DOMContentLoaded', function () {
     var target = document.getElementById('projects');
 
 
+    // IS DESKTOP CHECK
+
+    function isDesktop() {
+       return (typeof window.orientation === "undefined") && (navigator.userAgent.indexOf('IEMobile') === -1)
+    }
+
     // HORIZONTAL SCROLL ON DESKTOP
 
-    if ((typeof window.orientation === "undefined") && (navigator.userAgent.indexOf('IEMobile') === -1)) {
+    if (isDesktop()) {
 
         var controller = new ScrollMagic.Controller();
         var tl = gsap.timeline();
@@ -165,50 +171,54 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     // CUSTOM CURSOR
-    var cursor = $(".cursor"),
-        follower = $(".cursor-follower");
+    if (isDesktop()) {
 
-    var posX = 0,
-        posY = 0;
+        var cursor = $(".cursor"),
+            follower = $(".cursor-follower");
 
-    var mouseX = 0,
-        mouseY = 0;
+        var posX = 0,
+            posY = 0;
 
-    gsap.to({}, 0.016, {
-        repeat: -1,
-        onRepeat: function () {
-            posX += (mouseX - posX) / 9;
-            posY += (mouseY - posY) / 9;
+        var mouseX = 0,
+            mouseY = 0;
 
-            gsap.set(follower, {
-                css: {
-                    left: posX - 12,
-                    top: posY - 12
-                }
-            });
+        gsap.to({}, 0.016, {
+            repeat: -1,
+            onRepeat: function () {
+                posX += (mouseX - posX) / 9;
+                posY += (mouseY - posY) / 9;
 
-            gsap.set(cursor, {
-                css: {
-                    left: mouseX,
-                    top: mouseY
-                }
-            });
-        }
-    });
+                gsap.set(follower, {
+                    css: {
+                        left: posX - 12,
+                        top: posY - 12
+                    }
+                });
 
-    $(document).on("mousemove", function (e) {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
+                gsap.set(cursor, {
+                    css: {
+                        left: mouseX,
+                        top: mouseY
+                    }
+                });
+            }
+        });
 
-    $(".link").on("mouseenter", function () {
-        cursor.addClass("active");
-        follower.addClass("active");
-    });
-    $(".link").on("mouseleave", function () {
-        cursor.removeClass("active");
-        follower.removeClass("active");
-    });
+        $(document).on("mousemove", function (e) {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        $(".link").on("mouseenter", function () {
+            cursor.addClass("active");
+            follower.addClass("active");
+        });
+        $(".link").on("mouseleave", function () {
+            cursor.removeClass("active");
+            follower.removeClass("active");
+        });
+
+    }
 
     // MAIN THREAD EXECUTION COMPLETE
     $('body').addClass('loaded');
