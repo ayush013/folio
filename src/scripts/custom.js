@@ -80,7 +80,7 @@ window.addEventListener('DOMContentLoaded', function () {
         $('.achievements-section-mobile').css('display', 'none');
         $('.achievements-section').attr('id', 'achievements');
 
-        const achievement = achievementNode.querySelectorAll('.achievement')
+        const achievement = achievementNode.querySelectorAll('.achievement');
 
         Array.from($('.achievements-block .col-md-4')).forEach(function (col, index) {
             for (let i = 0; i < 5; i++) {
@@ -116,6 +116,7 @@ window.addEventListener('DOMContentLoaded', function () {
         $(this).scrollTop(0);
     }, 0);
 
+
     //SMOOTHSCROLL ON LINKS
     $(document).on('click', 'a[href^="#"]', function (e) {
         e.preventDefault();
@@ -130,7 +131,7 @@ window.addEventListener('DOMContentLoaded', function () {
         "assets/bg/plants.jpg",
         "assets/bg/pattern2.jpg",
         "assets/bg/rose.jpg",
-        "assets/bg/pattern1.jpg",
+        "assets/bg/pattern1.jpg"
     ];
     const background = $("#background");
     let scope = new Graphemescope(background[0]);
@@ -146,15 +147,16 @@ window.addEventListener('DOMContentLoaded', function () {
     setInterval(changePicture, 10000);
     changePicture();
 
-    $(window).mousemove(function (event) {
-        let factorx = event.pageX / $(window).width();
-        let factory = event.pageY / $(window).height();
+    if (isDesktop) {
+        $(window).mousemove(function (event) {
+            let factorx = event.pageX / $(window).width();
+            let factory = event.pageY / $(window).height();
 
-        scope.angleTarget = factorx;
-        scope.angleTarget = factory * 0.5;
-        //  scope.zoomTarget = 1.0 + 0.25 * factory;
-    });
-
+            scope.angleTarget = factorx;
+            scope.angleTarget = factory * 0.5;
+            //  scope.zoomTarget = 1.0 + 0.25 * factory;
+        });
+    }
     const resizeHandler = function () {
         background.height(window.screen.height);
         background.width(window.screen.width);
@@ -164,13 +166,23 @@ window.addEventListener('DOMContentLoaded', function () {
     $(window).resize();
     $(window).click(changePicture);
 
+    
+    // EXPERIMENTAL GYROSCOPE ACCTIONS
+    if (!isDesktop) {
+        window.addEventListener("deviceorientation", function (event) {
+            console.log(event);
+            scope.angleTarget = event.beta / 90;
+            scope.zoomTarget = 1 + event.gamma / 90;
+        }, true);
+    }
+
     // TYPED JS
     new Typed('.main-typed', {
         strings: ["I design and develop things.", "I design and develop web apps.", "I design and develop UI/UX.", "I design and develop motion."],
         typeSpeed: 50,
         backSpeed: 50,
         backDelay: 4000,
-        loop: true,
+        loop: true
     });
 
 
@@ -220,14 +232,26 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
     // TILT
-    $('.svg-tilt').tilt({
-        maxTilt: 20,
-        scale: 1.2,
-        perspective: 500
+
+    $('.svg-tilt').universalTilt({
+        settings: {
+            max: 20,
+            scale: 1.2,
+            perspective: 500
+        }
+    });
+
+    $('.dp-tilt').universalTilt({
+        settings: {
+            max: 20,
+            base: 'window',
+            perspective: 500
+        }
     });
 
 
     // LAZY LOADED RESOURCES
+
     new LazyLoad({ elements_selector: ".dp-lazy" });
 
     new LazyLoad({ elements_selector: ".project-lazy" });

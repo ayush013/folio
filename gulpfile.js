@@ -17,7 +17,7 @@ task('js', () => {
         'node_modules/typed.js/lib/typed.js',
         'node_modules/splitting/dist/splitting.min.js',
         'node_modules/scroll-out/dist/scroll-out.min.js',
-        'node_modules/tilt.js/dest/tilt.jquery.min.js',
+        'node_modules/universal-tilt.js/lib/universal-tilt.min.js',
         'node_modules/rellax/rellax.min.js',
         'node_modules/gsap/dist/gsap.min.js',
         'node_modules/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
@@ -25,7 +25,7 @@ task('js', () => {
         'node_modules/vanilla-lazyload/dist/lazyload.min.js',
         'node_modules/owl.carousel/dist/owl.carousel.min.js',
         './src/scripts/custom.js'])
-        .pipe(concat('main.js'))
+        .pipe(concat('bundle.js'))
         .pipe(minify({
             ext: {
                 min: '.js'

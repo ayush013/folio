@@ -597,7 +597,9 @@ nav {
           z-index: 1;
           transform: translateY(-50px);
           transition: transform 0.2s, opacity 0.5s;
-
+          h2 {
+            font-variation-settings: 'wght' 600;
+          }
           ul {
             font-family: "Karla";
             padding-left: 1.5rem;
@@ -641,6 +643,9 @@ nav {
         z-index: 1;
         transform: translateY(-50px);
         transition: transform 0.2s, opacity 0.5s;
+        h2 {
+          font-variation-settings: 'wght' 600;
+        }
         ul {
           font-family: "Karla";
           padding-left: 1.5rem;
