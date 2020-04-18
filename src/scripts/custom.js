@@ -1,5 +1,72 @@
 window.addEventListener('DOMContentLoaded', function () {
 
+    // TEMPLATING FOR PROJECTS SECTION
+
+    const template = document.getElementById('projects-template');
+    const projectNode = document.importNode(template.content, true);
+    
+    // IS DESKTOP CHECK
+
+    function isDesktop() {
+        return (typeof window.orientation === "undefined") && (navigator.userAgent.indexOf('IEMobile') === -1)
+    }
+
+    // HORIZONTAL SCROLL ON DESKTOP
+
+    if (isDesktop()) {
+
+        $('.projects-section-mobile').css('display', 'none');
+        $('.projects-section').attr('id', 'projects');
+        $('.horizontal-container').append(projectNode);
+
+        ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section", once: true });
+
+        // MUTATION OBSERVER FOR POSITION FIXED HACK
+        var observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutationRecord) {
+                var transformX = new WebKitCSSMatrix($('#projects').css('-webkit-transform'))['e'];
+                $('.sticky-title').css('transform', 'translateX(' + (-transformX) + 'px)');
+            });
+        });
+        var target = document.getElementById('projects');
+
+        var controller = new ScrollMagic.Controller();
+        var tl = gsap.timeline();
+        var elementWidth = document.getElementById('projects').offsetWidth;
+        var width = window.innerWidth - elementWidth;
+        var duration = elementWidth / window.innerHeight * 100;
+        var official = duration + '%';
+        tl.to('.projects-section', 5, { x: width, ease: Power0.easeNone });
+
+        var scene1 = new ScrollMagic.Scene({
+            triggerElement: '.projects-section',
+            triggerHook: 0,
+            duration: official,
+        }).setPin('.projects-section')
+            .setTween(tl)
+            .addTo(controller)
+            .on('enter', function (e) {
+                observer.observe(target, { attributes: true, attributeFilter: ['style'] });
+            })
+            .on('leave', function (e) {
+                observer.disconnect();
+            });
+    } else {
+        // CAROUSEL PROJECTS CONTAINER FOR MOBILE
+        $('.projects-section').css('display', 'none');
+        $('.projects-section-mobile').attr('id', 'projects');
+        $('.project-carousel').append(projectNode);
+
+        ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section-mobile" });
+        $('.project-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            items: 1,
+            autoplay: true,
+            dots: false
+        });
+    }
+
     //SCROLLTOP ON RELOAD
     setTimeout(() => {
         $(this).scrollTop(0);
@@ -109,67 +176,6 @@ window.addEventListener('DOMContentLoaded', function () {
         scale: 1.2,
         perspective: 500
     });
-
-
-    // IS DESKTOP CHECK
-
-    function isDesktop() {
-        return (typeof window.orientation === "undefined") && (navigator.userAgent.indexOf('IEMobile') === -1)
-    }
-
-    // HORIZONTAL SCROLL ON DESKTOP
-
-    if (isDesktop()) {
-
-        $('.projects-section-mobile').css('display', 'none');
-        $('.projects-section').attr('id','projects');
-
-        ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section", once: true });
-
-        // MUTATION OBSERVER FOR POSITION FIXED HACK
-        var observer = new MutationObserver(function (mutations) {
-            mutations.forEach(function (mutationRecord) {
-                var transformX = new WebKitCSSMatrix($('#projects').css('-webkit-transform'))['e'];
-                $('.sticky-title').css('transform', 'translateX(' + (-transformX) + 'px)');
-            });
-        });
-        var target = document.getElementById('projects');
-
-        var controller = new ScrollMagic.Controller();
-        var tl = gsap.timeline();
-        var elementWidth = document.getElementById('projects').offsetWidth;
-        var width = window.innerWidth - elementWidth;
-        var duration = elementWidth / window.innerHeight * 100;
-        var official = duration + '%';
-        tl.to('.projects-section', 5, { x: width, ease: Power0.easeNone });
-
-        var scene1 = new ScrollMagic.Scene({
-            triggerElement: '.projects-section',
-            triggerHook: 0,
-            duration: official,
-        }).setPin('.projects-section')
-            .setTween(tl)
-            .addTo(controller)
-            .on('enter', function (e) {
-                observer.observe(target, { attributes: true, attributeFilter: ['style'] });
-            })
-            .on('leave', function (e) {
-                observer.disconnect();
-            });
-    } else {
-        // CAROUSEL PROJECTS CONTAINER FOR MOBILE
-        $('.projects-section').css('display', 'none');
-        $('.projects-section-mobile').attr('id','projects');
-
-        ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section-mobile" });
-        $('.project-carousel').owlCarousel({
-            loop:true,
-            margin:10,
-            items: 1,
-            autoplay: true,
-            dots: false
-        });
-    }
 
 
     // LAZY LOADED RESOURCES
