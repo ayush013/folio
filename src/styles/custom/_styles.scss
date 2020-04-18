@@ -6,6 +6,66 @@ html {
   scroll-behavior: smooth;
 }
 
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+@media (min-width: 576px) {
+  .text-sm-left {
+    text-align: left !important;
+  }
+  .text-sm-right {
+    text-align: right !important;
+  }
+  .text-sm-center {
+    text-align: center !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .text-md-left {
+    text-align: left !important;
+  }
+  .text-md-right {
+    text-align: right !important;
+  }
+  .text-md-center {
+    text-align: center !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .text-lg-left {
+    text-align: left !important;
+  }
+  .text-lg-right {
+    text-align: right !important;
+  }
+  .text-lg-center {
+    text-align: center !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .text-xl-left {
+    text-align: left !important;
+  }
+  .text-xl-right {
+    text-align: right !important;
+  }
+  .text-xl-center {
+    text-align: center !important;
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -149,8 +209,8 @@ nav {
       z-index: 1;
       .checkbox-toggle {
         position: absolute;
-        top: 10px;
-        right: 0;
+        top: 13px;
+        right: 15px;
         z-index: 2;
         width: 40px;
         height: 40px;
@@ -206,8 +266,8 @@ nav {
       }
       .hamburger {
         position: absolute;
-        top: 10px;
-        right: 0;
+        top: 13px;
+        right: 15px;
         z-index: 1;
         width: 40px;
         height: 40px;
@@ -269,8 +329,8 @@ nav {
         align-items: center;
         justify-content: center;
         > div {
-          width: 200vw;
-          height: 200vw;
+          width: 250vw;
+          height: 250vw;
           color: $white;
           backdrop-filter: blur(10px);
           background: rgba(0, 0, 0, 0.5);
@@ -315,7 +375,7 @@ nav {
                   font-variation-settings: "wght" 800, "SPAC" 100;
                   font-size: 3rem;
                   &:hover {
-                    color: #e5e5e5;
+                    color: $white;
                     text-decoration: none;
                     -webkit-text-stroke-width: 0;
                   }
@@ -371,6 +431,12 @@ nav {
   }
 }
 
+@media (max-width: 767px) {
+  .section {
+    min-height: unset;
+  }
+}
+
 .divider-200 {
   height: 200px;
 }
@@ -380,6 +446,7 @@ nav {
 }
 
 .main-section {
+  min-height: 100vh !important;
   p {
     text-align: center;
     font-family: "Karla";
@@ -436,6 +503,12 @@ nav {
       letter-spacing: 2px;
     }
   }
+  @media (max-width: 767px) {
+    h1 {
+      animation: none;
+      font-size: 3rem;
+    }
+  }
 }
 
 .about-section {
@@ -468,6 +541,13 @@ nav {
     }
     .skill-svg {
       height: 50px;
+    }
+  }
+  @media (max-width: 767px) {
+    .svg-tilt {
+      .skill-svg {
+        height: 40px;
+      }
     }
   }
 }
@@ -722,8 +802,27 @@ nav {
 }
 
 .achievements-section-mobile {
+  min-height: unset;
   .achievement {
     max-width: 100% !important;
+    transition-delay: 1.5s;
+  }
+  .active {
+    .achievement {
+      filter: grayscale(0);
+      img {
+        opacity: 0.4;
+        transition-delay: 1.5s;
+      }
+      .date {
+        transform: translateY(-100%);
+        transition-delay: 1.5s;
+      }
+      figcaption {
+        opacity: 1;
+        transition-delay: 1.5s;
+      }
+    }
   }
 }
 

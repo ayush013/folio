@@ -2,19 +2,17 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // IS DESKTOP CHECK
 
-    function isDesktop() {
-        return (typeof window.orientation === "undefined") && (navigator.userAgent.indexOf('IEMobile') === -1)
-    }
+    const isDesktop = (typeof window.orientation === "undefined") && (navigator.userAgent.indexOf('IEMobile') === -1);
 
     // TEMPLATING FOR PROJECTS SECTION
 
-    var projectTemplate = document.getElementById('projects-template');
-    var projectNode = document.importNode(projectTemplate.content, true);
+    const projectTemplate = document.getElementById('projects-template');
+    const projectNode = document.importNode(projectTemplate.content, true);
 
 
     // HORIZONTAL SCROLL FOR PROJECTS SECTION ON DESKTOP
 
-    if (isDesktop()) {
+    if (isDesktop) {
 
         $('.projects-section-mobile').css('display', 'none');
         $('.projects-section').attr('id', 'projects');
@@ -23,23 +21,23 @@ window.addEventListener('DOMContentLoaded', function () {
         ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section", once: true });
 
         // MUTATION OBSERVER FOR POSITION FIXED HACK
-        var observer = new MutationObserver(function (mutations) {
+        let observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutationRecord) {
-                var transformX = new WebKitCSSMatrix($('#projects').css('-webkit-transform'))['e'];
+                let transformX = new WebKitCSSMatrix($('#projects').css('-webkit-transform'))['e'];
                 $('.sticky-title').css('transform', 'translateX(' + (-transformX) + 'px)');
             });
         });
-        var target = document.getElementById('projects');
+        const target = document.getElementById('projects');
 
-        var controller = new ScrollMagic.Controller();
-        var tl = gsap.timeline();
-        var elementWidth = document.getElementById('projects').offsetWidth;
-        var width = window.innerWidth - elementWidth;
-        var duration = elementWidth / window.innerHeight * 100;
-        var official = duration + '%';
+        const controller = new ScrollMagic.Controller();
+        const tl = gsap.timeline();
+        const elementWidth = document.getElementById('projects').offsetWidth;
+        const width = window.innerWidth - elementWidth;
+        const duration = elementWidth / window.innerHeight * 100;
+        const official = duration + '%';
         tl.to('.projects-section', 5, { x: width, ease: Power0.easeNone });
 
-        var scene1 = new ScrollMagic.Scene({
+        new ScrollMagic.Scene({
             triggerElement: '.projects-section',
             triggerHook: 0,
             duration: official,
@@ -67,17 +65,17 @@ window.addEventListener('DOMContentLoaded', function () {
             dots: false
         });
     }
-    
+
 
     // TEMPLATING FOR ACHIEVEMENTS SECTION
 
-    var achievementTemplate = document.getElementById('achievements-template');
-    var achievementNode = document.importNode(achievementTemplate.content, true);
+    const achievementTemplate = document.getElementById('achievements-template');
+    const achievementNode = document.importNode(achievementTemplate.content, true);
 
 
     // ACHIEVEMENTS SECTION BASED ON DEVICE 
 
-    if (isDesktop()) {
+    if (isDesktop) {
 
         $('.achievements-section-mobile').css('display', 'none');
         $('.achievements-section').attr('id', 'achievements');
@@ -101,12 +99,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
         ScrollOut({ targets: '.achievements-title', offset: 0, scope: ".achievements-section-mobile" });
 
-        $('.achievement-carousel').owlCarousel({
+        let achievementOwl = $('.achievement-carousel');
+
+        achievementOwl.owlCarousel({
             loop: true,
             margin: 10,
             items: 1,
             autoplay: true,
-            dots: false
+            dots: false,
+            autoHeight: true
         });
     }
 
@@ -125,17 +126,17 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     //GRAPHEMESCOPE
-    var images = [
+    const images = [
         "assets/bg/plants.jpg",
         "assets/bg/pattern2.jpg",
         "assets/bg/rose.jpg",
         "assets/bg/pattern1.jpg",
     ];
-    var background = $("#background");
-    var scope = new Graphemescope(background[0]);
-    var index = 0;
+    const background = $("#background");
+    let scope = new Graphemescope(background[0]);
+    let index = 0;
     scope.ease = 0.05;
-    scope.radiusFactor = 0.35;
+    scope.radiusFactor = 0.4;
 
     function changePicture() {
         scope.setImage(images[index]);
@@ -146,17 +147,17 @@ window.addEventListener('DOMContentLoaded', function () {
     changePicture();
 
     $(window).mousemove(function (event) {
-        var factorx = event.pageX / $(window).width();
-        var factory = event.pageY / $(window).height();
+        let factorx = event.pageX / $(window).width();
+        let factory = event.pageY / $(window).height();
 
         scope.angleTarget = factorx * 0.5;
         scope.angleTarget = factory * 0.25;
         //  scope.zoomTarget = 1.0 + 0.25 * factory;
     });
 
-    var resizeHandler = function () {
-        background.height(2 * window.innerHeight);
-        background.width(2 * window.innerWidth);
+    const resizeHandler = function () {
+        background.height(window.screen.height);
+        background.width(window.screen.width);
     };
 
     $(window).resize(resizeHandler);
@@ -164,7 +165,7 @@ window.addEventListener('DOMContentLoaded', function () {
     $(window).click(changePicture);
 
     // TYPED JS
-    var typed = new Typed('.main-typed', {
+    new Typed('.main-typed', {
         strings: ["I design and develop things.", "I design and develop web apps.", "I design and develop UI/UX.", "I design and develop motion."],
         typeSpeed: 50,
         backSpeed: 50,
@@ -174,14 +175,20 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
     // RELLAX
-
-    var rellax = new Rellax('.rellax', { center: true });
+    if (isDesktop) {
+        new Rellax('.rellax', { center: true });
+    }
 
     // SPLITTING AND SCROLLOUT ANIMS
+
     Splitting();
+
     ScrollOut({ targets: '.about-title', offset: 0, scope: ".about-section" });
+
     ScrollOut({ targets: '.skills-title', offset: 0, scope: ".skills-section" });
+
     ScrollOut({ targets: '.experience-title', offset: 0, scope: ".experience-section" });
+
     ScrollOut({ targets: '.contact-title', offset: 0, scope: ".contact-section" });
 
     ScrollOut({ targets: '.img-enter', offset: 0, scope: ".contact-section" });
@@ -191,7 +198,7 @@ window.addEventListener('DOMContentLoaded', function () {
     function svgHoverFill(colorArray, hoverElClass, targetSvg) {
         colorArray.forEach((color, index) => {
             document.getElementsByClassName(hoverElClass)[index].addEventListener("mouseover", function () {
-                var element = $(targetSvg)[index].contentDocument.getElementsByClassName('fill');
+                const element = $(targetSvg)[index].contentDocument.getElementsByClassName('fill');
                 Array.from(element).forEach(path => {
                     path.style.transition = '0.5s';
                     path.style.fill = color;
@@ -203,10 +210,10 @@ window.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    var skillsColorArray = ['#FFCA28', '#DE0031', '#F16529', '#29A9DF', '#FFB03A', '#CD6799',
+    const skillsColorArray = ['#FFCA28', '#DE0031', '#F16529', '#29A9DF', '#FFB03A', '#CD6799',
         '#0ACF83', '#FDD231', '#FF7C00', '#26C9FF', '#FF2A63', '#F05033', '#D34A47', '#3DF0F0', '#D291FF'];
 
-    var socialColorArray = ['#367fd3', '#3C5A99', '#3EC6EA', '#8A45BE', '#E74D89', '#1769FF'];
+    const socialColorArray = ['#367fd3', '#3C5A99', '#3EC6EA', '#8A45BE', '#E74D89', '#1769FF'];
 
     svgHoverFill(skillsColorArray, 'svg-tilt', '.skill-svg');
     svgHoverFill(socialColorArray, 'social-link', '.social-svg');
@@ -221,25 +228,21 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
     // LAZY LOADED RESOURCES
-    var lazyLoadInstance = new LazyLoad({
-        elements_selector: ".dp-lazy"
-    });
+    new LazyLoad({ elements_selector: ".dp-lazy" });
 
-    var lazyLoadInstance2 = new LazyLoad({
-        elements_selector: ".project-lazy"
-    });
+    new LazyLoad({ elements_selector: ".project-lazy" });
 
     // CUSTOM CURSOR
-    if (isDesktop()) {
+    if (isDesktop) {
 
-        var cursor = $(".cursor"),
-            follower = $(".cursor-follower");
+        const cursor = $(".cursor");
+         const follower = $(".cursor-follower");
 
-        var posX = 0,
-            posY = 0;
+        let posX = 0;
+        let posY = 0;
 
-        var mouseX = 0,
-            mouseY = 0;
+        let mouseX = 0;
+        let mouseY = 0;
 
         gsap.to({}, 0.016, {
             repeat: -1,
