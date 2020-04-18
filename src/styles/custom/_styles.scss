@@ -591,6 +591,7 @@ nav {
     position: relative;
     a {
       color: $white;
+      text-decoration: none;
       .txt {
         padding-left: 1rem;
         margin-top: 1rem;
@@ -599,7 +600,6 @@ nav {
         z-index: 1;
         transform: translateY(-50px);
         transition: transform 0.2s, opacity 0.5s;
-
         ul {
           font-family: "Karla";
           padding-left: 1.5rem;
@@ -718,6 +718,12 @@ nav {
     &:hover figcaption {
       opacity: 1;
     }
+  }
+}
+
+.achievements-section-mobile {
+  .achievement {
+    max-width: 100% !important;
   }
 }
 

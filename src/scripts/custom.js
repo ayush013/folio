@@ -1,17 +1,18 @@
 window.addEventListener('DOMContentLoaded', function () {
 
-    // TEMPLATING FOR PROJECTS SECTION
-
-    const template = document.getElementById('projects-template');
-    const projectNode = document.importNode(template.content, true);
-    
     // IS DESKTOP CHECK
 
     function isDesktop() {
         return (typeof window.orientation === "undefined") && (navigator.userAgent.indexOf('IEMobile') === -1)
     }
 
-    // HORIZONTAL SCROLL ON DESKTOP
+    // TEMPLATING FOR PROJECTS SECTION
+
+    var projectTemplate = document.getElementById('projects-template');
+    var projectNode = document.importNode(projectTemplate.content, true);
+
+
+    // HORIZONTAL SCROLL FOR PROJECTS SECTION ON DESKTOP
 
     if (isDesktop()) {
 
@@ -59,6 +60,48 @@ window.addEventListener('DOMContentLoaded', function () {
 
         ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section-mobile" });
         $('.project-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            items: 1,
+            autoplay: true,
+            dots: false
+        });
+    }
+    
+
+    // TEMPLATING FOR ACHIEVEMENTS SECTION
+
+    var achievementTemplate = document.getElementById('achievements-template');
+    var achievementNode = document.importNode(achievementTemplate.content, true);
+
+
+    // ACHIEVEMENTS SECTION BASED ON DEVICE 
+
+    if (isDesktop()) {
+
+        $('.achievements-section-mobile').css('display', 'none');
+        $('.achievements-section').attr('id', 'achievements');
+
+        const achievement = achievementNode.querySelectorAll('.achievement')
+
+        Array.from($('.achievements-block .col-md-4')).forEach(function (col, index) {
+            for (let i = 0; i < 5; i++) {
+                col.append(achievement[5 * index + i]);
+            }
+        })
+
+        ScrollOut({ targets: '.achievements-title', offset: 0, scope: ".achievements-section" });
+
+    } else {
+        // CAROUSEL ACHIEVEMENTS CONTAINER FOR MOBILE
+        $('.achievements-section').css('display', 'none');
+        $('.achievements-section-mobile').attr('id', 'achievements');
+        $('.achievements-section-mobile').addClass('achievements-section');
+        $('.achievement-carousel').append(achievementNode);
+
+        ScrollOut({ targets: '.achievements-title', offset: 0, scope: ".achievements-section-mobile" });
+
+        $('.achievement-carousel').owlCarousel({
             loop: true,
             margin: 10,
             items: 1,
@@ -140,7 +183,6 @@ window.addEventListener('DOMContentLoaded', function () {
     ScrollOut({ targets: '.skills-title', offset: 0, scope: ".skills-section" });
     ScrollOut({ targets: '.experience-title', offset: 0, scope: ".experience-section" });
     ScrollOut({ targets: '.contact-title', offset: 0, scope: ".contact-section" });
-    ScrollOut({ targets: '.achievements-title', offset: 0, scope: ".achievements-section" });
 
     ScrollOut({ targets: '.img-enter', offset: 0, scope: ".contact-section" });
 

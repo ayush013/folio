@@ -635,7 +635,149 @@
         </div>
 
     </section>
-    <section class="section achievements-section" id="achievements">
+    <template id="achievements-template">
+        <figure class="achievement">
+            <img src="assets/achievements/pre/head-sdc.jpg"
+                data-src="assets/achievements/head-sdc.jpg" alt="Achievement" class="dp-lazy">
+            <div class="date"><span class="month">June</span><span class="year">2018</span></div>
+            <figcaption>
+                <h3>Student Lead - SI</h3>
+                <p>Directly managed a team of 39 members.</p>
+            </figcaption>
+        </figure>
+        <figure class="achievement">
+            <img src="assets/achievements/pre/ironman.jpg"
+                data-src="assets/achievements/ironman.jpg" alt="Achievement" class="dp-lazy">
+            <div class="date"><span class="month">Sept</span><span class="year">2018</span></div>
+            <figcaption>
+                <h3>Iron Man of AKGEC</h3>
+                <p>Awarded as the strongest man in college</p>
+            </figcaption>
+        </figure>
+        <figure class="achievement">
+            <img src="assets/achievements/pre/trophies.jpg"
+                data-src="assets/achievements/trophies.jpg" alt="Achievement" class="dp-lazy">
+            <div class="date"><span class="month">Year</span><span class="year">2018</span></div>
+            <figcaption>
+                <h3>2018 Milestone</h3>
+                <p>Various trophies from academic year of 2018</p>
+            </figcaption>
+        </figure>
+        <figure class="achievement">
+            <img src="assets/achievements/pre/bits.jpg" data-src="assets/achievements/bits.jpg"
+                alt="Achievement" class="dp-lazy">
+            <div class="date"><span class="month">Oct</span><span class="year">2018</span></div>
+            <figcaption>
+                <h3>1<sup>st</sup> Position</h3>
+                <p>1<sup>st</sup> Position at BITS Pilani in fashion show - Team Verve</p>
+            </figcaption>
+        </figure>
+        <figure class="achievement">
+            <img src="assets/achievements/pre/php.jpg" data-src="assets/achievements/php.jpg"
+                alt="Achievement" class="dp-lazy">
+            <div class="date"><span class="month">Mar</span><span class="year">2017</span></div>
+            <figcaption>
+                <h3>PHP Workshop</h3>
+                <p>SVG Mentor at PHP Workshop, SDC, 2017</p>
+            </figcaption>
+        </figure>
+        <figure class="achievement">
+            <img src="assets/achievements/pre/farewell.jpg"
+                data-src="assets/achievements/farewell.jpg" alt="Achievement" class="dp-lazy">
+            <div class="date"><span class="month">June</span><span class="year">2018</span></div>
+            <figcaption>
+                <h3>Fashion Show</h3>
+                <p>Performed in a well staged and themed fashion show - Team Verve</p>
+            </figcaption>
+        </figure>
+        <figure class="achievement">
+            <img src="assets/achievements/pre/gym2016.jpg"
+                data-src="assets/achievements/gym2016.jpg" alt="Achievement" class="dp-lazy">
+            <div class="date"><span class="month">Jan</span><span class="year">2017</span></div>
+            <figcaption>
+                <h3>2<sup>nd</sup> Position</h3>
+                <p>Secured Silver Medal in Powerlifting Competition, Inter-Departmental Sports Event
+                </p>
+            </figcaption>
+        </figure>
+        <figure class="achievement">
+            <img src="assets/achievements/pre/abes.jpg" data-src="assets/achievements/abes.jpg"
+                alt="Achievement" class="dp-lazy">
+            <div class="date"><span class="month">Oct</span><span class="year">2017</span></div>
+            <figcaption>
+                <h3>1<sup>st</sup> Position</h3>
+                <p>Secured 1<sup>st</sup> position in Web and Graphic Design contest, ABES ACM 2017
+                </p>
+            </figcaption>
+        </figure>
+        <figure class="achievement">
+            <img src="assets/achievements/pre/kiet.jpg" data-src="assets/achievements/kiet.jpg"
+                alt="Achievement" class="dp-lazy">
+            <div class="date"><span class="month">Apr</span><span class="year">2019</span></div>
+            <figcaption>
+                <h3>1<sup>st</sup> Position</h3>
+                <p>1<sup>st</sup> Position at KIET, Ghaziabad in fashion show - Team Verve</p>
+            </figcaption>
+        </figure>
+        <figure class="achievement">
+            <img src="assets/achievements/pre/svg.jpg" data-src="assets/achievements/svg.jpg"
+                alt="Achievement" class="dp-lazy">
+            <div class="date"><span class="month">Nov</span><span class="year">2017</span></div>
+            <figcaption>
+                <h3>Workshop - SI</h3>
+                <p>Mentored Javascript at Game Development workshop conducted by SDC-SI</p>
+            </figcaption>
+        </figure>
+        
+        <figure class="achievement">
+            <img src="assets/achievements/pre/gym2017.jpg"
+                data-src="assets/achievements/gym2017.jpg" alt="Achievement" class="dp-lazy">
+            <div class="date"><span class="month">Sept</span><span class="year">2017</span></div>
+            <figcaption>
+                <h3>2<sup>nd</sup> Position</h3>
+                <p>Secured Silver Medal in Powerlifting Competition, Inter-Departmental Sports Event
+                </p>
+            </figcaption>
+        </figure>
+        <figure class="achievement">
+            <img src="assets/achievements/pre/ims17.jpg" data-src="assets/achievements/ims17.jpg"
+                alt="Achievement" class="dp-lazy">
+            <div class="date"><span class="month">Nov</span><span class="year">2017</span></div>
+            <figcaption>
+                <h3>1<sup>st</sup> Position</h3>
+                <p>Secured 1st position at Web Designing competition, IMSU</p>
+            </figcaption>
+        </figure>
+        <figure class="achievement">
+            <img src="assets/achievements/pre/ims16.jpg" data-src="assets/achievements/ims16.jpg"
+                alt="Achievement" class="dp-lazy">
+            <div class="date"><span class="month">Mar</span><span class="year">2016</span></div>
+            <figcaption>
+                <h3>1<sup>st</sup> Position</h3>
+                <p>Secured 1st position at Web Designing competition, IMSU</p>
+            </figcaption>
+        </figure>
+        <figure class="achievement">
+            <img src="assets/achievements/pre/webtech.jpg"
+                data-src="assets/achievements/webtech.jpg" alt="Achievement" class="dp-lazy">
+            <div class="date"><span class="month">July</span><span class="year">2017</span></div>
+            <figcaption>
+                <h3>Workshop - SI</h3>
+                <p>Mentored HTML/CSS at Web Technology workshop conducted by SDC-SI</p>
+            </figcaption>
+        </figure>
+        <figure class="achievement">
+            <img src="assets/achievements/pre/xda.jpg" data-src="assets/achievements/xda.jpg"
+                alt="Achievement" class="dp-lazy">
+            <div class="date"><span class="month">Jan</span><span class="year">2013</span></div>
+            <figcaption>
+                <h3>Recognized Themer</h3>
+                <p>Awarded as xda Recognized Themer with over 40k+ downloads and also got featured
+                    on XDA Portal.</p>
+            </figcaption>
+        </figure>
+    </template>
+    <section class="section achievements-section">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 d-none d-md-block">
@@ -646,156 +788,34 @@
                         Milestones & Achievements
                     </h1>
                     <hr class="line mb-5">
-                    <div class="row">
+                    <div class="row achievements-block">
                         <div class="col-md-4">
-                            <figure class="achievement">
-                                <img src="assets/achievements/pre/head-sdc.jpg"
-                                    data-src="assets/achievements/head-sdc.jpg" alt="Achievement" class="dp-lazy">
-                                <div class="date"><span class="month">June</span><span class="year">2018</span></div>
-                                <figcaption>
-                                    <h3>Student Lead - SI</h3>
-                                    <p>Directly managed a team of 39 members.</p>
-                                </figcaption>
-                            </figure>
-                            <figure class="achievement">
-                                <img src="assets/achievements/pre/ironman.jpg"
-                                    data-src="assets/achievements/ironman.jpg" alt="Achievement" class="dp-lazy">
-                                <div class="date"><span class="month">Sept</span><span class="year">2018</span></div>
-                                <figcaption>
-                                    <h3>Iron Man of AKGEC</h3>
-                                    <p>Awarded as the strongest man in college</p>
-                                </figcaption>
-                            </figure>
-                            <figure class="achievement">
-                                <img src="assets/achievements/pre/trophies.jpg"
-                                    data-src="assets/achievements/trophies.jpg" alt="Achievement" class="dp-lazy">
-                                <div class="date"><span class="month">Year</span><span class="year">2018</span></div>
-                                <figcaption>
-                                    <h3>2018 Milestone</h3>
-                                    <p>Various trophies from academic year of 2018</p>
-                                </figcaption>
-                            </figure>
-                            <figure class="achievement">
-                                <img src="assets/achievements/pre/bits.jpg" data-src="assets/achievements/bits.jpg"
-                                    alt="Achievement" class="dp-lazy">
-                                <div class="date"><span class="month">Oct</span><span class="year">2018</span></div>
-                                <figcaption>
-                                    <h3>1<sup>st</sup> Position</h3>
-                                    <p>1<sup>st</sup> Position at BITS Pilani in fashion show - Team Verve</p>
-                                </figcaption>
-                            </figure>
-                            <figure class="achievement">
-                                <img src="assets/achievements/pre/php.jpg" data-src="assets/achievements/php.jpg"
-                                    alt="Achievement" class="dp-lazy">
-                                <div class="date"><span class="month">Mar</span><span class="year">2017</span></div>
-                                <figcaption>
-                                    <h3>PHP Workshop</h3>
-                                    <p>SVG Mentor at PHP Workshop, SDC, 2017</p>
-                                </figcaption>
-                            </figure>
+                            
                         </div>
                         <div class="col-md-4">
-                            <figure class="achievement">
-                                <img src="assets/achievements/pre/farewell.jpg"
-                                    data-src="assets/achievements/farewell.jpg" alt="Achievement" class="dp-lazy">
-                                <div class="date"><span class="month">June</span><span class="year">2018</span></div>
-                                <figcaption>
-                                    <h3>Fashion Show</h3>
-                                    <p>Performed in a well staged and themed fashion show - Team Verve</p>
-                                </figcaption>
-                            </figure>
-                            <figure class="achievement">
-                                <img src="assets/achievements/pre/gym2016.jpg"
-                                    data-src="assets/achievements/gym2016.jpg" alt="Achievement" class="dp-lazy">
-                                <div class="date"><span class="month">Jan</span><span class="year">2017</span></div>
-                                <figcaption>
-                                    <h3>2<sup>nd</sup> Position</h3>
-                                    <p>Secured Silver Medal in Powerlifting Competition, Inter-Departmental Sports Event
-                                    </p>
-                                </figcaption>
-                            </figure>
-                            <figure class="achievement">
-                                <img src="assets/achievements/pre/abes.jpg" data-src="assets/achievements/abes.jpg"
-                                    alt="Achievement" class="dp-lazy">
-                                <div class="date"><span class="month">Oct</span><span class="year">2017</span></div>
-                                <figcaption>
-                                    <h3>1<sup>st</sup> Position</h3>
-                                    <p>Secured 1<sup>st</sup> position in Web and Graphic Design contest, ABES ACM 2017
-                                    </p>
-                                </figcaption>
-                            </figure>
-                            <figure class="achievement">
-                                <img src="assets/achievements/pre/kiet.jpg" data-src="assets/achievements/kiet.jpg"
-                                    alt="Achievement" class="dp-lazy">
-                                <div class="date"><span class="month">Apr</span><span class="year">2019</span></div>
-                                <figcaption>
-                                    <h3>1<sup>st</sup> Position</h3>
-                                    <p>1<sup>st</sup> Position at KIET, Ghaziabad in fashion show - Team Verve</p>
-                                </figcaption>
-                            </figure>
-                            <figure class="achievement">
-                                <img src="assets/achievements/pre/svg.jpg" data-src="assets/achievements/svg.jpg"
-                                    alt="Achievement" class="dp-lazy">
-                                <div class="date"><span class="month">Nov</span><span class="year">2017</span></div>
-                                <figcaption>
-                                    <h3>Workshop - SI</h3>
-                                    <p>Mentored Javascript at Game Development workshop conducted by SDC-SI</p>
-                                </figcaption>
-                            </figure>
+                           
                         </div>
                         <div class="col-md-4">
-                            <figure class="achievement">
-                                <img src="assets/achievements/pre/gym2017.jpg"
-                                    data-src="assets/achievements/gym2017.jpg" alt="Achievement" class="dp-lazy">
-                                <div class="date"><span class="month">Sept</span><span class="year">2017</span></div>
-                                <figcaption>
-                                    <h3>2<sup>nd</sup> Position</h3>
-                                    <p>Secured Silver Medal in Powerlifting Competition, Inter-Departmental Sports Event
-                                    </p>
-                                </figcaption>
-                            </figure>
-                            <figure class="achievement">
-                                <img src="assets/achievements/pre/ims17.jpg" data-src="assets/achievements/ims17.jpg"
-                                    alt="Achievement" class="dp-lazy">
-                                <div class="date"><span class="month">Nov</span><span class="year">2017</span></div>
-                                <figcaption>
-                                    <h3>1<sup>st</sup> Position</h3>
-                                    <p>Secured 1st position at Web Designing competition, IMSU</p>
-                                </figcaption>
-                            </figure>
-                            <figure class="achievement">
-                                <img src="assets/achievements/pre/ims16.jpg" data-src="assets/achievements/ims16.jpg"
-                                    alt="Achievement" class="dp-lazy">
-                                <div class="date"><span class="month">Mar</span><span class="year">2016</span></div>
-                                <figcaption>
-                                    <h3>1<sup>st</sup> Position</h3>
-                                    <p>Secured 1st position at Web Designing competition, IMSU</p>
-                                </figcaption>
-                            </figure>
-                            <figure class="achievement">
-                                <img src="assets/achievements/pre/webtech.jpg"
-                                    data-src="assets/achievements/webtech.jpg" alt="Achievement" class="dp-lazy">
-                                <div class="date"><span class="month">July</span><span class="year">2017</span></div>
-                                <figcaption>
-                                    <h3>Workshop - SI</h3>
-                                    <p>Mentored HTML/CSS at Web Technology workshop conducted by SDC-SI</p>
-                                </figcaption>
-                            </figure>
-                            <figure class="achievement">
-                                <img src="assets/achievements/pre/xda.jpg" data-src="assets/achievements/xda.jpg"
-                                    alt="Achievement" class="dp-lazy">
-                                <div class="date"><span class="month">Jan</span><span class="year">2013</span></div>
-                                <figcaption>
-                                    <h3>Recognized Themer</h3>
-                                    <p>Awarded as xda Recognized Themer with over 40k+ downloads and also got featured
-                                        on XDA Portal.</p>
-                                </figcaption>
-                            </figure>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+    <section class="section achievements-section-mobile">
+
+        <div class="container">
+            <h1 class="title achievements-title enter" data-scroll="out" data-splitting="">
+                Achievements
+            </h1>
+            <hr class="line mb-5">
+
+            <div class="achievement-carousel owl-carousel pt-5">
+               
+            </div>
+        </div>
+
     </section>
     <section class="section contact-section" id="contact">
         <div class="container">
