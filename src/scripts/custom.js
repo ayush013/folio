@@ -135,7 +135,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const background = $("#background");
     let scope = new Graphemescope(background[0]);
     let index = 0;
-    scope.ease = 0.05;
+    scope.ease = 0.1;
     scope.radiusFactor = 0.4;
 
     function changePicture() {
@@ -150,8 +150,8 @@ window.addEventListener('DOMContentLoaded', function () {
         let factorx = event.pageX / $(window).width();
         let factory = event.pageY / $(window).height();
 
-        scope.angleTarget = factorx * 0.5;
-        scope.angleTarget = factory * 0.25;
+        scope.angleTarget = factorx;
+        scope.angleTarget = factory * 0.5;
         //  scope.zoomTarget = 1.0 + 0.25 * factory;
     });
 
@@ -236,7 +236,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (isDesktop) {
 
         const cursor = $(".cursor");
-         const follower = $(".cursor-follower");
+        const follower = $(".cursor-follower");
 
         let posX = 0;
         let posY = 0;

@@ -4,66 +4,8 @@ html {
   box-sizing: border-box;
   -ms-overflow-style: scrollbar;
   scroll-behavior: smooth;
-}
-
-.text-left {
-  text-align: left !important;
-}
-
-.text-right {
-  text-align: right !important;
-}
-
-.text-center {
-  text-align: center !important;
-}
-
-@media (min-width: 576px) {
-  .text-sm-left {
-    text-align: left !important;
-  }
-  .text-sm-right {
-    text-align: right !important;
-  }
-  .text-sm-center {
-    text-align: center !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .text-md-left {
-    text-align: left !important;
-  }
-  .text-md-right {
-    text-align: right !important;
-  }
-  .text-md-center {
-    text-align: center !important;
-  }
-}
-
-@media (min-width: 992px) {
-  .text-lg-left {
-    text-align: left !important;
-  }
-  .text-lg-right {
-    text-align: right !important;
-  }
-  .text-lg-center {
-    text-align: center !important;
-  }
-}
-
-@media (min-width: 1200px) {
-  .text-xl-left {
-    text-align: left !important;
-  }
-  .text-xl-right {
-    text-align: right !important;
-  }
-  .text-xl-center {
-    text-align: center !important;
-  }
+  scrollbar-color: $black;
+  scrollbar-width: thin;
 }
 
 *,
@@ -124,6 +66,7 @@ a {
   pointer-events: none;
   z-index: 1000;
   transform: scale(1);
+  will-change: left, top;
 
   &.active {
     opacity: 1;
@@ -150,6 +93,7 @@ a {
   pointer-events: none;
   z-index: 1000;
   transform: translate(3px, 3px);
+  will-change: left, top;
 
   &.active {
     opacity: 1;
@@ -196,6 +140,7 @@ nav {
     .logo {
       a {
         .logo-title {
+          font-weight: 700;
           font-variation-settings: "wght" 700, "SPAC" 100;
           letter-spacing: 1px;
           color: $white;
@@ -333,7 +278,11 @@ nav {
           height: 250vw;
           color: $white;
           backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
           background: rgba(0, 0, 0, 0.5);
+          @supports not (backdrop-filter: blur(10px)) {
+            background: rgba(0, 0, 0, 0.8);
+          }
           border-radius: 50%;
           transition: all 0.4s ease;
           flex: none;
@@ -373,6 +322,9 @@ nav {
                   color: transparent;
                   -webkit-text-stroke-width: 1px;
                   font-variation-settings: "wght" 800, "SPAC" 100;
+                  @supports not (font-variation-settings: normal) {
+                    font-weight: 600;
+                  }
                   font-size: 3rem;
                   &:hover {
                     color: $white;
@@ -405,6 +357,7 @@ nav {
   align-items: center;
   .title {
     font-size: 2rem;
+    font-weight: 700;
     font-variation-settings: "wght" 700, "SPAC" 100;
   }
   .overlay-text {
@@ -412,6 +365,9 @@ nav {
     color: transparent;
     -webkit-text-stroke-width: 1px;
     font-variation-settings: "wght" 800, "SPAC" 100;
+    @supports not (font-variation-settings: normal) {
+      font-weight: 700;
+    }
     font-size: 10rem;
     display: block;
     position: absolute;
@@ -455,10 +411,13 @@ nav {
   }
   h1 {
     text-align: center;
+    font-weight: 700;
     font-variation-settings: "wght" 700, "SPAC" 100;
     font-size: 7rem;
     line-height: 1;
-    animation: main-heading 5s infinite alternate ease-in;
+    @supports (font-variation-settings: normal) {
+      animation: main-heading 5s infinite alternate ease-in;
+    }
   }
   .scroll-btn {
     display: block;
@@ -594,11 +553,13 @@ nav {
   width: 5000px;
   transform: translate(0px, 0px);
   padding-bottom: 0;
+  will-change: transform;
   .sticky-title {
     position: absolute;
     left: 27vw;
     top: 10vh;
     z-index: -1;
+    will-change: transform;
     .overlay-text {
       font-size: 8rem;
       left: 0;
@@ -946,6 +907,7 @@ nav {
     display: inline-block;
     transition: transform 0.5s;
     transition-delay: calc(0.5s * var(--char-index) / var(--char-total));
+    will-change: transform;
   }
   &[data-scroll="out"] {
     .char {
@@ -997,5 +959,65 @@ html[data-scroll-dir-y="-1"] {
   }
   100% {
     transform: translate(110%, 0);
+  }
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+@media (min-width: 576px) {
+  .text-sm-left {
+    text-align: left !important;
+  }
+  .text-sm-right {
+    text-align: right !important;
+  }
+  .text-sm-center {
+    text-align: center !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .text-md-left {
+    text-align: left !important;
+  }
+  .text-md-right {
+    text-align: right !important;
+  }
+  .text-md-center {
+    text-align: center !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .text-lg-left {
+    text-align: left !important;
+  }
+  .text-lg-right {
+    text-align: right !important;
+  }
+  .text-lg-center {
+    text-align: center !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .text-xl-left {
+    text-align: left !important;
+  }
+  .text-xl-right {
+    text-align: right !important;
+  }
+  .text-xl-center {
+    text-align: center !important;
   }
 }
