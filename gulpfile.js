@@ -10,7 +10,6 @@ var addsrc = require('gulp-add-src');
 var browserSync = require('browser-sync').create();
 const htmlmin = require('gulp-htmlmin');
 const purgecss = require('gulp-purgecss');
-connect = require('gulp-connect');
 
 task('js', () => {
     return src(['node_modules/jquery/dist/jquery.min.js',
@@ -95,13 +94,3 @@ task('serve', () => {
         }
     });
 });
-
-task('serveprod', () => {
-    connect.server({
-        root: 'dist',
-        port: process.env.PORT || 3000,
-        livereload: false
-    });
-});
-
-task('build', series('default', 'serveprod'));

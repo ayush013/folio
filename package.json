@@ -5,20 +5,20 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp build"
+    "start": "gulp default && node server.js"
   },
   "author": "Ayush",
   "license": "ISC",
   "devDependencies": {},
   "dependencies": {
     "browser-sync": "^2.26.7",
+    "express": "^4.17.1",
     "gsap": "^3.2.6",
     "gulp": "^4.0.2",
     "gulp-add-src": "^1.0.0",
     "gulp-clean": "^0.4.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
-    "gulp-connect": "^5.7.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-inject": "^5.0.5",
     "gulp-minify": "^3.1.0",
@@ -28,6 +28,7 @@
     "jquery": "^3.4.1",
     "node-sass": "^4.13.1",
     "owl.carousel": "^2.3.4",
+    "path": "^0.12.7",
     "rellax": "^1.12.1",
     "scroll-out": "^2.2.8",
     "scrollmagic": "^2.0.7",
