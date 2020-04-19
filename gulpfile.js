@@ -92,5 +92,6 @@ task('serve', () => {
         server: {
             baseDir: 'dist'
         },
+        port: process.env.PORT || 3000
     });
 });

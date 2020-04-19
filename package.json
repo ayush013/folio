@@ -5,8 +5,7 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp serve",
-    "build": "gulp default"
+    "start": "gulp serve"
   },
   "author": "Ayush",
   "license": "ISC",
