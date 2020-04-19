@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', function () {
         // MUTATION OBSERVER FOR POSITION FIXED HACK
         let observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutationRecord) {
-                let transformX = new WebKitCSSMatrix($('#projects').css('-webkit-transform'))['e'];
+                let transformX = new WebKitCSSMatrix($('#projects').css('-webkit-transform')).e;
                 $('.sticky-title').css('transform', 'translateX(' + (-transformX) + 'px)');
             });
         });
@@ -86,7 +86,7 @@ window.addEventListener('DOMContentLoaded', function () {
             for (let i = 0; i < 5; i++) {
                 col.append(achievement[5 * index + i]);
             }
-        })
+        });
 
         ScrollOut({ targets: '.achievements-title', offset: 0, scope: ".achievements-section" });
 
@@ -110,6 +110,15 @@ window.addEventListener('DOMContentLoaded', function () {
             autoHeight: true
         });
     }
+
+    // TIMELINE ACCORDING TO DEVICE 
+
+    if (!isDesktop || (window.innerWidth < 767)) {
+        $('.timeline object').attr('data', 'assets/timeline_mobile.svg');
+    } else {
+        $('.timeline object').attr('data', 'assets/timeline.svg');
+    }
+
 
     //SCROLLTOP ON RELOAD
     setTimeout(() => {
@@ -166,7 +175,7 @@ window.addEventListener('DOMContentLoaded', function () {
     $(window).resize();
     $(window).click(changePicture);
 
-    
+
     // EXPERIMENTAL GYROSCOPE ACCTIONS
     if (!isDesktop) {
         window.addEventListener("deviceorientation", function (event) {
