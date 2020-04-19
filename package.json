@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gulp serve",
-    "postinstall" : "gulp default"
+    "poststart": "npm prune --production"
   },
   "author": "Ayush",
   "license": "ISC",
