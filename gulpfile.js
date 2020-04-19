@@ -96,7 +96,7 @@ task('serve', () => {
     });
 });
 
-task('serveprod', function () {
+task('serveprod', () => {
     connect.server({
         root: 'dist',
         port: process.env.PORT || 3000,
