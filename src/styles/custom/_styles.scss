@@ -120,7 +120,7 @@ img {
   top: 50%;
   transform: translate(-50%, -50%);
   &:before {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.5);
     content: "";
     position: absolute;
     left: 0;
@@ -477,6 +477,11 @@ nav {
     line-height: 1.5rem;
     font-weight: 700;
     letter-spacing: 0.075em;
+  }
+  @media (max-width: 767px) {
+    .description {
+      font-size: 0.8rem;
+    }
   }
 }
 
