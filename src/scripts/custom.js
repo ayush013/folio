@@ -104,7 +104,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         achievementOwl.owlCarousel({
             loop: true,
-            margin: 10,
+            margin: 0,
             items: 1,
             autoplay: true,
             dots: false,
