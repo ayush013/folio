@@ -17,6 +17,9 @@ html {
 @font-face {
   font-family: "Movement";
   src: url("/assets/MovementV.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;
 }
 
 body {
@@ -72,10 +75,6 @@ a, input[type="checkbox"] {
     opacity: 1;
     transform: scale(0);
   }
-
-  &.hovered {
-    opacity: 1;
-  }
 }
 
 .cursor-follower {
@@ -86,8 +85,7 @@ a, input[type="checkbox"] {
   border-radius: 100%;
   z-index: 1;
   transition: 0.3s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
-    0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) opacity,
-    0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) background;
+    0.1s cubic-bezier(0.75, -0.27, 0.3, 1.33) opacity;
   mix-blend-mode: difference;
   user-select: none;
   pointer-events: none;
@@ -98,10 +96,6 @@ a, input[type="checkbox"] {
   &.active {
     opacity: 1;
     transform: scale(3);
-  }
-
-  &.hovered {
-    opacity: 1;
   }
 }
 
@@ -120,7 +114,7 @@ img {
   top: 50%;
   transform: translate(-50%, -50%);
   &:before {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3);
     content: "";
     position: absolute;
     left: 0;
@@ -340,6 +334,11 @@ nav {
     }
   }
 }
+@media (max-width: 767px) {
+  nav {
+    background-image: linear-gradient(180deg, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0) 100%);
+  }
+}
 
 .h-100 {
   height: 100%;
@@ -383,7 +382,6 @@ nav {
     height: 2px;
     margin: 0;
     background-color: $white;
-    animation: line-width 4s ease-in-out infinite alternate;
   }
 }
 
@@ -475,7 +473,7 @@ nav {
     font-size: 1rem;
     font-family: "Karla";
     line-height: 1.5rem;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.075em;
   }
   @media (max-width: 767px) {
@@ -878,15 +876,6 @@ nav {
   100% {
     opacity: 0;
     top: 29%;
-  }
-}
-
-@keyframes line-width {
-  0% {
-    width: 10rem;
-  }
-  100% {
-    width: 15rem;
   }
 }
 

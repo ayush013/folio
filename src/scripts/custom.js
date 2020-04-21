@@ -27,6 +27,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 $('.sticky-title').css('transform', 'translateX(' + (-transformX) + 'px)');
             });
         });
+
         const target = document.getElementById('projects');
 
         const controller = new ScrollMagic.Controller();
@@ -59,7 +60,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section-mobile" });
         $('.project-carousel').owlCarousel({
             loop: true,
-            margin: 10,
+            margin: 0,
             items: 1,
             autoplay: true,
             dots: false
@@ -179,7 +180,6 @@ window.addEventListener('DOMContentLoaded', function () {
     // EXPERIMENTAL GYROSCOPE ACCTIONS
     if (!isDesktop) {
         window.addEventListener("deviceorientation", function (event) {
-            console.log(event);
             scope.angleTarget = event.beta / 90;
             scope.zoomTarget = 1 + event.gamma / 90;
         }, true);
@@ -187,7 +187,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // TYPED JS
     new Typed('.main-typed', {
-        strings: ["I design and develop things.", "I design and develop web apps.", "I design and develop UI/UX.", "I design and develop motion."],
+        strings: ["things.", "web apps.", "UI/UX.", "motion."],
         typeSpeed: 50,
         backSpeed: 50,
         backDelay: 4000,
@@ -277,7 +277,7 @@ window.addEventListener('DOMContentLoaded', function () {
         let mouseX = 0;
         let mouseY = 0;
 
-        gsap.to({}, 0.016, {
+        gsap.to({}, 0.005, {
             repeat: -1,
             onRepeat: function () {
                 posX += (mouseX - posX) / 9;
