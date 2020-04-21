@@ -141,7 +141,7 @@ window.addEventListener('DOMContentLoaded', function () {
         "assets/bg/plants.jpg",
         "assets/bg/pattern2.jpg",
         "assets/bg/rose.jpg",
-        "assets/bg/pattern1.jpg"
+        "assets/bg/pattern3.jpg"
     ];
     const background = $("#background");
     let scope = new Graphemescope(background[0]);
