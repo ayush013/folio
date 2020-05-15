@@ -452,11 +452,8 @@ nav {
 
 .about-section {
   .description {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: "Karla";
-    line-height: 1.5rem;
-    font-weight: 600;
-    letter-spacing: 0.075em;
   }
   @media (max-width: 767px) {
     .description {
@@ -809,6 +806,18 @@ nav {
     font-size: 1.5rem;
     a {
       color: $white;
+      &.cta {
+        padding: 10px 20px;
+        border: 2px solid $white;
+        text-transform: uppercase;
+        font-size: 1rem;
+        transition: 0.2s;
+        &:hover {
+          background-color: $white;
+          color: $black;
+          text-decoration: none;
+        }
+      }
     }
   }
   a.social-link {

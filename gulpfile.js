@@ -89,7 +89,11 @@ task('serve', () => {
     watch("src/**", { ignoreInitial: false }, series('default'));
     browserSync.init({
         server: {
-            baseDir: 'dist'
-        }
+            baseDir: "./dist/"
+        },
+        files: "./dist/**/*",
+        open: false,
+        notify: false,
+        ghostMode: false
     });
 });

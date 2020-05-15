@@ -136,55 +136,6 @@ window.addEventListener('DOMContentLoaded', function () {
         }, 500, 'linear');
     });
 
-    // //GRAPHEMESCOPE
-    // const images = [
-    //     "assets/bg/plants.jpg",
-    //     "assets/bg/pattern2.jpg",
-    //     "assets/bg/rose.jpg",
-    //     "assets/bg/pattern3.jpg"
-    // ];
-    // const background = $("#background");
-    // let scope = new Graphemescope(background[0]);
-    // let index = 0;
-    // scope.ease = 0.1;
-    // scope.radiusFactor = 0.4;
-
-    // function changePicture() {
-    //     scope.setImage(images[index]);
-    //     index = (index + 1) % images.length;
-    // }
-
-    // setInterval(changePicture, 10000);
-    // changePicture();
-
-    // if (isDesktop) {
-    //     $(window).mousemove(function (event) {
-    //         let factorx = event.pageX / $(window).width();
-    //         let factory = event.pageY / $(window).height();
-
-    //         scope.angleTarget = factorx;
-    //         scope.angleTarget = factory * 0.5;
-    //         //  scope.zoomTarget = 1.0 + 0.25 * factory;
-    //     });
-    // }
-    // const resizeHandler = function () {
-    //     background.height(window.screen.height);
-    //     background.width(window.screen.width);
-    // };
-
-    // $(window).resize(resizeHandler);
-    // $(window).resize();
-    // $(window).click(changePicture);
-
-
-    // // EXPERIMENTAL GYROSCOPE ACCTIONS
-    // if (!isDesktop) {
-    //     window.addEventListener("deviceorientation", function (event) {
-    //         scope.angleTarget = event.beta / 90;
-    //         scope.zoomTarget = 1 + event.gamma / 90;
-    //     }, true);
-    // }
-
     // TYPED JS
     new Typed('.main-typed', {
         strings: ["things.", "web apps.", "UI/UX.", "motion."],
