@@ -29,6 +29,14 @@ body {
   overflow-x: hidden;
   color: $white;
   cursor: none;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
   background: url("/assets/pattern.jpg");
   background-attachment: fixed;
   background-size: 500px;
