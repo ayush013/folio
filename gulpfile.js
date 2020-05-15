@@ -13,7 +13,6 @@ const purgecss = require('gulp-purgecss');
 
 task('js', () => {
     return src(['node_modules/jquery/dist/jquery.min.js',
-        './src/scripts/graphemescope.js',
         'node_modules/typed.js/lib/typed.js',
         'node_modules/splitting/dist/splitting.min.js',
         'node_modules/scroll-out/dist/scroll-out.min.js',

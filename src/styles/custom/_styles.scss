@@ -101,27 +101,10 @@ a, input[type="checkbox"] {
 
 img {
   -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-}
-
-#background {
-  position: fixed;
-  top: 0;
-  z-index: -1;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  &:before {
-    background: rgba(0, 0, 0, 0.3);
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-  }
 }
 
 nav {
