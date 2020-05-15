@@ -29,6 +29,9 @@ body {
   overflow-x: hidden;
   color: $white;
   cursor: none;
+  background: url("/assets/pattern.jpg");
+  background-attachment: fixed;
+  background-size: 500px;
 }
 
 a, input[type="checkbox"] {
@@ -72,8 +75,7 @@ a, input[type="checkbox"] {
   will-change: left, top;
 
   &.active {
-    opacity: 1;
-    transform: scale(0);
+    transform: scale(0.5);
   }
 }
 
@@ -393,12 +395,9 @@ nav {
   h1 {
     text-align: center;
     font-weight: 700;
-    font-variation-settings: "wght" 700, "SPAC" 100;
+    font-variation-settings: "wght" 600, "SPAC" 100;
     font-size: 7rem;
     line-height: 1;
-    @supports (font-variation-settings: normal) {
-      animation: main-heading 5s infinite alternate ease-in;
-    }
   }
   .scroll-btn {
     display: block;
@@ -832,15 +831,6 @@ nav {
       height: 0.9rem;
       display: inline-block;
     }
-  }
-}
-
-@keyframes main-heading {
-  0% {
-    font-variation-settings: "wght" 500, "SPAC" 110;
-  }
-  100% {
-    font-variation-settings: "wght" 700, "SPAC" 100;
   }
 }
 
