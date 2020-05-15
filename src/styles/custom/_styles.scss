@@ -46,12 +46,15 @@ a, input[type="checkbox"] {
   cursor: none !important;
 }
 
+/* purgecss ignore */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
+/* purgecss ignore */
 ::-webkit-scrollbar-track {
   background: rgba(94, 94, 94, 0.5);
 }
+/* purgecss ignore */
 ::-webkit-scrollbar-thumb {
   background: rgb(170, 170, 170);
 }
