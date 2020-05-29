@@ -6,6 +6,16 @@ html {
   scroll-behavior: smooth;
   scrollbar-color: $black;
   scrollbar-width: thin;
+  font-size: 16px;
+  @media (min-width: 1600px) {
+    font-size: 18px;
+  }
+  @media (min-width: 1800px) {
+    font-size: 20px;
+  }
+  @media (min-width: 2000px) {
+    font-size: 22px;
+  }
 }
 
 *,
@@ -39,7 +49,7 @@ body {
   left: 0;
   background: url("/assets/pattern.jpg");
   background-attachment: fixed;
-  background-size: 500px;
+  background-size: 31.25rem;
 }
 
 a, input[type="checkbox"] {
@@ -48,7 +58,7 @@ a, input[type="checkbox"] {
 
 /* purgecss ignore */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 0.375rem;
 }
 /* purgecss ignore */
 ::-webkit-scrollbar-track {
@@ -72,8 +82,8 @@ a, input[type="checkbox"] {
 .cursor {
   position: fixed;
   background-color: $white;
-  width: 15px;
-  height: 15px;
+  width: 0.9375rem;
+  height: 0.9375rem;
   border-radius: 100%;
   z-index: 1;
   transition: 0.2s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
@@ -92,9 +102,9 @@ a, input[type="checkbox"] {
 
 .cursor-follower {
   position: fixed;
-  border: 1px solid $white;
-  width: 33px;
-  height: 33px;
+  border: 0.0625rem solid $white;
+  width: 2.0625rem;
+  height: 2.0625rem;
   border-radius: 100%;
   z-index: 1;
   transition: 0.3s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
@@ -103,7 +113,7 @@ a, input[type="checkbox"] {
   user-select: none;
   pointer-events: none;
   z-index: 1000;
-  transform: translate(3px, 3px);
+  transform: translate(0.1875rem, 0.1875rem);
   will-change: left, top;
 
   &.active {
@@ -122,7 +132,7 @@ img {
 
 nav {
   position: fixed;
-  height: 70px;
+  height: 4.375rem;
   width: 100%;
   z-index: 10;
   .progress {
@@ -132,7 +142,7 @@ nav {
     top: 0;
     z-index: 1000;
     .progress-bar {
-      height: 4px;
+      height: 0.25rem;
       background-color: $white;
       width: 0%;
     }
@@ -144,7 +154,7 @@ nav {
         .logo-title {
           font-weight: 700;
           font-variation-settings: "wght" 700, "SPAC" 100;
-          letter-spacing: 1px;
+          letter-spacing: 0.0625rem;
           color: $white;
         }
         &:hover {
@@ -156,11 +166,11 @@ nav {
       z-index: 1;
       .checkbox-toggle {
         position: absolute;
-        top: 13px;
-        right: 15px;
+        top: 0.8125rem;
+        right: 0.9375rem;
         z-index: 2;
-        width: 40px;
-        height: 40px;
+        width: 2.5rem;
+        height: 2.5rem;
         opacity: 0;
         &:checked {
           + {
@@ -206,18 +216,18 @@ nav {
         &:hover {
           + {
             .hamburger {
-              box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+              box-shadow: inset 0 0 0.625rem rgba(0, 0, 0, 0.1);
             }
           }
         }
       }
       .hamburger {
         position: absolute;
-        top: 13px;
-        right: 15px;
+        top: 0.8125rem;
+        right: 0.9375rem;
         z-index: 1;
-        width: 40px;
-        height: 40px;
+        width: 2.5rem;
+        height: 2.5rem;
         padding: 0.5em;
         border-radius: 0 0.12em 0.12em 0;
         transition: box-shadow 0.4s ease;
@@ -229,7 +239,7 @@ nav {
           position: relative;
           flex: none;
           width: 100%;
-          height: 2px;
+          height: 0.125rem;
           background: $white;
           transition: all 0.4s ease;
           display: flex;
@@ -240,10 +250,10 @@ nav {
             content: "";
             position: absolute;
             z-index: 1;
-            top: -10px;
+            top: -0.625rem;
             left: 0;
             width: 100%;
-            height: 2px;
+            height: 0.125rem;
             background: inherit;
             transition: all 0.4s ease;
           }
@@ -251,13 +261,13 @@ nav {
             content: "";
             position: absolute;
             z-index: 1;
-            top: -10px;
+            top: -0.625rem;
             left: 0;
             width: 100%;
-            height: 2px;
+            height: 0.125rem;
             background: inherit;
             transition: all 0.4s ease;
-            top: 10px;
+            top: 0.625rem;
           }
         }
       }
@@ -271,7 +281,7 @@ nav {
         visibility: hidden;
         overflow: hidden;
         backface-visibility: hidden;
-        outline: 1px solid transparent;
+        outline: 0.0625rem solid transparent;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -279,10 +289,10 @@ nav {
           width: 250vw;
           height: 250vw;
           color: $white;
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(0.625rem);
+          -webkit-backdrop-filter: blur(0.625rem);
           background: rgba(0, 0, 0, 0.5);
-          @supports not (backdrop-filter: blur(10px)) {
+          @supports not (backdrop-filter: blur(0.625rem)) {
             background: rgba(0, 0, 0, 0.8);
           }
           border-radius: 50%;
@@ -314,7 +324,7 @@ nav {
               > li {
                 padding: 0;
                 margin: 0.5rem;
-                font-size: 24px;
+                font-size: 1.5rem;
                 display: block;
                 > a {
                   position: relative;
@@ -322,7 +332,7 @@ nav {
                   transition: color 0.4s ease;
                   -webkit-text-stroke: $white;
                   color: transparent;
-                  -webkit-text-stroke-width: 1px;
+                  -webkit-text-stroke-width: 0.0625rem;
                   font-variation-settings: "wght" 800, "SPAC" 100;
                   @supports not (font-variation-settings: normal) {
                     font-weight: 600;
@@ -361,7 +371,7 @@ nav {
 
 .section {
   min-height: 100vh;
-  padding: 70px 0;
+  padding: 4.375rem 0;
   position: relative;
   display: flex;
   align-items: center;
@@ -373,7 +383,7 @@ nav {
   .overlay-text {
     -webkit-text-stroke: $white;
     color: transparent;
-    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-width: 0.0625rem;
     font-variation-settings: "wght" 800, "SPAC" 100;
     @supports not (font-variation-settings: normal) {
       font-weight: 700;
@@ -390,7 +400,7 @@ nav {
   }
   .line {
     width: 10rem;
-    height: 2px;
+    height: 0.125rem;
     margin: 0;
     background-color: $white;
   }
@@ -402,12 +412,8 @@ nav {
   }
 }
 
-.divider-200 {
-  height: 200px;
-}
-
 .divider-100 {
-  height: 100px;
+  height: 6.25rem;
 }
 
 .main-section {
@@ -439,22 +445,22 @@ nav {
     .mouse {
       position: relative;
       display: block;
-      width: 17px;
-      height: 34px;
-      margin: 0 auto 10px;
+      width: 1.0625rem;
+      height: 2.125rem;
+      margin: 0 auto 0.625rem;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
-      border: 1px solid $white;
-      border-radius: 23px;
+      border: 0.0625rem solid $white;
+      border-radius: 1.4375rem;
       & > * {
         position: absolute;
         display: block;
         top: 29%;
         left: 50%;
-        width: 8px;
-        height: 8px;
-        margin: -4px 0 0 -4px;
+        width: 0.5rem;
+        height: 0.5rem;
+        margin: -0.25rem 0 0 -0.25rem;
         background: $white;
         border-radius: 50%;
         animation: ani-mouse 2.5s linear infinite;
@@ -463,9 +469,9 @@ nav {
     p {
       display: block;
       font-weight: 700;
-      font-size: 10px;
+      font-size: 0.625rem;
       color: $white;
-      letter-spacing: 2px;
+      letter-spacing: 0.125rem;
     }
   }
   @media (max-width: 767px) {
@@ -492,7 +498,7 @@ nav {
   .category {
     span {
       font-size: 1rem;
-      letter-spacing: 1px;
+      letter-spacing: 0.0625rem;
     }
   }
   .svg-tilt {
@@ -507,13 +513,13 @@ nav {
       left: 0;
     }
     .skill-svg {
-      height: 50px;
+      height: 3.125rem;
     }
   }
   @media (max-width: 767px) {
     .svg-tilt {
       .skill-svg {
-        height: 40px;
+        height: 2.5rem;
       }
     }
   }
@@ -535,14 +541,14 @@ nav {
       left: 0;
     }
     .skill-svg {
-      height: 50px;
+      height: 3.125rem;
     }
   }
   .timeline {
     position: relative;
     display: inline-block;
     width: 100%;
-    max-width: 800px;
+    max-width: 50rem;
     &:after {
       content: "";
       position: absolute;
@@ -558,8 +564,8 @@ nav {
 }
 
 .projects-section {
-  width: 5500px;
-  transform: translate(0px, 0px);
+  width: 343.75rem;
+  transform: translate(0, 0);
   padding-bottom: 0;
   will-change: transform;
   .sticky-title {
@@ -580,7 +586,7 @@ nav {
     .project-wrappper {
       position: relative;
       display: block;
-      width: 400px;
+      width: 25rem;
       margin-right: 3rem;
       a {
         color: $white;
@@ -600,10 +606,10 @@ nav {
         .txt {
           padding-left: 1rem;
           margin-top: 1rem;
-          border-left: 3px solid;
+          border-left: 0.1875rem solid;
           opacity: 0;
           z-index: 1;
-          transform: translateY(-50px);
+          transform: translateY(-3.125rem);
           transition: transform 0.2s, opacity 0.5s;
           h2 {
             font-variation-settings: 'wght' 600;
@@ -646,10 +652,10 @@ nav {
       .txt {
         padding-left: 1rem;
         margin-top: 1rem;
-        border-left: 3px solid;
+        border-left: 0.1875rem solid;
         opacity: 0;
         z-index: 1;
-        transform: translateY(-50px);
+        transform: translateY(-3.125rem);
         transition: transform 0.2s, opacity 0.5s;
         h2 {
           font-variation-settings: 'wght' 600;
@@ -675,20 +681,20 @@ nav {
   .overlay-img {
     position: sticky;
     width: 4.5rem;
-    top: 60px;
+    top: 3.75rem;
     left: 13vw;
   }
   .achievement {
     font-family: "Karla";
     position: relative;
-    margin: 10px;
-    min-width: 310px -60px;
-    max-width: 310px;
+    margin: 0.625rem;
+    min-width: 19.375rem -3.75rem;
+    max-width: 19.375rem;
     width: 100%;
     color: $white;
     text-align: left;
     background-color: $black;
-    font-size: 16px;
+    font-size: 1rem;
     overflow: hidden;
     filter: grayscale(1);
     transition: all 0.4s ease-in;
@@ -713,7 +719,7 @@ nav {
       height: 100%;
       z-index: 1;
       opacity: 0;
-      padding: 20px 30px;
+      padding: 1.25rem 1.875rem;
     }
 
     h3,
@@ -722,7 +728,7 @@ nav {
     }
 
     h3 {
-      margin: 0 0 5px;
+      margin: 0 0 0.3125rem;
       font-weight: 700;
       text-transform: uppercase;
     }
@@ -730,30 +736,30 @@ nav {
     p {
       font-size: 0.8em;
       font-weight: 500;
-      margin: 0 0 15px;
+      margin: 0 0 0.9375rem;
     }
 
     .date {
       background-color: $white;
       color: $black;
-      font-size: 18px;
+      font-size: 1.125rem;
       font-weight: 800;
-      min-height: 48px;
-      min-width: 48px;
-      padding: 10px 0;
+      min-height: 3rem;
+      min-width: 3rem;
+      padding: 0.625rem 0;
       position: absolute;
-      right: 15px;
+      right: 0.9375rem;
       text-align: center;
       text-transform: uppercase;
       top: 0;
 
       span {
         display: block;
-        line-height: 14px;
+        line-height: 0.875rem;
       }
 
       .month {
-        font-size: 11px;
+        font-size: 0.6875rem;
       }
     }
 
@@ -780,7 +786,7 @@ nav {
   .achievement {
     max-width: 100% !important;
     transition-delay: 1.5s;
-    margin: 0px !important;
+    margin: 0 !important;
   }
   .active {
     .achievement {
@@ -802,7 +808,7 @@ nav {
 }
 
 .contact-section {
-  padding-bottom: 30px;
+  padding-bottom: 1.875rem;
   .overlay-text {
     font-size: 8rem;
   }
@@ -817,7 +823,7 @@ nav {
       bottom: 0;
       left: 0;
       &.loaded {
-        transform: translateZ(30px) translateY(10px) scale(0.9);
+        transform: translateZ(1.875rem) translateY(0.625rem) scale(0.9);
       }
     }
   }
@@ -833,8 +839,8 @@ nav {
     a {
       color: $white;
       &.cta {
-        padding: 10px 20px;
-        border: 2px solid $white;
+        padding: 0.625rem 1.25rem;
+        border: 0.125rem solid $white;
         text-transform: uppercase;
         font-size: 1rem;
         transition: 0.2s;
@@ -892,7 +898,7 @@ nav {
   97% {
     -webkit-text-stroke: $white;
     color: transparent;
-    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-width: 0.0625rem;
   }
   98% {
     color: white;
@@ -901,7 +907,7 @@ nav {
   99% {
     -webkit-text-stroke: $white;
     color: transparent;
-    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-width: 0.0625rem;
   }
   100% {
     color: white;
