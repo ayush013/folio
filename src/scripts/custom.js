@@ -9,6 +9,15 @@ window.addEventListener('DOMContentLoaded', function () {
     const projectTemplate = document.getElementById('projects-template');
     const projectNode = document.importNode(projectTemplate.content, true);
 
+    // PROGRESS BAR
+
+    $(window).scroll(() => {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById("progress").style.width = scrolled + "%";
+    })
+
 
     // HORIZONTAL SCROLL FOR PROJECTS SECTION ON DESKTOP
 
@@ -183,7 +192,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     const skillsColorArray = ['#FFCA28', '#DE0031', '#F16529', '#29A9DF', '#FFB03A', '#CD6799',
-        '#0ACF83', '#FDD231', '#FF7C00', '#26C9FF', '#FF2A63', '#F05033', '#D34A47', '#3DF0F0', '#D291FF',"#8AC640"];
+        '#0ACF83', '#FDD231', '#FF7C00', '#26C9FF', '#FF2A63', '#F05033', '#D34A47', '#3DF0F0', '#D291FF', "#8AC640"];
 
     const socialColorArray = ['#367fd3', '#3C5A99', '#3EC6EA', '#8A45BE', '#E74D89', '#1769FF'];
 
