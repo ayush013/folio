@@ -26,7 +26,7 @@
     "gulp-rev": "^9.0.0",
     "gulp-sass": "^4.0.2",
     "jquery": "^3.4.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^4.14.1",
     "owl.carousel": "^2.3.4",
     "path": "^0.12.7",
     "rellax": "^1.12.1",
