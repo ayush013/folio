@@ -194,7 +194,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const skillsColorArray = ['#FFCA28', '#DE0031', '#F16529', '#29A9DF', '#FFB03A', '#CD6799',
         '#0ACF83', '#FDD231', '#FF7C00', '#26C9FF', '#FF2A63', '#F05033', '#D34A47', '#3DF0F0', '#D291FF', "#8AC640"];
 
-    const socialColorArray = ['#367fd3', '#3C5A99', '#3EC6EA', '#8A45BE', '#E74D89', '#1769FF'];
+    const socialColorArray = ['#367fd3', '#3C5A99', '#3EC6EA', '#8A45BE', '#E74D89', '#1769FF','#EEEEEE'];
 
     svgHoverFill(skillsColorArray, 'svg-tilt', '.skill-svg');
     svgHoverFill(socialColorArray, 'social-link', '.social-svg');
