@@ -569,7 +569,7 @@ nav {
 }
 
 .projects-section {
-  width: 343.75rem;
+  width: 312.5rem;
   transform: translate(0, 0);
   padding-bottom: 0;
   will-change: transform;
@@ -973,7 +973,7 @@ html[data-scroll-dir-y="-1"] {
   bottom: 1.5rem;
   right: 6rem;
   animation: wiggle 5s ease-in-out infinite alternate;
-  z-index: 100000;
+  z-index: 1001;
 
   .count {
     position: absolute;
