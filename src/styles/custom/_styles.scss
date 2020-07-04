@@ -134,6 +134,11 @@ nav {
   height: 4.375rem;
   width: 100%;
   z-index: 10;
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.9) 10%,
+    rgba(0, 0, 0, 0) 100%
+  );
   .progress {
     width: 100%;
     height: 0.1875rem;
@@ -353,11 +358,6 @@ nav {
 }
 @media (max-width: 767px) {
   nav {
-    background-image: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.9) 10%,
-      rgba(0, 0, 0, 0) 100%
-    );
     .outer-menu .menu > div > div > ul > li > a {
       font-size: 2rem !important;
     }
@@ -391,7 +391,7 @@ nav {
     @supports not (font-variation-settings: normal) {
       font-weight: 700;
     }
-    font-size: 10rem;
+    font-size: 8rem;
     display: block;
     position: absolute;
     position: absolute;
@@ -530,7 +530,7 @@ nav {
 
 .experience-section {
   .overlay-text {
-    font-size: 8rem;
+    font-size: 7rem;
   }
   .svg-tilt {
     position: relative;
@@ -578,7 +578,7 @@ nav {
     z-index: -1;
     will-change: transform;
     .overlay-text {
-      font-size: 8rem;
+      font-size: 7rem;
       left: 0;
       transform: translateX(-70%) translateY(118%) rotate(-90deg);
     }
@@ -586,6 +586,7 @@ nav {
   .horizontal-container {
     display: flex;
     padding-left: 27vw;
+    padding-top: 4rem;
     .project-wrappper {
       position: relative;
       display: block;
@@ -813,7 +814,7 @@ nav {
 .contact-section {
   padding-bottom: 1.875rem;
   .overlay-text {
-    font-size: 8rem;
+    font-size: 7rem;
   }
   .img-wrapper {
     position: relative;
@@ -922,48 +923,7 @@ nav {
   overflow-y: hidden;
   .char {
     display: inline-block;
-    transition: transform 0.5s;
-    transition-delay: calc(0.5s * var(--char-index) / var(--char-total));
-    will-change: transform;
   }
-  &[data-scroll="out"] {
-    .char {
-      transform: translateY(100%);
-    }
-  }
-  &[data-scroll="in"] {
-    .char {
-      transform: translateY(0);
-    }
-  }
-}
-
-.img-enter[data-scroll="out"] .bg {
-  visibility: hidden;
-}
-.img-enter[data-scroll="in"] {
-  overflow: hidden;
-  position: relative;
-}
-html[data-scroll-dir-y="-1"] {
-  .img-enter[data-scroll="out"] .bg {
-    visibility: visible;
-  }
-}
-.img-enter[data-scroll="in"] .bg {
-  transition-delay: 0.5s;
-}
-.img-enter[data-scroll="in"]:after {
-  content: "";
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(to right, #bd4a14, #df9124);
-  animation: block 1s ease-in both;
 }
 
 .floating-button {
@@ -978,9 +938,11 @@ html[data-scroll-dir-y="-1"] {
     color: $white;
     background: $orange;
     border-radius: 50%;
-    height: 1.3rem;
+    height: 1.2rem;
     text-align: center;
-    width: 1.3rem;
+    width: 1.2rem;
+    font-size: 0.8rem;
+    font-family: Karla;
     right: -0.5rem;
     top: -0.5rem;
     line-height: 1.2rem;

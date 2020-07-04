@@ -4,6 +4,35 @@ window.addEventListener('DOMContentLoaded', function () {
 
     const isDesktop = (typeof window.orientation === "undefined") && (navigator.userAgent.indexOf('IEMobile') === -1);
 
+    // SPLITTING
+
+    Splitting();
+
+    // SCROLLTRIGGER REGISTER
+    gsap.registerPlugin(ScrollTrigger);
+
+
+    // TITLE REVEAL DEFINITION
+
+    const titleGSAP = ({ targetTitle, targetSection }) => {
+
+        const scrollTimeline = gsap.timeline({
+            ease: Back.easeIn
+        });
+
+        scrollTimeline.fromTo(targetTitle, 0.5,
+            { y: 30, opacity: 0, stagger: 0.1 },
+            { y: 0, opacity: 1, stagger: 0.1 }
+        );
+
+        ScrollTrigger.create({
+            trigger: targetSection,
+            start: "top bottom",
+            animation: scrollTimeline
+        });
+
+    }
+
     // TEMPLATING FOR PROJECTS SECTION
 
     const projectTemplate = document.getElementById('projects-template');
@@ -27,7 +56,7 @@ window.addEventListener('DOMContentLoaded', function () {
         $('.projects-section').attr('id', 'projects');
         $('.horizontal-container').append(projectNode);
 
-        ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section", once: true });
+        titleGSAP({ targetTitle: '.projects-title .char', targetSection: ".projects-section" });
 
         // MUTATION OBSERVER FOR POSITION FIXED HACK
         let observer = new MutationObserver(function (mutations) {
@@ -39,7 +68,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
         const target = document.getElementById('projects');
 
-        const controller = new ScrollMagic.Controller();
         const tl = gsap.timeline();
         const elementWidth = document.getElementById('projects').offsetWidth;
         const width = window.innerWidth - elementWidth;
@@ -47,26 +75,26 @@ window.addEventListener('DOMContentLoaded', function () {
         const official = duration + '%';
         tl.to('.projects-section', 5, { x: width, ease: Power0.easeNone });
 
-        new ScrollMagic.Scene({
-            triggerElement: '.projects-section',
-            triggerHook: 0,
-            duration: official,
-        }).setPin('.projects-section')
-            .setTween(tl)
-            .addTo(controller)
-            .on('enter', function (e) {
-                observer.observe(target, { attributes: true, attributeFilter: ['style'] });
-            })
-            .on('leave', function (e) {
-                observer.disconnect();
-            });
+        ScrollTrigger.create({
+            trigger: ".projects-section",
+            start: "top top",
+            end: official,
+            scrub: 0,
+            pin: true,
+            animation: tl,
+            onEnter: () => observer.observe(target, { attributes: true, attributeFilter: ['style'] }),
+            onEnterBack: () => observer.observe(target, { attributes: true, attributeFilter: ['style'] }),
+            onLeave: () => observer.disconnect()
+        });
+
     } else {
         // CAROUSEL PROJECTS CONTAINER FOR MOBILE
         $('.projects-section').css('display', 'none');
         $('.projects-section-mobile').attr('id', 'projects');
         $('.project-carousel').append(projectNode);
 
-        ScrollOut({ targets: '.projects-title', offset: 0, scope: ".projects-section-mobile" });
+        titleGSAP({ targetTitle: '.projects-title .char', targetSection: ".projects-section-mobile" });
+
         $('.project-carousel').owlCarousel({
             loop: true,
             margin: 0,
@@ -98,7 +126,7 @@ window.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        ScrollOut({ targets: '.achievements-title', offset: 0, scope: ".achievements-section" });
+        titleGSAP({ targetTitle: '.achievements-title .char', targetSection: ".achievements-section" });
 
     } else {
         // CAROUSEL ACHIEVEMENTS CONTAINER FOR MOBILE
@@ -107,7 +135,7 @@ window.addEventListener('DOMContentLoaded', function () {
         $('.achievements-section-mobile').addClass('achievements-section');
         $('.achievement-carousel').append(achievementNode);
 
-        ScrollOut({ targets: '.achievements-title', offset: 0, scope: ".achievements-section-mobile" });
+        titleGSAP({ targetTitle: '.achievements-title .char', targetSection: ".achievements-section-mobile" });
 
         let achievementOwl = $('.achievement-carousel');
 
@@ -147,26 +175,23 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // TYPED JS
     new Typed('.main-typed', {
-        strings: [ "modern frontend applications.", "dynamic user experiences", "motion on web."],
+        strings: ["modern frontend applications.", "dynamic user experiences", "motion on web."],
         typeSpeed: 50,
         backSpeed: 50,
         backDelay: 4000,
         loop: true
     });
 
-    // SPLITTING AND SCROLLOUT ANIMS
 
-    Splitting();
+    // TITLE REVEAL INVOCATION
 
-    ScrollOut({ targets: '.about-title', offset: 0, scope: ".about-section" });
-
-    ScrollOut({ targets: '.skills-title', offset: 0, scope: ".skills-section" });
-
-    ScrollOut({ targets: '.experience-title', offset: 0, scope: ".experience-section" });
-
-    ScrollOut({ targets: '.contact-title', offset: 0, scope: ".contact-section" });
-
-    ScrollOut({ targets: '.img-enter', offset: 0, scope: ".contact-section" });
+    [{ targetTitle: '.about-title .char', targetSection: ".about-section" },
+    { targetTitle: '.skills-title .char', targetSection: ".skills-section" },
+    { targetTitle: '.experience-title .char', targetSection: ".experience-section" },
+    { targetTitle: '.contact-title .char', targetSection: ".contact-section" },
+    ].forEach(el => {
+        titleGSAP(el);
+    })
 
     // SVG DOM HOVER ACTIONS
 
@@ -188,7 +213,7 @@ window.addEventListener('DOMContentLoaded', function () {
     const skillsColorArray = ['#FFCA28', '#DE0031', '#F16529', '#29A9DF', '#FFB03A', '#CD6799',
         '#0ACF83', '#FDD231', '#FF7C00', '#26C9FF', '#FF2A63', '#F05033', '#D34A47', '#3DF0F0', '#D291FF', "#8AC640"];
 
-    const socialColorArray = ['#367fd3', '#3C5A99', '#3EC6EA', '#8A45BE', '#E74D89', '#1769FF','#EEEEEE'];
+    const socialColorArray = ['#367fd3', '#3C5A99', '#3EC6EA', '#8A45BE', '#E74D89', '#1769FF', '#EEEEEE'];
 
     svgHoverFill(skillsColorArray, 'svg-tilt', '.skill-svg');
     svgHoverFill(socialColorArray, 'social-link', '.social-svg');
