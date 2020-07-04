@@ -17,7 +17,6 @@ task('js', () => {
         'node_modules/splitting/dist/splitting.min.js',
         'node_modules/scroll-out/dist/scroll-out.min.js',
         'node_modules/universal-tilt.js/lib/universal-tilt.min.js',
-        'node_modules/rellax/rellax.min.js',
         'node_modules/gsap/dist/gsap.min.js',
         'node_modules/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
         'node_modules/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js',

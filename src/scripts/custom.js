@@ -147,18 +147,12 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // TYPED JS
     new Typed('.main-typed', {
-        strings: ["things.", "web apps.", "UI/UX.", "motion."],
+        strings: [ "modern frontend applications.", "dynamic user experiences", "motion on web."],
         typeSpeed: 50,
         backSpeed: 50,
         backDelay: 4000,
         loop: true
     });
-
-
-    // RELLAX
-    if (isDesktop) {
-        new Rellax('.rellax', { center: true });
-    }
 
     // SPLITTING AND SCROLLOUT ANIMS
 
