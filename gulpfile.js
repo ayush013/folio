@@ -36,7 +36,9 @@ task('js', () => {
 
 task('css', () => {
     return src(['./src/styles/**/*.scss'])
-        .pipe(sass())
+        .pipe(sass({
+            includePaths: ['node_modules/bootstrap/scss/']
+        }))
         .pipe(purgecss({
             content: ['**/*.html', 'scripts/*.js']
         }))

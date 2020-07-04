@@ -1,20 +1,40 @@
 
-@import "bootstrap/functions";
-@import "bootstrap/variables";
-@import "bootstrap/mixins";
-@import "bootstrap/reboot";
+@import "functions";
+@import "variables";
 
-@import "bootstrap/functions";
-@import "bootstrap/variables";
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px,
+  xxxl: 1800px,
+  xxxxl: 2000px
+);
 
-@import "bootstrap/mixins/breakpoints";
-@import "bootstrap/mixins/grid-framework";
-@import "bootstrap/mixins/grid";
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1400px,
+  xxxl: 1600px,
+  xxxxl: 1800px
+);
 
-@import "bootstrap/grid";
-@import "bootstrap/utilities/display";
-@import "bootstrap/utilities/flex";
-@import "bootstrap/utilities/spacing";
+@import "mixins";
+@import "reboot";
+
+@import "mixins/breakpoints";
+@import "mixins/grid-framework";
+@import "mixins/grid";
+
+@import "grid";
+@import "utilities/display";
+@import "utilities/flex";
+@import "utilities/spacing";
+@import "utilities/text";
 
 @import "custom/variables";
 @import "custom/styles";

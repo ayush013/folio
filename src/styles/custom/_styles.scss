@@ -1,5 +1,3 @@
-@import "../bootstrap/variables";
-
 html {
   box-sizing: border-box;
   -ms-overflow-style: scrollbar;
@@ -1035,65 +1033,5 @@ html[data-scroll-dir-y="-1"] {
   }
   100% {
     transform: translate(110%, 0);
-  }
-}
-
-.text-left {
-  text-align: left !important;
-}
-
-.text-right {
-  text-align: right !important;
-}
-
-.text-center {
-  text-align: center !important;
-}
-
-@media (min-width: 576px) {
-  .text-sm-left {
-    text-align: left !important;
-  }
-  .text-sm-right {
-    text-align: right !important;
-  }
-  .text-sm-center {
-    text-align: center !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .text-md-left {
-    text-align: left !important;
-  }
-  .text-md-right {
-    text-align: right !important;
-  }
-  .text-md-center {
-    text-align: center !important;
-  }
-}
-
-@media (min-width: 992px) {
-  .text-lg-left {
-    text-align: left !important;
-  }
-  .text-lg-right {
-    text-align: right !important;
-  }
-  .text-lg-center {
-    text-align: center !important;
-  }
-}
-
-@media (min-width: 1200px) {
-  .text-xl-left {
-    text-align: left !important;
-  }
-  .text-xl-right {
-    text-align: right !important;
-  }
-  .text-xl-center {
-    text-align: center !important;
   }
 }
