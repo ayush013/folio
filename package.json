@@ -11,8 +11,8 @@
   "license": "ISC",
   "devDependencies": {},
   "dependencies": {
-    "bootstrap": "^4.5.2",
-    "browser-sync": "^2.26.12",
+    "bootstrap": "^4.5.3",
+    "browser-sync": "^2.26.13",
     "express": "^4.17.1",
     "gsap": "^3.5.1",
     "gulp": "^4.0.2",
