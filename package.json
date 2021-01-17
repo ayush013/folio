@@ -14,7 +14,7 @@
     "bootstrap": "^4.5.3",
     "browser-sync": "^2.26.13",
     "express": "^4.17.1",
-    "gsap": "^3.5.1",
+    "gsap": "^3.6.0",
     "gulp": "^4.0.2",
     "gulp-add-src": "^1.0.0",
     "gulp-clean": "^0.4.0",
