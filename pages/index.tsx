@@ -8,6 +8,7 @@ import Menu from '@/components/common/menu'
 import ProgressIndicator from '@/components/common/progress-indicator'
 import Cursor from '@/components/common/cursor'
 import Hero from '@/components/home/hero';
+import Projects from '@/components/home/projects';
 
 let isDesktop;
 
@@ -29,6 +30,7 @@ export default function Home() {
         </Header>
         <Cursor isDesktop></Cursor>
         <Hero></Hero>
+        <Projects></Projects>
       </Layout>
     </>
   )
