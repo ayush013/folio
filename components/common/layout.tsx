@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { METADATA } from '../constants'
+import { METADATA } from '../../constants'
 
 const Layout = ({ children }) => {
     return (

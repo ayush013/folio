@@ -1,19 +1,21 @@
-import { useEffect } from 'react';
+import { MutableRefObject, useEffect, useRef } from 'react';
 
 const ProgressIndicator = () => {
+
+    const progress: MutableRefObject<HTMLDivElement> = useRef(null);
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
-            document.getElementById('progress').style.width = scrolled + '%';
+            progress.current.style.width = scrolled + '%';
         })
-    });
+    }, [progress]);
 
     return (
-        <div className='progress scroll-indicator w-full fixed top-0 z-50'>
-            <div className='progress-bar' id='progress'></div>
+        <div className='progress w-full fixed top-0 z-50'>
+            <div className='progress-bar' ref={progress}></div>
         </div>
     )
 }

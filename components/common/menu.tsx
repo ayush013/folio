@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { MENULINKS } from '../constants';
+import { MENULINKS } from '../../constants';
 
 const Menu = () => {
 

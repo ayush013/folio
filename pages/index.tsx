@@ -2,11 +2,11 @@ import { METADATA } from '../constants'
 import Head from 'next/head'
 import { useEffect } from 'react';
 
-import Layout from '@/components/layout'
-import Header from '@/components/header'
-import Menu from '@/components/menu'
-import ProgressIndicator from '@/components/progress-indicator'
-import Cursor from '@/components/cursor'
+import Layout from '@/components/common/layout'
+import Header from '@/components/common/header'
+import Menu from '@/components/common/menu'
+import ProgressIndicator from '@/components/common/progress-indicator'
+import Cursor from '@/components/common/cursor'
 
 let isDesktop;
 
