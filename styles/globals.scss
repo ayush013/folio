@@ -2,9 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Product Sans Medium Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Product Sans Medium Regular"),
+    url("/fonts/ProductSans-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Product Sans Black Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Product Sans Black Regular"),
+    url("/fonts/ProductSans-Black.woff") format("woff");
+}
+
 body {
   @apply bg-gray-900 text-white;
   cursor: none;
+  font-family: "Product Sans Medium Regular";
 }
 
 html {
@@ -24,7 +41,11 @@ html {
   background: rgb(170, 170, 170);
 }
 
-::-moz-selection,
+::-moz-selection {
+  color: white;
+  background: black;
+}
+
 ::selection {
   color: white;
   background: black;
