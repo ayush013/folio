@@ -4,10 +4,35 @@
 
 body {
   @apply bg-gray-900 text-white;
+  cursor: none;
 }
 
 html {
   scroll-behavior: smooth;
+  -ms-overflow-style: scrollbar;
+  scrollbar-color: black;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 0.375rem;
+}
+::-webkit-scrollbar-track {
+  background: rgba(94, 94, 94, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(170, 170, 170);
+}
+
+::-moz-selection,
+::selection {
+  color: white;
+  background: black;
+}
+
+a,
+input[type="checkbox"] {
+  cursor: none !important;
 }
 
 .outer-menu {
