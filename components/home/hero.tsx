@@ -1,7 +1,8 @@
-import { TYPED_STRINGS } from "../../constants";
-import { MutableRefObject, useEffect, useRef } from "react";
+import { EMAIL, TYPED_STRINGS } from '../../constants';
+import { MutableRefObject, useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 import Image from 'next/image';
+import Button from '../common/button';
 
 const Hero = () => {
 
@@ -33,10 +34,14 @@ const Hero = () => {
                     <h1 className='text-3xl'>I am Ayush Singh</h1>
                 </div>
                 <p>
-                    <span className="text-4xl" ref={typedEl}></span>
+                    <span className='text-4xl' ref={typedEl}></span>
                 </p>
+                <div className='flex gap-5'>
+                    <Button type='outline' name='Resume' newTab={true} href='/Ayush_Resume.pdf'></Button>
+                    <Button type='primary' name='Contact' href={'mailto:'+EMAIL}></Button>
+                </div>
             </div>
-            <div className='absolute hero-bg right-0 bottom-0 -z-1 md:w-3/4 w-full' style={{maxHeight: '650px'}}>
+            <div className='absolute hero-bg right-0 bottom-0 -z-1 md:w-3/4 w-full' style={{ maxHeight: '650px' }}>
                 <Image src='/hero-bg.svg' alt='Illustration' width={1021} height={650} />
             </div>
         </section>

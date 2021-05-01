@@ -34,3 +34,5 @@ export const TYPED_STRINGS = [
     'I design and develop motion',
     'I bridge the gap between design and development'
 ]
+
+export const EMAIL = 'ayush.singh.xda@gmail.com'
