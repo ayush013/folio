@@ -6,7 +6,7 @@ const Menu = () => {
     useEffect(() => {
         const anchorNodes = document.querySelectorAll('a[href^="#"]');
         anchorNodes.forEach(el => {
-            el.addEventListener('click', e => {
+            el.addEventListener('click', () => {
                 const checkbox: HTMLInputElement = document.querySelector('.checkbox-toggle');
                 checkbox.checked = false;
             })

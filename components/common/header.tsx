@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const Header = ({ children }) => {
     return (
-        <div className='w-full py-8 fixed top-0 2xl:container mx-auto xl:px-20 md:px-12 px-4'>
+        <nav className='w-full py-8 fixed top-0 2xl:container mx-auto xl:px-20 md:px-12 px-4'>
             <div className='relative flex justify-between'>
                 <a href='#home' className='flex gap-3 items-center link'>
                     <Image src='/logo.svg' alt='Logo - Ayush Singh' width={15} height={15} />
@@ -16,7 +16,7 @@ const Header = ({ children }) => {
                     {children}
                 </div>
             </div>
-        </div>
+        </nav>
     )
 }
 

@@ -7,6 +7,7 @@ import Header from '@/components/common/header'
 import Menu from '@/components/common/menu'
 import ProgressIndicator from '@/components/common/progress-indicator'
 import Cursor from '@/components/common/cursor'
+import Hero from '@/components/home/hero';
 
 let isDesktop;
 
@@ -27,11 +28,7 @@ export default function Home() {
           <Menu></Menu>
         </Header>
         <Cursor isDesktop></Cursor>
-        <section className='min-h-screen'></section>
-        <section className='min-h-screen'></section>
-        <section className='min-h-screen'></section>
-        <section className='min-h-screen'></section>
-        <section className='min-h-screen'></section>
+        <Hero></Hero>
       </Layout>
     </>
   )

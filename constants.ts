@@ -26,3 +26,11 @@ export const MENULINKS = [
         ref: '#contact'
     }
 ]
+
+export const TYPED_STRINGS = [
+    'I design and develop things',
+    'I develop modern frontend applications',
+    'I design dynamic user experience',
+    'I design and develop motion',
+    'I bridge the gap between design and development'
+]
