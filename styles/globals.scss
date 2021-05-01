@@ -107,3 +107,12 @@ html {
     }
   }
 }
+
+.progress {
+  height: 0.1875rem;
+
+  .progress-bar {
+    height: 0.2rem;
+    @apply w-0 bg-white;
+  }
+}
