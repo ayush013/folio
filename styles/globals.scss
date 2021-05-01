@@ -10,9 +10,8 @@ body {
   z-index: 1;
 
   .checkbox-toggle {
-    @apply absolute top-0 right-0 w-6 h-6 opacity-0;
     z-index: 2;
-    
+
     &:checked {
       + {
         .hamburger {
@@ -56,16 +55,15 @@ body {
     }
   }
   .hamburger {
-    @apply absolute top-0 right-0 w-6 h-6 flex items-center justify-center;
     z-index: 1;
     backface-visibility: hidden;
 
     > div {
-      @apply relative flex-none w-full bg-white duration-300 flex items-center justify-center;
       height: 0.125rem;
       transition: all 0.4s ease;
       -webkit-box-pack: center;
-      &:before, &:after {
+      &:before,
+      &:after {
         content: "";
         z-index: 1;
         position: absolute;
@@ -82,80 +80,25 @@ body {
     }
   }
   .menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    visibility: hidden;
-    overflow: hidden;
     backface-visibility: hidden;
     outline: 0.0625rem solid transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     > div {
       width: 250vw;
       height: 250vw;
-      color: white;
+      transform: scale(0);
+      border-radius: 50%;
+      transition: all 0.4s ease;
+      backface-visibility: hidden;
       backdrop-filter: blur(0.625rem);
       -webkit-backdrop-filter: blur(0.625rem);
       background: rgba(0, 0, 0, 0.5);
       @supports not (backdrop-filter: blur(0.625rem)) {
         background: rgba(0, 0, 0, 0.8);
       }
-      border-radius: 50%;
-      transition: all 0.4s ease;
-      flex: none;
-      transform: scale(0);
-      backface-visibility: hidden;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
       > div {
-        text-align: center;
         max-width: 90vw;
-        max-height: 100vh;
-        opacity: 0;
         transition: opacity 0.4s ease;
-        overflow-y: auto;
-        flex: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        > ul {
-          list-style: none;
-          padding: 0 1em;
-          margin: 0;
-          display: block;
-          max-height: 100vh;
-          > li {
-            padding: 0;
-            margin: 0.5rem;
-            font-size: 1.5rem;
-            display: block;
-            > a {
-              position: relative;
-              display: inline;
-              transition: color 0.4s ease;
-              -webkit-text-stroke: white;
-              color: transparent;
-              -webkit-text-stroke-width: 0.0625rem;
-              font-variation-settings: "wght" 800, "SPAC" 100;
-              @supports not (font-variation-settings: normal) {
-                font-weight: 600;
-              }
-              font-size: 3rem;
-              &:hover {
-                color: white;
-                text-decoration: none;
-                -webkit-text-stroke-width: 0;
-              }
-            }
-          }
-        }
       }
     }
   }
