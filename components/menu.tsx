@@ -1,6 +1,18 @@
+import { useEffect } from 'react';
 import { MENULINKS } from '../constants';
 
 const Menu = () => {
+
+    useEffect(() => {
+        const anchorNodes = document.querySelectorAll('a[href^="#"]');
+        anchorNodes.forEach(el => {
+            el.addEventListener('click', e => {
+                const checkbox: HTMLInputElement = document.querySelector('.checkbox-toggle');
+                checkbox.checked = false;
+            })
+        })
+    });
+
     return (
         <div className='menu fixed top-0 left-0 w-full h-full overflow-hidden invisible pointer-events-none flex items-center justify-center'>
             <div className='flex-none overflow-hidden flex items-center justify-center'>

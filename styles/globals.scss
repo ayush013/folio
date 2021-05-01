@@ -6,6 +6,10 @@ body {
   @apply bg-gray-900 text-white;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .outer-menu {
   z-index: 1;
 
