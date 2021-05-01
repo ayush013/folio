@@ -36,3 +36,14 @@ export const TYPED_STRINGS = [
 ]
 
 export const EMAIL = 'ayush.singh.xda@gmail.com'
+
+export const SOCIAL_LINKS = {
+    linkedin: 'https://www.linkedin.com/in/alphaayush/',
+    github: 'https://github.com/ayush013',
+    medium: 'https://alphaayush.medium.com/',
+    instagram: 'https://www.instagram.com/alphaayush/',
+    facebook: 'https://www.facebook.com/ayush013',
+    twitter: 'https://twitter.com/ayush013',
+    dribbble: 'https://dribbble.com/alphaayush',
+    behance: 'https://www.behance.net/alphaayush/',
+}

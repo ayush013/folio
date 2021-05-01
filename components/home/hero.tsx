@@ -1,4 +1,4 @@
-import { EMAIL, TYPED_STRINGS } from '../../constants';
+import { EMAIL, SOCIAL_LINKS, TYPED_STRINGS } from '../../constants';
 import { MutableRefObject, useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 import Image from 'next/image';
@@ -28,7 +28,7 @@ const Hero = () => {
                     font-size: 2rem;
                 }`}
             </style>
-            <div className='font-medium flex flex-col gap-5 pt-40 md:pt-0'>
+            <div className='font-medium flex flex-col gap-5 pt-40 md:pt-0 select-none'>
                 <div>
                     <p className='text-4xl'>Hello 👋🏻</p>
                     <h1 className='text-3xl'>I am Ayush Singh</h1>
@@ -36,9 +36,15 @@ const Hero = () => {
                 <p>
                     <span className='text-4xl' ref={typedEl}></span>
                 </p>
+                <div className='flex gap-4'>
+                    {Object.keys(SOCIAL_LINKS).map(el => <a href={SOCIAL_LINKS[el]} key={el} className='link hover:opacity-80 duration-300' rel='noreferrer' target='_blank'>
+                        <Image src={`/social/${el}.svg`} alt={el} width={40} height={40} />
+                    </a>
+                    )}
+                </div>
                 <div className='flex gap-5'>
                     <Button type='outline' name='Resume' newTab={true} href='/Ayush_Resume.pdf'></Button>
-                    <Button type='primary' name='Contact' href={'mailto:'+EMAIL}></Button>
+                    <Button type='primary' name='Contact' href={'mailto:' + EMAIL}></Button>
                 </div>
             </div>
             <div className='absolute hero-bg right-0 bottom-0 -z-1 md:w-3/4 w-full' style={{ maxHeight: '650px' }}>
