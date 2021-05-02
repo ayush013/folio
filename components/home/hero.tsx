@@ -44,7 +44,7 @@ const Hero = () => {
                 </div>
                 <div className='flex gap-5'>
                     <Button type='outline' name='Resume' newTab={true} href='/Ayush_Resume.pdf'></Button>
-                    <Button type='primary' name='Contact' href={'mailto:' + EMAIL}></Button>
+                    <Button type='primary' name={`Let's Talk`} href={'mailto:' + EMAIL}></Button>
                 </div>
             </div>
             <div className='absolute hero-bg right-0 bottom-0 -z-1 md:w-3/4 w-full' style={{ maxHeight: '650px' }}>

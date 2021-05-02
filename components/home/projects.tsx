@@ -53,7 +53,7 @@ const Projects = ({ isDesktop }) => {
 
     return (
         <section ref={targetSection} className='w-full min-h-screen relative select-none' id={MENULINKS[1].ref}>
-            <div className={(height > 650 ? 'gap-y-20' : 'gap-y-10') + ' flex-col flex 2xl:container py-8 mx-auto xl:px-20 md:px-12 px-4 justify-center'}>
+            <div className={(height > 650 ? 'gap-y-20' : 'gap-y-10') + ' flex-col flex 2xl:container py-8 mx-auto xl:px-20 md:px-12 px-4 justify-center h-full'}>
                 <div className='flex flex-col gap-2' ref={sectionTitle}>
                     <p className='uppercase tracking-widest text-gray-200 text-sm'>PROJECTS</p>
                     <h1 className='text-5xl font-bold text-gradient'>My Works</h1>

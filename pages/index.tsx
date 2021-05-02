@@ -12,6 +12,7 @@ import Projects from '@/components/home/projects';
 import Quote from '@/components/home/quote';
 import Skills from '@/components/home/skills';
 import Collaboration from '@/components/home/collaboration';
+import Footer from '@/components/common/footer';
 
 let isDesktop;
 
@@ -19,7 +20,7 @@ export default function Home() {
 
   useEffect(() => {
     isDesktop = (typeof window.orientation === 'undefined') && (navigator.userAgent.indexOf('IEMobile') === -1);
-    setTimeout(() => window.scrollTo({ top: 0 }), 0);
+    window.history.scrollRestoration = 'manual'
   }, [isDesktop]);
 
   return (
@@ -40,6 +41,7 @@ export default function Home() {
           <Quote></Quote>
           <Skills></Skills>
           <Collaboration></Collaboration>
+          <Footer></Footer>
         </main>
       </Layout>
     </>
