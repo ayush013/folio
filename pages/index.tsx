@@ -15,7 +15,7 @@ let isDesktop;
 export default function Home() {
 
   useEffect(() => {
-     isDesktop = (typeof window.orientation === 'undefined') && (navigator.userAgent.indexOf('IEMobile') === -1);
+    isDesktop = (typeof window.orientation === 'undefined') && (navigator.userAgent.indexOf('IEMobile') === -1);
   }, [isDesktop]);
 
   return (
@@ -29,8 +29,10 @@ export default function Home() {
           <Menu></Menu>
         </Header>
         <Cursor isDesktop></Cursor>
-        <Hero></Hero>
-        <Projects></Projects>
+        <main className='flex-col flex gap-y-28'>
+          <Hero></Hero>
+          <Projects></Projects>
+        </main>
       </Layout>
     </>
   )

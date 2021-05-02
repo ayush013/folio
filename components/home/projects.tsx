@@ -1,7 +1,7 @@
 
 const Projects = () => {
     return (
-        <section className='w-full flex mt-28 py-8 2xl:container mx-auto xl:px-20 md:px-12 px-4 min-h-screen relative'>
+        <section className='w-full flex py-8 2xl:container mx-auto xl:px-20 md:px-12 px-4 min-h-screen relative select-none'>
             <div className='flex flex-col gap-2'>
                 <p className='uppercase tracking-widest text-gray-200 text-sm'>PROJECTS</p>
                 <h1 className='text-5xl font-bold text-gradient'>My Works</h1>

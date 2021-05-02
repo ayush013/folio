@@ -9,7 +9,7 @@ const ProgressIndicator = () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
-            progress.current.style.width = scrolled + '%';
+            progress.current ? progress.current.style.width = scrolled + '%' : '';
         })
     }, [progress]);
 

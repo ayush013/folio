@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
                 <meta property='og:image:height' content='800' />
                 <link rel='icon' type='image/x-icon' href='/favicon.ico' />
             </Head>
-            <main>{children}</main>
+            {children}
         </>
     )
 }
