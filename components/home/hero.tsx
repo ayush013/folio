@@ -1,4 +1,4 @@
-import { EMAIL, SOCIAL_LINKS, TYPED_STRINGS } from '../../constants';
+import { EMAIL, MENULINKS, SOCIAL_LINKS, TYPED_STRINGS } from '../../constants';
 import { MutableRefObject, useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 import Image from 'next/image';
@@ -21,7 +21,7 @@ const Hero = () => {
     }, [typedEl]);
 
     return (
-        <section className='w-full flex md:items-center py-8 2xl:container mx-auto xl:px-20 md:px-12 px-4 min-h-screen relative'>
+        <section className='w-full flex md:items-center py-8 2xl:container mx-auto xl:px-20 md:px-12 px-4 min-h-screen relative' id={MENULINKS[0].ref}>
             <style global jsx>
                 {`
                 .typed-cursor {

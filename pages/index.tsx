@@ -10,6 +10,7 @@ import Cursor from '@/components/common/cursor'
 import Hero from '@/components/home/hero';
 import Projects from '@/components/home/projects';
 import Quote from '@/components/home/quote';
+import Skills from '@/components/home/skills';
 
 let isDesktop;
 
@@ -17,7 +18,7 @@ export default function Home() {
 
   useEffect(() => {
     isDesktop = (typeof window.orientation === 'undefined') && (navigator.userAgent.indexOf('IEMobile') === -1);
-    window.scrollTo({top: 0});
+    setTimeout(() => window.scrollTo({ top: 0 }), 0);
   }, [isDesktop]);
 
   return (
@@ -36,6 +37,7 @@ export default function Home() {
           <Hero></Hero>
           <Projects isDesktop></Projects>
           <Quote></Quote>
+          <Skills></Skills>
         </main>
       </Layout>
     </>

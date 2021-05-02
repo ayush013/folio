@@ -7,23 +7,23 @@ export const METADATA = {
 export const MENULINKS = [
     {
         name: 'Home',
-        ref: '#home'
+        ref: 'home'
     },
     {
         name: 'Works',
-        ref: '#works'
+        ref: 'works'
     },
     {
         name: 'Skills',
-        ref: '#skills'
+        ref: 'skills'
     },
     {
         name: 'Timeline',
-        ref: '#timeline'
+        ref: 'timeline'
     },
     {
         name: 'Contact',
-        ref: '#contact'
+        ref: 'contact'
     }
 ]
 
@@ -146,3 +146,9 @@ export const PROJECTS = [
         tech: ['javascript', 'html', 'css']
     }
 ]
+
+export const SKILLS = {
+    frontend: ['javascript', 'angular', 'next', 'react', 'gsap', 'tailwind', 'sass', 'svg', 'html', 'css'],
+    userInterface: ['figma', 'sketch', 'illustrator', 'photoshop'],
+    other: ['git', 'webpack', 'gulp', 'lightroom', 'aftereffects']
+}
