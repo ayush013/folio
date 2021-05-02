@@ -11,6 +11,7 @@ import Hero from '@/components/home/hero';
 import Projects from '@/components/home/projects';
 import Quote from '@/components/home/quote';
 import Skills from '@/components/home/skills';
+import Collaboration from '@/components/home/collaboration';
 
 let isDesktop;
 
@@ -27,10 +28,10 @@ export default function Home() {
         <title>{METADATA.title}</title>
       </Head>
       <Layout>
-        <ProgressIndicator></ProgressIndicator>
         <Header>
           <Menu></Menu>
         </Header>
+        <ProgressIndicator></ProgressIndicator>
         <Cursor isDesktop></Cursor>
         <main className='flex-col flex gap-y-28'>
           <div className='fixed top-0 left-0 h-screen w-screen bg-gray-900 -z-1'></div>
@@ -38,6 +39,7 @@ export default function Home() {
           <Projects isDesktop></Projects>
           <Quote></Quote>
           <Skills></Skills>
+          <Collaboration></Collaboration>
         </main>
       </Layout>
     </>
