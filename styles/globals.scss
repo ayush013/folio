@@ -2,26 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @font-face {
-  font-family: "Product Sans Medium Regular";
+  font-family: 'Google Sans';
+  src: local('Google Sans Medium'), local('GoogleSans-Medium'),
+      url('/fonts/GoogleSans-Medium.woff2') format('woff2'),
+      url('/fonts/GoogleSans-Medium.woff') format('woff');
+  font-weight: 500;
   font-style: normal;
-  font-weight: normal;
-  src: local("Product Sans Medium Regular"),
-    url("/fonts/ProductSans-Medium.woff") format("woff");
 }
 
 @font-face {
-  font-family: "Product Sans Black Regular";
+  font-family: 'Google Sans';
+  src: local('Google Sans Bold'), local('GoogleSans-Bold'),
+      url('/fonts/GoogleSans-Bold.woff2') format('woff2'),
+      url('/fonts/GoogleSans-Bold.woff') format('woff');
+  font-weight: bold;
   font-style: normal;
-  font-weight: normal;
-  src: local("Product Sans Black Regular"),
-    url("/fonts/ProductSans-Black.woff") format("woff");
 }
 
 body {
   @apply bg-gray-900 text-white overflow-x-hidden;
   cursor: none;
-  font-family: "Product Sans Medium Regular";
 }
 
 html {

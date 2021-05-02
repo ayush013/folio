@@ -18,7 +18,7 @@ const Menu = () => {
             <div className='flex-none overflow-hidden flex items-center justify-center'>
                 <div className='text-center opacity-0 overflow-y-auto flex flex-none justify-center items-center max-h-screen'>
                     <ul className='list-none py-4 px-0 m-0 block max-h-screen'>
-                        {MENULINKS.map(el => <li className='p-0 m-6 text-2xl block' key={el.name}><a className='link relative inline font-bold tracking-wider text-5xl duration-300 hover:no-underline' href={`#${el.ref}`}>{el.name}</a></li>)}
+                        {MENULINKS.map(el => <li className='p-0 m-6 text-2xl block' key={el.name}><a className='link relative inline font-bold text-5xl duration-300 hover:no-underline' href={`#${el.ref}`}>{el.name}</a></li>)}
                     </ul>
                 </div>
             </div>

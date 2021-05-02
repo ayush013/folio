@@ -26,7 +26,7 @@ const Quote = () => {
     return (
         <section className='w-full relative select-none' ref={targetSection}>
             <div className='2xl:container py-60 mx-auto xl:px-20 md:px-12 px-4'>
-                <h1 ref={quoteRef} className='font-medium tracking-wide text-5xl text-center'>I have a <span className='text-strong font-bold'>strong</span> obsession for attention to detail.</h1>
+                <h1 ref={quoteRef} className='font-medium text-5xl text-center'>I have a <span className='text-strong font-bold'>strong</span> obsession for attention to detail.</h1>
             </div>
             <style jsx global>{`
             .text-strong {

@@ -15,7 +15,7 @@ const Footer = () => {
     return (
         <footer className='w-full relative select-none bg-cover bg-bottom' id={MENULINKS[4].ref} style={{ height, backgroundImage: `url(/footer.svg)` }}>
             <div className='2xl:container mx-auto xl:px-20 md:px-12 px-4 flex-col flex h-full justify-end gap-y-8 z-10 items-center py-12'>
-                <h1 className='font-medium tracking-wide text-4xl text-center'>I’m looking for challenges! Feel free to Contact.</h1>
+                <h1 className='font-medium text-4xl text-center'>I’m looking for challenges! Feel free to Contact.</h1>
                 <div className='flex gap-4'>
                     {Object.keys(SOCIAL_LINKS).map(el => <a href={SOCIAL_LINKS[el]} key={el} className='link hover:opacity-80 duration-300' rel='noreferrer' target='_blank'>
                         <Image src={`/social/${el}.svg`} alt={el} width={40} height={40} />

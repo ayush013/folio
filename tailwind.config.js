@@ -235,6 +235,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
+        'Google Sans',
         'ui-sans-serif',
         'system-ui',
         '-apple-system',

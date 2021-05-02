@@ -39,11 +39,11 @@ const Collaboration = () => {
     return (
         <section className='w-full relative select-none' ref={targetSection}>
             <div className='2xl:container py-48 mx-auto xl:px-20 md:px-12 px-4 flex flex-col gap-y-8'>
-                <p className='opacity-20 tracking-wide text-7xl font-bold whitespace-nowrap ui-left'>{Array(5).fill(' User Interface Design  User Experience Design ').reduce((str, el) => str.concat(el), '')} </p>
+                <p className='opacity-20 text-7xl font-bold whitespace-nowrap ui-left'>{Array(5).fill(' User Interface Design  User Experience Design ').reduce((str, el) => str.concat(el), '')} </p>
 
-                <h1 ref={quoteRef} className='font-medium tracking-wide text-5xl text-center'>Interested in <span className='text-strong font-bold'>Collaboration</span>?</h1>
+                <h1 ref={quoteRef} className='font-medium text-5xl text-center'>Interested in <span className='text-strong font-bold'>Collaboration</span>?</h1>
 
-                <p className='opacity-20 tracking-wide text-7xl font-bold whitespace-nowrap ui-right'>{Array(5).fill(' Frontend Development  Motion Graphics ').reduce((str, el) => str.concat(el), '')} </p>
+                <p className='opacity-20 text-7xl font-bold whitespace-nowrap ui-right'>{Array(5).fill(' Frontend Development  Motion Graphics ').reduce((str, el) => str.concat(el), '')} </p>
             </div>
             <style jsx global>{`
             .text-strong {
