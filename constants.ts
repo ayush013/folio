@@ -47,3 +47,14 @@ export const SOCIAL_LINKS = {
     dribbble: 'https://dribbble.com/alphaayush',
     behance: 'https://www.behance.net/alphaayush/',
 }
+
+export const PROJECTS = [
+    {
+        name: 'DLT Labs Website',
+        image: '/projects/dlt-website.jpg',
+        description: 'Built the application from zero to production 🚀',
+        gradient: ['#245B57', '#004741'],
+        url: 'https://www.dltlabs.com/',
+        tech: ['figma', 'angular', 'gsap']
+    }
+]
