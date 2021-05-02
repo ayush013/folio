@@ -31,7 +31,7 @@ export default function Home() {
         <Cursor isDesktop></Cursor>
         <main className='flex-col flex gap-y-28'>
           <Hero></Hero>
-          <Projects></Projects>
+          <Projects isDesktop></Projects>
         </main>
       </Layout>
     </>
