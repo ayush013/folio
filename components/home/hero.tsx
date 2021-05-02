@@ -34,7 +34,7 @@ const Hero = () => {
                     <h1 className='text-3xl'>I am Ayush Singh</h1>
                 </div>
                 <p>
-                    <span className='text-4xl' ref={typedEl}></span>
+                    <span className='text-2xl md:text-4xl' ref={typedEl}></span>
                 </p>
                 <div className='flex gap-4'>
                     {Object.keys(SOCIAL_LINKS).map(el => <a href={SOCIAL_LINKS[el]} key={el} className='link hover:opacity-80 duration-300' rel='noreferrer' target='_blank'>
