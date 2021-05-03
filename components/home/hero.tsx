@@ -30,7 +30,7 @@ const Hero = () => {
     }, [typedEl, targetSection]);
 
     return (
-        <section className='w-full flex md:items-center py-8 2xl:container mx-auto xl:px-20 md:px-12 px-4 min-h-screen relative' id={MENULINKS[0].ref} ref={targetSection} style={{opacity: 0}}>
+        <section className='w-full flex md:items-center py-8 2xl:container mx-auto xl:px-20 md:px-12 px-4 min-h-screen relative' id={MENULINKS[0].ref} ref={targetSection} style={{ opacity: 0 }}>
             <style global jsx>
                 {`
                 .typed-cursor {
@@ -56,7 +56,7 @@ const Hero = () => {
                     <Button type='primary' name={`Let's Talk`} href={'mailto:' + EMAIL}></Button>
                 </div>
             </div>
-            <div className='absolute hero-bg right-0 bottom-0 -z-1 md:w-3/4 w-full' style={{ maxHeight: '650px' }}>
+            <div className='absolute hero-bg right-0 bottom-0 -z-1 md:w-3/4 w-full scale-125 sm:scale-100 transform-gpu' style={{ maxHeight: '650px' }}>
                 <Image src='/hero-bg.svg' alt='Illustration' width={1021} height={650} />
             </div>
         </section>

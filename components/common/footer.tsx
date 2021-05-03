@@ -4,10 +4,9 @@ import Button from './button';
 
 const Footer = () => {
 
-
     return (
         <footer className='w-full relative select-none bg-cover' id={MENULINKS[4].ref}>
-            <img src="/footer-curve.svg" alt="Footer" className='w-full' />
+            <img src="/footer-curve.svg" alt="Footer" className='w-full' loading='lazy' height={290} width={1440} />
             <div className='h-full w-full'>
                 <div className='2xl:container mx-auto xl:px-20 md:px-12 px-4 flex-col flex h-full justify-end gap-y-8 z-10 items-center py-12'>
                     <h1 className='font-medium text-3xl md:text-4xl text-center'>I’m looking for challenges! Feel free to Contact.</h1>

@@ -53,7 +53,7 @@ const Projects = ({ isDesktop, clientHeight }) => {
                 <div className='flex flex-col gap-2 inner-container' ref={sectionTitle}>
                     <p className='uppercase tracking-widest text-gray-200 text-sm seq'>PROJECTS</p>
                     <h1 className='text-5xl font-bold text-gradient seq'>My Works</h1>
-                    <h2 className='text-2xl md:max-w-3xl w-full seq'>I have contributed in over 20+ projects ranging from Frontend Development, UI/UX, Open Source, and Motion Graphics</h2>
+                    <h2 className='text-2xl md:max-w-3xl w-full seq max-w-sm'>I have contributed in over 20+ projects ranging from Frontend Development, UI/UX, Open Source, and Motion Graphics</h2>
                 </div>
                 <div className='flex gap-x-16 project-wrapper w-fit seq'>
                     {PROJECTS.map(project => <ProjectTile project={project} key={project.name}></ProjectTile>)}
