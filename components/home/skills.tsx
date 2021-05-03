@@ -27,8 +27,8 @@ const Skills = () => {
     return (
         <section className='w-full relative select-none min-h-screen' id={MENULINKS[2].ref} ref={targetSection}>
             <div className='2xl:container mx-auto py-8 xl:px-20 md:px-12 px-4 flex flex-col justify-center gap-y-10'>
-                <img src='/pattern-r.svg' className='absolute right-0 -bottom-52 w-1/5 max-w-xs md:block hidden' loading='lazy' height={700} width={320} />
-                <img src='/pattern-l.svg' className='absolute left-0 -bottom-40 w-1/12 max-w-xs md:block hidden' loading='lazy' height={335} width={140} />
+                <img src='/pattern-r.svg' className='absolute right-0 -bottom-1/3 w-1/5 max-w-xs md:block hidden' loading='lazy' height={700} width={320} />
+                <img src='/pattern-l.svg' className='absolute left-0 -bottom-1/4 w-1/12 max-w-xs md:block hidden' loading='lazy' height={335} width={140} />
                 <div className='flex flex-col gap-2'>
                     <p className='uppercase tracking-widest text-gray-200 text-sm seq'>SKILLS</p>
                     <h1 className='text-5xl font-bold text-gradient seq'>My Skills</h1>

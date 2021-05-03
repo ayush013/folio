@@ -207,6 +207,7 @@ input[type="checkbox"] {
     height: 0.2rem;
     transform-origin: left;
     will-change: transform;
+    transform: scaleX(0);
     @apply w-full bg-white;
   }
 }
