@@ -1,6 +1,6 @@
 export const METADATA = {
     title: 'Portfolio | Ayush Singh',
-    description: 'I bridge the gap between design and development',
+    description: 'I bridge the gap between design and development. I take responsibility to craft an aesthetic user experience using modern frontend architecture.',
     siteUrl: 'https://ayushsingh.net/'
 }
 
@@ -29,7 +29,7 @@ export const MENULINKS = [
 
 export const TYPED_STRINGS = [
     'I design and develop things',
-    'I develop modern frontend applications',
+    'I develop modern frontend apps',
     'I design dynamic user experience',
     'I design and develop motion'
 ]

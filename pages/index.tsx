@@ -1,6 +1,6 @@
 import { METADATA } from '../constants'
 import Head from 'next/head'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import Layout from '@/components/common/layout'
 import Header from '@/components/common/header'
@@ -14,13 +14,14 @@ import Skills from '@/components/home/skills';
 import Collaboration from '@/components/home/collaboration';
 import Footer from '@/components/common/footer';
 
-let isDesktop;
-
 export default function Home() {
 
+  const [isDesktop, setisDesktop] = useState(true);
+
   useEffect(() => {
-    isDesktop = (typeof window.orientation === 'undefined') && (navigator.userAgent.indexOf('IEMobile') === -1);
-    window.history.scrollRestoration = 'manual'
+    const result = (typeof window.orientation === 'undefined') && (navigator.userAgent.indexOf('IEMobile') === -1);
+    window.history.scrollRestoration = 'manual';
+    setisDesktop(result);
   }, [isDesktop]);
 
   return (
