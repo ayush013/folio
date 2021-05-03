@@ -8,8 +8,8 @@ const ProgressIndicator = () => {
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            progress.current ? progress.current.style.width = scrolled + '%' : '';
+            const scrolled = (winScroll / height);
+            progress.current ? progress.current.style.transform = `scaleX(${scrolled})` : '';
         })
     }, [progress]);
 

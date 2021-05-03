@@ -203,7 +203,8 @@ input[type="checkbox"] {
 
   .progress-bar {
     height: 0.2rem;
-    @apply w-0 bg-white;
+    transform-origin: left;
+    @apply w-full bg-white;
   }
 }
 

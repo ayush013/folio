@@ -18,7 +18,7 @@
   @apply absolute top-0 rounded-xl shadow-xl;
 
   width: 16.8rem !important;
-  transform: rotate(-22.5deg) translateZ(1.875rem);
+  transform: rotate(-22.5deg);
   height: unset !important;
   min-width: unset !important;
   max-height: unset !important;
@@ -29,5 +29,5 @@
 }
 
 .techIcons {
-  transform: rotate(-22.5deg) translateZ(1.875rem);
+  transform: rotate(-22.5deg) translateZ(2rem);
 }
