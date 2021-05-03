@@ -12,8 +12,6 @@ const Projects = ({ isDesktop, clientHeight }) => {
 
     useEffect(() => {
 
-        if (isDesktop && targetSection.current && document.body.clientWidth > 767) {
-
             const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } });
             const sidePadding = document.body.clientWidth - targetSection.current.querySelector('.inner-container').clientWidth;
             const elementWidth = sidePadding + targetSection.current.querySelector('.project-wrapper').clientWidth;
@@ -46,11 +44,6 @@ const Projects = ({ isDesktop, clientHeight }) => {
                 animation: revealTl,
             });
 
-
-        } else {
-            targetSection.current.querySelector('.project-wrapper').classList.remove('w-fit')
-            targetSection.current.querySelector('.project-wrapper').classList.add('overflow-y-scroll')
-        }
     }, [targetSection, PROJECTS, sectionTitle])
 
 

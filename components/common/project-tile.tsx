@@ -12,7 +12,8 @@ const ProjectTile = ({ project }) => {
             max: 5,
             speed: 400,
             glare: true,
-            'max-glare': 0.2
+            'max-glare': 0.2,
+            gyroscope: false
         });
     }, [projectCard]);
 
