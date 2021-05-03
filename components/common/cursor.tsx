@@ -7,7 +7,7 @@ const Cursor = ({ isDesktop }) => {
     const follower: MutableRefObject<HTMLDivElement> = useRef(null);
 
     useEffect(() => {
-        if (isDesktop) {
+        if (isDesktop && document.body.clientWidth > 767) {
 
             let posX = 0;
             let posY = 0;

@@ -17,12 +17,16 @@ import Footer from '@/components/common/footer';
 export default function Home() {
 
   const [isDesktop, setisDesktop] = useState(true);
+  const [clientHeight, setHeight] = useState(0);
 
   useEffect(() => {
     const result = (typeof window.orientation === 'undefined') && (navigator.userAgent.indexOf('IEMobile') === -1);
     window.history.scrollRestoration = 'manual';
+
     setisDesktop(result);
-  }, [isDesktop]);
+    setHeight(window.innerHeight);
+
+  }, [isDesktop, clientHeight]);
 
   return (
     <>
@@ -34,14 +38,14 @@ export default function Home() {
           <Menu></Menu>
         </Header>
         <ProgressIndicator></ProgressIndicator>
-        <Cursor isDesktop></Cursor>
+        <Cursor isDesktop={isDesktop}></Cursor>
         <main className='flex-col flex gap-y-28'>
           <div className='fixed top-0 left-0 h-screen w-screen bg-gray-900 -z-1'></div>
           <Hero></Hero>
-          <Projects isDesktop></Projects>
-          <Quote></Quote>
+          <Projects isDesktop={isDesktop} clientHeight={clientHeight}></Projects>
+          <Quote clientHeight={clientHeight}></Quote>
           <Skills></Skills>
-          <Collaboration></Collaboration>
+          <Collaboration clientHeight={clientHeight}></Collaboration>
           <Footer></Footer>
         </main>
       </Layout>

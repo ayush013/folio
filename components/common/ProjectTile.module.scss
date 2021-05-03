@@ -1,9 +1,13 @@
 .ProjectTile {
-  height: 26rem;
+  height: 22rem;
   width: 38rem;
   background: black;
   transform-style: preserve-3d;
   transform: perspective(1000px);
+
+  @media (min-width: 768px) {
+    height: 26rem;
+  }
 
   img {
     object-fit: cover;

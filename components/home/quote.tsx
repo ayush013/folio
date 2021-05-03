@@ -2,13 +2,13 @@ import { gsap, Linear } from 'gsap'
 import { MutableRefObject, useEffect, useRef } from 'react'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-const Quote = () => {
+const Quote = ({ clientHeight }) => {
 
     const quoteRef: MutableRefObject<HTMLDivElement> = useRef(null);
     const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
 
     useEffect(() => {
-        
+
         const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } });
         timeline
             .from(quoteRef.current, { opacity: 0, duration: 2 })
@@ -25,7 +25,7 @@ const Quote = () => {
 
     return (
         <section className='w-full relative select-none' ref={targetSection}>
-            <div className='2xl:container py-60 mx-auto xl:px-20 md:px-12 px-4'>
+            <div className={(clientHeight > 650 ? 'py-40' : 'py-60') + ' 2xl:container mx-auto xl:px-20 md:px-12 px-4'}>
                 <h1 ref={quoteRef} className='font-medium text-4xl md:text-5xl text-center'>I have a <span className='text-strong font-bold'>strong</span> obsession for attention to detail.</h1>
             </div>
             <style jsx global>{`

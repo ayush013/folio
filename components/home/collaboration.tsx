@@ -2,22 +2,24 @@ import { gsap, Linear } from 'gsap'
 import { MutableRefObject, useEffect, useRef } from 'react'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-const Collaboration = () => {
+const Collaboration = ({ clientHeight }) => {
 
     const quoteRef: MutableRefObject<HTMLDivElement> = useRef(null);
     const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
 
     useEffect(() => {
 
+        const smallScreen = document.body.clientWidth < 767;
+
         const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } });
         timeline
-        .from(quoteRef.current, { opacity: 0, duration: 2 })
-        .to(quoteRef.current.querySelector('.text-strong'), { backgroundPositionX: '100%', duration: 1 });
+            .from(quoteRef.current, { opacity: 0, duration: 2 })
+            .to(quoteRef.current.querySelector('.text-strong'), { backgroundPositionX: '100%', duration: 1 });
 
         const slidingTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
 
-        slidingTl.to(targetSection.current.querySelector('.ui-left'), { xPercent: -150 })
-        .from(targetSection.current.querySelector('.ui-right'), { xPercent: -150 }, '<')
+        slidingTl.to(targetSection.current.querySelector('.ui-left'), { xPercent: smallScreen ? -500 : -150 })
+            .from(targetSection.current.querySelector('.ui-right'), { xPercent: smallScreen ? -500 : -150 }, '<')
 
         ScrollTrigger.create({
             trigger: targetSection.current,
@@ -38,12 +40,12 @@ const Collaboration = () => {
 
     return (
         <section className='w-full relative select-none' ref={targetSection}>
-            <div className='2xl:container py-48 mx-auto xl:px-20 md:px-12 px-4 flex flex-col gap-y-8'>
-                <p className='opacity-20 text-7xl font-bold whitespace-nowrap ui-left'>{Array(5).fill(' User Interface Design  User Experience Design ').reduce((str, el) => str.concat(el), '')} </p>
+            <div className={(clientHeight > 650 ? 'py-36' : 'py-48') + ' 2xl:container mx-auto xl:px-20 md:px-12 px-4 flex flex-col gap-y-8'}>
+                <p className='opacity-20 text-5xl md:text-7xl font-bold whitespace-nowrap ui-left'>{Array(5).fill(' User Interface Design  User Experience Design ').reduce((str, el) => str.concat(el), '')} </p>
 
-                <h1 ref={quoteRef} className='font-medium text-5xl text-center'>Interested in <span className='text-strong font-bold'>Collaboration</span>?</h1>
+                <h1 ref={quoteRef} className='font-medium text-4xl md:text-5xl text-center'>Interested in <span className='text-strong font-bold'>Collaboration</span>?</h1>
 
-                <p className='opacity-20 text-7xl font-bold whitespace-nowrap ui-right'>{Array(5).fill(' Frontend Development  Motion Graphics ').reduce((str, el) => str.concat(el), '')} </p>
+                <p className='opacity-20 text-5xl md:text-7xl font-bold whitespace-nowrap ui-right'>{Array(5).fill(' Frontend Development  Motion Graphics ').reduce((str, el) => str.concat(el), '')} </p>
             </div>
             <style jsx global>{`
             .text-strong {
