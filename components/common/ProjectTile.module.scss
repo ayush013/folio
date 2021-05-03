@@ -4,6 +4,7 @@
   background: black;
   transform-style: preserve-3d;
   transform: perspective(1000px);
+  will-change: transform;
 
   @media (min-width: 768px) {
     height: 26rem;
@@ -30,4 +31,5 @@
 
 .techIcons {
   transform: rotate(-22.5deg) translateZ(2rem);
+  will-change: transform;
 }

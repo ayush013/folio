@@ -107,6 +107,7 @@ input[type="checkbox"] {
           pointer-events: auto;
           visibility: visible;
           > div {
+            will-change: transform;
             transform: scale(1);
             transition-duration: 0.75s;
             > div {
@@ -159,6 +160,7 @@ input[type="checkbox"] {
       width: 250vw;
       height: 250vw;
       transform: scale(0);
+      will-change: transform;
       border-radius: 50%;
       transition: all 0.4s ease;
       backface-visibility: hidden;
@@ -204,6 +206,7 @@ input[type="checkbox"] {
   .progress-bar {
     height: 0.2rem;
     transform-origin: left;
+    will-change: transform;
     @apply w-full bg-white;
   }
 }
