@@ -4,7 +4,6 @@ import { MENULINKS, TIMELINE, TimelineContent, TimelineNode } from '../../consta
 const svgColor = '#D0D6DF';
 const separation = 450;
 const strokeWidth = 2;
-const branch2X = 109;
 const branch1X = 13;
 const curveLength = 150;
 const dotSize = 26;
@@ -12,6 +11,7 @@ const dotSize = 26;
 const Timeline = () => {
 
     const [svgWidth, setSvgWidth] = useState(400);
+    const [branch2X, setBranch2X] = useState(109);
 
     const svgLength = TIMELINE.filter(el => el.type !== 'year')?.length * separation;
 
@@ -27,10 +27,10 @@ const Timeline = () => {
             x = branch2X;
         }
         if (timelineNode.diverge) {
-            y = y - curveLength + 4 * dotSize;
+            y = y - curveLength + 6 * dotSize;
         }
         if (timelineNode.converge) {
-            y = y + curveLength - 4 * dotSize;
+            y = y + curveLength - 6 * dotSize;
         }
 
         const str = addText(timelineNode, y) + `<rect class='dot' width=${dotSize} height=${dotSize} fill='#111827' x=${x - dotSize / 2} y=${y - dotSize / 2} ></rect><circle cx=${x} cy=${y} r='7' stroke=${svgColor} class='str dot' ></circle>`;
@@ -64,12 +64,16 @@ const Timeline = () => {
     };
 
     const addText = (timelineNode: TimelineNode, y: number) => {
-        const offset = (timelineNode.branch === 2 || timelineNode.parallel || timelineNode.diverge) ? 100 : 0;
+        const offset = (timelineNode.branch === 2 || timelineNode.parallel || timelineNode.diverge) ? branch2X : 10;
         if (timelineNode.type === 'year') {
-            return `<foreignObject x=${dotSize / 2 + 20 + offset} y=${y - dotSize / 2} width=${svgWidth - (dotSize / 2 + 20 + offset)} height='100'><p class='text-6xl'>${timelineNode.content}</p></foreignObject>`
+            return `<foreignObject x=${dotSize / 2 + 10 + offset} y=${y - dotSize / 2} width=${svgWidth - (dotSize / 2 + 10 + offset)} height='100'><p class='text-6xl'>${timelineNode.content}</p></foreignObject>`
         } else {
             const { description, title, logo } = timelineNode.content as TimelineContent;
-            return `<foreignObject x=${dotSize / 2 + 20 + offset} y=${y - dotSize / 2} width=${svgWidth - (dotSize / 2 + 20 + offset)} height=${separation / 2}><p class='text-2xl'>${title}</p><p class='text-xl mt-2 text-gray-200 font-medium tracking-wide'>${description}</p></foreignObject>`
+            let logoStr = '';
+            if(logo) {
+                logoStr = `<image src='/timeline/${logo}.svg' class='h-8 mb-2' />`
+            }
+            return `<foreignObject x=${dotSize / 2 + 10 + offset} y=${y - dotSize / 2} width=${svgWidth - (dotSize / 2 + 10 + offset)} height=${separation}>${logoStr}<p class='text-2xl'>${title}</p><p class='text-xl mt-2 text-gray-200 font-medium tracking-wide'>${description}</p></foreignObject>`
         }
     }
 
@@ -117,7 +121,11 @@ const Timeline = () => {
         resultString = createSvg(TIMELINE);
         timelineSvg.current.innerHTML = resultString;
 
-    }, [timelineSvg, svgContainer, svgWidth])
+        if(document.body.clientWidth < 767) {
+            setBranch2X(70);
+        }
+
+    }, [timelineSvg, svgContainer, svgWidth, branch2X])
 
 
     return (
@@ -128,11 +136,11 @@ const Timeline = () => {
                 <h2 className='text-2xl md:max-w-2xl w-full seq'>A quick recap of proud moments</h2>
             </div>
             <div className='grid grid-cols-12'>
-                <div className='col-span-6 line-svg' ref={svgContainer}>
+                <div className='col-span-12 md:col-span-6 line-svg' ref={svgContainer}>
                     <svg width={svgWidth} height={svgLength} viewBox={`0 0 ${svgWidth} ${svgLength}`} fill='none' ref={timelineSvg}>
                     </svg>
                 </div>
-                <div className='col-span-6'>
+                <div className='col-span-12 md:col-span-6'>
 
                 </div>
             </div>
