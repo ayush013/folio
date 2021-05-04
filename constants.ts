@@ -208,8 +208,7 @@ export const TIMELINE: TimelineNode[] = [
             logo: 'akgec'
         },
         branch: 1,
-        type: 'checkpoint',
-        diverge: true
+        type: 'checkpoint'
     },
     {
         content: '2018',
@@ -223,7 +222,8 @@ export const TIMELINE: TimelineNode[] = [
             logo: 'si'
         },
         branch: 1,
-        type: 'checkpoint'
+        type: 'checkpoint',
+        diverge: true
     },
     {
         content: {
@@ -231,7 +231,8 @@ export const TIMELINE: TimelineNode[] = [
             description: 'Guided 200 students to create their first animated SVG using CSS/SMIL at PHP Workshop, SDC-SI'
         },
         branch: 1,
-        type: 'checkpoint'
+        type: 'checkpoint',
+        parallel: 2
     },
     {
         content: '2017',
@@ -244,7 +245,8 @@ export const TIMELINE: TimelineNode[] = [
             description: 'Competed against 20+ teams for design and development of web project from scratch'
         },
         branch: 2,
-        type: 'checkpoint'
+        type: 'checkpoint',
+        parallel: 1
     },
     {
         content: {
@@ -252,7 +254,8 @@ export const TIMELINE: TimelineNode[] = [
             description: 'Guided 200 students for javascript fundamentals at Game Development workshop, SDC-SI'
         },
         branch: 1,
-        type: 'checkpoint'
+        type: 'checkpoint',
+        parallel: 2
     },
     {
         content: {
@@ -260,7 +263,8 @@ export const TIMELINE: TimelineNode[] = [
             description: 'Competed in web and graphic design challenge with 100+ participants.'
         },
         branch: 2,
-        type: 'checkpoint'
+        type: 'checkpoint',
+        parallel: 1
     },
     {
         content: {
@@ -268,7 +272,8 @@ export const TIMELINE: TimelineNode[] = [
             description: 'Guided 300+ students on getting started with web technologies like HTML/CSS and JS'
         },
         branch: 1,
-        type: 'checkpoint'
+        type: 'checkpoint',
+        parallel: 2
     },
     {
         content: '2016',
@@ -283,6 +288,11 @@ export const TIMELINE: TimelineNode[] = [
         branch: 2,
         type: 'checkpoint',
         converge: true
+    },
+    {
+        content: 'Started Learning',
+        branch: 1,
+        type: 'year'
     },
     {
         content: {
@@ -315,7 +325,8 @@ export interface TimelineNode {
     branch: 1 | 2,
     type: 'year' | 'checkpoint',
     converge?: boolean,
-    diverge?: boolean
+    diverge?: boolean,
+    parallel?: 1 | 2
 }
 
 interface TimelineContent {

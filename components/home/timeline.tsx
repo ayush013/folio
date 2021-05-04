@@ -2,7 +2,7 @@ import { MutableRefObject, useEffect, useRef } from 'react';
 import { MENULINKS, TIMELINE, TimelineNode } from '../../constants';
 
 const svgColor = '#D0D6DF';
-const separation = 560;
+const separation = 500;
 const strokeWidth = 2;
 const branch2X = 109;
 const branch1X = 13;
@@ -23,33 +23,36 @@ const Timeline = () => {
         if (timelineNode.branch === 2) {
             x = branch2X;
         }
-        if(timelineNode.diverge) {
-            y = y - curveLength + dotSize;
+        if (timelineNode.diverge) {
+            y = y - curveLength + 2 * dotSize;
         }
-        if(timelineNode.converge) {
-            y = y - dotSize;
+        if (timelineNode.converge) {
+            y = y + curveLength - 2 * dotSize;
         }
-        return `<rect class='dot' width=${dotSize} height=${dotSize} fill='#111827' x=${x - dotSize/2} y=${y - dotSize/2} ></rect><circle cx=${x} cy=${y} r='7' stroke=${svgColor} class='str dot' ></circle>`;
+        return `<rect class='dot' width=${dotSize} height=${dotSize} fill='#111827' x=${x - dotSize / 2} y=${y - dotSize / 2} ></rect><circle cx=${x} cy=${y} r='7' stroke=${svgColor} class='str dot' ></circle>`;
     };
 
     const drawLine = (timelineNode: TimelineNode, y: number) => {
-        if(timelineNode.converge || timelineNode.diverge) {
-            if(timelineNode.diverge) {
-                return `<line class='str' x1=${branch1X} y1=${y} x2=${branch1X} y2=${Math.abs(y + separation - curveLength)} stroke=${svgColor} />`
+        if (timelineNode.converge || timelineNode.diverge) {
+            if (timelineNode.diverge) {
+                return `<line class='str' x1=${branch1X} y1=${y} x2=${branch1X} y2=${y + separation} stroke=${svgColor} />`
             } else {
-                return `<line class='str' x1=${branch1X} y1=${y} x2=${branch1X} y2=${y + separation - curveLength} stroke=${svgColor} />`
+                return `<line class='str' x1=${branch1X} y1=${y} x2=${branch1X} y2=${y + separation} stroke=${svgColor} />`
             }
-
         } else {
-
+            let str = `<line class='str' x1=${timelineNode.branch === 1 ? branch1X : branch2X} y1=${y} x2=${timelineNode.branch === 1 ? branch1X : branch2X} y2=${Math.abs(y + separation)} stroke=${svgColor} />`
+            if (timelineNode.parallel) {
+                str = str.concat(`<line class='str' x1=${timelineNode.parallel === 1 ? branch1X : branch2X} y1=${y} x2=${timelineNode.parallel === 1 ? branch1X : branch2X} y2=${Math.abs(y + separation)} stroke=${svgColor} />`)
+            }
+            return str;
         }
     };
 
     const drawBranch = (timelineNode: TimelineNode, y: number) => {
         if (timelineNode.converge) {
-            return `<path class='str' d='M ${branch2X} ${y + separation - 2*curveLength} C ${branch2X} ${y + separation - 2*curveLength + curveLength/2} ${branch1X} ${y + separation - 2*curveLength + curveLength/2} ${branch1X} ${y + separation - curveLength}' stroke=${svgColor} /><line class='str' x1=${branch2X} y1=${y} x2=${branch2X} y2=${Math.abs(y + separation - 2*curveLength)} stroke=${svgColor} />`;
+            return `<path class='str' d='M ${branch2X} ${y + separation - curveLength} C ${branch2X} ${y + separation - curveLength + curveLength / 2} ${branch1X} ${y + separation - curveLength + curveLength / 2} ${branch1X} ${y + separation}' stroke=${svgColor} /><line class='str' x1=${branch2X} y1=${y} x2=${branch2X} y2=${Math.abs(y + separation - curveLength)} stroke=${svgColor} />`;
         } else {
-            return `<path class='str' d='M ${branch1X} ${y} C ${branch1X} ${y + curveLength/2} ${branch2X} ${y + curveLength/2} ${branch2X} ${y + curveLength}' stroke=${svgColor} /><line class='str' x1=${branch2X} y1=${y + curveLength} x2=${branch2X} y2=${Math.abs(y + separation - curveLength)} stroke=${svgColor} />`;
+            return `<path class='str' d='M ${branch1X} ${y} C ${branch1X} ${y + curveLength / 2} ${branch2X} ${y + curveLength / 2} ${branch2X} ${y + curveLength}' stroke=${svgColor} /><line class='str' x1=${branch2X} y1=${y + curveLength} x2=${branch2X} y2=${y + separation} stroke=${svgColor} />`;
         }
 
     };
@@ -70,23 +73,25 @@ const Timeline = () => {
                 idx++;
                 continue;
             }
-            if (node.type === 'year') {
-
-            } else {
-                if (node.branch === 2 && (idx === 1 || idx === 2)) {
-                    if (node.diverge || node.converge) {
-                        result = drawLine(node, y) + result;
-                        result = drawBranch(node, y) + result;
-                        result = result.concat(drawDot(node, y + separation/2));
-                        y = Math.abs(y + separation - curveLength);
-                        console.log(y,idx)
-                    } else {
-
-                    }
-                }
+            if(idx === timeline.length - 1) {
+                result = drawLine(node, y - separation / 2) + result;
+                result = result.concat(drawDot(node, y + separation / 2));
+                idx++;
+                continue;
             }
-
-
+            if (node.type === 'year') {
+                result = result.concat(drawDot(node, y));
+            } else {
+                if (node.diverge || node.converge) {
+                    result = drawLine(node, y) + result;
+                    result = drawBranch(node, y) + result;
+                    result = result.concat(drawDot(node, y + separation / 2));
+                } else {
+                    result = drawLine(node, y) + result;
+                    result = result.concat(drawDot(node, y + separation / 2));
+                }
+                y = y + separation;
+            }
             idx++;
         }
 
