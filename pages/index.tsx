@@ -46,7 +46,7 @@ export default function Home() {
           <Projects isDesktop={isDesktop} clientHeight={clientHeight}></Projects>
           <Quote clientHeight={clientHeight}></Quote>
           <Skills></Skills>
-          <Timeline></Timeline>
+          <Timeline isDesktop={isDesktop}></Timeline>
           <Collaboration clientHeight={clientHeight}></Collaboration>
           <Footer></Footer>
         </main>

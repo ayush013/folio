@@ -8,6 +8,8 @@ const Cursor = ({ isDesktop }) => {
 
     useEffect(() => {
         if (isDesktop && document.body.clientWidth > 767) {
+            follower.current.classList.remove('hidden');
+            cursor.current.classList.remove('hidden');
 
             let posX = 0;
             let posY = 0;
@@ -55,17 +57,14 @@ const Cursor = ({ isDesktop }) => {
                 });
             });
 
-        } else {
-            follower.current.classList.add('hidden');
-            cursor.current.classList.add('hidden');
         }
 
     }, [cursor, follower])
 
     return (
         <>
-            <div ref={cursor} className={styles.cursor + ' fixed bg-white w-4 h-4 select-none pointer-events-none z-50'}></div>
-            <div ref={follower} className={styles.cursorFollower + ' fixed h-8 w-8 select-none pointer-events-none z-50'}></div>
+            <div ref={cursor} className={styles.cursor + ' fixed hidden bg-white w-4 h-4 select-none pointer-events-none z-50'}></div>
+            <div ref={follower} className={styles.cursorFollower + ' fixed hidden h-8 w-8 select-none pointer-events-none z-50'}></div>
         </>
     )
 }

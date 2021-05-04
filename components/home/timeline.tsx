@@ -1,5 +1,8 @@
 import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { MENULINKS, TIMELINE, TimelineContent, TimelineNode } from '../../constants';
+import Image from 'next/image';
+import { gsap, Linear } from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 const svgColor = '#D0D6DF';
 const separation = 450;
@@ -8,7 +11,7 @@ const branch1X = 13;
 const curveLength = 150;
 const dotSize = 26;
 
-const Timeline = () => {
+const Timeline = ({ isDesktop }) => {
 
     const [svgWidth, setSvgWidth] = useState(400);
     const [branch2X, setBranch2X] = useState(109);
@@ -17,8 +20,7 @@ const Timeline = () => {
 
     const timelineSvg: MutableRefObject<SVGSVGElement> = useRef(null);
     const svgContainer: MutableRefObject<HTMLDivElement> = useRef(null);
-
-    let resultString = '';
+    const screenContainer: MutableRefObject<HTMLDivElement> = useRef(null);
 
 
     const drawDot = (timelineNode: TimelineNode, y) => {
@@ -70,8 +72,8 @@ const Timeline = () => {
         } else {
             const { description, title, logo } = timelineNode.content as TimelineContent;
             let logoStr = '';
-            if(logo) {
-                logoStr = `<image src='/timeline/${logo}.svg' class='h-8 mb-2' />`
+            if (logo) {
+                logoStr = `<img src='/timeline/${logo}.svg' class='h-8 mb-2' loading='lazy' height='32' />`
             }
             return `<foreignObject x=${dotSize / 2 + 10 + offset} y=${y - dotSize / 2} width=${svgWidth - (dotSize / 2 + 10 + offset)} height=${separation}>${logoStr}<p class='text-2xl'>${title}</p><p class='text-xl mt-2 text-gray-200 font-medium tracking-wide'>${description}</p></foreignObject>`
         }
@@ -118,30 +120,110 @@ const Timeline = () => {
         const width = svgContainer.current.clientWidth;
         setSvgWidth(width);
 
-        resultString = createSvg(TIMELINE);
+        const resultString = createSvg(TIMELINE);
         timelineSvg.current.innerHTML = resultString;
 
-        if(document.body.clientWidth < 767) {
+        if (document.body.clientWidth < 767) {
             setBranch2X(70);
         }
 
-    }, [timelineSvg, svgContainer, svgWidth, branch2X])
+        if(isDesktop && document.body.clientWidth > 767) {
+
+            const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone, duration: 0.3 } });
+            timeline
+                .to(screenContainer.current.querySelector('.slide-1'), { opacity: 0, delay: 2 })
+    
+                .fromTo(screenContainer.current.querySelector('.slide-2'), { opacity: 0 }, { opacity: 1 })
+                .to(screenContainer.current.querySelector('.slide-2'), { opacity: 0, delay: 2 })
+    
+                .fromTo(screenContainer.current.querySelector('.slide-3'), { opacity: 0 }, { opacity: 1 })
+                .to(screenContainer.current.querySelector('.slide-3'), { opacity: 0, delay: 2 })
+    
+                .fromTo(screenContainer.current.querySelector('.slide-4'), { opacity: 0 }, { opacity: 1 })
+                .to(screenContainer.current.querySelector('.slide-4'), { opacity: 0, delay: 2 })
+    
+                .fromTo(screenContainer.current.querySelector('.slide-5'), { opacity: 0 }, { opacity: 1 })
+                .to(screenContainer.current.querySelector('.slide-5'), { opacity: 0, delay: 2 })
+    
+                .fromTo(screenContainer.current.querySelector('.slide-6'), { opacity: 0 }, { opacity: 1 })
+                .to(screenContainer.current.querySelector('.slide-6'), { opacity: 0, delay: 2 })
+    
+                .fromTo(screenContainer.current.querySelector('.slide-7'), { opacity: 0 }, { opacity: 1 })
+                .to(screenContainer.current.querySelector('.slide-7'), { opacity: 0, delay: 2 })
+    
+                .fromTo(screenContainer.current.querySelector('.slide-8'), { opacity: 0 }, { opacity: 1 })
+                .to(screenContainer.current.querySelector('.slide-8'), { opacity: 0, delay: 2 })
+    
+                .fromTo(screenContainer.current.querySelector('.slide-9'), { opacity: 0 }, { opacity: 1 })
+                .to(screenContainer.current.querySelector('.slide-9'), { opacity: 0, delay: 2 })
+    
+                .fromTo(screenContainer.current.querySelector('.slide-10'), { opacity: 0 }, { opacity: 1 })
+                .to(screenContainer.current.querySelector('.slide-10'), { opacity: 0, delay: 2 })
+    
+                .fromTo(screenContainer.current.querySelector('.slide-11'), { opacity: 0 }, { opacity: 1 })
+                .to(screenContainer.current.querySelector('.slide-11'), { opacity: 0, delay: 2 })
+    
+                .fromTo(screenContainer.current.querySelector('.slide-12'), { opacity: 0 }, { opacity: 1 })
+                .to(screenContainer.current.querySelector('.slide-12'), { opacity: 0, delay: 2 })
+    
+                .fromTo(screenContainer.current.querySelector('.slide-13'), { opacity: 0 }, { opacity: 1 })
+                .to(screenContainer.current.querySelector('.slide-13'), { opacity: 0, delay: 2 })
+    
+                .fromTo(screenContainer.current.querySelector('.slide-14'), { opacity: 0 }, { opacity: 1 })
+    
+            const platformHeight = screenContainer.current.getBoundingClientRect().height;
+    
+            ScrollTrigger.create({
+                trigger: screenContainer.current,
+                start: `top ${(window.innerHeight - platformHeight) / 2}`,
+                end: `+=${svgLength - platformHeight}`,
+                pin: true,
+                pinSpacing: true,
+                scrub: 0,
+                animation: timeline,
+            });
+        } else {
+            screenContainer.current.innerHTML = '';
+        }
+
+    }, [timelineSvg, svgContainer, svgWidth, branch2X, screenContainer])
 
 
     return (
         <section className='w-full relative select-none min-h-screen 2xl:container mx-auto py-8 xl:px-20 md:px-12 px-4 flex flex-col justify-center gap-y-20' id={MENULINKS[3].ref}>
+
             <div className='flex flex-col gap-2'>
                 <p className='uppercase tracking-widest text-gray-200 text-sm seq'>MILESTONES</p>
                 <h1 className='text-5xl font-bold text-gradient seq w-fit'>Timeline</h1>
                 <h2 className='text-2xl md:max-w-2xl w-full seq'>A quick recap of proud moments</h2>
             </div>
-            <div className='grid grid-cols-12'>
+            <div className='grid grid-cols-12 gap-4'>
                 <div className='col-span-12 md:col-span-6 line-svg' ref={svgContainer}>
                     <svg width={svgWidth} height={svgLength} viewBox={`0 0 ${svgWidth} ${svgLength}`} fill='none' ref={timelineSvg}>
                     </svg>
                 </div>
-                <div className='col-span-12 md:col-span-6'>
-
+                <div className='col-span-12 md:col-span-6 md:flex hidden'>
+                    <div className="max-w-full h-96 shadow-xl bg-gray-800 rounded-2xl overflow-hidden" ref={screenContainer}>
+                        <Image className='w-full h-8' src='/timeline/title-bar.svg' alt='Title bar' width={644} height={34} />
+                        <div className="relative h-full w-full -mt-2">
+                            <div className="absolute top-0 left-0 h-full w-full">
+                                <Image className='w-full absolute top-0 object-cover slide-1' src='/timeline/huminos-freelance.jpg' alt='Timeline' layout='fill' />
+                                <Image className='w-full absolute top-0 object-cover slide-2' src='/timeline/aftereffects.jpg' alt='Timeline' layout='fill' />
+                                <Image className='w-full absolute top-0 object-cover slide-3' src='/timeline/dlt-website.jpg' alt='Timeline' layout='fill' />
+                                <Image className='w-full absolute top-0 object-cover slide-4' src='/timeline/huminos-website.jpg' alt='Timeline' layout='fill' />
+                                <Image className='w-full absolute top-0 object-cover slide-5' src='/timeline/farewell.jpg' alt='Timeline' layout='fill' />
+                                <Image className='w-full absolute top-0 object-cover slide-6' src='/timeline/si-head.jpg' alt='Timeline' layout='fill' />
+                                <Image className='w-full absolute top-0 object-cover slide-7' src='/timeline/svg-lecture.jpg' alt='Timeline' layout='fill' />
+                                <Image className='w-full absolute top-0 object-cover slide-8' src='/timeline/ims-17.jpg' alt='Timeline' layout='fill' />
+                                <Image className='w-full absolute top-0 object-cover slide-9' src='/timeline/js-17.jpg' alt='Timeline' layout='fill' />
+                                <Image className='w-full absolute top-0 object-cover slide-10' src='/timeline/abes-17.jpg' alt='Timeline' layout='fill' />
+                                <Image className='w-full absolute top-0 object-cover slide-11' src='/timeline/web-17.jpg' alt='Timeline' layout='fill' />
+                                <Image className='w-full absolute top-0 object-cover slide-12' src='/timeline/ims-16.jpg' alt='Timeline' layout='fill' />
+                                <Image className='w-full absolute top-0 object-cover slide-13' src='/timeline/si-start.jpg' alt='Timeline' layout='fill' />
+                                <Image className='w-full absolute top-0 object-cover slide-14' src='/timeline/xda-rt.jpg' alt='Timeline' layout='fill' />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
