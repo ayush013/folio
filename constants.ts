@@ -152,12 +152,11 @@ export const SKILLS = {
     other: ['git', 'webpack', 'gulp', 'lightroom', 'aftereffects']
 }
 
-export const TIMELINE: Timeline[] = [
+export const TIMELINE: TimelineNode[] = [
     {
         content: '2020',
         branch: 1,
-        type: 'year',
-        diverge: true
+        type: 'year'
     },
     {
         content: {
@@ -166,7 +165,8 @@ export const TIMELINE: Timeline[] = [
             logo: 'huminos'
         },
         branch: 2,
-        type: 'checkpoint'
+        type: 'checkpoint',
+        diverge: true
     },
     {
         content: {
@@ -208,13 +208,13 @@ export const TIMELINE: Timeline[] = [
             logo: 'akgec'
         },
         branch: 1,
-        type: 'checkpoint'
+        type: 'checkpoint',
+        diverge: true
     },
     {
         content: '2018',
         branch: 1,
         type: 'year',
-        diverge: true
     },
     {
         content: {
@@ -310,7 +310,7 @@ export const TIMELINE: Timeline[] = [
     }
 ]
 
-interface Timeline {
+export interface TimelineNode {
     content: string | TimelineContent,
     branch: 1 | 2,
     type: 'year' | 'checkpoint',

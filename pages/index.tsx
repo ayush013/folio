@@ -13,6 +13,7 @@ import Quote from '@/components/home/quote';
 import Skills from '@/components/home/skills';
 import Collaboration from '@/components/home/collaboration';
 import Footer from '@/components/common/footer';
+import Timeline from '@/components/home/timeline';
 
 export default function Home() {
 
@@ -45,6 +46,7 @@ export default function Home() {
           <Projects isDesktop={isDesktop} clientHeight={clientHeight}></Projects>
           <Quote clientHeight={clientHeight}></Quote>
           <Skills></Skills>
+          <Timeline></Timeline>
           <Collaboration clientHeight={clientHeight}></Collaboration>
           <Footer></Footer>
         </main>
