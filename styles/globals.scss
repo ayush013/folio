@@ -107,7 +107,6 @@ input[type="checkbox"] {
           pointer-events: auto;
           visibility: visible;
           > div {
-            will-change: transform;
             transform: scale(1);
             transition-duration: 0.75s;
             > div {

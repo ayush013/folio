@@ -52,7 +52,7 @@ const Projects = ({ isDesktop, clientHeight }) => {
             <div className={(clientHeight > 650 ? 'gap-y-20' : 'gap-y-10') + ' flex-col flex py-8 xl:px-20 md:px-12 px-4 justify-center h-full'}>
                 <div className='flex flex-col gap-2 inner-container transform-gpu' ref={sectionTitle}>
                     <p className='uppercase tracking-widest text-gray-200 text-sm seq'>PROJECTS</p>
-                    <h1 className='text-5xl font-bold text-gradient seq'>My Works</h1>
+                    <h1 className='text-5xl font-bold text-gradient seq w-fit'>My Works</h1>
                     <h2 className='text-2xl md:max-w-3xl w-full seq max-w-sm'>I have contributed in over 20+ projects ranging from Frontend Development, UI/UX, Open Source, and Motion Graphics</h2>
                 </div>
                 <div className='flex gap-x-16 project-wrapper w-fit seq'>
@@ -62,9 +62,6 @@ const Projects = ({ isDesktop, clientHeight }) => {
             <style jsx global>{`
             .project-wrapper::-webkit-scrollbar {
                 display: none;
-            }
-            .w-fit {
-                width: fit-content;
             }
             `}</style>
         </section>
