@@ -290,7 +290,7 @@ export const TIMELINE: TimelineNode[] = [
         converge: true
     },
     {
-        content: 'Started Learning',
+        content: '',
         branch: 1,
         type: 'year'
     },
@@ -329,7 +329,7 @@ export interface TimelineNode {
     parallel?: 1 | 2
 }
 
-interface TimelineContent {
+export interface TimelineContent {
     title: string,
     description: string,
     logo?: string

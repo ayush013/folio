@@ -1,8 +1,8 @@
-import { MutableRefObject, useEffect, useRef } from 'react';
-import { MENULINKS, TIMELINE, TimelineNode } from '../../constants';
+import { MutableRefObject, useEffect, useRef, useState } from 'react';
+import { MENULINKS, TIMELINE, TimelineContent, TimelineNode } from '../../constants';
 
 const svgColor = '#D0D6DF';
-const separation = 500;
+const separation = 450;
 const strokeWidth = 2;
 const branch2X = 109;
 const branch1X = 13;
@@ -11,9 +11,12 @@ const dotSize = 26;
 
 const Timeline = () => {
 
-    const lineLength = TIMELINE.filter(el => el.type !== 'year')?.length * separation;
+    const [svgWidth, setSvgWidth] = useState(400);
+
+    const svgLength = TIMELINE.filter(el => el.type !== 'year')?.length * separation;
 
     const timelineSvg: MutableRefObject<SVGSVGElement> = useRef(null);
+    const svgContainer: MutableRefObject<HTMLDivElement> = useRef(null);
 
     let resultString = '';
 
@@ -24,12 +27,15 @@ const Timeline = () => {
             x = branch2X;
         }
         if (timelineNode.diverge) {
-            y = y - curveLength + 2 * dotSize;
+            y = y - curveLength + 4 * dotSize;
         }
         if (timelineNode.converge) {
-            y = y + curveLength - 2 * dotSize;
+            y = y + curveLength - 4 * dotSize;
         }
-        return `<rect class='dot' width=${dotSize} height=${dotSize} fill='#111827' x=${x - dotSize / 2} y=${y - dotSize / 2} ></rect><circle cx=${x} cy=${y} r='7' stroke=${svgColor} class='str dot' ></circle>`;
+
+        const str = addText(timelineNode, y) + `<rect class='dot' width=${dotSize} height=${dotSize} fill='#111827' x=${x - dotSize / 2} y=${y - dotSize / 2} ></rect><circle cx=${x} cy=${y} r='7' stroke=${svgColor} class='str dot' ></circle>`;
+
+        return str;
     };
 
     const drawLine = (timelineNode: TimelineNode, y: number) => {
@@ -57,14 +63,19 @@ const Timeline = () => {
 
     };
 
-    useEffect(() => {
-        resultString = createSvg(TIMELINE);
-        timelineSvg.current.innerHTML = resultString;
-    }, [timelineSvg])
+    const addText = (timelineNode: TimelineNode, y: number) => {
+        const offset = (timelineNode.branch === 2 || timelineNode.parallel || timelineNode.diverge) ? 100 : 0;
+        if (timelineNode.type === 'year') {
+            return `<foreignObject x=${dotSize / 2 + 20 + offset} y=${y - dotSize / 2} width=${svgWidth - (dotSize / 2 + 20 + offset)} height='100'><p class='text-6xl'>${timelineNode.content}</p></foreignObject>`
+        } else {
+            const { description, title, logo } = timelineNode.content as TimelineContent;
+            return `<foreignObject x=${dotSize / 2 + 20 + offset} y=${y - dotSize / 2} width=${svgWidth - (dotSize / 2 + 20 + offset)} height=${separation / 2}><p class='text-2xl'>${title}</p><p class='text-xl mt-2 text-gray-200 font-medium tracking-wide'>${description}</p></foreignObject>`
+        }
+    }
 
     const createSvg = (timeline: TimelineNode[]) => {
         let idx = 0;
-        let y = 13;
+        let y = dotSize / 2;
         let result = `<style>.str{stroke-width: ${strokeWidth}px}</style>`;
 
         for (let node of timeline) {
@@ -73,7 +84,7 @@ const Timeline = () => {
                 idx++;
                 continue;
             }
-            if(idx === timeline.length - 1) {
+            if (idx === timeline.length - 1) {
                 result = drawLine(node, y - separation / 2) + result;
                 result = result.concat(drawDot(node, y + separation / 2));
                 idx++;
@@ -98,20 +109,28 @@ const Timeline = () => {
         return result
     }
 
+
+    useEffect(() => {
+        const width = svgContainer.current.clientWidth;
+        setSvgWidth(width);
+
+        resultString = createSvg(TIMELINE);
+        timelineSvg.current.innerHTML = resultString;
+
+    }, [timelineSvg, svgContainer, svgWidth])
+
+
     return (
         <section className='w-full relative select-none min-h-screen 2xl:container mx-auto py-8 xl:px-20 md:px-12 px-4 flex flex-col justify-center gap-y-20' id={MENULINKS[3].ref}>
-
             <div className='flex flex-col gap-2'>
                 <p className='uppercase tracking-widest text-gray-200 text-sm seq'>MILESTONES</p>
                 <h1 className='text-5xl font-bold text-gradient seq w-fit'>Timeline</h1>
                 <h2 className='text-2xl md:max-w-2xl w-full seq'>A quick recap of proud moments</h2>
             </div>
             <div className='grid grid-cols-12'>
-                <div className='col-span-6 flex'>
-                    <div className='line-svg'>
-                        <svg width='120' height={lineLength} viewBox={`0 0 120 ${lineLength}`} fill='none' ref={timelineSvg}>
-                        </svg>
-                    </div>
+                <div className='col-span-6 line-svg' ref={svgContainer}>
+                    <svg width={svgWidth} height={svgLength} viewBox={`0 0 ${svgWidth} ${svgLength}`} fill='none' ref={timelineSvg}>
+                    </svg>
                 </div>
                 <div className='col-span-6'>
 
