@@ -5,6 +5,7 @@ import { gsap, Linear } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 const svgColor = '#D0D6DF';
+const animColor = '#FCD34D';
 const separation = 450;
 const strokeWidth = 2;
 const branch1X = 13;
@@ -23,7 +24,7 @@ const Timeline = ({ isDesktop }) => {
     const screenContainer: MutableRefObject<HTMLDivElement> = useRef(null);
 
 
-    const drawDot = (timelineNode: TimelineNode, y) => {
+    const drawDot = (timelineNode: TimelineNode, y: number) => {
         let x = branch1X;
         if (timelineNode.branch === 2) {
             x = branch2X;
@@ -40,27 +41,27 @@ const Timeline = ({ isDesktop }) => {
         return str;
     };
 
-    const drawLine = (timelineNode: TimelineNode, y: number) => {
+    const drawLine = (timelineNode: TimelineNode, y: number, i: number) => {
         if (timelineNode.converge || timelineNode.diverge) {
             if (timelineNode.diverge) {
-                return `<line class='str' x1=${branch1X} y1=${y} x2=${branch1X} y2=${y + separation} stroke=${svgColor} />`
+                return `<line class='str' x1=${branch1X} y1=${y} x2=${branch1X} y2=${y + separation} stroke=${svgColor} /><line class='str line-${i}' x1=${branch1X} y1=${y} x2=${branch1X} y2=${y + separation} stroke=${animColor} />`
             } else {
-                return `<line class='str' x1=${branch1X} y1=${y} x2=${branch1X} y2=${y + separation} stroke=${svgColor} />`
+                return `<line class='str' x1=${branch1X} y1=${y} x2=${branch1X} y2=${y + separation} stroke=${svgColor} /><line class='str line-${i}' x1=${branch1X} y1=${y} x2=${branch1X} y2=${y + separation} stroke=${animColor} />`
             }
         } else {
-            let str = `<line class='str' x1=${timelineNode.branch === 1 ? branch1X : branch2X} y1=${y} x2=${timelineNode.branch === 1 ? branch1X : branch2X} y2=${Math.abs(y + separation)} stroke=${svgColor} />`
+            let str = `<line class='str' x1=${timelineNode.branch === 1 ? branch1X : branch2X} y1=${y} x2=${timelineNode.branch === 1 ? branch1X : branch2X} y2=${Math.abs(y + separation)} stroke=${svgColor} /><line class='str line-${i}' x1=${timelineNode.branch === 1 ? branch1X : branch2X} y1=${y} x2=${timelineNode.branch === 1 ? branch1X : branch2X} y2=${Math.abs(y + separation)} stroke=${animColor} />`
             if (timelineNode.parallel) {
-                str = str.concat(`<line class='str' x1=${timelineNode.parallel === 1 ? branch1X : branch2X} y1=${y} x2=${timelineNode.parallel === 1 ? branch1X : branch2X} y2=${Math.abs(y + separation)} stroke=${svgColor} />`)
+                str = str.concat(`<line class='str' x1=${timelineNode.parallel === 1 ? branch1X : branch2X} y1=${y} x2=${timelineNode.parallel === 1 ? branch1X : branch2X} y2=${Math.abs(y + separation)} stroke=${svgColor} /><line class='str line-${i}' x1=${timelineNode.parallel === 1 ? branch1X : branch2X} y1=${y} x2=${timelineNode.parallel === 1 ? branch1X : branch2X} y2=${Math.abs(y + separation)} stroke=${animColor} />`)
             }
             return str;
         }
     };
 
-    const drawBranch = (timelineNode: TimelineNode, y: number) => {
+    const drawBranch = (timelineNode: TimelineNode, y: number, i: number) => {
         if (timelineNode.converge) {
-            return `<path class='str' d='M ${branch2X} ${y + separation - curveLength} C ${branch2X} ${y + separation - curveLength + curveLength / 2} ${branch1X} ${y + separation - curveLength + curveLength / 2} ${branch1X} ${y + separation}' stroke=${svgColor} /><line class='str' x1=${branch2X} y1=${y} x2=${branch2X} y2=${Math.abs(y + separation - curveLength)} stroke=${svgColor} />`;
+            return `<path class='str' d='M ${branch2X} ${y + separation - curveLength} C ${branch2X} ${y + separation - curveLength + curveLength / 2} ${branch1X} ${y + separation - curveLength + curveLength / 2} ${branch1X} ${y + separation}' stroke=${svgColor} /><line class='str' x1=${branch2X} y1=${y} x2=${branch2X} y2=${Math.abs(y + separation - curveLength)} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${branch2X} ${y + separation - curveLength} C ${branch2X} ${y + separation - curveLength + curveLength / 2} ${branch1X} ${y + separation - curveLength + curveLength / 2} ${branch1X} ${y + separation}' stroke=${animColor} /><line class='str branch-line-${i}' x1=${branch2X} y1=${y} x2=${branch2X} y2=${Math.abs(y + separation - curveLength)} stroke=${animColor} />`;
         } else {
-            return `<path class='str' d='M ${branch1X} ${y} C ${branch1X} ${y + curveLength / 2} ${branch2X} ${y + curveLength / 2} ${branch2X} ${y + curveLength}' stroke=${svgColor} /><line class='str' x1=${branch2X} y1=${y + curveLength} x2=${branch2X} y2=${y + separation} stroke=${svgColor} />`;
+            return `<path class='str' d='M ${branch1X} ${y} C ${branch1X} ${y + curveLength / 2} ${branch2X} ${y + curveLength / 2} ${branch2X} ${y + curveLength}' stroke=${svgColor} /><line class='str' x1=${branch2X} y1=${y + curveLength} x2=${branch2X} y2=${y + separation} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${branch1X} ${y} C ${branch1X} ${y + curveLength / 2} ${branch2X} ${y + curveLength / 2} ${branch2X} ${y + curveLength}' stroke=${animColor} /><line class='str branch-line-${i}' x1=${branch2X} y1=${y + curveLength} x2=${branch2X} y2=${y + separation} stroke=${animColor} />`;
         }
 
     };
@@ -80,19 +81,21 @@ const Timeline = ({ isDesktop }) => {
     }
 
     const createSvg = (timeline: TimelineNode[]) => {
-        let idx = 0;
+        let dots = 0;
+        let idx = 1;
         let y = dotSize / 2;
-        let result = `<style>.str, .dot{stroke-width: ${strokeWidth}px}</style>`;
+        let result = `<style>.str, .dot{stroke-width: ${strokeWidth}px}.anim-branch{stroke-dasharray: 186}</style>`;
 
         for (let node of timeline) {
-            if (idx === 0) {
+            if (dots === 0) {
                 result = result.concat(drawDot(node, y));
-                idx++;
+                dots++;
                 continue;
             }
-            if (idx === timeline.length - 1) {
-                result = drawLine(node, y - separation / 2) + result;
+            if (dots === timeline.length - 1) {
+                result = drawLine(node, y - separation / 2, idx) + result;
                 result = result.concat(drawDot(node, y + separation / 2));
+                dots++;
                 idx++;
                 continue;
             }
@@ -100,16 +103,17 @@ const Timeline = ({ isDesktop }) => {
                 result = result.concat(drawDot(node, y));
             } else {
                 if (node.diverge || node.converge) {
-                    result = drawLine(node, y) + result;
-                    result = drawBranch(node, y) + result;
+                    result = drawLine(node, y, idx) + result;
+                    result = drawBranch(node, y, idx) + result;
                     result = result.concat(drawDot(node, y + separation / 2));
                 } else {
-                    result = drawLine(node, y) + result;
+                    result = drawLine(node, y, idx) + result;
                     result = result.concat(drawDot(node, y + separation / 2));
                 }
                 y = y + separation;
+                idx++;
             }
-            idx++;
+            dots++;
         }
 
         return result
@@ -129,47 +133,89 @@ const Timeline = ({ isDesktop }) => {
 
         if (isDesktop && document.body.clientWidth > 767) {
 
-            const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone, duration: 0.3 } });
+            const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone, duration: 0.44 } });
             timeline
-                .to(screenContainer.current.querySelector('.slide-1'), { opacity: 0, delay: 2 })
+                .addLabel('start')
+                .to(screenContainer.current.querySelector('.slide-1'), { opacity: 0, delay: 2.35 })
 
                 .fromTo(screenContainer.current.querySelector('.slide-2'), { opacity: 0 }, { opacity: 1 })
-                .to(screenContainer.current.querySelector('.slide-2'), { opacity: 0, delay: 2 })
+                .to(screenContainer.current.querySelector('.slide-2'), { opacity: 0, delay: 2.35 })
 
                 .fromTo(screenContainer.current.querySelector('.slide-3'), { opacity: 0 }, { opacity: 1 })
-                .to(screenContainer.current.querySelector('.slide-3'), { opacity: 0, delay: 2 })
+                .to(screenContainer.current.querySelector('.slide-3'), { opacity: 0, delay: 2.35 })
 
                 .fromTo(screenContainer.current.querySelector('.slide-4'), { opacity: 0 }, { opacity: 1 })
-                .to(screenContainer.current.querySelector('.slide-4'), { opacity: 0, delay: 2 })
+                .to(screenContainer.current.querySelector('.slide-4'), { opacity: 0, delay: 2.35 })
 
                 .fromTo(screenContainer.current.querySelector('.slide-5'), { opacity: 0 }, { opacity: 1 })
-                .to(screenContainer.current.querySelector('.slide-5'), { opacity: 0, delay: 2 })
+                .to(screenContainer.current.querySelector('.slide-5'), { opacity: 0, delay: 2.35 })
 
                 .fromTo(screenContainer.current.querySelector('.slide-6'), { opacity: 0 }, { opacity: 1 })
-                .to(screenContainer.current.querySelector('.slide-6'), { opacity: 0, delay: 2 })
+                .to(screenContainer.current.querySelector('.slide-6'), { opacity: 0, delay: 2.35 })
 
                 .fromTo(screenContainer.current.querySelector('.slide-7'), { opacity: 0 }, { opacity: 1 })
-                .to(screenContainer.current.querySelector('.slide-7'), { opacity: 0, delay: 2 })
+                .to(screenContainer.current.querySelector('.slide-7'), { opacity: 0, delay: 2.35 })
 
                 .fromTo(screenContainer.current.querySelector('.slide-8'), { opacity: 0 }, { opacity: 1 })
-                .to(screenContainer.current.querySelector('.slide-8'), { opacity: 0, delay: 2 })
+                .to(screenContainer.current.querySelector('.slide-8'), { opacity: 0, delay: 2.35 })
 
                 .fromTo(screenContainer.current.querySelector('.slide-9'), { opacity: 0 }, { opacity: 1 })
-                .to(screenContainer.current.querySelector('.slide-9'), { opacity: 0, delay: 2 })
+                .to(screenContainer.current.querySelector('.slide-9'), { opacity: 0, delay: 2.35 })
 
                 .fromTo(screenContainer.current.querySelector('.slide-10'), { opacity: 0 }, { opacity: 1 })
-                .to(screenContainer.current.querySelector('.slide-10'), { opacity: 0, delay: 2 })
+                .to(screenContainer.current.querySelector('.slide-10'), { opacity: 0, delay: 2.35 })
 
                 .fromTo(screenContainer.current.querySelector('.slide-11'), { opacity: 0 }, { opacity: 1 })
-                .to(screenContainer.current.querySelector('.slide-11'), { opacity: 0, delay: 2 })
+                .to(screenContainer.current.querySelector('.slide-11'), { opacity: 0, delay: 2.35 })
 
                 .fromTo(screenContainer.current.querySelector('.slide-12'), { opacity: 0 }, { opacity: 1 })
-                .to(screenContainer.current.querySelector('.slide-12'), { opacity: 0, delay: 2 })
+                .to(screenContainer.current.querySelector('.slide-12'), { opacity: 0, delay: 2.35 })
 
                 .fromTo(screenContainer.current.querySelector('.slide-13'), { opacity: 0 }, { opacity: 1 })
-                .to(screenContainer.current.querySelector('.slide-13'), { opacity: 0, delay: 2 })
+                .to(screenContainer.current.querySelector('.slide-13'), { opacity: 0, delay: 2.35 })
 
                 .fromTo(screenContainer.current.querySelector('.slide-14'), { opacity: 0 }, { opacity: 1 })
+
+            const duration = timeline.totalDuration() / 14;
+
+            timeline
+                .from(svgContainer.current.querySelector('.line-1'), { scaleY: 0, duration: duration }, 'start')
+                .from(svgContainer.current.querySelector('.branch-1'), { strokeDashoffset: 186, duration: duration - 2 }, 'start')
+                .from(svgContainer.current.querySelector('.branch-line-1'), { scaleY: 0, duration: duration - 1 }, `start+=${duration - 2}`)
+
+                .from(svgContainer.current.querySelector('.line-2'), { scaleY: 0, duration: duration }, `start+=${duration}`)
+                .from(svgContainer.current.querySelector('.branch-line-2'), { scaleY: 0, duration: duration - 1 }, `start+=${duration}`)
+                .from(svgContainer.current.querySelector('.branch-2'), { strokeDashoffset: 186, duration: duration - 2 }, `start+=${2 * duration - 1}`)
+
+                .from(svgContainer.current.querySelector('.line-3'), { scaleY: 0, duration: duration }, `start+=${2 * duration}`)
+
+                .from(svgContainer.current.querySelector('.line-4'), { scaleY: 0, duration: duration }, `start+=${3 * duration}`)
+
+                .from(svgContainer.current.querySelector('.line-5'), { scaleY: 0, duration: duration }, `start+=${4 * duration}`)
+
+                .from(svgContainer.current.querySelector('.line-6'), { scaleY: 0, duration: duration }, `start+=${5 * duration}`)
+                .from(svgContainer.current.querySelector('.branch-6'), { strokeDashoffset: 186, duration: duration - 2 }, `start+=${5 * duration}`)
+                .from(svgContainer.current.querySelector('.branch-line-6'), { scaleY: 0, duration: duration - 1 }, `start+=${6 * duration - 2}`)
+
+                .from(svgContainer.current.querySelectorAll('.line-7'), { scaleY: 0, duration: duration }, `start+=${6 * duration}`)
+
+                .from(svgContainer.current.querySelectorAll('.line-8'), { scaleY: 0, duration: duration }, `start+=${7 * duration}`)
+
+                .from(svgContainer.current.querySelectorAll('.line-9'), { scaleY: 0, duration: duration }, `start+=${8 * duration}`)
+
+                .from(svgContainer.current.querySelectorAll('.line-10'), { scaleY: 0, duration: duration }, `start+=${9 * duration}`)
+
+                .from(svgContainer.current.querySelectorAll('.line-11'), { scaleY: 0, duration: duration }, `start+=${10 * duration}`)
+
+
+                .from(svgContainer.current.querySelector('.line-12'), { scaleY: 0, duration: duration }, `start+=${11 * duration}`)
+                .from(svgContainer.current.querySelector('.branch-line-12'), { scaleY: 0, duration: duration - 1 }, `start+=${11 * duration}`)
+                .from(svgContainer.current.querySelector('.branch-12'), { strokeDashoffset: 186, duration: duration - 2 }, `start+=${12 * duration - 1}`)
+
+                .from(svgContainer.current.querySelectorAll('.line-13'), { scaleY: 0, duration: duration }, `start+=${12 * duration}`)
+
+                .from(svgContainer.current.querySelectorAll('.line-14'), { scaleY: 0, duration: duration }, `start+=${13 * duration}`);
+
 
             const platformHeight = screenContainer.current.getBoundingClientRect().height;
 
