@@ -38,20 +38,20 @@ const Skills = () => {
                     <div>
                         <h3 className='uppercase tracking-widest text-gray-200 text-sm mb-6 seq'>FRONTEND DEVELOPMENT</h3>
                         <div className='flex gap-5 flex-wrap seq'>
-                            {SKILLS.frontend.map(skill => <Image key={skill} src={`/skills/${skill}.svg`} alt={skill} width={64} height={64} />)}
+                            {SKILLS.frontend.map(skill => <Image key={skill} src={`/skills/${skill}.svg`} alt={skill} width={64} height={64} className='h-16 w-16' />)}
                         </div>
                     </div>
                     <div className='flex gap-10 flex-wrap'>
                         <div>
                             <h3 className='uppercase tracking-widest text-gray-200 text-sm mb-6 seq'>User Interface, User Experience Design</h3>
                             <div className='flex gap-5 flex-wrap seq'>
-                                {SKILLS.userInterface.map(skill => <Image key={skill} src={`/skills/${skill}.svg`} alt={skill} width={64} height={64} />)}
+                                {SKILLS.userInterface.map(skill => <Image key={skill} src={`/skills/${skill}.svg`} alt={skill} width={64} height={64} className='h-16 w-16' />)}
                             </div>
                         </div>
                         <div>
                             <h3 className='uppercase tracking-widest text-gray-200 text-sm mb-6 seq'>Other Skills</h3>
                             <div className='flex gap-5 flex-wrap seq'>
-                                {SKILLS.other.map(skill => <Image key={skill} src={`/skills/${skill}.svg`} alt={skill} width={64} height={64} />)}
+                                {SKILLS.other.map(skill => <Image key={skill} src={`/skills/${skill}.svg`} alt={skill} width={64} height={64} className='h-16 w-16' />)}
                             </div>
                         </div>
                     </div>
