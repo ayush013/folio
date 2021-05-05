@@ -131,11 +131,13 @@ const Timeline = ({ isDesktop }) => {
             setBranch2X(70);
         }
 
+        const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone, duration: 0.44 } })
+            .addLabel('start');
+        let duration;
+
         if (isDesktop && document.body.clientWidth > 767) {
 
-            const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone, duration: 0.44 } });
             timeline
-                .addLabel('start')
                 .to(screenContainer.current.querySelector('.slide-1'), { opacity: 0, delay: 2.35 })
 
                 .fromTo(screenContainer.current.querySelector('.slide-2'), { opacity: 0 }, { opacity: 1 })
@@ -176,47 +178,6 @@ const Timeline = ({ isDesktop }) => {
 
                 .fromTo(screenContainer.current.querySelector('.slide-14'), { opacity: 0 }, { opacity: 1 })
 
-            const duration = timeline.totalDuration() / 14;
-
-            timeline
-                .from(svgContainer.current.querySelector('.line-1'), { scaleY: 0, duration: duration }, 'start')
-                .from(svgContainer.current.querySelector('.branch-1'), { strokeDashoffset: 186, duration: duration - 2 }, 'start')
-                .from(svgContainer.current.querySelector('.branch-line-1'), { scaleY: 0, duration: duration - 1 }, `start+=${duration - 2}`)
-
-                .from(svgContainer.current.querySelector('.line-2'), { scaleY: 0, duration: duration }, `start+=${duration}`)
-                .from(svgContainer.current.querySelector('.branch-line-2'), { scaleY: 0, duration: duration - 1 }, `start+=${duration}`)
-                .from(svgContainer.current.querySelector('.branch-2'), { strokeDashoffset: 186, duration: duration - 2 }, `start+=${2 * duration - 1}`)
-
-                .from(svgContainer.current.querySelector('.line-3'), { scaleY: 0, duration: duration }, `start+=${2 * duration}`)
-
-                .from(svgContainer.current.querySelector('.line-4'), { scaleY: 0, duration: duration }, `start+=${3 * duration}`)
-
-                .from(svgContainer.current.querySelector('.line-5'), { scaleY: 0, duration: duration }, `start+=${4 * duration}`)
-
-                .from(svgContainer.current.querySelector('.line-6'), { scaleY: 0, duration: duration }, `start+=${5 * duration}`)
-                .from(svgContainer.current.querySelector('.branch-6'), { strokeDashoffset: 186, duration: duration - 2 }, `start+=${5 * duration}`)
-                .from(svgContainer.current.querySelector('.branch-line-6'), { scaleY: 0, duration: duration - 1 }, `start+=${6 * duration - 2}`)
-
-                .from(svgContainer.current.querySelectorAll('.line-7'), { scaleY: 0, duration: duration }, `start+=${6 * duration}`)
-
-                .from(svgContainer.current.querySelectorAll('.line-8'), { scaleY: 0, duration: duration }, `start+=${7 * duration}`)
-
-                .from(svgContainer.current.querySelectorAll('.line-9'), { scaleY: 0, duration: duration }, `start+=${8 * duration}`)
-
-                .from(svgContainer.current.querySelectorAll('.line-10'), { scaleY: 0, duration: duration }, `start+=${9 * duration}`)
-
-                .from(svgContainer.current.querySelectorAll('.line-11'), { scaleY: 0, duration: duration }, `start+=${10 * duration}`)
-
-
-                .from(svgContainer.current.querySelector('.line-12'), { scaleY: 0, duration: duration }, `start+=${11 * duration}`)
-                .from(svgContainer.current.querySelector('.branch-line-12'), { scaleY: 0, duration: duration - 1 }, `start+=${11 * duration}`)
-                .from(svgContainer.current.querySelector('.branch-12'), { strokeDashoffset: 186, duration: duration - 2 }, `start+=${12 * duration - 1}`)
-
-                .from(svgContainer.current.querySelectorAll('.line-13'), { scaleY: 0, duration: duration }, `start+=${12 * duration}`)
-
-                .from(svgContainer.current.querySelectorAll('.line-14'), { scaleY: 0, duration: duration }, `start+=${13 * duration}`);
-
-
             const platformHeight = screenContainer.current.getBoundingClientRect().height;
 
             ScrollTrigger.create({
@@ -228,9 +189,60 @@ const Timeline = ({ isDesktop }) => {
                 scrub: 0,
                 animation: timeline,
             });
+            duration = timeline.totalDuration() / 14;
+
         } else {
             screenContainer.current.innerHTML = '';
+            ScrollTrigger.create({
+                trigger: svgContainer.current,
+                start: 'top center',
+                end: `+=${svgLength}`,
+                scrub: 0,
+                animation: timeline,
+            });
+            duration = 3;
         }
+
+
+        timeline
+            .from(svgContainer.current.querySelector('.line-1'), { scaleY: 0, duration: duration }, 'start')
+            .from(svgContainer.current.querySelector('.branch-1'), { strokeDashoffset: 186, duration: duration - 2 }, 'start')
+            .from(svgContainer.current.querySelector('.branch-line-1'), { scaleY: 0, duration: duration - 1 }, `start+=${duration - 2}`)
+
+            .from(svgContainer.current.querySelector('.line-2'), { scaleY: 0, duration: duration }, `start+=${duration}`)
+            .from(svgContainer.current.querySelector('.branch-line-2'), { scaleY: 0, duration: duration - 1 }, `start+=${duration}`)
+            .from(svgContainer.current.querySelector('.branch-2'), { strokeDashoffset: 186, duration: duration - 2 }, `start+=${2 * duration - 1}`)
+
+            .from(svgContainer.current.querySelector('.line-3'), { scaleY: 0, duration: duration }, `start+=${2 * duration}`)
+
+            .from(svgContainer.current.querySelector('.line-4'), { scaleY: 0, duration: duration }, `start+=${3 * duration}`)
+
+            .from(svgContainer.current.querySelector('.line-5'), { scaleY: 0, duration: duration }, `start+=${4 * duration}`)
+
+            .from(svgContainer.current.querySelector('.line-6'), { scaleY: 0, duration: duration }, `start+=${5 * duration}`)
+            .from(svgContainer.current.querySelector('.branch-6'), { strokeDashoffset: 186, duration: duration - 2 }, `start+=${5 * duration}`)
+            .from(svgContainer.current.querySelector('.branch-line-6'), { scaleY: 0, duration: duration - 1 }, `start+=${6 * duration - 2}`)
+
+            .from(svgContainer.current.querySelectorAll('.line-7'), { scaleY: 0, duration: duration }, `start+=${6 * duration}`)
+
+            .from(svgContainer.current.querySelectorAll('.line-8'), { scaleY: 0, duration: duration }, `start+=${7 * duration}`)
+
+            .from(svgContainer.current.querySelectorAll('.line-9'), { scaleY: 0, duration: duration }, `start+=${8 * duration}`)
+
+            .from(svgContainer.current.querySelectorAll('.line-10'), { scaleY: 0, duration: duration }, `start+=${9 * duration}`)
+
+            .from(svgContainer.current.querySelectorAll('.line-11'), { scaleY: 0, duration: duration }, `start+=${10 * duration}`)
+
+
+            .from(svgContainer.current.querySelector('.line-12'), { scaleY: 0, duration: duration }, `start+=${11 * duration}`)
+            .from(svgContainer.current.querySelector('.branch-line-12'), { scaleY: 0, duration: duration - 1 }, `start+=${11 * duration}`)
+            .from(svgContainer.current.querySelector('.branch-12'), { strokeDashoffset: 186, duration: duration - 2 }, `start+=${12 * duration - 1}`)
+
+            .from(svgContainer.current.querySelectorAll('.line-13'), { scaleY: 0, duration: duration }, `start+=${12 * duration}`)
+
+            .from(svgContainer.current.querySelectorAll('.line-14'), { scaleY: 0, duration: duration }, `start+=${13 * duration}`);
+
+
 
     }, [timelineSvg, svgContainer, svgWidth, branch2X, screenContainer])
 
