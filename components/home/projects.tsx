@@ -49,14 +49,14 @@ const Projects = ({ isDesktop, clientHeight }) => {
 
     return (
         <section ref={targetSection} className='w-full min-h-screen relative select-none 2xl:container mx-auto transform-gpu' id={MENULINKS[1].ref}>
-            <div className={(clientHeight > 650 ? 'gap-y-20' : 'gap-y-10') + ' flex-col flex py-8 xl:px-20 md:px-12 px-4 justify-center h-full'}>
-                <div className='flex flex-col gap-2 inner-container transform-gpu' ref={sectionTitle}>
+            <div className={' flex-col flex py-8 xl:px-20 md:px-12 px-4 justify-center h-full'}>
+                <div className='flex flex-col inner-container transform-gpu' ref={sectionTitle}>
                     <p className='uppercase tracking-widest text-gray-200 text-sm seq'>PROJECTS</p>
-                    <h1 className='text-5xl font-bold text-gradient seq w-fit'>My Works</h1>
-                    <h2 className='text-2xl md:max-w-3xl w-full seq max-w-sm'>I have contributed in over 20+ projects ranging from Frontend Development, UI/UX, Open Source, and Motion Graphics</h2>
+                    <h1 className='text-5xl font-bold text-gradient seq w-fit mt-2'>My Works</h1>
+                    <h2 className='text-2xl md:max-w-3xl w-full seq max-w-sm mt-2'>I have contributed in over 20+ projects ranging from Frontend Development, UI/UX, Open Source, and Motion Graphics</h2>
                 </div>
-                <div className='flex gap-x-16 project-wrapper w-fit seq'>
-                    {PROJECTS.map(project => <ProjectTile project={project} key={project.name}></ProjectTile>)}
+                <div className={(clientHeight > 650 ? 'mt-20' : 'mt-10') + ' flex project-wrapper w-fit seq'}>
+                    {PROJECTS.map((project, idx) => <ProjectTile classes={(idx === PROJECTS.length - 1) ? '' : 'mr-16'} project={project} key={project.name}></ProjectTile>)}
                 </div>
             </div>
             <style jsx global>{`

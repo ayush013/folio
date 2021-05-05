@@ -4,7 +4,7 @@ const Header = ({ children }) => {
     return (
         <nav className='w-full fixed top-0 xl:px-20 md:px-12 px-4 py-8 select-none z-50 bg-gradient-to-b from-gray-900 to-transparent'>
             <div className='relative flex justify-between 2xl:container mx-auto'>
-                <a href='#home' className='flex gap-3 items-center link'>
+                <a href='#home' className='link'>
                     <Image src='/logo.svg' alt='Logo - Ayush Singh' width={22} height={22} />
                 </a>
                 <div className='outer-menu'>

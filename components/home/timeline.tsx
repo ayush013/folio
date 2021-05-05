@@ -248,14 +248,14 @@ const Timeline = ({ isDesktop }) => {
 
 
     return (
-        <section className='w-full relative select-none min-h-screen 2xl:container mx-auto py-8 xl:px-20 md:px-12 px-4 flex flex-col justify-center gap-y-20' id={MENULINKS[3].ref}>
+        <section className='w-full relative select-none min-h-screen 2xl:container mx-auto py-8 xl:px-20 md:px-12 px-4 flex flex-col justify-center' id={MENULINKS[3].ref}>
 
-            <div className='flex flex-col gap-2'>
+            <div className='flex flex-col'>
                 <p className='uppercase tracking-widest text-gray-200 text-sm seq'>MILESTONES</p>
-                <h1 className='text-5xl font-bold text-gradient seq w-fit'>Timeline</h1>
-                <h2 className='text-2xl md:max-w-2xl w-full seq'>A quick recap of proud moments</h2>
+                <h1 className='text-5xl font-bold text-gradient seq w-fit mt-2'>Timeline</h1>
+                <h2 className='text-2xl md:max-w-2xl w-full seq mt-2'>A quick recap of proud moments</h2>
             </div>
-            <div className='grid grid-cols-12 gap-4'>
+            <div className='grid grid-cols-12 gap-4 mt-20'>
                 <div className='col-span-12 md:col-span-6 line-svg' ref={svgContainer}>
                     <svg width={svgWidth} height={svgLength} viewBox={`0 0 ${svgWidth} ${svgLength}`} fill='none' ref={timelineSvg}>
                     </svg>

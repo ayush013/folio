@@ -41,7 +41,7 @@ export default function Home() {
         </Header>
         <ProgressIndicator></ProgressIndicator>
         <Cursor isDesktop={isDesktop}></Cursor>
-        <main className='flex-col flex gap-y-28'>
+        <main className='flex-col flex'>
           <div className='fixed top-0 left-0 h-screen w-screen bg-gray-900 -z-1'></div>
           <Hero></Hero>
           <Projects isDesktop={isDesktop} clientHeight={clientHeight}></Projects>
