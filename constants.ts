@@ -334,3 +334,5 @@ export interface TimelineContent {
     description: string,
     logo?: string
 }
+
+export const GTAG = 'UA-163844688-1'

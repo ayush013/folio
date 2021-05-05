@@ -14,6 +14,7 @@ import Skills from '@/components/home/skills';
 import Collaboration from '@/components/home/collaboration';
 import Footer from '@/components/common/footer';
 import Timeline from '@/components/home/timeline';
+import Scripts from '@/components/common/scripts';
 
 export default function Home() {
 
@@ -50,6 +51,7 @@ export default function Home() {
           <Collaboration clientHeight={clientHeight}></Collaboration>
           <Footer></Footer>
         </main>
+        <Scripts></Scripts>
       </Layout>
     </>
   )
