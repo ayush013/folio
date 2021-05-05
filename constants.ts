@@ -297,7 +297,7 @@ export const TIMELINE: TimelineNode[] = [
     {
         content: {
             title: 'UI/UX, Frontend Engineer',
-            description: 'Started journey in SDC-SI, where I got to work on 10+ web projects. Learnt the fundamentals of Frontend, UI/UX,  Graphic design and more...',
+            description: 'Started journey in SDC-SI, where I worked on 10+ web projects. Learnt the fundamentals of Frontend, UI/UX,  Graphic design and more...',
             logo: 'si'
         },
         branch: 1,

@@ -35,7 +35,7 @@ const Timeline = ({ isDesktop }) => {
             y = y + curveLength - 6 * dotSize;
         }
 
-        const str = addText(timelineNode, y) + `<rect class='dot' width=${dotSize} height=${dotSize} fill='#111827' x=${x - dotSize / 2} y=${y - dotSize / 2} ></rect><circle cx=${x} cy=${y} r='7' stroke=${svgColor} class='str dot' ></circle>`;
+        const str = addText(timelineNode, y) + `<rect class='dot' width=${dotSize} height=${dotSize} fill='#111827' x=${x - dotSize / 2} y=${y - dotSize / 2} ></rect><circle cx=${x} cy=${y} r='7' stroke=${svgColor} class='dot' ></circle>`;
 
         return str;
     };
@@ -73,7 +73,7 @@ const Timeline = ({ isDesktop }) => {
             const { description, title, logo } = timelineNode.content as TimelineContent;
             let logoStr = '';
             if (logo) {
-                logoStr = `<img src='/timeline/${logo}.svg' class='h-8 mb-2' loading='lazy' height='32' />`
+                logoStr = `<img src='/timeline/${logo}.svg' class='h-8 mb-2' loading='lazy' width='100' height='32' alt='${logo}' />`
             }
             return `<foreignObject x=${dotSize / 2 + 10 + offset} y=${y - dotSize / 2} width=${svgWidth - (dotSize / 2 + 10 + offset)} height=${separation}>${logoStr}<p class='text-2xl'>${title}</p><p class='text-xl mt-2 text-gray-200 font-medium tracking-wide'>${description}</p></foreignObject>`
         }
@@ -82,7 +82,7 @@ const Timeline = ({ isDesktop }) => {
     const createSvg = (timeline: TimelineNode[]) => {
         let idx = 0;
         let y = dotSize / 2;
-        let result = `<style>.str{stroke-width: ${strokeWidth}px}</style>`;
+        let result = `<style>.str, .dot{stroke-width: ${strokeWidth}px}</style>`;
 
         for (let node of timeline) {
             if (idx === 0) {
@@ -127,52 +127,52 @@ const Timeline = ({ isDesktop }) => {
             setBranch2X(70);
         }
 
-        if(isDesktop && document.body.clientWidth > 767) {
+        if (isDesktop && document.body.clientWidth > 767) {
 
             const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone, duration: 0.3 } });
             timeline
                 .to(screenContainer.current.querySelector('.slide-1'), { opacity: 0, delay: 2 })
-    
+
                 .fromTo(screenContainer.current.querySelector('.slide-2'), { opacity: 0 }, { opacity: 1 })
                 .to(screenContainer.current.querySelector('.slide-2'), { opacity: 0, delay: 2 })
-    
+
                 .fromTo(screenContainer.current.querySelector('.slide-3'), { opacity: 0 }, { opacity: 1 })
                 .to(screenContainer.current.querySelector('.slide-3'), { opacity: 0, delay: 2 })
-    
+
                 .fromTo(screenContainer.current.querySelector('.slide-4'), { opacity: 0 }, { opacity: 1 })
                 .to(screenContainer.current.querySelector('.slide-4'), { opacity: 0, delay: 2 })
-    
+
                 .fromTo(screenContainer.current.querySelector('.slide-5'), { opacity: 0 }, { opacity: 1 })
                 .to(screenContainer.current.querySelector('.slide-5'), { opacity: 0, delay: 2 })
-    
+
                 .fromTo(screenContainer.current.querySelector('.slide-6'), { opacity: 0 }, { opacity: 1 })
                 .to(screenContainer.current.querySelector('.slide-6'), { opacity: 0, delay: 2 })
-    
+
                 .fromTo(screenContainer.current.querySelector('.slide-7'), { opacity: 0 }, { opacity: 1 })
                 .to(screenContainer.current.querySelector('.slide-7'), { opacity: 0, delay: 2 })
-    
+
                 .fromTo(screenContainer.current.querySelector('.slide-8'), { opacity: 0 }, { opacity: 1 })
                 .to(screenContainer.current.querySelector('.slide-8'), { opacity: 0, delay: 2 })
-    
+
                 .fromTo(screenContainer.current.querySelector('.slide-9'), { opacity: 0 }, { opacity: 1 })
                 .to(screenContainer.current.querySelector('.slide-9'), { opacity: 0, delay: 2 })
-    
+
                 .fromTo(screenContainer.current.querySelector('.slide-10'), { opacity: 0 }, { opacity: 1 })
                 .to(screenContainer.current.querySelector('.slide-10'), { opacity: 0, delay: 2 })
-    
+
                 .fromTo(screenContainer.current.querySelector('.slide-11'), { opacity: 0 }, { opacity: 1 })
                 .to(screenContainer.current.querySelector('.slide-11'), { opacity: 0, delay: 2 })
-    
+
                 .fromTo(screenContainer.current.querySelector('.slide-12'), { opacity: 0 }, { opacity: 1 })
                 .to(screenContainer.current.querySelector('.slide-12'), { opacity: 0, delay: 2 })
-    
+
                 .fromTo(screenContainer.current.querySelector('.slide-13'), { opacity: 0 }, { opacity: 1 })
                 .to(screenContainer.current.querySelector('.slide-13'), { opacity: 0, delay: 2 })
-    
+
                 .fromTo(screenContainer.current.querySelector('.slide-14'), { opacity: 0 }, { opacity: 1 })
-    
+
             const platformHeight = screenContainer.current.getBoundingClientRect().height;
-    
+
             ScrollTrigger.create({
                 trigger: screenContainer.current,
                 start: `top ${(window.innerHeight - platformHeight) / 2}`,

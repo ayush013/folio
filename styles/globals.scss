@@ -106,6 +106,8 @@ input[type="checkbox"] {
         .menu {
           pointer-events: auto;
           visibility: visible !important;
+          backdrop-filter: blur(0.625rem);
+          -webkit-backdrop-filter: blur(0.625rem);
           > div {
             transform: scale(1);
             transition-duration: 0.75s;
@@ -163,8 +165,6 @@ input[type="checkbox"] {
       border-radius: 50%;
       transition: all 0.4s ease;
       backface-visibility: hidden;
-      backdrop-filter: blur(0.625rem);
-      -webkit-backdrop-filter: blur(0.625rem);
       background: rgba(0, 0, 0, 0.5);
       @supports not (backdrop-filter: blur(0.625rem)) {
         background: rgba(0, 0, 0, 0.8);
