@@ -1,6 +1,6 @@
 import styles from './Cursor.module.scss';
 import { MutableRefObject, useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import { gsap, Linear } from 'gsap';
 
 const Cursor = ({ isDesktop }) => {
     const cursor: MutableRefObject<HTMLDivElement> = useRef(null);
@@ -11,50 +11,49 @@ const Cursor = ({ isDesktop }) => {
             follower.current.classList.remove('hidden');
             cursor.current.classList.remove('hidden');
 
-            let posX = 0;
-            let posY = 0;
+            const moveCircle = (e) => {
+                gsap.to(cursor.current, {
+                    x: e.clientX,
+                    y: e.clientY,
+                    duration: 0.1,
+                    ease: Linear.easeNone
+                });
+                gsap.to(follower.current, {
+                    x: e.clientX,
+                    y: e.clientY,
+                    duration: 0.3,
+                    ease: Linear.easeNone
+                });
+            }
 
-            let mouseX = 0;
-            let mouseY = 0;
+            const hoverFunc = (e) => {
+                gsap.to(cursor.current, {
+                    scale: 0.5,
+                    duration: 0.3
+                });
+                gsap.to(follower.current, {
+                    scale: 3,
+                    duration: 0.3
+                });
+            }
 
-            gsap.to({}, {
-                repeat: -1,
-                duration: 0.005,
-                onRepeat: function () {
-                    posX += (mouseX - posX) / 9;
-                    posY += (mouseY - posY) / 9;
-
-                    gsap.set(follower.current, {
-                        css: {
-                            left: posX - 12,
-                            top: posY - 12
-                        }
-                    });
-
-                    gsap.set(cursor.current, {
-                        css: {
-                            left: mouseX,
-                            top: mouseY
-                        }
-                    });
-                }
-            });
-
-            document.addEventListener('mousemove', e => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            })
+            const unhoverFunc = (e) => {
+                gsap.to(cursor.current, {
+                    scale: 1,
+                    duration: 0.3
+                });
+                gsap.to(follower.current, {
+                    scale: 1,
+                    duration: 0.3
+                });
+            }
+            
+            document.addEventListener('mousemove', moveCircle)
 
 
             document.querySelectorAll('.link').forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    cursor.current.classList.add(styles.cursorActive);
-                    follower.current.classList.add(styles.followerActive);
-                });
-                el.addEventListener('mouseleave', () => {
-                    cursor.current.classList.remove(styles.cursorActive);
-                    follower.current.classList.remove(styles.followerActive);
-                });
+                el.addEventListener('mouseenter', hoverFunc);
+                el.addEventListener('mouseleave', unhoverFunc);
             });
 
         }
