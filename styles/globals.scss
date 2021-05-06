@@ -1,0 +1,218 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: 'Google Sans';
+  src: local('Google Sans Medium'), local('GoogleSans-Medium'),
+      url('/fonts/GoogleSans-Medium.woff2') format('woff2'),
+      url('/fonts/GoogleSans-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Google Sans';
+  src: local('Google Sans Bold'), local('GoogleSans-Bold'),
+      url('/fonts/GoogleSans-Bold.woff2') format('woff2'),
+      url('/fonts/GoogleSans-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  @apply bg-gray-900 text-white overflow-x-hidden;
+  cursor: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  -ms-overflow-style: scrollbar;
+  scrollbar-color: black;
+  scrollbar-width: thin;
+  overflow-x: hidden;
+
+  @media (min-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 15px;
+  }
+
+  @media (min-width: 1536px) {
+    font-size: 18px;
+  }
+  @media (min-width: 1800px) {
+    font-size: 20px;
+  }
+  @media (min-width: 2000px) {
+    font-size: 22px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0.375rem;
+}
+::-webkit-scrollbar-track {
+  background: rgba(94, 94, 94, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(170, 170, 170);
+}
+
+::-moz-selection {
+  color: white;
+  background: black;
+}
+
+::selection {
+  color: white;
+  background: black;
+}
+
+a,
+input[type="checkbox"] {
+  cursor: none !important;
+}
+
+.outer-menu {
+  z-index: 1;
+
+  .checkbox-toggle {
+    z-index: 2;
+
+    &:checked {
+      + {
+        .hamburger {
+          > div {
+            transform: rotate(135deg);
+            &:before {
+              top: 0;
+              transform: rotate(90deg);
+            }
+            &:after {
+              top: 0;
+              transform: rotate(90deg);
+              opacity: 0;
+            }
+          }
+        }
+      }
+      ~ {
+        .menu {
+          pointer-events: auto;
+          visibility: visible !important;
+          backdrop-filter: blur(0.625rem);
+          -webkit-backdrop-filter: blur(0.625rem);
+          > div {
+            transform: scale(1);
+            transition-duration: 0.75s;
+            > div {
+              opacity: 1;
+              transition: opacity 0.4s ease 0.4s;
+            }
+          }
+        }
+      }
+      &:hover {
+        + {
+          .hamburger {
+            > div {
+              transform: rotate(225deg);
+            }
+          }
+        }
+      }
+    }
+  }
+  .hamburger {
+    z-index: 1;
+    backface-visibility: hidden;
+
+    > div {
+      height: 0.125rem;
+      transition: all 0.4s ease;
+      -webkit-box-pack: center;
+      &:before,
+      &:after {
+        content: "";
+        z-index: 1;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        top: -0.5rem;
+        height: 0.125rem;
+        background: inherit;
+        transition: all 0.4s ease;
+      }
+      &:after {
+        top: 0.5rem;
+      }
+    }
+  }
+  .menu {
+    backface-visibility: hidden;
+    outline: 0.0625rem solid transparent;
+    > div {
+      width: 250vw;
+      height: 250vw;
+      transform: scale(0);
+      will-change: transform;
+      border-radius: 50%;
+      transition: all 0.4s ease;
+      backface-visibility: hidden;
+      background: rgba(0, 0, 0, 0.5);
+      @supports not (backdrop-filter: blur(0.625rem)) {
+        background: rgba(0, 0, 0, 0.8);
+      }
+
+      > div {
+        max-width: 90vw;
+        transition: opacity 0.4s ease;
+      }
+      ul {
+        li {
+          a {
+            background: linear-gradient(
+              90deg,
+              #ffffff 0%,
+              #ffffff 50%,
+              #6dd5ed 51%,
+              #2193b0 100%
+            );
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+
+            &:hover {
+              background-position: 100% 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.progress {
+  height: 0.1875rem;
+
+  .progress-bar {
+    height: 0.2rem;
+    transform-origin: left;
+    will-change: transform;
+    transform: scaleX(0);
+    @apply w-full bg-white;
+  }
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #6dd5ed 0%, #2193b0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
