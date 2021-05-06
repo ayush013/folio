@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { gsap, Linear } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-const svgColor = '#D0D6DF';
+const svgColor = '#9CA3AF';
 const animColor = '#FCD34D';
 const separation = 450;
 const strokeWidth = 2;
@@ -240,7 +240,7 @@ const Timeline = ({ isDesktop }) => {
 
             .from(svgContainer.current.querySelectorAll('.line-13'), { scaleY: 0, duration: duration }, `start+=${12 * duration}`)
 
-            .from(svgContainer.current.querySelectorAll('.line-14'), { scaleY: 0, duration: duration }, `start+=${13 * duration}`);
+            .from(svgContainer.current.querySelectorAll('.line-14'), { scaleY: 0, duration: duration }, `start+=${13 * duration - 1}`);
 
 
 

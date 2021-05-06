@@ -80,14 +80,14 @@ export const PROJECTS = [
         url: 'https://www.huminos.com/',
         tech: ['javascript', 'sass', 'svg', 'gulp']
     },
-    {
-        name: 'DL Orchestrator',
-        image: '/projects/orchestrator.jpg',
-        description: 'Contributed to design and development of the platform',
-        gradient: ['#00765F', '#238975'],
-        url: 'http://orchestrator.dltlabs.com/',
-        tech: ['angular', 'sass', 'figma']
-    },
+    // {
+    //     name: 'DL Orchestrator',
+    //     image: '/projects/orchestrator.jpg',
+    //     description: 'Contributed to design and development of the platform',
+    //     gradient: ['#00765F', '#238975'],
+    //     url: 'http://orchestrator.dltlabs.com/',
+    //     tech: ['angular', 'sass', 'figma']
+    // },
     {
         name: 'Alpha Aesthetics',
         image: '/projects/alpha.jpg',
@@ -297,7 +297,7 @@ export const TIMELINE: TimelineNode[] = [
     {
         content: {
             title: 'UI/UX, Frontend Engineer',
-            description: 'Started journey in SDC-SI, where I worked on 10+ web projects. Learnt the fundamentals of Frontend, UI/UX,  Graphic design and more...',
+            description: 'Started journey in SDC-SI, where I learnt the fundamentals of Frontend, UI/UX, Graphic design and more...',
             logo: 'si'
         },
         branch: 1,

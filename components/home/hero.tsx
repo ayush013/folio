@@ -28,7 +28,7 @@ const Hero = () => {
 
         const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
         revealTl
-            .to(targetSection.current, { opacity: 1, duration: 2, delay: 0.5 })
+            .to(targetSection.current, { opacity: 1, duration: 2 })
             .from(targetSection.current.querySelectorAll('.seq'), { opacity: 0, duration: 0.5, stagger: 0.5 }, '<');
 
         return () => typed.destroy();

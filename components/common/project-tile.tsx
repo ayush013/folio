@@ -23,7 +23,7 @@ const ProjectTile = ({ project, classes }) => {
 
 
     return (
-        <a href={project.url} target='_blank' rel='noreferrer' className={'link overflow-hidden rounded-3xl ' + additionalClasses} style={{ maxWidth: 'calc(100vw - 2rem)', flex: '1 0 auto' }}>
+        <a href={project.url} target='_blank' rel='noreferrer' className={'link overflow-hidden rounded-3xl ' + additionalClasses} style={{ maxWidth: 'calc(100vw - 2rem)', flex: '1 0 auto', WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}>
             <div ref={projectCard} className={styles.ProjectTile + ' rounded-3xl relative p-6 flex-col flex justify-between max-w-full'} style={{ background: `linear-gradient(90deg, ${project.gradient[0]} 0%, ${project.gradient[1]} 100%)` }}>
                 <img src='/project-bg.svg' alt='Project' className='absolute w-full h-full top-0 left-0 opacity-20' />
                 <Image src={project.image} alt={project.name} layout='fill' className={styles.ProjectImg + ' z-0'} />

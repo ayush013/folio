@@ -25,7 +25,7 @@ const Skills = () => {
     }, [targetSection])
 
     return (
-        <section className='w-full relative select-none' id={MENULINKS[2].ref} ref={targetSection}>
+        <section className='w-full relative select-none mb-24' id={MENULINKS[2].ref} ref={targetSection}>
             <div className='2xl:container mx-auto py-12 xl:px-20 md:px-12 px-4 flex flex-col justify-center'>
                 <img src='/pattern-r.svg' className='absolute right-0 -bottom-2/3 w-1/5 max-w-xs md:block hidden' loading='lazy' height={700} width={320} />
                 <img src='/pattern-l.svg' className='absolute left-0 -bottom-1/3 w-1/12 max-w-xs md:block hidden' loading='lazy' height={335} width={140} />
@@ -37,20 +37,20 @@ const Skills = () => {
                     </div>
                     <div className='mt-10'>
                         <h3 className='uppercase tracking-widest text-gray-200 text-sm mb-4 seq'>FRONTEND DEVELOPMENT</h3>
-                        <div className='flex flex-wrap seq'>
+                        <div className='flex flex-wrap seq transform-gpu'>
                             {SKILLS.frontend.map(skill => <Image key={skill} src={`/skills/${skill}.svg`} alt={skill} width={76} height={76} className='skill' />)}
                         </div>
                     </div>
                     <div className='flex flex-wrap mt-10'>
                         <div className='mr-6 mb-6'>
                             <h3 className='uppercase tracking-widest text-gray-200 text-sm mb-4 seq'>User Interface, User Experience Design</h3>
-                            <div className='flex flex-wrap seq'>
+                            <div className='flex flex-wrap seq transform-gpu'>
                                 {SKILLS.userInterface.map(skill => <Image key={skill} src={`/skills/${skill}.svg`} alt={skill} width={76} height={76} className='skill' />)}
                             </div>
                         </div>
                         <div>
                             <h3 className='uppercase tracking-widest text-gray-200 text-sm mb-4 seq'>Other Skills</h3>
-                            <div className='flex flex-wrap seq'>
+                            <div className='flex flex-wrap seq transform-gpu'>
                                 {SKILLS.other.map(skill => <Image key={skill} src={`/skills/${skill}.svg`} alt={skill} width={76} height={76} className='skill' />)}
                             </div>
                         </div>
