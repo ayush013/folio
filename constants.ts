@@ -174,9 +174,10 @@ export const TIMELINE: TimelineNode[] = [
             description: 'Motion Graphics content for Product Launch 🚀',
             logo: 'octanner'
         },
-        branch: 2,
+        branch: 1,
         type: 'checkpoint',
-        converge: true
+        converge: true,
+        parallel: 2
     },
     {
         content: '2019',
@@ -185,7 +186,7 @@ export const TIMELINE: TimelineNode[] = [
     },
     {
         content: {
-            title: 'UI Engineer',
+            title: 'UI Engineer (Current)',
             description: 'Working on enterprise blockchain solutions for web. Transforming UI/UX and frontend framework. Building a design system.',
             logo: 'dltlabs'
         },
@@ -194,8 +195,8 @@ export const TIMELINE: TimelineNode[] = [
     },
     {
         content: {
-            title: 'UX Engineer (freelance)',
-            description: 'Product design and development for employee engagement chatbot suite for workplace by facebook',
+            title: 'UX Engineer',
+            description: 'First job 🥳! Product design and development for employee engagement chatbot suite for workplace by facebook',
             logo: 'huminos'
         },
         branch: 1,
