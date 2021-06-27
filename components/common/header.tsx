@@ -8,7 +8,7 @@ const Header = ({ children }) => {
                     <Image src='/logo.svg' alt='Logo - Ayush Singh' width={22} height={22} />
                 </a>
                 <div className='outer-menu'>
-                    <input className='checkbox-toggle link absolute top-0 right-0 w-6 h-6 opacity-0' type='checkbox' />
+                    <input aria-labelledby='menu' className='checkbox-toggle link absolute top-0 right-0 w-6 h-6 opacity-0' type='checkbox' />
                     <div className='hamburger absolute top-0 right-0 w-6 h-6 flex items-center justify-center'>
                         <div className='relative flex-none w-full bg-white duration-300 flex items-center justify-center'></div>
                     </div>

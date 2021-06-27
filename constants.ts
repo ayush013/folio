@@ -51,6 +51,7 @@ export const PROJECTS = [
     {
         name: 'DLT Labs Website',
         image: '/projects/dlt-website.jpg',
+        blurImage: '/projects/blur/dlt-website-blur.jpg',
         description: 'Built the application from zero to production 🚀',
         gradient: ['#245B57', '#004741'],
         url: 'https://www.dltlabs.com/',
@@ -59,6 +60,7 @@ export const PROJECTS = [
     {
         name: 'DL Unify',
         image: '/projects/dl-unify.jpg',
+        blurImage: '/projects/blur/dl-unify-blur.jpg',
         description: 'Built the application from zero to production 🚀',
         gradient: ['#003052', '#167187'],
         url: 'https://dlunify.dltlabs.com/',
@@ -67,6 +69,7 @@ export const PROJECTS = [
     {
         name: 'ngx-quill-upload',
         image: '/projects/ngx-quill-upload.jpg',
+        blurImage: '/projects/blur/ngx-quill-upload-blur.jpg',
         description: 'NPM Package for Quill JS uploads from Angular',
         gradient: ['#3A0000', '#771E1E'],
         url: 'https://www.npmjs.com/package/ngx-quill-upload',
@@ -75,6 +78,7 @@ export const PROJECTS = [
     {
         name: 'Huminos website',
         image: '/projects/huminos.jpg',
+        blurImage: '/projects/blur/huminos-blur.jpg',
         description: 'Redesigned and developed the website from scratch',
         gradient: ['#17007B', '#3A2C79'],
         url: 'https://www.huminos.com/',
@@ -83,6 +87,7 @@ export const PROJECTS = [
     // {
     //     name: 'DL Orchestrator',
     //     image: '/projects/orchestrator.jpg',
+    //     blurImage: '/projects/blur/dlt-website-blur.jpg',
     //     description: 'Contributed to design and development of the platform',
     //     gradient: ['#00765F', '#238975'],
     //     url: 'http://orchestrator.dltlabs.com/',
@@ -91,6 +96,7 @@ export const PROJECTS = [
     {
         name: 'Alpha Aesthetics',
         image: '/projects/alpha.jpg',
+        blurImage: '/projects/blur/alpha-blur.jpg',
         description: 'Designed and developed the platform',
         gradient: ['#172839', '#334659'],
         url: 'https://alpha-aesthetics.ayushsingh.net/',
@@ -99,6 +105,7 @@ export const PROJECTS = [
     {
         name: 'DL Gateway',
         image: '/projects/gateway.jpg',
+        blurImage: '/projects/blur/gateway-blur.jpg',
         description: 'Contributed to design and development of the platform',
         gradient: ['#1C776F', '#13534D'],
         url: 'https://dlgateway.dltlabs.com/',
@@ -107,6 +114,7 @@ export const PROJECTS = [
     {
         name: 'Amantrya - Polling Web App',
         image: '/projects/farewell18.jpg',
+        blurImage: '/projects/blur/farewell18-blur.jpg',
         description: 'Dark mode dated from 2017 🔥',
         gradient: ['#142D46', '#2E4964'],
         url: 'https://farewell18.ayushsingh.net/',
@@ -115,6 +123,7 @@ export const PROJECTS = [
     {
         name: 'AKGEC - College Website',
         image: '/projects/akgec.jpg',
+        blurImage: '/projects/blur/akgec-blur.jpg',
         description: 'Contributed in overall design and development',
         gradient: ['#5E4C06', '#746528'],
         url: 'https://www.akgec.ac.in/',
@@ -123,6 +132,7 @@ export const PROJECTS = [
     {
         name: 'BDC 2018 Web Portal',
         image: '/projects/bdc18.jpg',
+        blurImage: '/projects/blur/bdc18-blur.jpg',
         description: 'Built the portal from zero to production 🚀',
         gradient: ['#470700', '#712A23'],
         url: 'https://bdc2018.ayushsingh.net/',
@@ -131,6 +141,7 @@ export const PROJECTS = [
     {
         name: 'Scrolls 2017 - Website',
         image: '/projects/scrolls.jpg',
+        blurImage: '/projects/blur/scrolls-blur.jpg',
         description: 'Built the portal from zero to production 🚀',
         gradient: ['#685506', '#7B6921'],
         url: 'https://scrolls-17.ayushsingh.net/',
@@ -139,6 +150,7 @@ export const PROJECTS = [
     {
         name: 'Cardize - Visiting Cards',
         image: '/projects/cardize.jpg',
+        blurImage: '/projects/blur/cardize-blur.jpg',
         description: 'First web project! Custom visiting card generator',
         gradient: ['#552A04', '#614023'],
         url: 'https://cardize.ayushsingh.net/',
