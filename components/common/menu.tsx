@@ -11,7 +11,7 @@ const Menu = () => {
                 checkbox.checked = false;
             })
         })
-    });
+    }, []);
 
     return (
         <div className='menu fixed top-0 left-0 w-full h-full overflow-hidden invisible pointer-events-none flex items-center justify-center' style={{visibility: 'hidden'}}>

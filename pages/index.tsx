@@ -44,7 +44,7 @@ export default function Home() {
         <main className='flex-col flex'>
           <div className='fixed top-0 left-0 h-screen w-screen bg-gray-900 -z-1'></div>
           <Hero></Hero>
-          <Projects isDesktop={isDesktop} clientHeight={clientHeight}></Projects>
+          <Projects clientHeight={clientHeight}></Projects>
           <Quote clientHeight={clientHeight}></Quote>
           <Skills></Skills>
           <Timeline isDesktop={isDesktop}></Timeline>

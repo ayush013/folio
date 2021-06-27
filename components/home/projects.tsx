@@ -4,7 +4,7 @@ import ProjectTile from '../common/project-tile'
 import { gsap, Linear } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-const Projects = ({ isDesktop, clientHeight }) => {
+const Projects = ({ clientHeight }) => {
 
     const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
     const sectionTitle: MutableRefObject<HTMLDivElement> = useRef(null);
