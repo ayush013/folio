@@ -82,7 +82,8 @@ const Hero = React.memo(() => {
             classes="mr-3"
             type="outline"
             name="Resume"
-            newTab={true}
+            target="_blank"
+            rel="noreferrer"
             href="/Ayush_Resume.pdf"
           ></Button>
           <Button

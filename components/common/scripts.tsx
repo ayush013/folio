@@ -9,7 +9,7 @@ const Scripts = React.memo(() => {
         src={`https://www.googletagmanager.com/gtag/js?id=${GTAG}`}
         strategy="afterInteractive"
       />
-      <Script strategy="afterInteractive">
+      <Script strategy="afterInteractive" id="gtag-config">
         {`
             window.dataLayer = window.dataLayer || [];
             function gtag() { dataLayer.push(arguments); }
@@ -18,7 +18,7 @@ const Scripts = React.memo(() => {
             gtag('config', '${GTAG}');
         `}
       </Script>
-      <Script strategy="lazyOnload">
+      <Script strategy="lazyOnload" id="chaport-config">
         {`
             setTimeout(() => {
                 (function (w, d, v3) {
@@ -34,5 +34,7 @@ const Scripts = React.memo(() => {
     </>
   );
 });
+
+Scripts.displayName = "Scripts";
 
 export default Scripts;
