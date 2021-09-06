@@ -178,6 +178,20 @@ export const SKILLS = {
 
 export const TIMELINE: TimelineNode[] = [
   {
+    content: "2021",
+    branch: 1,
+    type: "year",
+  },
+  {
+    content: {
+      title: "UI Engineer (Current)",
+      description: "Working on flipkart wholesale platform 😎",
+      logo: "flipkart",
+    },
+    branch: 1,
+    type: "checkpoint",
+  },
+  {
     content: "2020",
     branch: 1,
     type: "year",
@@ -211,7 +225,7 @@ export const TIMELINE: TimelineNode[] = [
   },
   {
     content: {
-      title: "UI Engineer (Current)",
+      title: "UI Engineer",
       description:
         "Working on enterprise blockchain solutions for web. Transforming UI/UX and frontend framework. Building a design system.",
       logo: "dltlabs",

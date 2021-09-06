@@ -353,6 +353,16 @@ const Timeline = ({ isDesktop }) => {
           screenContainer.current.querySelector(".slide-14"),
           { opacity: 0 },
           { opacity: 1 }
+        )
+        .to(screenContainer.current.querySelector(".slide-14"), {
+          opacity: 0,
+          delay: 2.35,
+        })
+
+        .fromTo(
+          screenContainer.current.querySelector(".slide-15"),
+          { opacity: 0 },
+          { opacity: 1 }
         );
 
       const platformHeight =
@@ -367,7 +377,7 @@ const Timeline = ({ isDesktop }) => {
         scrub: 0,
         animation: timeline,
       });
-      duration = timeline.totalDuration() / 14;
+      duration = timeline.totalDuration() / 15;
     } else {
       screenContainer.current.innerHTML = "";
       ScrollTrigger.create({
@@ -386,16 +396,6 @@ const Timeline = ({ isDesktop }) => {
         { scaleY: 0, duration: duration },
         "start"
       )
-      .from(
-        svgContainer.current.querySelector(".branch-1"),
-        { strokeDashoffset: 186, duration: duration - 2 },
-        "start"
-      )
-      .from(
-        svgContainer.current.querySelector(".branch-line-1"),
-        { scaleY: 0, duration: duration - 1 },
-        `start+=${duration - 2}`
-      )
 
       .from(
         svgContainer.current.querySelector(".line-2"),
@@ -403,20 +403,30 @@ const Timeline = ({ isDesktop }) => {
         `start+=${duration}`
       )
       .from(
-        svgContainer.current.querySelector(".branch-line-2"),
-        { scaleY: 0, duration: duration - 1 },
+        svgContainer.current.querySelector(".branch-2"),
+        { strokeDashoffset: 186, duration: duration - 2 },
         `start+=${duration}`
       )
       .from(
-        svgContainer.current.querySelector(".branch-2"),
-        { strokeDashoffset: 186, duration: duration - 2 },
-        `start+=${2 * duration - 1}`
+        svgContainer.current.querySelector(".branch-line-2"),
+        { scaleY: 0, duration: duration - 1 },
+        `start+=${2 * duration - 2}`
       )
 
       .from(
         svgContainer.current.querySelector(".line-3"),
         { scaleY: 0, duration: duration },
         `start+=${2 * duration}`
+      )
+      .from(
+        svgContainer.current.querySelector(".branch-line-3"),
+        { scaleY: 0, duration: duration - 1 },
+        `start+=${2 * duration}`
+      )
+      .from(
+        svgContainer.current.querySelector(".branch-3"),
+        { strokeDashoffset: 186, duration: duration - 2 },
+        `start+=${3 * duration - 1}`
       )
 
       .from(
@@ -436,21 +446,21 @@ const Timeline = ({ isDesktop }) => {
         { scaleY: 0, duration: duration },
         `start+=${5 * duration}`
       )
-      .from(
-        svgContainer.current.querySelector(".branch-6"),
-        { strokeDashoffset: 186, duration: duration - 2 },
-        `start+=${5 * duration}`
-      )
-      .from(
-        svgContainer.current.querySelector(".branch-line-6"),
-        { scaleY: 0, duration: duration - 1 },
-        `start+=${6 * duration - 2}`
-      )
 
       .from(
-        svgContainer.current.querySelectorAll(".line-7"),
+        svgContainer.current.querySelector(".line-7"),
         { scaleY: 0, duration: duration },
         `start+=${6 * duration}`
+      )
+      .from(
+        svgContainer.current.querySelector(".branch-7"),
+        { strokeDashoffset: 186, duration: duration - 2 },
+        `start+=${6 * duration}`
+      )
+      .from(
+        svgContainer.current.querySelector(".branch-line-7"),
+        { scaleY: 0, duration: duration - 1 },
+        `start+=${7 * duration - 2}`
       )
 
       .from(
@@ -478,31 +488,37 @@ const Timeline = ({ isDesktop }) => {
       )
 
       .from(
-        svgContainer.current.querySelector(".line-12"),
+        svgContainer.current.querySelectorAll(".line-12"),
         { scaleY: 0, duration: duration },
         `start+=${11 * duration}`
-      )
-      .from(
-        svgContainer.current.querySelector(".branch-line-12"),
-        { scaleY: 0, duration: duration - 1 },
-        `start+=${11 * duration}`
-      )
-      .from(
-        svgContainer.current.querySelector(".branch-12"),
-        { strokeDashoffset: 186, duration: duration - 2 },
-        `start+=${12 * duration - 1}`
       )
 
       .from(
-        svgContainer.current.querySelectorAll(".line-13"),
+        svgContainer.current.querySelector(".line-13"),
         { scaleY: 0, duration: duration },
         `start+=${12 * duration}`
+      )
+      .from(
+        svgContainer.current.querySelector(".branch-line-13"),
+        { scaleY: 0, duration: duration - 1 },
+        `start+=${12 * duration}`
+      )
+      .from(
+        svgContainer.current.querySelector(".branch-13"),
+        { strokeDashoffset: 186, duration: duration - 2 },
+        `start+=${13 * duration - 1}`
       )
 
       .from(
         svgContainer.current.querySelectorAll(".line-14"),
         { scaleY: 0, duration: duration },
-        `start+=${13 * duration - 1}`
+        `start+=${13 * duration}`
+      )
+
+      .from(
+        svgContainer.current.querySelectorAll(".line-15"),
+        { scaleY: 0, duration: duration },
+        `start+=${14 * duration - 1}`
       );
   }, [
     timelineSvg,
@@ -557,84 +573,90 @@ const Timeline = ({ isDesktop }) => {
               <div className="absolute top-0 left-0 h-full w-full">
                 <Image
                   className="w-full absolute top-0 object-cover slide-1"
-                  src="/timeline/huminos-freelance.jpg"
+                  src="/timeline/flipkart.gif"
                   alt="Timeline"
                   layout="fill"
                 />
                 <Image
                   className="w-full absolute top-0 object-cover slide-2"
-                  src="/timeline/aftereffects.jpg"
+                  src="/timeline/huminos-freelance.jpg"
                   alt="Timeline"
                   layout="fill"
                 />
                 <Image
                   className="w-full absolute top-0 object-cover slide-3"
-                  src="/timeline/dlt-website.jpg"
+                  src="/timeline/aftereffects.jpg"
                   alt="Timeline"
                   layout="fill"
                 />
                 <Image
                   className="w-full absolute top-0 object-cover slide-4"
-                  src="/timeline/huminos-website.jpg"
+                  src="/timeline/dlt-website.jpg"
                   alt="Timeline"
                   layout="fill"
                 />
                 <Image
                   className="w-full absolute top-0 object-cover slide-5"
-                  src="/timeline/farewell.jpg"
+                  src="/timeline/huminos-website.jpg"
                   alt="Timeline"
                   layout="fill"
                 />
                 <Image
                   className="w-full absolute top-0 object-cover slide-6"
-                  src="/timeline/si-head.jpg"
+                  src="/timeline/farewell.jpg"
                   alt="Timeline"
                   layout="fill"
                 />
                 <Image
                   className="w-full absolute top-0 object-cover slide-7"
-                  src="/timeline/svg-lecture.jpg"
+                  src="/timeline/si-head.jpg"
                   alt="Timeline"
                   layout="fill"
                 />
                 <Image
                   className="w-full absolute top-0 object-cover slide-8"
-                  src="/timeline/ims-17.jpg"
+                  src="/timeline/svg-lecture.jpg"
                   alt="Timeline"
                   layout="fill"
                 />
                 <Image
                   className="w-full absolute top-0 object-cover slide-9"
-                  src="/timeline/js-17.jpg"
+                  src="/timeline/ims-17.jpg"
                   alt="Timeline"
                   layout="fill"
                 />
                 <Image
                   className="w-full absolute top-0 object-cover slide-10"
-                  src="/timeline/abes-17.jpg"
+                  src="/timeline/js-17.jpg"
                   alt="Timeline"
                   layout="fill"
                 />
                 <Image
                   className="w-full absolute top-0 object-cover slide-11"
-                  src="/timeline/web-17.jpg"
+                  src="/timeline/abes-17.jpg"
                   alt="Timeline"
                   layout="fill"
                 />
                 <Image
                   className="w-full absolute top-0 object-cover slide-12"
-                  src="/timeline/ims-16.jpg"
+                  src="/timeline/web-17.jpg"
                   alt="Timeline"
                   layout="fill"
                 />
                 <Image
                   className="w-full absolute top-0 object-cover slide-13"
-                  src="/timeline/si-start.jpg"
+                  src="/timeline/ims-16.jpg"
                   alt="Timeline"
                   layout="fill"
                 />
                 <Image
                   className="w-full absolute top-0 object-cover slide-14"
+                  src="/timeline/si-start.jpg"
+                  alt="Timeline"
+                  layout="fill"
+                />
+                <Image
+                  className="w-full absolute top-0 object-cover slide-15"
                   src="/timeline/xda-rt.jpg"
                   alt="Timeline"
                   layout="fill"
