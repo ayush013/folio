@@ -50,6 +50,15 @@ export const SOCIAL_LINKS = {
 
 export const PROJECTS = [
   {
+    name: "myOKR Website",
+    image: "/projects/myokr.jpg",
+    blurImage: "/projects/blur/myokr-blur.jpg",
+    description: "Marketing site for OKR Platform by huminos",
+    gradient: ["#153BB9", "#0E2C8B"],
+    url: "https://www.myokr.co/",
+    tech: ["figma", "react", "next"],
+  },
+  {
     name: "DLT Labs Website",
     image: "/projects/dlt-website.jpg",
     blurImage: "/projects/blur/dlt-website-blur.jpg",
@@ -85,15 +94,6 @@ export const PROJECTS = [
     url: "https://www.huminos.com/",
     tech: ["javascript", "sass", "svg", "gulp"],
   },
-  // {
-  //     name: 'DL Orchestrator',
-  //     image: '/projects/orchestrator.jpg',
-  //     blurImage: '/projects/blur/dlt-website-blur.jpg',
-  //     description: 'Contributed to design and development of the platform',
-  //     gradient: ['#00765F', '#238975'],
-  //     url: 'http://orchestrator.dltlabs.com/',
-  //     tech: ['angular', 'sass', 'figma']
-  // },
   {
     name: "Alpha Aesthetics",
     image: "/projects/alpha.jpg",
@@ -102,15 +102,6 @@ export const PROJECTS = [
     gradient: ["#172839", "#334659"],
     url: "https://alpha-aesthetics.ayushsingh.net/",
     tech: ["illustrator", "javascript", "angular"],
-  },
-  {
-    name: "DL Gateway",
-    image: "/projects/gateway.jpg",
-    blurImage: "/projects/blur/gateway-blur.jpg",
-    description: "Contributed to design and development of the platform",
-    gradient: ["#1C776F", "#13534D"],
-    url: "https://dlgateway.dltlabs.com/",
-    tech: ["angular", "sass", "figma"],
   },
   {
     name: "Amantrya - Polling Web App",
@@ -162,9 +153,10 @@ export const PROJECTS = [
 export const SKILLS = {
   frontend: [
     "javascript",
-    "angular",
-    "next",
     "react",
+    "redux",
+    "next",
+    "angular",
     "gsap",
     "tailwind",
     "sass",
@@ -227,7 +219,7 @@ export const TIMELINE: TimelineNode[] = [
     content: {
       title: "UI Engineer",
       description:
-        "Working on enterprise blockchain solutions for web. Transforming UI/UX and frontend framework. Building a design system.",
+        "Worked on enterprise blockchain solutions for web. Transforming UI/UX and frontend framework. Building a design system.",
       logo: "dltlabs",
     },
     branch: 1,

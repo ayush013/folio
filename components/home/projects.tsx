@@ -27,7 +27,7 @@ const Projects = ({ clientHeight }) => {
       trigger: targetSection.current,
       start: "top top",
       end: duration,
-      scrub: 0,
+      scrub: 0.3,
       pin: true,
       animation: timeline,
       pinSpacing: "margin",
@@ -72,7 +72,7 @@ const Projects = ({ clientHeight }) => {
           </h1>
           <h2 className="text-2xl md:max-w-3xl w-full seq max-w-sm mt-2">
             I have contributed in over 20+ projects ranging from Frontend
-            Development, UI/UX, Open Source, and Motion Graphics
+            development, UI/UX design, Open Source, and Motion Graphics
           </h2>
         </div>
         <div
