@@ -17,6 +17,7 @@ import Timeline from "@/components/home/timeline";
 import Scripts from "@/components/common/scripts";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { gsap } from "gsap";
+import About from "@/components/home/about";
 
 export default function Home() {
   gsap.registerPlugin(ScrollTrigger);
@@ -61,6 +62,7 @@ export default function Home() {
         <main className="flex-col flex">
           <div className="fixed top-0 left-0 h-screen w-screen bg-gray-900 -z-1"></div>
           <Hero />
+          <About clientHeight={clientHeight} />
           <Projects clientHeight={clientHeight} />
           <Quote clientHeight={clientHeight} />
           <Skills />
