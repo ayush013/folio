@@ -27,10 +27,9 @@ const Quote = ({ clientHeight }) => {
   return (
     <section className="w-full relative select-none" ref={targetSection}>
       <div
-        className={
-          (clientHeight > 650 ? "py-60" : "py-72") +
-          " 2xl:container mx-auto xl:px-20 md:px-12 px-4"
-        }
+        className={`${
+          clientHeight > 650 ? "py-60" : "py-72"
+        } section-container`}
       >
         <h1
           ref={quoteRef}

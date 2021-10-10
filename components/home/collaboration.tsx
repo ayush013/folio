@@ -49,10 +49,10 @@ const Collaboration = ({ clientHeight }) => {
   return (
     <section className="w-full relative select-none" ref={targetSection}>
       <div
-        className={
-          (clientHeight > 650 ? "py-36" : "py-48") +
-          " 2xl:container mx-auto xl:px-20 md:px-12 px-4 flex flex-col"
-        }
+        className={`
+          ${clientHeight > 650 ? "py-36" : "py-48"}
+          section-container flex flex-col
+        `}
       >
         <p className="opacity-20 text-5xl md:text-7xl font-bold whitespace-nowrap ui-left transform-gpu">
           {Array(5)

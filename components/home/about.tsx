@@ -56,7 +56,7 @@ const About = ({ clientHeight }) => {
         className={`
           ${
             clientHeight > 650 ? "pt-40 pb-16" : "pt-48 pb-24"
-          } 2xl:container mx-auto xl:px-20 md:px-12 px-4
+          } section-container
         `}
       >
         <h1
@@ -72,7 +72,7 @@ const About = ({ clientHeight }) => {
             frontend architecture.{" "}
           </span>
           <span className="about-3 leading-tight">
-            Also, a fitness enthusiast with longest streak of 900+ days in a
+            Also, a fitness enthusiast with longest streak of 1300+ days in a
             row.
           </span>
         </h1>

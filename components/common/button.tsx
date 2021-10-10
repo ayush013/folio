@@ -18,15 +18,17 @@ const Button = ({
       onClick={onClick}
       href={href}
       {...otherProps}
-      className={
-        (type === "primary"
-          ? styles.primary
-          : type === "white"
-          ? styles.white
-          : styles.outline) +
-        " py-2 px-7 font-medium rounded text-base md:text-xl tracking-wide link duration-300 flex items-center " +
-        additionalClasses
-      }
+      className={`
+        ${
+          type === "primary"
+            ? styles.primary
+            : type === "white"
+            ? styles.white
+            : styles.outline
+        } 
+         py-2 px-7 font-medium rounded text-base md:text-xl tracking-wide link duration-300 flex items-center 
+        ${additionalClasses}
+      `}
     >
       {name}
     </a>

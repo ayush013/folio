@@ -61,17 +61,17 @@ const Cursor = ({ isDesktop }) => {
     <>
       <div
         ref={cursor}
-        className={
-          styles.cursor +
-          " fixed hidden bg-white w-4 h-4 select-none pointer-events-none z-50"
-        }
+        className={`
+          ${styles.cursor}
+           fixed hidden bg-white w-4 h-4 select-none pointer-events-none z-50
+        `}
       ></div>
       <div
         ref={follower}
-        className={
-          styles.cursorFollower +
-          " fixed hidden h-8 w-8 select-none pointer-events-none z-50"
-        }
+        className={`
+          ${styles.cursorFollower} 
+           fixed hidden h-8 w-8 select-none pointer-events-none z-50
+        `}
       ></div>
     </>
   );

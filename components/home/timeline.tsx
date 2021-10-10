@@ -533,7 +533,7 @@ const Timeline = ({ isDesktop }) => {
 
   return (
     <section
-      className="w-full relative select-none min-h-screen 2xl:container mx-auto py-8 xl:px-20 md:px-12 px-4 flex flex-col justify-center"
+      className="w-full relative select-none min-h-screen section-container py-8 flex flex-col justify-center"
       id={MENULINKS[3].ref}
     >
       <div className="flex flex-col">

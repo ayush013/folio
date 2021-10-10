@@ -2,22 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @font-face {
-  font-family: 'Google Sans';
-  src: local('Google Sans Medium'), local('GoogleSans-Medium'),
-      url('/fonts/GoogleSans-Medium.woff2') format('woff2'),
-      url('/fonts/GoogleSans-Medium.woff') format('woff');
+  font-family: "Google Sans";
+  src: local("Google Sans Medium"), local("GoogleSans-Medium"),
+    url("/fonts/GoogleSans-Medium.woff2") format("woff2"),
+    url("/fonts/GoogleSans-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Google Sans';
-  src: local('Google Sans Bold'), local('GoogleSans-Bold'),
-      url('/fonts/GoogleSans-Bold.woff2') format('woff2'),
-      url('/fonts/GoogleSans-Bold.woff') format('woff');
+  font-family: "Google Sans";
+  src: local("Google Sans Bold"), local("GoogleSans-Bold"),
+    url("/fonts/GoogleSans-Bold.woff2") format("woff2"),
+    url("/fonts/GoogleSans-Bold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -72,6 +71,10 @@ html {
 ::selection {
   color: white;
   background: black;
+}
+
+.section-container {
+  @apply 2xl:container xl:px-20 md:px-12 px-4 mx-auto;
 }
 
 a,
@@ -187,7 +190,6 @@ input[type="checkbox"] {
             background-size: 200% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-
 
             &:hover {
               background-position: 100% 0;

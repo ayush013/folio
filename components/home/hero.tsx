@@ -36,7 +36,7 @@ const Hero = React.memo(() => {
 
   return (
     <section
-      className="w-full flex md:items-center py-8 2xl:container mx-auto xl:px-20 md:px-12 px-4 min-h-screen relative mb-24"
+      className="w-full flex md:items-center py-8 section-container min-h-screen relative mb-24"
       id={MENULINKS[0].ref}
       ref={targetSection}
       style={{ opacity: 0 }}
@@ -48,8 +48,8 @@ const Hero = React.memo(() => {
           }
         `}
       </style>
-      <div className="font-medium flex flex-col pt-40 md:pt-0 select-none">
-        <div className="mb-5">
+      <div className="font-medium flex flex-col pt-32 md:pt-0 select-none">
+        <div className="md:mb-5 mb-2">
           <p className="text-4xl seq">Hello 👋🏻</p>
           <h1 className="text-3xl seq">I am Ayush Singh</h1>
         </div>
@@ -95,7 +95,7 @@ const Hero = React.memo(() => {
         </div>
       </div>
       <div
-        className="absolute hero-bg right-0 bottom-0 -z-1 md:w-3/4 w-full scale-125 sm:scale-100 transform-gpu flex items-end"
+        className="absolute hero-bg right-0 md:bottom-0 bottom-8 -z-1 md:w-3/4 w-full scale-125 sm:scale-100 transform-gpu flex items-end"
         style={{ maxHeight: "650px" }}
         dangerouslySetInnerHTML={{ __html: svgMarkup }}
       ></div>

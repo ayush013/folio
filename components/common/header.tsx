@@ -2,8 +2,8 @@ import Image from "next/image";
 
 const Header = ({ children }) => {
   return (
-    <nav className="w-full fixed top-0 xl:px-20 md:px-12 px-4 py-8 select-none z-50 bg-gradient-to-b from-gray-900 to-transparent">
-      <div className="relative flex justify-between 2xl:container mx-auto">
+    <nav className="w-full fixed top-0 py-8 select-none z-50 bg-gradient-to-b from-gray-900 to-transparent">
+      <div className="flex justify-between section-container">
         <a href="#home" className="link">
           <Image
             src="/logo.svg"
@@ -12,7 +12,7 @@ const Header = ({ children }) => {
             height={22}
           />
         </a>
-        <div className="outer-menu">
+        <div className="outer-menu relative">
           <input
             aria-labelledby="menu"
             className="checkbox-toggle link absolute top-0 right-0 w-6 h-6 opacity-0"

@@ -30,7 +30,7 @@ const Skills = () => {
       id={MENULINKS[2].ref}
       ref={targetSection}
     >
-      <div className="2xl:container mx-auto py-12 xl:px-20 md:px-12 px-4 flex flex-col justify-center">
+      <div className="section-container py-12 flex flex-col justify-center">
         <img
           src="/pattern-r.svg"
           className="absolute right-0 -bottom-2/3 w-1/5 max-w-xs md:block hidden"

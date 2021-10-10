@@ -17,9 +17,9 @@ const Footer = () => {
         width={1440}
       />
       <div className="h-full w-full">
-        <div className="2xl:container mx-auto xl:px-20 md:px-12 px-4 flex-col flex h-full justify-end z-10 items-center py-12">
+        <div className="section-container flex-col flex h-full justify-end z-10 items-center py-12">
           <h1 className="font-medium text-3xl md:text-4xl text-center">
-            I’m looking for challenges! Feel free to Contact.
+            Feel free to connect on social media.
           </h1>
           <div className="flex mt-8">
             {Object.keys(SOCIAL_LINKS).map((el) => (
