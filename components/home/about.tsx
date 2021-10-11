@@ -28,23 +28,13 @@ const About = ({ clientHeight }) => {
       )
       .to(quoteRef.current.querySelector(".about-2"), {
         opacity: 0.2,
-        delay: 0.5,
-      })
-      .fromTo(
-        quoteRef.current.querySelector(".about-3"),
-        { opacity: 0.2 },
-        { opacity: 1 },
-        "<"
-      )
-      .to(quoteRef.current.querySelector(".about-3"), {
-        opacity: 0.2,
         delay: 1,
       });
 
     ScrollTrigger.create({
       trigger: targetSection.current,
-      start: "center bottom",
-      end: "center 25%",
+      start: "center 80%",
+      end: "center top",
       scrub: 0,
       animation: timeline,
     });
@@ -64,16 +54,12 @@ const About = ({ clientHeight }) => {
           className="font-medium text-3xl sm:text-4xl md:text-6xl"
         >
           <span className="about-1 leading-tight">
-            A passionate UI Engineer who bridges the gap between designers and
-            developers.{" "}
+            I am a passionate UI Engineer who bridges the gap between
+            development and design.{" "}
           </span>
           <span className="about-2 leading-tight">
-            Takes responsibility to craft a good user experience using modern
+            I take responsibility to craft a good user experience using modern
             frontend architecture.{" "}
-          </span>
-          <span className="about-3 leading-tight">
-            Also, a fitness enthusiast with longest streak of 1300+ days in a
-            row.
           </span>
         </h1>
       </div>
