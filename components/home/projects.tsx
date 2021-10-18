@@ -3,12 +3,15 @@ import { MENULINKS, PROJECTS } from "../../constants";
 import ProjectTile from "../common/project-tile";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { Draggable } from "gsap/dist/Draggable";
 
 const Projects = ({ clientHeight }) => {
   const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
   const sectionTitle: MutableRefObject<HTMLDivElement> = useRef(null);
 
   useEffect(() => {
+    gsap.registerPlugin(Draggable);
+
     const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } });
     const sidePadding =
       document.body.clientWidth -
@@ -23,7 +26,7 @@ const Projects = ({ clientHeight }) => {
       .to(targetSection.current, { x: width })
       .to(sectionTitle.current, { x: -width }, "<");
 
-    ScrollTrigger.create({
+    let projectScrollTrigger = ScrollTrigger.create({
       trigger: targetSection.current,
       start: "top top",
       end: duration,
@@ -32,6 +35,31 @@ const Projects = ({ clientHeight }) => {
       animation: timeline,
       pinSpacing: "margin",
     });
+
+    let proxy = document.createElement("div");
+
+    function updateProxy() {
+      if (projectScrollTrigger) {
+        gsap.set(proxy, {
+          x: -projectScrollTrigger.scroll(),
+          overwrite: "auto",
+        });
+      }
+    }
+
+    Draggable.create(proxy, {
+      trigger: targetSection.current,
+      type: "x",
+      throwProps: true,
+      onThrowUpdate: function () {
+        projectScrollTrigger.scroll(-this.x);
+      },
+      onDrag: function () {
+        projectScrollTrigger.scroll(-this.x);
+      },
+    });
+
+    window.addEventListener("wheel", updateProxy);
 
     const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
     revealTl.from(
@@ -63,7 +91,7 @@ const Projects = ({ clientHeight }) => {
           <p className="uppercase tracking-widest text-gray-200 text-sm seq">
             PROJECTS
           </p>
-          <h1 className="text-5xl font-bold text-gradient seq w-fit mt-2">
+          <h1 className="md:text-5xl text-4xl font-bold text-gradient seq w-fit mt-2">
             My Works
           </h1>
           <h2 className="text-2xl md:max-w-3xl w-full seq max-w-sm mt-2">
@@ -73,12 +101,12 @@ const Projects = ({ clientHeight }) => {
         </div>
         <div
           className={`${
-            clientHeight > 650 ? "mt-12" : "mt-8"
+            clientHeight > 650 ? "mt-12" : "mt-6"
           } flex project-wrapper w-fit seq`}
         >
           {PROJECTS.map((project, idx) => (
             <ProjectTile
-              classes={idx === PROJECTS.length - 1 ? "" : "mr-16"}
+              classes={idx === PROJECTS.length - 1 ? "" : "mr-10"}
               project={project}
               key={project.name}
             ></ProjectTile>
