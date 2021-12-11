@@ -45,7 +45,7 @@ const About = ({ clientHeight }) => {
       <div
         className={`
           ${
-            clientHeight > 650 ? "pt-40 pb-16" : "pt-48 pb-24"
+            clientHeight > 650 ? "pt-20 pb-16" : "pt-40 pb-24"
           } section-container
         `}
       >

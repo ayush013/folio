@@ -4,11 +4,60 @@ import ProjectTile from "../common/project-tile";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-const Projects = ({ clientHeight }) => {
+const Projects = ({
+  clientHeight,
+  isDesktop,
+}: {
+  clientHeight: number;
+  isDesktop: boolean;
+}) => {
   const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
   const sectionTitle: MutableRefObject<HTMLDivElement> = useRef(null);
 
   useEffect(() => {
+    let projectsScrollTrigger;
+    let projectsTimeline;
+
+    if (isDesktop) {
+      [projectsTimeline, projectsScrollTrigger] = getProjectsSt();
+    } else {
+      const projectWrapper = targetSection.current.querySelector(
+        ".project-wrapper"
+      ) as HTMLDivElement;
+      projectWrapper.style.width = "calc(100vw - 1rem)";
+      projectWrapper.style.overflowX = "scroll";
+    }
+
+    const [revealTimeline, revealScrollTrigger] = getRevealSt();
+
+    return () => {
+      projectsScrollTrigger && projectsScrollTrigger.kill();
+      projectsTimeline && projectsTimeline.kill();
+      revealScrollTrigger && revealScrollTrigger.kill();
+      revealTimeline && revealTimeline.progress(1);
+    };
+  }, [targetSection, sectionTitle, isDesktop]);
+
+  const getRevealSt = (): [GSAPTimeline, ScrollTrigger] => {
+    const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
+    revealTl.from(
+      targetSection.current.querySelectorAll(".seq"),
+      { opacity: 0, duration: 0.5, stagger: 0.5 },
+      "<"
+    );
+
+    const scrollTrigger = ScrollTrigger.create({
+      trigger: targetSection.current,
+      start: "top bottom",
+      end: "bottom bottom",
+      scrub: 0,
+      animation: revealTl,
+    });
+
+    return [revealTl, scrollTrigger];
+  };
+
+  const getProjectsSt = (): [GSAPTimeline, ScrollTrigger] => {
     const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } });
     const sidePadding =
       document.body.clientWidth -
@@ -23,36 +72,25 @@ const Projects = ({ clientHeight }) => {
       .to(targetSection.current, { x: width })
       .to(sectionTitle.current, { x: -width }, "<");
 
-    ScrollTrigger.create({
+    const scrollTrigger = ScrollTrigger.create({
       trigger: targetSection.current,
       start: "top top",
       end: duration,
-      scrub: 0.3,
+      scrub: 0,
       pin: true,
       animation: timeline,
       pinSpacing: "margin",
     });
 
-    const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
-    revealTl.from(
-      targetSection.current.querySelectorAll(".seq"),
-      { opacity: 0, duration: 0.5, stagger: 0.5 },
-      "<"
-    );
-
-    ScrollTrigger.create({
-      trigger: targetSection.current,
-      start: "top bottom",
-      end: "bottom bottom",
-      scrub: 0,
-      animation: revealTl,
-    });
-  }, [targetSection, sectionTitle]);
+    return [timeline, scrollTrigger];
+  };
 
   return (
     <section
       ref={targetSection}
-      className="w-full min-h-screen relative select-none section-container transform-gpu"
+      className={`${
+        isDesktop && "min-h-screen"
+      } w-full relative select-none section-container transform-gpu`}
       id={MENULINKS[1].ref}
     >
       <div className="flex-col flex py-8 justify-center h-full">
@@ -63,7 +101,7 @@ const Projects = ({ clientHeight }) => {
           <p className="uppercase tracking-widest text-gray-200 text-sm seq">
             PROJECTS
           </p>
-          <h1 className="text-5xl font-bold text-gradient seq w-fit mt-2">
+          <h1 className="md:text-5xl text-4xl font-bold text-gradient seq w-fit mt-2">
             My Works
           </h1>
           <h2 className="text-2xl md:max-w-3xl w-full seq max-w-sm mt-2">
@@ -73,14 +111,15 @@ const Projects = ({ clientHeight }) => {
         </div>
         <div
           className={`${
-            clientHeight > 650 ? "mt-12" : "mt-8"
+            clientHeight > 650 ? "mt-12" : "mt-6"
           } flex project-wrapper w-fit seq`}
         >
           {PROJECTS.map((project, idx) => (
             <ProjectTile
-              classes={idx === PROJECTS.length - 1 ? "" : "mr-16"}
+              classes={idx !== PROJECTS.length - 1 && "md:mr-10 mr-6"}
               project={project}
               key={project.name}
+              isDesktop={isDesktop}
             ></ProjectTile>
           ))}
         </div>

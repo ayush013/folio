@@ -540,7 +540,7 @@ const Timeline = ({ isDesktop }) => {
         <p className="uppercase tracking-widest text-gray-200 text-sm seq">
           MILESTONES
         </p>
-        <h1 className="text-5xl font-bold text-gradient seq w-fit mt-2">
+        <h1 className="md:text-5xl text-4xl font-bold text-gradient seq w-fit mt-2">
           Timeline
         </h1>
         <h2 className="text-2xl md:max-w-2xl w-full seq mt-2">

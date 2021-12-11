@@ -3,7 +3,7 @@ import Image from "next/image";
 import { MutableRefObject, useEffect, useRef } from "react";
 import VanillaTilt from "vanilla-tilt";
 
-const ProjectTile = ({ project, classes }) => {
+const ProjectTile = ({ project, classes, isDesktop }) => {
   const projectCard: MutableRefObject<HTMLDivElement> = useRef(null);
   let additionalClasses = "";
   if (classes) {
@@ -27,7 +27,7 @@ const ProjectTile = ({ project, classes }) => {
       rel="noreferrer"
       className={`link overflow-hidden rounded-3xl ${additionalClasses}`}
       style={{
-        maxWidth: "calc(100vw - 2rem)",
+        maxWidth: isDesktop ? "calc(100vw - 2rem)" : "calc(100vw - 4rem)",
         flex: "1 0 auto",
         WebkitMaskImage: "-webkit-radial-gradient(white, black)",
       }}

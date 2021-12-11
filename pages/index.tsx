@@ -63,7 +63,7 @@ export default function Home() {
           <div className="fixed top-0 left-0 h-screen w-screen bg-gray-900 -z-1"></div>
           <Hero />
           <About clientHeight={clientHeight} />
-          <Projects clientHeight={clientHeight} />
+          <Projects clientHeight={clientHeight} isDesktop={isDesktop} />
           <Quote clientHeight={clientHeight} />
           <Skills />
           <Timeline isDesktop={isDesktop} />
