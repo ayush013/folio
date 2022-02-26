@@ -43,12 +43,21 @@ export const SOCIAL_LINKS = {
   medium: "https://alphaayush.medium.com/",
   instagram: "https://www.instagram.com/alphaayush/",
   facebook: "https://www.facebook.com/ayush013",
-  twitter: "https://twitter.com/ayush013",
   dribbble: "https://dribbble.com/alphaayush",
   behance: "https://www.behance.net/alphaayush/",
+  twitter: "https://twitter.com/ayush013",
 };
 
 export const PROJECTS = [
+  {
+    name: "FigGen - Figma to Code converter",
+    image: "/projects/figgen.jpg",
+    blurImage: "/projects/blur/figgen-blur.jpg",
+    description: "Pixel perfect HTML/Tailwind for Figma Auto layout designs.",
+    gradient: ["#1F6582", "#1ABCFE"],
+    url: "https://www.figma.com/community/plugin/1065278044402066626",
+    tech: ["typescript", "figma", "tailwind"],
+  },
   {
     name: "myOKR Website",
     image: "/projects/myokr.jpg",
@@ -91,7 +100,7 @@ export const PROJECTS = [
     blurImage: "/projects/blur/huminos-blur.jpg",
     description: "Marketing site for Huminos bots for workplace by facebook",
     gradient: ["#17007B", "#3A2C79"],
-    url: "https://www.huminos.com/",
+    url: "https://bots.huminos.com/",
     tech: ["javascript", "sass", "svg", "gulp"],
   },
   {
