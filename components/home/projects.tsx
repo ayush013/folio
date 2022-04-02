@@ -4,7 +4,7 @@ import ProjectTile from "../common/project-tile";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-const Projects = ({
+const ProjectsSection = ({
   clientHeight,
   isDesktop,
 }: {
@@ -133,4 +133,4 @@ const Projects = ({
   );
 };
 
-export default Projects;
+export default ProjectsSection;

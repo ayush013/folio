@@ -17,7 +17,7 @@ const branch1X = 13;
 const curveLength = 150;
 const dotSize = 26;
 
-const Timeline = ({ isDesktop }) => {
+const TimelineSection = ({ isDesktop }) => {
   const [svgWidth, setSvgWidth] = useState(400);
   const [branch2X, setBranch2X] = useState(109);
 
@@ -670,4 +670,4 @@ const Timeline = ({ isDesktop }) => {
   );
 };
 
-export default Timeline;
+export default TimelineSection;

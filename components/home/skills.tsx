@@ -4,7 +4,7 @@ import { MutableRefObject, useEffect, useRef } from "react";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-const Skills = () => {
+const SkillsSection = () => {
   const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
 
   useEffect(() => {
@@ -123,4 +123,4 @@ const Skills = () => {
   );
 };
 
-export default Skills;
+export default SkillsSection;

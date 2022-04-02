@@ -2,7 +2,7 @@ import { gsap, Linear } from "gsap";
 import { MutableRefObject, useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-const Collaboration = ({ clientHeight }) => {
+const CollaborationSection = ({ clientHeight }) => {
   const quoteRef: MutableRefObject<HTMLDivElement> = useRef(null);
   const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
 
@@ -92,4 +92,4 @@ const Collaboration = ({ clientHeight }) => {
   );
 };
 
-export default Collaboration;
+export default CollaborationSection;

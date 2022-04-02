@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const HeroImage = (props) => (
+const HeroImage = () => (
   <svg
     width={1021}
     height={650}
@@ -11,7 +11,6 @@ const HeroImage = (props) => (
     }}
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    {...props}
   >
     <style>
       {

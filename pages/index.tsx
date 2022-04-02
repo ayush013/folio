@@ -1,23 +1,26 @@
 import { METADATA } from "../constants";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import Layout from "@/components/common/layout";
 import Header from "@/components/common/header";
 import Menu from "@/components/common/menu";
 import ProgressIndicator from "@/components/common/progress-indicator";
 import Cursor from "@/components/common/cursor";
-import Hero from "@/components/home/hero";
-import Projects from "@/components/home/projects";
-import Quote from "@/components/home/quote";
-import Skills from "@/components/home/skills";
-import Collaboration from "@/components/home/collaboration";
+import HeroSection from "@/components/home/hero";
+import ProjectsSection from "@/components/home/projects";
+import QuoteSection from "@/components/home/quote";
+import SkillsSection from "@/components/home/skills";
+import CollaborationSection from "@/components/home/collaboration";
 import Footer from "@/components/common/footer";
-import Timeline from "@/components/home/timeline";
+import TimelineSection from "@/components/home/timeline";
 import Scripts from "@/components/common/scripts";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { gsap } from "gsap";
-import About from "@/components/home/about";
+import AboutSection from "@/components/home/about";
+
+const DEBOUNCE_TIME = 100;
 
 export default function Home() {
   gsap.registerPlugin(ScrollTrigger);
@@ -26,27 +29,33 @@ export default function Home() {
   const [isDesktop, setisDesktop] = useState(true);
   const [clientHeight, setHeight] = useState(0);
 
+  let timer = null;
+
+  const debouncedDimensionCalculator = () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      const isDesktopResult =
+        typeof window.orientation === "undefined" &&
+        navigator.userAgent.indexOf("IEMobile") === -1;
+
+      window.history.scrollRestoration = "manual";
+
+      setisDesktop(isDesktopResult);
+      setHeight(window.innerHeight);
+    }, DEBOUNCE_TIME);
+  };
+
   useEffect(() => {
-    let timer = null;
-    const callback = () => {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        const result =
-          typeof window.orientation === "undefined" &&
-          navigator.userAgent.indexOf("IEMobile") === -1;
-        window.history.scrollRestoration = "manual";
-        setisDesktop(result);
-        setHeight(window.innerHeight);
-      }, 100);
-    };
+    debouncedDimensionCalculator();
 
-    callback();
+    window.addEventListener("resize", debouncedDimensionCalculator);
+    return () =>
+      window.removeEventListener("resize", debouncedDimensionCalculator);
+  }, [timer]);
 
-    window.addEventListener("resize", callback);
-    return () => {
-      window.removeEventListener("resize", callback);
-    };
-  }, []);
+  const renderBackdrop = (): React.ReactNode => (
+    <div className="fixed top-0 left-0 h-screen w-screen bg-gray-900 -z-1"></div>
+  );
 
   return (
     <>
@@ -60,14 +69,14 @@ export default function Home() {
         <ProgressIndicator />
         <Cursor isDesktop={isDesktop} />
         <main className="flex-col flex">
-          <div className="fixed top-0 left-0 h-screen w-screen bg-gray-900 -z-1"></div>
-          <Hero />
-          <About clientHeight={clientHeight} />
-          <Projects clientHeight={clientHeight} isDesktop={isDesktop} />
-          <Quote clientHeight={clientHeight} />
-          <Skills />
-          <Timeline isDesktop={isDesktop} />
-          <Collaboration clientHeight={clientHeight} />
+          {renderBackdrop()}
+          <HeroSection />
+          <AboutSection clientHeight={clientHeight} />
+          <ProjectsSection clientHeight={clientHeight} isDesktop={isDesktop} />
+          <QuoteSection clientHeight={clientHeight} />
+          <SkillsSection />
+          <TimelineSection isDesktop={isDesktop} />
+          <CollaborationSection clientHeight={clientHeight} />
           <Footer />
         </main>
         <Scripts />

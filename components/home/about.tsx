@@ -2,7 +2,7 @@ import { gsap, Linear } from "gsap";
 import { MutableRefObject, useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-const About = ({ clientHeight }) => {
+const AboutSection = ({ clientHeight }) => {
   const quoteRef: MutableRefObject<HTMLDivElement> = useRef(null);
   const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
 
@@ -67,4 +67,4 @@ const About = ({ clientHeight }) => {
   );
 };
 
-export default About;
+export default AboutSection;

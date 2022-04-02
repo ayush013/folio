@@ -16,7 +16,7 @@ const HERO_STYLES = {
   TYPED_SPAN: "text-xl sm:text-2xl md:text-4xl seq",
 };
 
-const Hero = () => {
+const HeroSection = React.memo(() => {
   const typedSpanElement: MutableRefObject<HTMLSpanElement> = useRef(null);
   const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
 
@@ -104,8 +104,6 @@ const Hero = () => {
 
   const { ref: heroSectionRef } = MENULINKS[0];
 
-  console.log("rendering hero");
-
   return (
     <section
       className={HERO_STYLES.SECTION}
@@ -117,8 +115,8 @@ const Hero = () => {
       {renderBackgroundImage()}
     </section>
   );
-};
+});
 
-Hero.displayName = "LandingHero";
+HeroSection.displayName = "LandingHero";
 
-export default Hero;
+export default HeroSection;
