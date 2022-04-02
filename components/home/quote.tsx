@@ -6,7 +6,10 @@ const QuoteSection = () => {
   const quoteRef: MutableRefObject<HTMLDivElement> = useRef(null);
   const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
 
-  const initQuoteAnimation = (): ScrollTrigger => {
+  const initQuoteAnimation = (
+    quoteRef: MutableRefObject<HTMLDivElement>,
+    targetSection: MutableRefObject<HTMLDivElement>
+  ): ScrollTrigger => {
     const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } });
     timeline
       .from(quoteRef.current, { opacity: 0, duration: 2 })
@@ -25,7 +28,7 @@ const QuoteSection = () => {
   };
 
   useEffect(() => {
-    const quoteAnimationRef = initQuoteAnimation();
+    const quoteAnimationRef = initQuoteAnimation(quoteRef, targetSection);
 
     return quoteAnimationRef.kill;
   }, [quoteRef, targetSection]);

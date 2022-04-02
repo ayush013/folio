@@ -14,7 +14,9 @@ const ProjectsSection = ({ isDesktop }: { isDesktop: boolean }) => {
   const targetSectionRef: MutableRefObject<HTMLDivElement> = useRef(null);
   const sectionTitleElementRef: MutableRefObject<HTMLDivElement> = useRef(null);
 
-  const initRevealAnimation = (): [GSAPTimeline, ScrollTrigger] => {
+  const initRevealAnimation = (
+    targetSectionRef: MutableRefObject<HTMLDivElement>
+  ): [GSAPTimeline, ScrollTrigger] => {
     const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
     revealTl.from(
       targetSectionRef.current.querySelectorAll(".seq"),
@@ -33,7 +35,10 @@ const ProjectsSection = ({ isDesktop }: { isDesktop: boolean }) => {
     return [revealTl, scrollTrigger];
   };
 
-  const initProjectsAnimation = (): [GSAPTimeline, ScrollTrigger] => {
+  const initProjectsAnimation = (
+    targetSectionRef: MutableRefObject<HTMLDivElement>,
+    sectionTitleElementRef: MutableRefObject<HTMLDivElement>
+  ): [GSAPTimeline, ScrollTrigger] => {
     const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } });
     const sidePadding =
       document.body.clientWidth -
@@ -66,7 +71,10 @@ const ProjectsSection = ({ isDesktop }: { isDesktop: boolean }) => {
     let projectsTimeline: GSAPTimeline | undefined;
 
     if (isDesktop) {
-      [projectsTimeline, projectsScrollTrigger] = initProjectsAnimation();
+      [projectsTimeline, projectsScrollTrigger] = initProjectsAnimation(
+        targetSectionRef,
+        sectionTitleElementRef
+      );
     } else {
       const projectWrapper = targetSectionRef.current.querySelector(
         ".project-wrapper"
@@ -75,7 +83,8 @@ const ProjectsSection = ({ isDesktop }: { isDesktop: boolean }) => {
       projectWrapper.style.overflowX = "scroll";
     }
 
-    const [revealTimeline, revealScrollTrigger] = initRevealAnimation();
+    const [revealTimeline, revealScrollTrigger] =
+      initRevealAnimation(targetSectionRef);
 
     return () => {
       projectsScrollTrigger && projectsScrollTrigger.kill();
