@@ -2,7 +2,7 @@ import { gsap, Linear } from "gsap";
 import { MutableRefObject, useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-const CollaborationSection = ({ clientHeight }) => {
+const CollaborationSection = () => {
   const quoteRef: MutableRefObject<HTMLDivElement> = useRef(null);
   const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
 
@@ -48,12 +48,7 @@ const CollaborationSection = ({ clientHeight }) => {
 
   return (
     <section className="w-full relative select-none" ref={targetSection}>
-      <div
-        className={`
-          ${clientHeight > 650 ? "py-36" : "py-48"}
-          section-container flex flex-col
-        `}
-      >
+      <div className="tall:py-36 py-48 section-container flex flex-col">
         <p className="opacity-20 text-5xl md:text-7xl font-bold whitespace-nowrap ui-left transform-gpu">
           {Array(5)
             .fill(" User Interface Design  User Experience Design ")

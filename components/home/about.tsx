@@ -2,7 +2,7 @@ import { gsap, Linear } from "gsap";
 import React, { MutableRefObject, useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-const AboutSection = ({ clientHeight }) => {
+const AboutSection = () => {
   const quoteRef: MutableRefObject<HTMLDivElement> = useRef(null);
   const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
 
@@ -68,9 +68,7 @@ const AboutSection = ({ clientHeight }) => {
 
   return (
     <section
-      className={`${
-        clientHeight > 650 ? "pt-20 pb-16" : "pt-40 pb-24"
-      } w-full relative select-none section-container`}
+      className={`tall:pt-20 tall:pb-16 pt-40 pb-24 w-full relative select-none section-container`}
       ref={targetSection}
     >
       {renderQuotes()}

@@ -23,6 +23,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "noImplicitAny": true,
     "incremental": true
   },
   "include": [

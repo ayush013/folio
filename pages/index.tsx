@@ -27,9 +27,8 @@ export default function Home() {
   gsap.config({ nullTargetWarn: false });
 
   const [isDesktop, setisDesktop] = useState(true);
-  const [clientHeight, setHeight] = useState(0);
 
-  let timer = null;
+  let timer: NodeJS.Timeout = null;
 
   const debouncedDimensionCalculator = () => {
     clearTimeout(timer);
@@ -41,7 +40,6 @@ export default function Home() {
       window.history.scrollRestoration = "manual";
 
       setisDesktop(isDesktopResult);
-      setHeight(window.innerHeight);
     }, DEBOUNCE_TIME);
   };
 
@@ -71,12 +69,12 @@ export default function Home() {
         <main className="flex-col flex">
           {renderBackdrop()}
           <HeroSection />
-          <AboutSection clientHeight={clientHeight} />
-          <ProjectsSection clientHeight={clientHeight} isDesktop={isDesktop} />
-          <QuoteSection clientHeight={clientHeight} />
+          <AboutSection />
+          <ProjectsSection isDesktop={isDesktop} />
+          <QuoteSection />
           <SkillsSection />
           <TimelineSection isDesktop={isDesktop} />
-          <CollaborationSection clientHeight={clientHeight} />
+          <CollaborationSection />
           <Footer />
         </main>
         <Scripts />

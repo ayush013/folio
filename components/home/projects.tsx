@@ -4,13 +4,7 @@ import ProjectTile from "../common/project-tile";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-const ProjectsSection = ({
-  clientHeight,
-  isDesktop,
-}: {
-  clientHeight: number;
-  isDesktop: boolean;
-}) => {
+const ProjectsSection = ({ isDesktop }: { isDesktop: boolean }) => {
   const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
   const sectionTitle: MutableRefObject<HTMLDivElement> = useRef(null);
 
@@ -109,11 +103,7 @@ const ProjectsSection = ({
             development, UI/UX design, Open Source, and Motion Graphics
           </h2>
         </div>
-        <div
-          className={`${
-            clientHeight > 650 ? "mt-12" : "mt-6"
-          } flex project-wrapper w-fit seq`}
-        >
+        <div className="tall:mt-12 mt-6 flex project-wrapper w-fit seq">
           {PROJECTS.map((project, idx) => (
             <ProjectTile
               classes={idx !== PROJECTS.length - 1 && "md:mr-10 mr-6"}

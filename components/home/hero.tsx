@@ -61,7 +61,7 @@ const HeroSection = React.memo(() => {
   );
 
   const renderSocialLinks = (): React.ReactNode =>
-    Object.keys(SOCIAL_LINKS).map((el) => (
+    Object.keys(SOCIAL_LINKS).map((el: keyof typeof SOCIAL_LINKS) => (
       <a
         href={SOCIAL_LINKS[el]}
         key={el}
