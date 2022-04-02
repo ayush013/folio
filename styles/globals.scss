@@ -222,3 +222,20 @@ input[type="checkbox"] {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.text-strong {
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #ffffff 50%,
+    #6dd5ed 51%,
+    #2193b0 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.project-wrapper::-webkit-scrollbar {
+  display: none;
+}
