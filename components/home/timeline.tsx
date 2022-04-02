@@ -8,6 +8,7 @@ import {
 import Image from "next/image";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { isSmallScreen } from "pages";
 
 const svgColor = "#9CA3AF";
 const animColor = "#FCD34D";
@@ -213,7 +214,7 @@ const TimelineSection = ({ isDesktop }) => {
     const resultString = createSvg(TIMELINE);
     timelineSvg.current.innerHTML = resultString;
 
-    if (document.body.clientWidth < 767) {
+    if (isSmallScreen()) {
       setBranch2X(70);
     }
 
@@ -222,7 +223,7 @@ const TimelineSection = ({ isDesktop }) => {
       .addLabel("start");
     let duration;
 
-    if (isDesktop && document.body.clientWidth > 767) {
+    if (isDesktop && !isSmallScreen()) {
       timeline
         .to(screenContainer.current.querySelector(".slide-1"), {
           opacity: 0,

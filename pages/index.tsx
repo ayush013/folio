@@ -22,6 +22,8 @@ import AboutSection from "@/components/home/about";
 
 const DEBOUNCE_TIME = 100;
 
+export const isSmallScreen = (): boolean => document.body.clientWidth < 767;
+
 export default function Home() {
   gsap.registerPlugin(ScrollTrigger);
   gsap.config({ nullTargetWarn: false });

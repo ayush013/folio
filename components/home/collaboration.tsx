@@ -1,6 +1,7 @@
 import { gsap, Linear } from "gsap";
 import { MutableRefObject, useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { isSmallScreen } from "pages";
 
 const COLLABORATION_STYLE = {
   SLIDING_TEXT:
@@ -37,17 +38,15 @@ const CollaborationSection = () => {
   const initSlidingTextAnimation = (
     targetSection: MutableRefObject<HTMLDivElement>
   ) => {
-    const smallScreen = document.body.clientWidth < 767;
-
     const slidingTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
 
     slidingTl
       .to(targetSection.current.querySelector(".ui-left"), {
-        xPercent: smallScreen ? -500 : -150,
+        xPercent: isSmallScreen() ? -500 : -150,
       })
       .from(
         targetSection.current.querySelector(".ui-right"),
-        { xPercent: smallScreen ? -500 : -150 },
+        { xPercent: isSmallScreen() ? -500 : -150 },
         "<"
       );
 

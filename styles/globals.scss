@@ -244,3 +244,14 @@ input[type="checkbox"] {
   padding-right: 1.25rem !important;
   padding-bottom: 1.25rem !important;
 }
+
+footer {
+  background: url(/footer-bg.svg),
+    linear-gradient(
+      153.86deg,
+      #02494c 0%,
+      #016877 15.69%,
+      #0d576d 48.9%,
+      #004865 95.52%
+    );
+}

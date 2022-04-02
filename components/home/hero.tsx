@@ -3,7 +3,7 @@ import React, { MutableRefObject, useEffect, useRef } from "react";
 import Typed from "typed.js";
 import Image from "next/image";
 import { gsap, Linear } from "gsap";
-import Button from "../common/button";
+import Button, { ButtonTypes } from "../common/button";
 import HeroImage from "./hero-image";
 
 const HERO_STYLES = {
@@ -86,7 +86,7 @@ const HeroSection = React.memo(() => {
       <div className="flex seq">
         <Button
           classes="mr-3"
-          type="outline"
+          type={ButtonTypes.OUTLINE}
           name="Resume"
           target="_blank"
           rel="noreferrer"
@@ -94,7 +94,7 @@ const HeroSection = React.memo(() => {
         ></Button>
         <Button
           classes="ml-3"
-          type="primary"
+          type={ButtonTypes.PRIMARY}
           name="Let's Talk"
           href={`mailto: ${EMAIL}`}
         ></Button>
