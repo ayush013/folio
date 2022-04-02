@@ -14,7 +14,7 @@ const CollaborationSection = () => {
   const quoteRef: MutableRefObject<HTMLDivElement> = useRef(null);
   const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
 
-  const initTextAnimation = (
+  const initTextGradientAnimation = (
     targetSection: MutableRefObject<HTMLDivElement>
   ): ScrollTrigger => {
     const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } });
@@ -61,12 +61,12 @@ const CollaborationSection = () => {
   };
 
   useEffect(() => {
-    const textAnimation = initTextAnimation(targetSection);
+    const textBgAnimation = initTextGradientAnimation(targetSection);
 
     const slidingAnimation = initSlidingTextAnimation(targetSection);
 
     return () => {
-      textAnimation.kill();
+      textBgAnimation.kill();
       slidingAnimation.kill();
     };
   }, [quoteRef, targetSection]);
