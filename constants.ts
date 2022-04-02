@@ -201,7 +201,7 @@ export const TIMELINE: TimelineNode[] = [
     content: {
       title: "UI Engineer (freelance)",
       description:
-        "Building solutions for employee engagement, productivity and performance 🎯",
+        "Built solutions for employee engagement, productivity and performance 🎯",
       logo: "huminos",
     },
     branch: 2,
@@ -228,7 +228,7 @@ export const TIMELINE: TimelineNode[] = [
     content: {
       title: "UI Engineer",
       description:
-        "Worked on enterprise blockchain solutions for web. Transforming UI/UX and frontend framework. Building a design system.",
+        "Worked on enterprise blockchain solutions for web. Transforming UI/UX and frontend framework. Built a design system.",
       logo: "dltlabs",
     },
     branch: 1,
@@ -238,7 +238,7 @@ export const TIMELINE: TimelineNode[] = [
     content: {
       title: "UX Engineer",
       description:
-        "First job 🥳! Product design and development for employee engagement chatbot suite for workplace by facebook",
+        "First job! 🥳 Product design and development for employee engagement chatbot suite for workplace by facebook",
       logo: "huminos",
     },
     branch: 1,
