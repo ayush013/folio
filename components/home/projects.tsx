@@ -3,6 +3,7 @@ import { MENULINKS, PROJECTS } from "../../constants";
 import ProjectTile from "../common/project-tile";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { IDesktop } from "pages";
 
 const PROJECT_STYLES = {
   SECTION:
@@ -10,7 +11,7 @@ const PROJECT_STYLES = {
   PROJECTS_WRAPPER: "tall:mt-12 mt-6 flex project-wrapper w-fit seq",
 };
 
-const ProjectsSection = ({ isDesktop }: { isDesktop: boolean }) => {
+const ProjectsSection = ({ isDesktop }: IDesktop) => {
   const targetSectionRef: MutableRefObject<HTMLDivElement> = useRef(null);
   const sectionTitleElementRef: MutableRefObject<HTMLDivElement> = useRef(null);
 

@@ -48,7 +48,17 @@ export const SOCIAL_LINKS = {
   twitter: "https://twitter.com/ayush013",
 };
 
-export const PROJECTS = [
+export interface IProject {
+  name: string;
+  image: string;
+  blurImage: string;
+  description: string;
+  gradient: [string, string];
+  url: string;
+  tech: string[];
+}
+
+export const PROJECTS: IProject[] = [
   {
     name: "FigGen - Figma to Code converter",
     image: "/projects/figgen.jpg",
@@ -177,214 +187,253 @@ export const SKILLS = {
   other: ["git", "webpack", "gulp", "lightroom", "aftereffects"],
 };
 
-export const TIMELINE: TimelineNode[] = [
+export enum Branch {
+  LEFT = "leftSide",
+  RIGHT = "rightSide",
+}
+
+export enum NodeTypes {
+  CONVERGE = "converge",
+  DIVERGE = "diverge",
+  CHECKPOINT = "checkpoint",
+}
+
+export enum ItemSize {
+  SMALL = "small",
+  LARGE = "large",
+}
+
+export const TIMELINE: Array<TimelineNodeV2> = [
   {
-    content: "2021",
-    branch: 1,
-    type: "year",
+    type: NodeTypes.CHECKPOINT,
+    title: "2021",
+    size: ItemSize.LARGE,
+    shouldDrawLine: false,
+    alignment: Branch.LEFT,
   },
   {
-    content: {
-      title: "UI Engineer (Current)",
-      description: "Working on flipkart wholesale platform 😎",
-      logo: "flipkart",
-    },
-    branch: 1,
-    type: "checkpoint",
+    type: NodeTypes.CHECKPOINT,
+    title: "UI Engineer (Current)",
+    size: ItemSize.SMALL,
+    subtitle: "Working on flipkart wholesale platform 😎",
+    image: "/timeline/flipkart.svg",
+    shouldDrawLine: true,
+    alignment: Branch.LEFT,
   },
   {
-    content: "2020",
-    branch: 1,
-    type: "year",
+    type: NodeTypes.CHECKPOINT,
+    title: "2020",
+    size: ItemSize.LARGE,
+    shouldDrawLine: false,
+    alignment: Branch.LEFT,
   },
   {
-    content: {
-      title: "UI Engineer (freelance)",
-      description:
-        "Built solutions for employee engagement, productivity and performance 🎯",
-      logo: "huminos",
-    },
-    branch: 2,
-    type: "checkpoint",
-    diverge: true,
+    type: NodeTypes.DIVERGE,
   },
   {
-    content: {
-      title: "Motion Graphics (freelance)",
-      description: "Motion Graphics content for Product Launch 🚀",
-      logo: "octanner",
-    },
-    branch: 1,
-    type: "checkpoint",
-    converge: true,
-    parallel: 2,
+    type: NodeTypes.CHECKPOINT,
+    title: "UI Engineer (freelance)",
+    size: ItemSize.SMALL,
+    subtitle:
+      "Built solutions for employee engagement, productivity and performance 🎯",
+    image: "/timeline/huminos.svg",
+    shouldDrawLine: true,
+    alignment: Branch.RIGHT,
   },
   {
-    content: "2019",
-    branch: 1,
-    type: "year",
+    type: NodeTypes.CHECKPOINT,
+    title: "Motion Graphics (freelance)",
+    size: ItemSize.SMALL,
+    subtitle: "Motion Graphics content for Product Launch 🚀",
+    image: "/timeline/octanner.svg",
+    shouldDrawLine: true,
+    alignment: Branch.LEFT,
   },
   {
-    content: {
-      title: "UI Engineer",
-      description:
-        "Worked on enterprise blockchain solutions for web. Transforming UI/UX and frontend framework. Built a design system.",
-      logo: "dltlabs",
-    },
-    branch: 1,
-    type: "checkpoint",
+    type: NodeTypes.CONVERGE,
   },
   {
-    content: {
-      title: "UX Engineer",
-      description:
-        "First job! 🥳 Product design and development for employee engagement chatbot suite for workplace by facebook",
-      logo: "huminos",
-    },
-    branch: 1,
-    type: "checkpoint",
+    type: NodeTypes.CHECKPOINT,
+    title: "2019",
+    size: ItemSize.LARGE,
+    shouldDrawLine: false,
+    alignment: Branch.LEFT,
   },
   {
-    content: {
-      title: "Graduated from College 🎓",
-      description:
-        "Spent 4 years laying the foundation of Frontend Engineering, UI/UX, and Fitness!",
-      logo: "akgec",
-    },
-    branch: 1,
-    type: "checkpoint",
+    type: NodeTypes.CHECKPOINT,
+    title: "UI Engineer",
+    size: ItemSize.SMALL,
+    subtitle:
+      "Worked on enterprise blockchain solutions for web. Transforming UI/UX and frontend framework. Built a design system.",
+    image: "/timeline/dltlabs.svg",
+    shouldDrawLine: true,
+    alignment: Branch.LEFT,
   },
   {
-    content: "2018",
-    branch: 1,
-    type: "year",
+    type: NodeTypes.CHECKPOINT,
+    title: "UX Engineer",
+    size: ItemSize.SMALL,
+    subtitle:
+      "First job! 🥳 Product design and development for employee engagement chatbot suite for workplace by facebook",
+    image: "/timeline/huminos.svg",
+    shouldDrawLine: true,
+    alignment: Branch.LEFT,
   },
   {
-    content: {
-      title: "Student lead at SDC-SI",
-      description:
-        "Represented a team of 39 talented developers. Served different roles of leadership, project management and delivery.",
-      logo: "si",
-    },
-    branch: 1,
-    type: "checkpoint",
-    diverge: true,
+    type: NodeTypes.CHECKPOINT,
+    title: "Graduated from College 🎓",
+    size: ItemSize.SMALL,
+    subtitle:
+      "Spent 4 years laying the foundation of Frontend Engineering, UI/UX, and Fitness!",
+    image: "/timeline/akgec.svg",
+    shouldDrawLine: true,
+    alignment: Branch.LEFT,
+  },
+
+  {
+    type: NodeTypes.CHECKPOINT,
+    title: "2018",
+    size: ItemSize.LARGE,
+    shouldDrawLine: false,
+    alignment: Branch.LEFT,
   },
   {
-    content: {
-      title: "Lecture on SVG animations",
-      description:
-        "Guided 200 students to create their first animated SVG using CSS/SMIL at PHP Workshop, SDC-SI",
-    },
-    branch: 1,
-    type: "checkpoint",
-    parallel: 2,
+    type: NodeTypes.DIVERGE,
   },
   {
-    content: "2017",
-    branch: 2,
-    type: "year",
+    type: NodeTypes.CHECKPOINT,
+    title: "Student lead at SDC-SI",
+    size: ItemSize.SMALL,
+    subtitle:
+      "Represented a team of 39 talented developers. Served different roles of leadership, project management and delivery.",
+    image: "/timeline/si.svg",
+    shouldDrawLine: true,
+    alignment: Branch.LEFT,
   },
   {
-    content: {
-      title: "1st position in Web Designing, IMSU",
-      description:
-        "Competed against 20+ teams for design and development of web project from scratch",
-    },
-    branch: 2,
-    type: "checkpoint",
-    parallel: 1,
+    type: NodeTypes.CHECKPOINT,
+    title: "Lecture on SVG animations",
+    size: ItemSize.SMALL,
+    subtitle:
+      "Guided 200 students to create their first animated SVG using CSS/SMIL at PHP Workshop, SDC-SI",
+    shouldDrawLine: true,
+    alignment: Branch.LEFT,
+  },
+
+  {
+    type: NodeTypes.CHECKPOINT,
+    title: "2017",
+    size: ItemSize.LARGE,
+    shouldDrawLine: false,
+    alignment: Branch.RIGHT,
   },
   {
-    content: {
-      title: "Lecture on Javascript",
-      description:
-        "Guided 200 students for javascript fundamentals at Game Development workshop, SDC-SI",
-    },
-    branch: 1,
-    type: "checkpoint",
-    parallel: 2,
+    type: NodeTypes.CHECKPOINT,
+    title: "1st position in Web Designing, IMSU",
+    size: ItemSize.SMALL,
+    subtitle:
+      "Competed against 20+ teams for design and development of web project from scratch",
+    shouldDrawLine: true,
+    alignment: Branch.RIGHT,
+  },
+
+  {
+    type: NodeTypes.CHECKPOINT,
+    title: "Lecture on Javascript",
+    size: ItemSize.SMALL,
+    subtitle:
+      "Guided 200 students for javascript fundamentals at Game Development workshop, SDC-SI",
+    shouldDrawLine: true,
+    alignment: Branch.LEFT,
+  },
+
+  {
+    type: NodeTypes.CHECKPOINT,
+    title: "1st position in Web Design, ABES ACM",
+    size: ItemSize.SMALL,
+    subtitle:
+      "Competed in web and graphic design challenge with 100+ participants.",
+    shouldDrawLine: true,
+    alignment: Branch.RIGHT,
+  },
+
+  {
+    type: NodeTypes.CHECKPOINT,
+    title: "Lecture on Web Technologies",
+    size: ItemSize.SMALL,
+    subtitle:
+      "Guided 300+ students on getting started with web technologies like HTML/CSS and JS",
+    shouldDrawLine: true,
+    alignment: Branch.LEFT,
   },
   {
-    content: {
-      title: "1st position in Web Design, ABES ACM",
-      description:
-        "Competed in web and graphic design challenge with 100+ participants.",
-    },
-    branch: 2,
-    type: "checkpoint",
-    parallel: 1,
+    type: NodeTypes.CHECKPOINT,
+    title: "2016",
+    size: ItemSize.LARGE,
+    shouldDrawLine: false,
+    alignment: Branch.RIGHT,
   },
   {
-    content: {
-      title: "Lecture on Web Technologies",
-      description:
-        "Guided 300+ students on getting started with web technologies like HTML/CSS and JS",
-    },
-    branch: 1,
-    type: "checkpoint",
-    parallel: 2,
+    type: NodeTypes.CHECKPOINT,
+    title: "1st position in Web Designing, IMSU",
+    size: ItemSize.SMALL,
+    subtitle: "Secured 1st prize in Web design challenge against 50+ teams",
+    shouldDrawLine: true,
+    alignment: Branch.RIGHT,
   },
   {
-    content: "2016",
-    branch: 2,
-    type: "year",
+    type: NodeTypes.CONVERGE,
   },
   {
-    content: {
-      title: "1st position in Web Designing, IMSU",
-      description:
-        "Secured 1st prize in Web design challenge against 50+ teams",
-    },
-    branch: 2,
-    type: "checkpoint",
-    converge: true,
+    type: NodeTypes.CHECKPOINT,
+    title: "",
+    size: ItemSize.LARGE,
+    shouldDrawLine: false,
+    alignment: Branch.LEFT,
   },
   {
-    content: "",
-    branch: 1,
-    type: "year",
+    type: NodeTypes.CHECKPOINT,
+    title: "UI/UX, Frontend Engineer",
+    size: ItemSize.SMALL,
+    subtitle:
+      "Started journey in SDC-SI, where I learnt the fundamentals of Frontend, UI/UX, Graphic design and more...",
+    image: "/timeline/si.svg",
+    shouldDrawLine: true,
+    alignment: Branch.LEFT,
   },
   {
-    content: {
-      title: "UI/UX, Frontend Engineer",
-      description:
-        "Started journey in SDC-SI, where I learnt the fundamentals of Frontend, UI/UX, Graphic design and more...",
-      logo: "si",
-    },
-    branch: 1,
-    type: "checkpoint",
+    type: NodeTypes.CHECKPOINT,
+    title: "2014",
+    size: ItemSize.LARGE,
+    shouldDrawLine: false,
+    alignment: Branch.LEFT,
   },
   {
-    content: "2014",
-    branch: 1,
-    type: "year",
-  },
-  {
-    content: {
-      title: "Recognized Themer",
-      description:
-        "Awarded as recognized themer,  Developed themes and ROMs for Xperia 2011 devices lineup with over 15k+ downloads. Featured on xda portal twice.",
-      logo: "xda",
-    },
-    branch: 1,
-    type: "checkpoint",
+    type: NodeTypes.CHECKPOINT,
+    title: "Recognized Themer",
+    size: ItemSize.SMALL,
+    subtitle:
+      "Awarded as recognized themer,  Developed themes and ROMs for Xperia 2011 devices lineup with over 15k+ downloads. Featured on xda portal twice.",
+    image: "/timeline/xda.svg",
+    shouldDrawLine: true,
+    alignment: Branch.LEFT,
   },
 ];
 
-export interface TimelineNode {
-  content: string | TimelineContent;
-  branch: 1 | 2;
-  type: "year" | "checkpoint";
-  converge?: boolean;
-  diverge?: boolean;
-  parallel?: 1 | 2;
+export type TimelineNodeV2 = CheckpointNode | BranchNode;
+
+export interface CheckpointNode {
+  type: NodeTypes.CHECKPOINT;
+  title: string;
+  subtitle?: string;
+  size: ItemSize;
+  image?: string;
+  shouldDrawLine: boolean;
+  alignment: Branch;
 }
 
-export interface TimelineContent {
-  title: string;
-  description: string;
-  logo?: string;
+export interface BranchNode {
+  type: NodeTypes.CONVERGE | NodeTypes.DIVERGE;
 }
 
 export const GTAG = "UA-163844688-1";

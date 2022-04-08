@@ -24,6 +24,10 @@ const DEBOUNCE_TIME = 100;
 
 export const isSmallScreen = (): boolean => document.body.clientWidth < 767;
 
+export interface IDesktop {
+  isDesktop: boolean;
+}
+
 export default function Home() {
   gsap.registerPlugin(ScrollTrigger);
   gsap.config({ nullTargetWarn: false });
