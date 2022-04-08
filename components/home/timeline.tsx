@@ -26,11 +26,11 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
   const [svgWidth, setSvgWidth] = useState(400);
   const [rightBranchX, setRightBranchX] = useState(109);
 
-  const svgLineItems = TIMELINE.filter(
+  const svgCheckpointItems = TIMELINE.filter(
     (item) => item.type === NodeTypes.CHECKPOINT && item.shouldDrawLine
   );
 
-  const svgLength = svgLineItems?.length * separation;
+  const svgLength = svgCheckpointItems?.length * separation;
 
   const timelineSvg: MutableRefObject<SVGSVGElement> = useRef(null);
   const svgContainer: MutableRefObject<HTMLDivElement> = useRef(null);
@@ -262,7 +262,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
     const startTime = `start+=${duration * index}`;
 
     timeline.from(
-      svgContainer.current.querySelector(`.line-${index + 1}`),
+      svgContainer.current.querySelectorAll(`.line-${index + 1}`),
       { scaleY: 0, duration },
       startTime
     );
@@ -357,6 +357,30 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
     }
   };
 
+  const setSlidesAnimation = (timeline: GSAPTimeline): void => {
+    svgCheckpointItems.forEach((_, index) => {
+      // all except the first slide
+      if (index !== 0) {
+        timeline.fromTo(
+          screenContainer.current.querySelector(`.slide-${index + 1}`),
+          { opacity: 0 },
+          { opacity: 1 }
+        );
+      }
+
+      // all except the last slide
+      if (index !== svgCheckpointItems.length - 1) {
+        timeline.to(
+          screenContainer.current.querySelector(`.slide-${index + 1}`),
+          {
+            opacity: 0,
+            delay: 2.35,
+          }
+        );
+      }
+    });
+  };
+
   useEffect(() => {
     // Generate and set the timeline svg
     setTimelineSvg(svgContainer, timelineSvg);
@@ -367,147 +391,8 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
     let duration: number;
 
     if (isDesktop && !isSmallScreen()) {
-      timeline
-        .to(screenContainer.current.querySelector(".slide-1"), {
-          opacity: 0,
-          delay: 2.35,
-        })
-
-        .fromTo(
-          screenContainer.current.querySelector(".slide-2"),
-          { opacity: 0 },
-          { opacity: 1 }
-        )
-        .to(screenContainer.current.querySelector(".slide-2"), {
-          opacity: 0,
-          delay: 2.35,
-        })
-
-        .fromTo(
-          screenContainer.current.querySelector(".slide-3"),
-          { opacity: 0 },
-          { opacity: 1 }
-        )
-        .to(screenContainer.current.querySelector(".slide-3"), {
-          opacity: 0,
-          delay: 2.35,
-        })
-
-        .fromTo(
-          screenContainer.current.querySelector(".slide-4"),
-          { opacity: 0 },
-          { opacity: 1 }
-        )
-        .to(screenContainer.current.querySelector(".slide-4"), {
-          opacity: 0,
-          delay: 2.35,
-        })
-
-        .fromTo(
-          screenContainer.current.querySelector(".slide-5"),
-          { opacity: 0 },
-          { opacity: 1 }
-        )
-        .to(screenContainer.current.querySelector(".slide-5"), {
-          opacity: 0,
-          delay: 2.35,
-        })
-
-        .fromTo(
-          screenContainer.current.querySelector(".slide-6"),
-          { opacity: 0 },
-          { opacity: 1 }
-        )
-        .to(screenContainer.current.querySelector(".slide-6"), {
-          opacity: 0,
-          delay: 2.35,
-        })
-
-        .fromTo(
-          screenContainer.current.querySelector(".slide-7"),
-          { opacity: 0 },
-          { opacity: 1 }
-        )
-        .to(screenContainer.current.querySelector(".slide-7"), {
-          opacity: 0,
-          delay: 2.35,
-        })
-
-        .fromTo(
-          screenContainer.current.querySelector(".slide-8"),
-          { opacity: 0 },
-          { opacity: 1 }
-        )
-        .to(screenContainer.current.querySelector(".slide-8"), {
-          opacity: 0,
-          delay: 2.35,
-        })
-
-        .fromTo(
-          screenContainer.current.querySelector(".slide-9"),
-          { opacity: 0 },
-          { opacity: 1 }
-        )
-        .to(screenContainer.current.querySelector(".slide-9"), {
-          opacity: 0,
-          delay: 2.35,
-        })
-
-        .fromTo(
-          screenContainer.current.querySelector(".slide-10"),
-          { opacity: 0 },
-          { opacity: 1 }
-        )
-        .to(screenContainer.current.querySelector(".slide-10"), {
-          opacity: 0,
-          delay: 2.35,
-        })
-
-        .fromTo(
-          screenContainer.current.querySelector(".slide-11"),
-          { opacity: 0 },
-          { opacity: 1 }
-        )
-        .to(screenContainer.current.querySelector(".slide-11"), {
-          opacity: 0,
-          delay: 2.35,
-        })
-
-        .fromTo(
-          screenContainer.current.querySelector(".slide-12"),
-          { opacity: 0 },
-          { opacity: 1 }
-        )
-        .to(screenContainer.current.querySelector(".slide-12"), {
-          opacity: 0,
-          delay: 2.35,
-        })
-
-        .fromTo(
-          screenContainer.current.querySelector(".slide-13"),
-          { opacity: 0 },
-          { opacity: 1 }
-        )
-        .to(screenContainer.current.querySelector(".slide-13"), {
-          opacity: 0,
-          delay: 2.35,
-        })
-
-        .fromTo(
-          screenContainer.current.querySelector(".slide-14"),
-          { opacity: 0 },
-          { opacity: 1 }
-        )
-        .to(screenContainer.current.querySelector(".slide-14"), {
-          opacity: 0,
-          delay: 2.35,
-        })
-
-        .fromTo(
-          screenContainer.current.querySelector(".slide-15"),
-          { opacity: 0 },
-          { opacity: 1 }
-        );
+      // Animation for right side slides
+      setSlidesAnimation(timeline);
 
       const platformHeight =
         screenContainer.current.getBoundingClientRect().height;
@@ -523,6 +408,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
       });
       duration = timeline.totalDuration() / 15;
     } else {
+      // Clearing out the right side on mobile devices
       screenContainer.current.innerHTML = "";
       ScrollTrigger.create({
         trigger: svgContainer.current,
@@ -534,6 +420,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
       duration = 3;
     }
 
+    // Animation for Timeline SVG
     animateTimeline(timeline, duration);
   }, [
     timelineSvg,
@@ -585,96 +472,16 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
             />
             <div className="relative h-full w-full -mt-2">
               <div className="absolute top-0 left-0 h-full w-full">
-                <Image
-                  className="w-full absolute top-0 object-cover slide-1"
-                  src="/timeline/flipkart.gif"
-                  alt="Timeline"
-                  layout="fill"
-                />
-                <Image
-                  className="w-full absolute top-0 object-cover slide-2"
-                  src="/timeline/huminos-freelance.jpg"
-                  alt="Timeline"
-                  layout="fill"
-                />
-                <Image
-                  className="w-full absolute top-0 object-cover slide-3"
-                  src="/timeline/aftereffects.jpg"
-                  alt="Timeline"
-                  layout="fill"
-                />
-                <Image
-                  className="w-full absolute top-0 object-cover slide-4"
-                  src="/timeline/dlt-website.jpg"
-                  alt="Timeline"
-                  layout="fill"
-                />
-                <Image
-                  className="w-full absolute top-0 object-cover slide-5"
-                  src="/timeline/huminos-website.jpg"
-                  alt="Timeline"
-                  layout="fill"
-                />
-                <Image
-                  className="w-full absolute top-0 object-cover slide-6"
-                  src="/timeline/farewell.jpg"
-                  alt="Timeline"
-                  layout="fill"
-                />
-                <Image
-                  className="w-full absolute top-0 object-cover slide-7"
-                  src="/timeline/si-head.jpg"
-                  alt="Timeline"
-                  layout="fill"
-                />
-                <Image
-                  className="w-full absolute top-0 object-cover slide-8"
-                  src="/timeline/svg-lecture.jpg"
-                  alt="Timeline"
-                  layout="fill"
-                />
-                <Image
-                  className="w-full absolute top-0 object-cover slide-9"
-                  src="/timeline/ims-17.jpg"
-                  alt="Timeline"
-                  layout="fill"
-                />
-                <Image
-                  className="w-full absolute top-0 object-cover slide-10"
-                  src="/timeline/js-17.jpg"
-                  alt="Timeline"
-                  layout="fill"
-                />
-                <Image
-                  className="w-full absolute top-0 object-cover slide-11"
-                  src="/timeline/abes-17.jpg"
-                  alt="Timeline"
-                  layout="fill"
-                />
-                <Image
-                  className="w-full absolute top-0 object-cover slide-12"
-                  src="/timeline/web-17.jpg"
-                  alt="Timeline"
-                  layout="fill"
-                />
-                <Image
-                  className="w-full absolute top-0 object-cover slide-13"
-                  src="/timeline/ims-16.jpg"
-                  alt="Timeline"
-                  layout="fill"
-                />
-                <Image
-                  className="w-full absolute top-0 object-cover slide-14"
-                  src="/timeline/si-start.jpg"
-                  alt="Timeline"
-                  layout="fill"
-                />
-                <Image
-                  className="w-full absolute top-0 object-cover slide-15"
-                  src="/timeline/xda-rt.jpg"
-                  alt="Timeline"
-                  layout="fill"
-                />
+                {svgCheckpointItems.map((item, index) => (
+                  <Image
+                    className={`w-full absolute top-0 object-cover slide-${
+                      index + 1
+                    }`}
+                    src={(item as CheckpointNode).slideImage || ""}
+                    alt="Timeline"
+                    layout="fill"
+                  />
+                ))}
               </div>
             </div>
           </div>

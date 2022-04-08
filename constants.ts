@@ -217,6 +217,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
     size: ItemSize.SMALL,
     subtitle: "Working on flipkart wholesale platform 😎",
     image: "/timeline/flipkart.svg",
+    slideImage: "/timeline/flipkart.gif",
     shouldDrawLine: true,
     alignment: Branch.LEFT,
   },
@@ -237,6 +238,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
     subtitle:
       "Built solutions for employee engagement, productivity and performance 🎯",
     image: "/timeline/huminos.svg",
+    slideImage: "/timeline/huminos-freelance.jpg",
     shouldDrawLine: true,
     alignment: Branch.RIGHT,
   },
@@ -246,6 +248,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
     size: ItemSize.SMALL,
     subtitle: "Motion Graphics content for Product Launch 🚀",
     image: "/timeline/octanner.svg",
+    slideImage: "/timeline/aftereffects.jpg",
     shouldDrawLine: true,
     alignment: Branch.LEFT,
   },
@@ -266,6 +269,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
     subtitle:
       "Worked on enterprise blockchain solutions for web. Transforming UI/UX and frontend framework. Built a design system.",
     image: "/timeline/dltlabs.svg",
+    slideImage: "/timeline/dlt-website.jpg",
     shouldDrawLine: true,
     alignment: Branch.LEFT,
   },
@@ -276,6 +280,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
     subtitle:
       "First job! 🥳 Product design and development for employee engagement chatbot suite for workplace by facebook",
     image: "/timeline/huminos.svg",
+    slideImage: "/timeline/huminos-website.jpg",
     shouldDrawLine: true,
     alignment: Branch.LEFT,
   },
@@ -286,6 +291,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
     subtitle:
       "Spent 4 years laying the foundation of Frontend Engineering, UI/UX, and Fitness!",
     image: "/timeline/akgec.svg",
+    slideImage: "/timeline/farewell.jpg",
     shouldDrawLine: true,
     alignment: Branch.LEFT,
   },
@@ -307,6 +313,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
     subtitle:
       "Represented a team of 39 talented developers. Served different roles of leadership, project management and delivery.",
     image: "/timeline/si.svg",
+    slideImage: "/timeline/si-head.jpg",
     shouldDrawLine: true,
     alignment: Branch.LEFT,
   },
@@ -316,6 +323,8 @@ export const TIMELINE: Array<TimelineNodeV2> = [
     size: ItemSize.SMALL,
     subtitle:
       "Guided 200 students to create their first animated SVG using CSS/SMIL at PHP Workshop, SDC-SI",
+
+    slideImage: "/timeline/svg-lecture.jpg",
     shouldDrawLine: true,
     alignment: Branch.LEFT,
   },
@@ -333,6 +342,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
     size: ItemSize.SMALL,
     subtitle:
       "Competed against 20+ teams for design and development of web project from scratch",
+    slideImage: "/timeline/ims-17.jpg",
     shouldDrawLine: true,
     alignment: Branch.RIGHT,
   },
@@ -343,6 +353,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
     size: ItemSize.SMALL,
     subtitle:
       "Guided 200 students for javascript fundamentals at Game Development workshop, SDC-SI",
+    slideImage: "/timeline/js-17.jpg",
     shouldDrawLine: true,
     alignment: Branch.LEFT,
   },
@@ -353,6 +364,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
     size: ItemSize.SMALL,
     subtitle:
       "Competed in web and graphic design challenge with 100+ participants.",
+    slideImage: "/timeline/abes-17.jpg",
     shouldDrawLine: true,
     alignment: Branch.RIGHT,
   },
@@ -363,6 +375,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
     size: ItemSize.SMALL,
     subtitle:
       "Guided 300+ students on getting started with web technologies like HTML/CSS and JS",
+    slideImage: "/timeline/web-17.jpg",
     shouldDrawLine: true,
     alignment: Branch.LEFT,
   },
@@ -378,6 +391,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
     title: "1st position in Web Designing, IMSU",
     size: ItemSize.SMALL,
     subtitle: "Secured 1st prize in Web design challenge against 50+ teams",
+    slideImage: "/timeline/ims-16.jpg",
     shouldDrawLine: true,
     alignment: Branch.RIGHT,
   },
@@ -398,6 +412,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
     subtitle:
       "Started journey in SDC-SI, where I learnt the fundamentals of Frontend, UI/UX, Graphic design and more...",
     image: "/timeline/si.svg",
+    slideImage: "/timeline/si-start.jpg",
     shouldDrawLine: true,
     alignment: Branch.LEFT,
   },
@@ -415,6 +430,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
     subtitle:
       "Awarded as recognized themer,  Developed themes and ROMs for Xperia 2011 devices lineup with over 15k+ downloads. Featured on xda portal twice.",
     image: "/timeline/xda.svg",
+    slideImage: "/timeline/xda-rt.jpg",
     shouldDrawLine: true,
     alignment: Branch.LEFT,
   },
@@ -428,6 +444,7 @@ export interface CheckpointNode {
   subtitle?: string;
   size: ItemSize;
   image?: string;
+  slideImage?: string;
   shouldDrawLine: boolean;
   alignment: Branch;
 }
