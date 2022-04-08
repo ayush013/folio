@@ -26,18 +26,19 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
   const [svgWidth, setSvgWidth] = useState(400);
   const [rightBranchX, setRightBranchX] = useState(109);
 
-  const svgLength =
-    TIMELINE.filter(
-      (item) => item.type === NodeTypes.CHECKPOINT && item.shouldDrawLine
-    )?.length * separation;
+  const svgLineItems = TIMELINE.filter(
+    (item) => item.type === NodeTypes.CHECKPOINT && item.shouldDrawLine
+  );
+
+  const svgLength = svgLineItems?.length * separation;
 
   const timelineSvg: MutableRefObject<SVGSVGElement> = useRef(null);
   const svgContainer: MutableRefObject<HTMLDivElement> = useRef(null);
   const screenContainer: MutableRefObject<HTMLDivElement> = useRef(null);
 
   const addNodeRefsToItems = (
-    timeline: TimelineNodeV2[]
-  ): LinkedTimelineNode[] => {
+    timeline: Array<TimelineNodeV2>
+  ): Array<LinkedTimelineNode> => {
     return timeline.map((node, idx) => ({
       ...node,
       next: timeline[idx + 1],
@@ -53,7 +54,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 
     const timelineSvg = addNodeRefsToItems(timeline).reduce(
       (svg: string, node: LinkedTimelineNode) => {
-        const { type, next, prev } = node;
+        const { type, next } = node;
         let lineY = y;
         let dotY = y + separation / 2;
 
@@ -75,7 +76,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
               if (shouldDrawLine) {
                 // TO DO fix syntax
                 svg = shouldDrawLine
-                  ? drawLine(node, lineY, index, isDiverged) + svg
+                  ? `${drawLine(node, lineY, index, isDiverged)}${svg}`
                   : svg;
                 y = y + separation;
                 index++;
@@ -88,16 +89,15 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
             {
               isDiverged = true;
 
-              svg = drawBranch(node, y, index) + svg;
+              svg = `${drawBranch(node, y, index)}${svg}`;
             }
             break;
           case NodeTypes.CONVERGE:
             {
               isDiverged = false;
 
-              // To Do fix syntax
               // Drawing CONVERGE branch with previous line and index
-              svg = drawBranch(node, y - separation, index - 1) + svg;
+              svg = `${drawBranch(node, y - separation, index - 1)}${svg}`;
             }
             break;
         }
@@ -193,10 +193,13 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
     }
 
     const lineX = alignment === Branch.LEFT ? leftBranchX : rightBranchX;
-    const divergedLineX =
-      alignment === Branch.LEFT ? rightBranchX : leftBranchX;
+
     let str = `<line class='str' x1=${lineX} y1=${y} x2=${lineX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${lineX} y1=${y} x2=${lineX} y2=${lineY} stroke=${animColor} />`;
+
+    // If already diverged, draw parallel line to the existing line
     if (isDiverged) {
+      const divergedLineX =
+        alignment === Branch.LEFT ? rightBranchX : leftBranchX;
       str = str.concat(
         `<line class='str' x1=${divergedLineX} y1=${y} x2=${divergedLineX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${divergedLineX} y1=${y} x2=${divergedLineX} y2=${lineY} stroke=${animColor} />`
       );
@@ -251,7 +254,98 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
     }
   };
 
-  useEffect(() => {
+  const addLineSvgAnimation = (
+    timeline: GSAPTimeline,
+    duration: number,
+    index: number
+  ): GSAPTimeline => {
+    const startTime = `start+=${duration * index}`;
+
+    timeline.from(
+      svgContainer.current.querySelector(`.line-${index + 1}`),
+      { scaleY: 0, duration },
+      startTime
+    );
+
+    return timeline;
+  };
+
+  const addDivergingBranchLineAnimation = (
+    timeline: GSAPTimeline,
+    duration: number,
+    index: number
+  ): GSAPTimeline => {
+    timeline
+      .from(
+        svgContainer.current.querySelector(`.line-${index + 1}`),
+        { scaleY: 0, duration },
+        `start+=${duration * index}`
+      )
+      .from(
+        svgContainer.current.querySelector(`.branch-${index + 1}`),
+        { strokeDashoffset: 186, duration: duration - 2 },
+        `start+=${duration * index}`
+      )
+      .from(
+        svgContainer.current.querySelector(`.branch-line-${index + 1}`),
+        { scaleY: 0, duration: duration - 1 },
+        `start+=${duration * (index + 1) - 2}`
+      );
+
+    return timeline;
+  };
+
+  const addConvergingBranchLineAnimation = (
+    timeline: GSAPTimeline,
+    duration: number,
+    index: number
+  ): GSAPTimeline => {
+    timeline
+      .from(
+        svgContainer.current.querySelector(`.line-${index + 1}`),
+        { scaleY: 0, duration },
+        `start+=${duration * index}`
+      )
+      .from(
+        svgContainer.current.querySelector(`.branch-line-${index + 1}`),
+        { scaleY: 0, duration: duration - 1 },
+        `start+=${duration * index}`
+      )
+      .from(
+        svgContainer.current.querySelector(`.branch-${index + 1}`),
+        { strokeDashoffset: 186, duration: duration - 2 },
+        `start+=${duration * (index + 1) - 1}`
+      );
+
+    return timeline;
+  };
+
+  const animateTimeline = (timeline: GSAPTimeline, duration: number): void => {
+    let index = 0;
+
+    addNodeRefsToItems(TIMELINE).forEach((item) => {
+      const { type } = item;
+
+      if (type === NodeTypes.CHECKPOINT && item.shouldDrawLine) {
+        const { next, prev } = item;
+
+        if (prev?.type === NodeTypes.DIVERGE) {
+          addDivergingBranchLineAnimation(timeline, duration, index);
+        } else if (next?.type === NodeTypes.CONVERGE) {
+          addConvergingBranchLineAnimation(timeline, duration, index);
+        } else {
+          addLineSvgAnimation(timeline, duration, index);
+        }
+
+        index++;
+      }
+    });
+  };
+
+  const setTimelineSvg = (
+    svgContainer: MutableRefObject<HTMLDivElement>,
+    timelineSvg: MutableRefObject<SVGSVGElement>
+  ) => {
     const containerWidth = svgContainer.current.clientWidth;
     setSvgWidth(containerWidth);
 
@@ -261,11 +355,16 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
     if (isSmallScreen()) {
       setRightBranchX(70);
     }
+  };
+
+  useEffect(() => {
+    // Generate and set the timeline svg
+    setTimelineSvg(svgContainer, timelineSvg);
 
     const timeline = gsap
       .timeline({ defaults: { ease: Linear.easeNone, duration: 0.44 } })
       .addLabel("start");
-    let duration;
+    let duration: number;
 
     if (isDesktop && !isSmallScreen()) {
       timeline
@@ -435,136 +534,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
       duration = 3;
     }
 
-    timeline
-      .from(
-        svgContainer.current.querySelector(".line-1"),
-        { scaleY: 0, duration: duration },
-        "start"
-      )
-
-      .from(
-        svgContainer.current.querySelector(".line-2"),
-        { scaleY: 0, duration: duration },
-        `start+=${duration}`
-      )
-      .from(
-        svgContainer.current.querySelector(".branch-2"),
-        { strokeDashoffset: 186, duration: duration - 2 },
-        `start+=${duration}`
-      )
-      .from(
-        svgContainer.current.querySelector(".branch-line-2"),
-        { scaleY: 0, duration: duration - 1 },
-        `start+=${2 * duration - 2}`
-      )
-
-      .from(
-        svgContainer.current.querySelector(".line-3"),
-        { scaleY: 0, duration: duration },
-        `start+=${2 * duration}`
-      )
-      .from(
-        svgContainer.current.querySelector(".branch-line-3"),
-        { scaleY: 0, duration: duration - 1 },
-        `start+=${2 * duration}`
-      )
-      .from(
-        svgContainer.current.querySelector(".branch-3"),
-        { strokeDashoffset: 186, duration: duration - 2 },
-        `start+=${3 * duration - 1}`
-      )
-
-      .from(
-        svgContainer.current.querySelector(".line-4"),
-        { scaleY: 0, duration: duration },
-        `start+=${3 * duration}`
-      )
-
-      .from(
-        svgContainer.current.querySelector(".line-5"),
-        { scaleY: 0, duration: duration },
-        `start+=${4 * duration}`
-      )
-
-      .from(
-        svgContainer.current.querySelector(".line-6"),
-        { scaleY: 0, duration: duration },
-        `start+=${5 * duration}`
-      )
-
-      .from(
-        svgContainer.current.querySelector(".line-7"),
-        { scaleY: 0, duration: duration },
-        `start+=${6 * duration}`
-      )
-      .from(
-        svgContainer.current.querySelector(".branch-7"),
-        { strokeDashoffset: 186, duration: duration - 2 },
-        `start+=${6 * duration}`
-      )
-      .from(
-        svgContainer.current.querySelector(".branch-line-7"),
-        { scaleY: 0, duration: duration - 1 },
-        `start+=${7 * duration - 2}`
-      )
-
-      .from(
-        svgContainer.current.querySelectorAll(".line-8"),
-        { scaleY: 0, duration: duration },
-        `start+=${7 * duration}`
-      )
-
-      .from(
-        svgContainer.current.querySelectorAll(".line-9"),
-        { scaleY: 0, duration: duration },
-        `start+=${8 * duration}`
-      )
-
-      .from(
-        svgContainer.current.querySelectorAll(".line-10"),
-        { scaleY: 0, duration: duration },
-        `start+=${9 * duration}`
-      )
-
-      .from(
-        svgContainer.current.querySelectorAll(".line-11"),
-        { scaleY: 0, duration: duration },
-        `start+=${10 * duration}`
-      )
-
-      .from(
-        svgContainer.current.querySelectorAll(".line-12"),
-        { scaleY: 0, duration: duration },
-        `start+=${11 * duration}`
-      )
-
-      .from(
-        svgContainer.current.querySelector(".line-13"),
-        { scaleY: 0, duration: duration },
-        `start+=${12 * duration}`
-      )
-      .from(
-        svgContainer.current.querySelector(".branch-line-13"),
-        { scaleY: 0, duration: duration - 1 },
-        `start+=${12 * duration}`
-      )
-      .from(
-        svgContainer.current.querySelector(".branch-13"),
-        { strokeDashoffset: 186, duration: duration - 2 },
-        `start+=${13 * duration - 1}`
-      )
-
-      .from(
-        svgContainer.current.querySelectorAll(".line-14"),
-        { scaleY: 0, duration: duration },
-        `start+=${13 * duration}`
-      )
-
-      .from(
-        svgContainer.current.querySelectorAll(".line-15"),
-        { scaleY: 0, duration: duration },
-        `start+=${14 * duration - 1}`
-      );
+    animateTimeline(timeline, duration);
   }, [
     timelineSvg,
     svgContainer,
