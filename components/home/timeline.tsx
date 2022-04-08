@@ -432,59 +432,72 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
     svgLength,
   ]);
 
+  const renderSlides = (): React.ReactNode => (
+    <div
+      className="max-w-full h-96 shadow-xl bg-gray-800 rounded-2xl overflow-hidden"
+      ref={screenContainer}
+    >
+      <Image
+        className="w-full h-8"
+        src="/timeline/title-bar.svg"
+        alt="Title bar"
+        width={644}
+        height={34}
+      />
+      <div className="relative h-full w-full -mt-2">
+        <div className="absolute top-0 left-0 h-full w-full">
+          {svgCheckpointItems.map((item, index) => (
+            <Image
+              className={`w-full absolute top-0 object-cover slide-${
+                index + 1
+              }`}
+              src={(item as CheckpointNode).slideImage || ""}
+              key={`${(item as CheckpointNode).title}-${index}`}
+              alt="Timeline"
+              layout="fill"
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderSVG = (): React.ReactNode => (
+    <svg
+      width={svgWidth}
+      height={svgLength}
+      viewBox={`0 0 ${svgWidth} ${svgLength}`}
+      fill="none"
+      ref={timelineSvg}
+    ></svg>
+  );
+
+  const renderSectionTitle = (): React.ReactNode => (
+    <div className="flex flex-col">
+      <p className="uppercase tracking-widest text-gray-200 text-sm seq">
+        MILESTONES
+      </p>
+      <h1 className="md:text-5xl text-4xl font-bold text-gradient seq w-fit mt-2">
+        Timeline
+      </h1>
+      <h2 className="text-2xl md:max-w-2xl w-full seq mt-2">
+        A quick recap of proud moments
+      </h2>
+    </div>
+  );
+
   return (
     <section
       className="w-full relative select-none min-h-screen section-container py-8 flex flex-col justify-center"
       id={MENULINKS[3].ref}
     >
-      <div className="flex flex-col">
-        <p className="uppercase tracking-widest text-gray-200 text-sm seq">
-          MILESTONES
-        </p>
-        <h1 className="md:text-5xl text-4xl font-bold text-gradient seq w-fit mt-2">
-          Timeline
-        </h1>
-        <h2 className="text-2xl md:max-w-2xl w-full seq mt-2">
-          A quick recap of proud moments
-        </h2>
-      </div>
+      {renderSectionTitle()}
       <div className="grid grid-cols-12 gap-4 mt-20">
         <div className="col-span-12 md:col-span-6 line-svg" ref={svgContainer}>
-          <svg
-            width={svgWidth}
-            height={svgLength}
-            viewBox={`0 0 ${svgWidth} ${svgLength}`}
-            fill="none"
-            ref={timelineSvg}
-          ></svg>
+          {renderSVG()}
         </div>
         <div className="col-span-12 md:col-span-6 md:flex hidden">
-          <div
-            className="max-w-full h-96 shadow-xl bg-gray-800 rounded-2xl overflow-hidden"
-            ref={screenContainer}
-          >
-            <Image
-              className="w-full h-8"
-              src="/timeline/title-bar.svg"
-              alt="Title bar"
-              width={644}
-              height={34}
-            />
-            <div className="relative h-full w-full -mt-2">
-              <div className="absolute top-0 left-0 h-full w-full">
-                {svgCheckpointItems.map((item, index) => (
-                  <Image
-                    className={`w-full absolute top-0 object-cover slide-${
-                      index + 1
-                    }`}
-                    src={(item as CheckpointNode).slideImage || ""}
-                    alt="Timeline"
-                    layout="fill"
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
+          {renderSlides()}
         </div>
       </div>
     </section>
