@@ -381,15 +381,21 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
     });
   };
 
-  useEffect(() => {
-    // Generate and set the timeline svg
-    setTimelineSvg(svgContainer, timelineSvg);
-
+  const initScrollTrigger = (): {
+    timeline: GSAPTimeline;
+    duration: number;
+  } => {
     const timeline = gsap
       .timeline({ defaults: { ease: Linear.easeNone, duration: 0.44 } })
       .addLabel("start");
-    let duration: number;
 
+    let duration: number;
+    let trigger: HTMLDivElement;
+    let start: string;
+    let end: string;
+    let additionalConfig = {};
+
+    // Slide as a trigger for Desktop
     if (isDesktop && !isSmallScreen()) {
       // Animation for right side slides
       setSlidesAnimation(timeline);
@@ -397,28 +403,41 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
       const platformHeight =
         screenContainer.current.getBoundingClientRect().height;
 
-      ScrollTrigger.create({
-        trigger: screenContainer.current,
-        start: `top ${(window.innerHeight - platformHeight) / 2}`,
-        end: `+=${svgLength - platformHeight}`,
+      trigger = screenContainer.current;
+      start = `top ${(window.innerHeight - platformHeight) / 2}`;
+      end = `+=${svgLength - platformHeight}`;
+      additionalConfig = {
         pin: true,
         pinSpacing: true,
-        scrub: 0,
-        animation: timeline,
-      });
+      };
       duration = timeline.totalDuration() / 15;
     } else {
       // Clearing out the right side on mobile devices
       screenContainer.current.innerHTML = "";
-      ScrollTrigger.create({
-        trigger: svgContainer.current,
-        start: "top center",
-        end: `+=${svgLength}`,
-        scrub: 0,
-        animation: timeline,
-      });
+
+      trigger = svgContainer.current;
+      start = "top center";
+      end = `+=${svgLength}`;
       duration = 3;
     }
+
+    ScrollTrigger.create({
+      ...additionalConfig,
+      trigger,
+      start,
+      end,
+      scrub: 0,
+      animation: timeline,
+    });
+    return { timeline, duration };
+  };
+
+  useEffect(() => {
+    // Generate and set the timeline svg
+    setTimelineSvg(svgContainer, timelineSvg);
+
+    const { timeline, duration }: { timeline: GSAPTimeline; duration: number } =
+      initScrollTrigger();
 
     // Animation for Timeline SVG
     animateTimeline(timeline, duration);
@@ -474,12 +493,8 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 
   const renderSectionTitle = (): React.ReactNode => (
     <div className="flex flex-col">
-      <p className="uppercase tracking-widest text-gray-200 text-sm seq">
-        MILESTONES
-      </p>
-      <h1 className="md:text-5xl text-4xl font-bold text-gradient seq w-fit mt-2">
-        Timeline
-      </h1>
+      <p className="section-title-sm seq">MILESTONES</p>
+      <h1 className="section-heading seq mt-2">Timeline</h1>
       <h2 className="text-2xl md:max-w-2xl w-full seq mt-2">
         A quick recap of proud moments
       </h2>

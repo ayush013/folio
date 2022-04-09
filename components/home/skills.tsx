@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 const SKILL_STYLES = {
   SECTION:
     "w-full relative select-none mb-24 section-container py-12 flex flex-col justify-center",
-  SKILL_TITLE: "uppercase tracking-widest text-gray-200 text-sm mb-4 seq",
+  SKILL_TITLE: "section-title-sm mb-4 seq",
 };
 
 const SkillsSection = () => {
@@ -40,12 +40,8 @@ const SkillsSection = () => {
 
   const renderSectionTitle = (): React.ReactNode => (
     <div className="flex flex-col">
-      <p className="uppercase tracking-widest text-gray-200 text-sm seq">
-        SKILLS
-      </p>
-      <h1 className="md:text-5xl text-4xl font-bold text-gradient seq w-fit mt-2">
-        My Skills
-      </h1>
+      <p className="section-title-sm seq">SKILLS</p>
+      <h1 className="section-heading seq mt-2">My Skills</h1>
       <h2 className="text-2xl md:max-w-2xl w-full seq mt-2">
         I like to take responsibility to craft aesthetic user experience using
         modern frontend architecture.{" "}

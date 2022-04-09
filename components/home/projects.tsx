@@ -100,12 +100,8 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
       className="flex flex-col inner-container transform-gpu"
       ref={sectionTitleElementRef}
     >
-      <p className="uppercase tracking-widest text-gray-200 text-sm seq">
-        PROJECTS
-      </p>
-      <h1 className="md:text-5xl text-4xl font-bold text-gradient seq w-fit mt-2">
-        My Works
-      </h1>
+      <p className="section-title-sm seq">PROJECTS</p>
+      <h1 className="section-heading seq mt-2">My Works</h1>
       <h2 className="text-2xl md:max-w-3xl w-full seq max-w-sm mt-2">
         I have contributed in over 20+ projects ranging from Frontend
         development, UI/UX design, Open Source, and Motion Graphics

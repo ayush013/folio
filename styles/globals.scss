@@ -246,7 +246,7 @@ input[type="checkbox"] {
 }
 
 footer {
-  background: url(/footer-bg.svg),
+  background: url("/footer-bg.svg"),
     linear-gradient(
       153.86deg,
       #02494c 0%,
@@ -254,4 +254,12 @@ footer {
       #0d576d 48.9%,
       #004865 95.52%
     );
+}
+
+.section-heading {
+  @apply md:text-5xl text-4xl font-bold text-gradient w-fit;
+}
+
+.section-title-sm {
+  @apply uppercase tracking-widest text-gray-200 text-sm;
 }
