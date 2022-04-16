@@ -20,7 +20,7 @@ const Button = ({
   name: string;
   href: string;
   classes?: string;
-  [key: string]: any;
+  [key: string]: string | (() => void);
 }) => {
   const buttonClasses =
     "py-2 px-7 font-medium rounded text-base md:text-xl tracking-wide link duration-300 flex items-center";

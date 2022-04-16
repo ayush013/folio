@@ -21,7 +21,6 @@ const ProjectTile = ({
     blurImage,
     description,
     gradient: [stop1, stop2],
-    url,
   } = project;
 
   useEffect(() => {
@@ -42,14 +41,15 @@ const ProjectTile = ({
     >
       <div className="flex flex-col pb-8">
         {techStack.map((tech, i) => (
-          <img
-            className={`${i % 2 === 0 && "ml-16"} mb-4`}
-            src={`/projects/tech/${tech}.svg`}
-            alt={tech}
-            height={45}
-            width={45}
-            key={tech}
-          />
+          <div className={`${i % 2 === 0 && "ml-16"} mb-4`} key={tech}>
+            <Image
+              src={`/projects/tech/${tech}.svg`}
+              alt={tech}
+              height={45}
+              objectFit="contain"
+              width={45}
+            />
+          </div>
         ))}
       </div>
     </div>

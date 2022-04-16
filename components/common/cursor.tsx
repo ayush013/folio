@@ -12,7 +12,7 @@ const Cursor = ({ isDesktop }: IDesktop) => {
   const cursor: MutableRefObject<HTMLDivElement> = useRef(null);
   const follower: MutableRefObject<HTMLDivElement> = useRef(null);
 
-  const onHover = (_: MouseEvent) => {
+  const onHover = () => {
     gsap.to(cursor.current, {
       scale: 0.5,
       duration: 0.3,
@@ -23,7 +23,7 @@ const Cursor = ({ isDesktop }: IDesktop) => {
     });
   };
 
-  const onUnhover = (_: MouseEvent) => {
+  const onUnhover = () => {
     gsap.to(cursor.current, {
       scale: 1,
       duration: 0.3,
