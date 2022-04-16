@@ -82,6 +82,10 @@ input[type="checkbox"] {
   cursor: none !important;
 }
 
+.typed-cursor {
+  font-size: 2rem;
+}
+
 .outer-menu {
   z-index: 1;
 
@@ -217,4 +221,45 @@ input[type="checkbox"] {
   background: linear-gradient(90deg, #6dd5ed 0%, #2193b0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.text-strong {
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #ffffff 50%,
+    #6dd5ed 51%,
+    #2193b0 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.project-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.skill {
+  padding-right: 1.25rem !important;
+  padding-bottom: 1.25rem !important;
+}
+
+footer {
+  background: url("/footer-bg.svg"),
+    linear-gradient(
+      153.86deg,
+      #02494c 0%,
+      #016877 15.69%,
+      #0d576d 48.9%,
+      #004865 95.52%
+    );
+}
+
+.section-heading {
+  @apply md:text-5xl text-4xl font-bold text-gradient w-fit;
+}
+
+.section-title-sm {
+  @apply uppercase tracking-widest text-gray-200 text-sm;
 }
