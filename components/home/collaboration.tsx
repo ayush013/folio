@@ -1,7 +1,7 @@
 import { gsap, Linear } from "gsap";
 import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { isSmallScreen } from "pages";
+import { isSmallScreen, NO_MOTION_PREFERENCE_QUERY } from "pages";
 
 const COLLABORATION_STYLE = {
   SLIDING_TEXT: "opacity-20 text-5xl md:text-7xl font-bold whitespace-nowrap",
@@ -33,6 +33,7 @@ const CollaborationSection = () => {
       end: "center center",
       scrub: 0,
       animation: timeline,
+      onToggle: (self) => setwillChange(self.isActive),
     });
   };
 
@@ -57,18 +58,22 @@ const CollaborationSection = () => {
       end: "bottom top",
       scrub: 0,
       animation: slidingTl,
-      onToggle: (self) => setwillChange(self.isActive),
     });
   };
 
   useEffect(() => {
     const textBgAnimation = initTextGradientAnimation(targetSection);
+    let slidingAnimation: ScrollTrigger | undefined;
 
-    const slidingAnimation = initSlidingTextAnimation(targetSection);
+    const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY);
+
+    if (matches) {
+      slidingAnimation = initSlidingTextAnimation(targetSection);
+    }
 
     return () => {
       textBgAnimation.kill();
-      slidingAnimation.kill();
+      slidingAnimation?.kill();
     };
   }, [quoteRef, targetSection]);
 

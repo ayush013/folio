@@ -23,6 +23,8 @@ import AboutSection from "@/components/home/about";
 const DEBOUNCE_TIME = 100;
 
 export const isSmallScreen = (): boolean => document.body.clientWidth < 767;
+export const NO_MOTION_PREFERENCE_QUERY =
+  "(prefers-reduced-motion: no-preference)";
 
 export interface IDesktop {
   isDesktop: boolean;

@@ -3,7 +3,7 @@ import { MENULINKS, PROJECTS } from "../../constants";
 import ProjectTile from "../common/project-tile";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { IDesktop } from "pages";
+import { IDesktop, NO_MOTION_PREFERENCE_QUERY } from "pages";
 
 const PROJECT_STYLES = {
   SECTION:
@@ -74,7 +74,9 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
     let projectsScrollTrigger: ScrollTrigger | undefined;
     let projectsTimeline: GSAPTimeline | undefined;
 
-    if (isDesktop) {
+    const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY);
+
+    if (isDesktop && matches) {
       [projectsTimeline, projectsScrollTrigger] = initProjectsAnimation(
         targetSectionRef,
         sectionTitleElementRef
