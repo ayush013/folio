@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useEffect, useRef } from "react";
+import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 import { MENULINKS, PROJECTS } from "../../constants";
 import ProjectTile from "../common/project-tile";
 import { gsap, Linear } from "gsap";
@@ -7,13 +7,15 @@ import { IDesktop } from "pages";
 
 const PROJECT_STYLES = {
   SECTION:
-    "w-full relative select-none section-container transform-gpu flex-col flex py-8 justify-center",
+    "w-full relative select-none section-container flex-col flex py-8 justify-center",
   PROJECTS_WRAPPER: "tall:mt-12 mt-6 flex project-wrapper w-fit seq",
 };
 
 const ProjectsSection = ({ isDesktop }: IDesktop) => {
   const targetSectionRef: MutableRefObject<HTMLDivElement> = useRef(null);
   const sectionTitleElementRef: MutableRefObject<HTMLDivElement> = useRef(null);
+
+  const [willChange, setwillChange] = useState(false);
 
   const initRevealAnimation = (
     targetSectionRef: MutableRefObject<HTMLDivElement>
@@ -62,6 +64,7 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
       pin: true,
       animation: timeline,
       pinSpacing: "margin",
+      onToggle: (self) => setwillChange(self.isActive),
     });
 
     return [timeline, scrollTrigger];
@@ -97,7 +100,9 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 
   const renderSectionTitle = (): React.ReactNode => (
     <div
-      className="flex flex-col inner-container transform-gpu"
+      className={`flex flex-col inner-container  ${
+        willChange ? "will-change-transform" : ""
+      }`}
       ref={sectionTitleElementRef}
     >
       <p className="section-title-sm seq">PROJECTS</p>

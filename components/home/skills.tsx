@@ -1,6 +1,6 @@
 import { MENULINKS, SKILLS } from "../../constants";
 import Image from "next/image";
-import { MutableRefObject, useEffect, useRef } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
@@ -12,6 +12,7 @@ const SKILL_STYLES = {
 
 const SkillsSection = () => {
   const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
+  const [willChange, setwillChange] = useState(false);
 
   const initRevealAnimation = (
     targetSection: MutableRefObject<HTMLDivElement>
@@ -29,6 +30,7 @@ const SkillsSection = () => {
       end: `center center`,
       animation: revealTl,
       scrub: 0,
+      onToggle: (self) => setwillChange(self.isActive),
     });
   };
 
@@ -78,7 +80,11 @@ const SkillsSection = () => {
   ): React.ReactNode => (
     <>
       <h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
-      <div className="flex flex-wrap seq transform-gpu">
+      <div
+        className={`flex flex-wrap seq ${
+          willChange ? "will-change-opacity" : ""
+        }`}
+      >
         {skills.map((skill) => (
           <Image
             key={skill}

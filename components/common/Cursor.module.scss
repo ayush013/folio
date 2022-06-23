@@ -5,7 +5,8 @@
 
 .cursorFollower {
   border-radius: 100%;
-  left:-0.5rem;
-  top:-0.5rem;
-  background: rgba(255,255,255, 0.2);
+  left: -0.5rem;
+  top: -0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  will-change: transform;
 }

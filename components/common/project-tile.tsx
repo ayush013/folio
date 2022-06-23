@@ -57,7 +57,7 @@ const ProjectTile = ({
 
   const renderDescription = (description: string): React.ReactNode => (
     <h2
-      className="text-lg z-10 tracking-wide font-medium transform-gpu"
+      className="text-lg z-10 tracking-wide font-medium"
       style={{ transform: "translateZ(0.8rem)" }}
     >
       {description}
@@ -66,7 +66,7 @@ const ProjectTile = ({
 
   const renderProjectName = (name: string): React.ReactNode => (
     <h1
-      className="text-2xl sm:text-3xl z-10 pl-2 transform-gpu"
+      className="text-2xl sm:text-3xl z-10 pl-2"
       style={{ transform: "translateZ(3rem)" }}
     >
       {name}
