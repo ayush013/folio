@@ -8,7 +8,7 @@ import { IDesktop, NO_MOTION_PREFERENCE_QUERY } from "pages";
 const PROJECT_STYLES = {
   SECTION:
     "w-full relative select-none section-container flex-col flex py-8 justify-center",
-  PROJECTS_WRAPPER: "tall:mt-12 mt-6 flex project-wrapper w-fit seq",
+  PROJECTS_WRAPPER: "tall:mt-12 mt-6 flex project-wrapper w-fit seq snap-x",
 };
 
 const ProjectsSection = ({ isDesktop }: IDesktop) => {
@@ -16,6 +16,8 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
   const sectionTitleElementRef: MutableRefObject<HTMLDivElement> = useRef(null);
 
   const [willChange, setwillChange] = useState(false);
+  const [horizontalAnimationEnabled, sethorizontalAnimationEnabled] =
+    useState(false);
 
   const initRevealAnimation = (
     targetSectionRef: MutableRefObject<HTMLDivElement>
@@ -76,6 +78,8 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 
     const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY);
 
+    sethorizontalAnimationEnabled(isDesktop && matches);
+
     if (isDesktop && matches) {
       [projectsTimeline, projectsScrollTrigger] = initProjectsAnimation(
         targetSectionRef,
@@ -119,10 +123,13 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
   const renderProjectTiles = (): React.ReactNode =>
     PROJECTS.map((project, idx) => (
       <ProjectTile
-        classes={(idx !== PROJECTS.length - 1 || !isDesktop) && "md:mr-10 mr-6"}
+        classes={
+          (idx !== PROJECTS.length - 1 || !horizontalAnimationEnabled) &&
+          "md:mr-10 mr-6"
+        }
         project={project}
         key={project.name}
-        isDesktop={isDesktop}
+        animationEnabled={horizontalAnimationEnabled}
       ></ProjectTile>
     ));
 

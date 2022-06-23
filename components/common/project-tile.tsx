@@ -7,11 +7,11 @@ import { IProject } from "../../constants";
 const ProjectTile = ({
   project,
   classes = "",
-  isDesktop,
+  animationEnabled,
 }: {
   project: IProject;
   classes: string;
-  isDesktop: boolean;
+  animationEnabled: boolean;
 }) => {
   const projectCard: MutableRefObject<HTMLDivElement> = useRef(null);
   const {
@@ -110,9 +110,11 @@ const ProjectTile = ({
       href={project.url}
       target="_blank"
       rel="noreferrer"
-      className={`link overflow-hidden rounded-3xl ${classes}`}
+      className={`link overflow-hidden rounded-3xl snap-start ${classes}`}
       style={{
-        maxWidth: isDesktop ? "calc(100vw - 2rem)" : "calc(100vw - 4rem)",
+        maxWidth: animationEnabled
+          ? "calc(100vw - 2rem)"
+          : "calc(100vw - 4rem)",
         flex: "1 0 auto",
         WebkitMaskImage: "-webkit-radial-gradient(white, black)",
       }}
