@@ -6,7 +6,7 @@ const Header = () => {
   const [menuVisible, setmenuVisible] = useState(false);
 
   return (
-    <nav className="w-full fixed top-0 py-8 select-none z-50 bg-gradient-to-b from-gray-900 to-transparent">
+    <header className="w-full fixed top-0 py-8 select-none z-50 bg-gradient-to-b from-gray-900 to-transparent">
       <div className="flex justify-between section-container">
         <a href="#home" className="link">
           <Image
@@ -16,7 +16,7 @@ const Header = () => {
             height={22}
           />
         </a>
-        <div className={`outer-menu ${menuVisible ? "menu-visible" : ""}`}>
+        <nav className={`outer-menu ${menuVisible ? "menu-visible" : ""}`}>
           <a
             className="hamburger w-6 h-6 flex items-center justify-center link relative"
             onClick={setmenuVisible.bind(null, !menuVisible)}
@@ -25,9 +25,9 @@ const Header = () => {
             <div className="relative flex-none w-full bg-white duration-300 flex items-center justify-center"></div>
           </a>
           <Menu setmenuVisible={setmenuVisible} />
-        </div>
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 };
 

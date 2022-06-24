@@ -8,7 +8,8 @@ import { IDesktop, NO_MOTION_PREFERENCE_QUERY } from "pages";
 const PROJECT_STYLES = {
   SECTION:
     "w-full relative select-none section-container flex-col flex py-8 justify-center",
-  PROJECTS_WRAPPER: "tall:mt-12 mt-6 flex project-wrapper w-fit seq snap-x",
+  PROJECTS_WRAPPER:
+    "tall:mt-12 mt-6 grid grid-flow-col auto-cols-max md:gap-10 gap-6 project-wrapper w-fit seq snap-x",
 };
 
 const ProjectsSection = ({ isDesktop }: IDesktop) => {
@@ -89,8 +90,8 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
       const projectWrapper = targetSectionRef.current.querySelector(
         ".project-wrapper"
       ) as HTMLDivElement;
-      projectWrapper.style.width = "calc(100vw - 1rem)";
-      projectWrapper.style.overflowX = "scroll";
+      projectWrapper.classList.remove("w-fit");
+      projectWrapper.classList.add("w-full", "overflow-x-auto");
     }
 
     const [revealTimeline, revealScrollTrigger] =
@@ -123,10 +124,6 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
   const renderProjectTiles = (): React.ReactNode =>
     PROJECTS.map((project, idx) => (
       <ProjectTile
-        classes={
-          (idx !== PROJECTS.length - 1 || !horizontalAnimationEnabled) &&
-          "md:mr-10 mr-6"
-        }
         project={project}
         key={project.name}
         animationEnabled={horizontalAnimationEnabled}

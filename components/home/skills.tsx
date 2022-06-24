@@ -53,7 +53,7 @@ const SkillsSection = () => {
 
   const renderBackgroundPattern = (): React.ReactNode => (
     <>
-      <div className="absolute right-0 -bottom-2/3 w-1/5 max-w-xs md:block hidden">
+      <div className="absolute right-0 -bottom-1/3 w-1/5 max-w-xs md:flex hidden justify-end">
         <Image
           src="/pattern-r.svg"
           loading="lazy"
@@ -62,7 +62,7 @@ const SkillsSection = () => {
           alt="pattern"
         />
       </div>
-      <div className="absolute left-0 -bottom-1/3 w-1/12 max-w-xs md:block hidden">
+      <div className="absolute left-0 -bottom-3.5 w-1/12 max-w-xs md:block hidden">
         <Image
           src="/pattern-l.svg"
           loading="lazy"
@@ -100,25 +100,27 @@ const SkillsSection = () => {
   );
 
   return (
-    <section
-      className={SKILL_STYLES.SECTION}
-      id={MENULINKS[2].ref}
-      ref={targetSection}
-    >
+    <section className="relative">
       {renderBackgroundPattern()}
-      <div className="flex flex-col skills-wrapper">
-        {renderSectionTitle()}
-        <div className="mt-10">
-          {renderSkillColumn("FRONTEND DEVELOPMENT", SKILLS.frontend)}
-        </div>
-        <div className="flex flex-wrap mt-10">
-          <div className="mr-6 mb-6">
-            {renderSkillColumn(
-              "User Interface, User Experience Design",
-              SKILLS.userInterface
-            )}
+      <div
+        className={SKILL_STYLES.SECTION}
+        id={MENULINKS[2].ref}
+        ref={targetSection}
+      >
+        <div className="flex flex-col skills-wrapper">
+          {renderSectionTitle()}
+          <div className="mt-10">
+            {renderSkillColumn("FRONTEND DEVELOPMENT", SKILLS.frontend)}
           </div>
-          <div>{renderSkillColumn("Other Skills", SKILLS.other)}</div>
+          <div className="flex flex-wrap mt-10">
+            <div className="mr-6 mb-6">
+              {renderSkillColumn(
+                "User Interface, User Experience Design",
+                SKILLS.userInterface
+              )}
+            </div>
+            <div>{renderSkillColumn("Other Skills", SKILLS.other)}</div>
+          </div>
         </div>
       </div>
     </section>

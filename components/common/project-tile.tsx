@@ -6,11 +6,9 @@ import { IProject } from "../../constants";
 
 const ProjectTile = ({
   project,
-  classes = "",
   animationEnabled,
 }: {
   project: IProject;
-  classes: string;
   animationEnabled: boolean;
 }) => {
   const projectCard: MutableRefObject<HTMLDivElement> = useRef(null);
@@ -110,7 +108,7 @@ const ProjectTile = ({
       href={project.url}
       target="_blank"
       rel="noreferrer"
-      className={`link overflow-hidden rounded-3xl snap-start ${classes}`}
+      className="link overflow-hidden rounded-3xl snap-start"
       style={{
         maxWidth: animationEnabled
           ? "calc(100vw - 2rem)"
