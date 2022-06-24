@@ -9,7 +9,7 @@ const PROJECT_STYLES = {
   SECTION:
     "w-full relative select-none section-container flex-col flex py-8 justify-center",
   PROJECTS_WRAPPER:
-    "tall:mt-12 mt-6 grid grid-flow-col auto-cols-max md:gap-10 gap-6 project-wrapper w-fit seq snap-x",
+    "tall:mt-12 mt-6 grid grid-flow-col auto-cols-max md:gap-10 gap-6 project-wrapper w-fit seq snap-x scroll-pl-6 snap-mandatory",
 };
 
 const ProjectsSection = ({ isDesktop }: IDesktop) => {
@@ -90,8 +90,18 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
       const projectWrapper = targetSectionRef.current.querySelector(
         ".project-wrapper"
       ) as HTMLDivElement;
-      projectWrapper.classList.remove("w-fit");
-      projectWrapper.classList.add("w-full", "overflow-x-auto");
+      const parentPadding = window
+        .getComputedStyle(targetSectionRef.current)
+        .getPropertyValue("padding-left");
+
+      targetSectionRef.current.style.setProperty("width", "100%");
+      projectWrapper.classList.add("overflow-x-auto");
+      projectWrapper.style.setProperty("width", `calc(100vw)`);
+      projectWrapper.style.setProperty("padding", `0 ${parentPadding}`);
+      projectWrapper.style.setProperty(
+        "transform",
+        `translateX(-${parentPadding})`
+      );
     }
 
     const [revealTimeline, revealScrollTrigger] =
@@ -122,7 +132,7 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
   );
 
   const renderProjectTiles = (): React.ReactNode =>
-    PROJECTS.map((project, idx) => (
+    PROJECTS.map((project) => (
       <ProjectTile
         project={project}
         key={project.name}
