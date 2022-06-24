@@ -17,13 +17,12 @@ const Header = () => {
           />
         </a>
         <nav className={`outer-menu ${menuVisible ? "menu-visible" : ""}`}>
-          <a
+          <button
             className="hamburger w-6 h-6 flex items-center justify-center link relative"
             onClick={setmenuVisible.bind(null, !menuVisible)}
-            tabIndex={0}
           >
             <div className="relative flex-none w-full bg-white duration-300 flex items-center justify-center"></div>
-          </a>
+          </button>
           <Menu setmenuVisible={setmenuVisible} />
         </nav>
       </div>
