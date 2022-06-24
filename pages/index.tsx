@@ -7,7 +7,6 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import Layout from "@/components/common/layout";
 import Header from "@/components/common/header";
-import Menu from "@/components/common/menu";
 import ProgressIndicator from "@/components/common/progress-indicator";
 import Cursor from "@/components/common/cursor";
 import HeroSection from "@/components/home/hero";
@@ -69,9 +68,7 @@ export default function Home() {
         <title>{METADATA.title}</title>
       </Head>
       <Layout>
-        <Header>
-          <Menu />
-        </Header>
+        <Header />
         <ProgressIndicator />
         <Cursor isDesktop={isDesktop} />
         <main className="flex-col flex">
