@@ -1,10 +1,12 @@
 import { gsap, Linear } from "gsap";
-import React, { MutableRefObject, useEffect, useRef } from "react";
+import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 const AboutSection = () => {
   const quoteRef: MutableRefObject<HTMLDivElement> = useRef(null);
   const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
+
+  const [willChange, setwillChange] = useState(false);
 
   const initAboutAnimation = (
     quoteRef: MutableRefObject<HTMLDivElement>,
@@ -40,6 +42,7 @@ const AboutSection = () => {
       end: "center top",
       scrub: 0,
       animation: timeline,
+      onToggle: (self) => setwillChange(self.isActive),
     });
     return scrollTriggerInstance;
   };
@@ -55,11 +58,19 @@ const AboutSection = () => {
 
   const renderQuotes = (): React.ReactNode => (
     <h1 ref={quoteRef} className="font-medium text-3xl sm:text-4xl md:text-6xl">
-      <span className="about-1 leading-tight">
+      <span
+        className={`about-1 leading-tight ${
+          willChange ? "will-change-opacity" : ""
+        }`}
+      >
         I am a passionate UI Engineer who bridges the gap between development
         and design.{" "}
       </span>
-      <span className="about-2 leading-tight">
+      <span
+        className={`about-2 leading-tight ${
+          willChange ? "will-change-opacity" : ""
+        }`}
+      >
         I take responsibility to craft a good user experience using modern
         frontend architecture.
       </span>

@@ -13,9 +13,57 @@ const HeroImage = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <style>
-      {
-        "\n    @keyframes spin {\n      from {\n        transform: rotate(0deg);\n      }\n\n      to {\n        transform: rotate(360deg);\n      }\n    }\n\n    @keyframes translate {\n\n      0%,\n      to {\n        transform: translateX(0)\n      }\n\n      50% {\n        transform: translateX(24px)\n      }\n    }\n\n    @keyframes translate2 {\n\n      0%,\n      to {\n        transform: translateX(0)\n      }\n\n      50% {\n        transform: translateX(-24px)\n      }\n    }\n\n    .cog {\n      animation: spin 20000ms linear 0ms infinite;\n      will-change: transform;\n      transform-origin: 53.8% 85.69%\n    }\n  "
+      {`
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+  
+        to {
+          transform: rotate(360deg);
+        }
       }
+  
+      @keyframes translate {
+  
+        0%,
+        to {
+          transform: translateX(0)
+        }
+  
+        50% {
+          transform: translateX(24px)
+        }
+      }
+  
+      @keyframes translate2 {
+  
+        0%,
+        to {
+          transform: translateX(0)
+        }
+  
+        50% {
+          transform: translateX(-24px)
+        }
+      }
+  
+      @media(prefers-reduced-motion: no-preference) {
+        .cog {
+          animation: spin 20000ms linear 0s infinite;
+          transform-origin: 53.8% 85.69%;
+        }
+
+        .switchToggle1 {
+          animation: translate 3000ms ease-in .5s infinite;
+        }
+
+        .switchToggle2 {
+          animation: translate2 3000ms ease-in 0s infinite;
+        }
+
+      }
+   `}
     </style>
     <g id="Frame_595">
       <g id="Group" opacity={0.2}>
@@ -116,12 +164,9 @@ const HeroImage = () => (
           />
           <path
             id="Rectangle_3"
+            className="switchToggle1"
             d="M785.832 334.906h-.228a8.27 8.27 0 100 16.542h.228a8.27 8.27 0 008.27-8.271 8.27 8.27 0 00-8.27-8.271z"
             fill="#fff"
-            style={{
-              animation: "translate 3000ms ease-in .5s infinite",
-              willChange: "transform",
-            }}
           />
         </g>
         <g id="switch-3">
@@ -146,12 +191,9 @@ const HeroImage = () => (
           />
           <path
             id="Rectangle_7"
+            className="switchToggle2"
             d="M808.455 362.421h-.215a7.826 7.826 0 000 15.652h.215a7.826 7.826 0 000-15.652z"
             fill="#fff"
-            style={{
-              animation: "translate2 3000ms ease-in 0s infinite",
-              willChange: "transform",
-            }}
           />
         </g>
         <path

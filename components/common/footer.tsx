@@ -39,22 +39,26 @@ const Footer = () => {
           href={`mailto: ${EMAIL}`}
         ></Button>
       </div>
-      <p className="text-center text-sm sm:text-base mt-8">
+      <h2 className="text-center text-sm sm:text-base mt-8">
         Designed and Developed with ❤️ by Ayush
-      </p>
+      </h2>
     </>
   );
 
   const { ref: footerRef } = MENULINKS[4];
 
   return (
-    <footer className="w-full relative select-none bg-cover" id={footerRef}>
-      <Image
+    <footer
+      className="w-full relative select-none bg-cover flex flex-col items-stretch"
+      id={footerRef}
+    >
+      <img
         src="/footer-curve.svg"
         alt="Footer"
         className="w-full"
         loading="lazy"
         height={290}
+        role="presentation"
         width={1440}
       />
       <div className="h-full w-full">

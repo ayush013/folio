@@ -29,9 +29,6 @@ body {
 
 html {
   scroll-behavior: smooth;
-  -ms-overflow-style: scrollbar;
-  scrollbar-color: black;
-  scrollbar-width: thin;
   overflow-x: hidden;
 
   @media (min-width: 768px) {
@@ -53,14 +50,8 @@ html {
   }
 }
 
-::-webkit-scrollbar {
-  width: 0.375rem;
-}
-::-webkit-scrollbar-track {
-  background: rgba(94, 94, 94, 0.5);
-}
-::-webkit-scrollbar-thumb {
-  background: rgb(170, 170, 170);
+:root {
+  color-scheme: dark;
 }
 
 ::-moz-selection {
@@ -77,8 +68,7 @@ html {
   @apply 2xl:container xl:px-20 md:px-12 px-4 mx-auto;
 }
 
-a,
-input[type="checkbox"] {
+a {
   cursor: none !important;
 }
 
@@ -87,51 +77,39 @@ input[type="checkbox"] {
 }
 
 .outer-menu {
-  z-index: 1;
-
-  .checkbox-toggle {
-    z-index: 2;
-
-    &:checked {
-      + {
-        .hamburger {
-          > div {
-            transform: rotate(135deg);
-            &:before {
-              top: 0;
-              transform: rotate(90deg);
-            }
-            &:after {
-              top: 0;
-              transform: rotate(90deg);
-              opacity: 0;
-            }
-          }
+  &.menu-visible {
+    .hamburger {
+      > div {
+        transform: rotate(135deg);
+        &:before {
+          top: 0;
+          transform: rotate(90deg);
+        }
+        &:after {
+          top: 0;
+          transform: rotate(90deg);
+          opacity: 0;
         }
       }
-      ~ {
-        .menu {
-          pointer-events: auto;
-          visibility: visible !important;
-          backdrop-filter: blur(0.625rem);
-          -webkit-backdrop-filter: blur(0.625rem);
-          > div {
-            transform: scale(1);
-            transition-duration: 0.75s;
-            > div {
-              opacity: 1;
-              transition: opacity 0.4s ease 0.4s;
-            }
-          }
+    }
+    .menu {
+      pointer-events: auto;
+      visibility: visible !important;
+      backdrop-filter: blur(0.625rem);
+      -webkit-backdrop-filter: blur(0.625rem);
+      > div {
+        transform: scale(1);
+        transition-duration: 0.75s;
+        > div {
+          opacity: 1;
+          transition: opacity 0.4s ease 0.4s;
         }
       }
-      &:hover {
-        + {
-          .hamburger {
-            > div {
-              transform: rotate(225deg);
-            }
-          }
+    }
+    &:hover {
+      .hamburger {
+        > div {
+          transform: rotate(225deg);
         }
       }
     }
@@ -173,7 +151,7 @@ input[type="checkbox"] {
       transition: all 0.4s ease;
       backface-visibility: hidden;
       background: rgba(0, 0, 0, 0.5);
-      @supports not (backdrop-filter: blur(0.625rem)) {
+      @supports not (backdrop-filter: blur(1px)) {
         background: rgba(0, 0, 0, 0.8);
       }
 
@@ -195,7 +173,8 @@ input[type="checkbox"] {
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
 
-            &:hover {
+            &:hover,
+            &:focus {
               background-position: 100% 0;
             }
           }

@@ -7,7 +7,6 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import Layout from "@/components/common/layout";
 import Header from "@/components/common/header";
-import Menu from "@/components/common/menu";
 import ProgressIndicator from "@/components/common/progress-indicator";
 import Cursor from "@/components/common/cursor";
 import HeroSection from "@/components/home/hero";
@@ -23,6 +22,8 @@ import AboutSection from "@/components/home/about";
 const DEBOUNCE_TIME = 100;
 
 export const isSmallScreen = (): boolean => document.body.clientWidth < 767;
+export const NO_MOTION_PREFERENCE_QUERY =
+  "(prefers-reduced-motion: no-preference)";
 
 export interface IDesktop {
   isDesktop: boolean;
@@ -67,9 +68,7 @@ export default function Home() {
         <title>{METADATA.title}</title>
       </Head>
       <Layout>
-        <Header>
-          <Menu />
-        </Header>
+        <Header />
         <ProgressIndicator />
         <Cursor isDesktop={isDesktop} />
         <main className="flex-col flex">

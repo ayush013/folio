@@ -6,12 +6,10 @@ import { IProject } from "../../constants";
 
 const ProjectTile = ({
   project,
-  classes = "",
-  isDesktop,
+  animationEnabled,
 }: {
   project: IProject;
-  classes: string;
-  isDesktop: boolean;
+  animationEnabled: boolean;
 }) => {
   const projectCard: MutableRefObject<HTMLDivElement> = useRef(null);
   const {
@@ -57,7 +55,7 @@ const ProjectTile = ({
 
   const renderDescription = (description: string): React.ReactNode => (
     <h2
-      className="text-lg z-10 tracking-wide font-medium transform-gpu"
+      className="text-lg z-10 tracking-wide font-medium"
       style={{ transform: "translateZ(0.8rem)" }}
     >
       {description}
@@ -66,7 +64,7 @@ const ProjectTile = ({
 
   const renderProjectName = (name: string): React.ReactNode => (
     <h1
-      className="text-2xl sm:text-3xl z-10 pl-2 transform-gpu"
+      className="text-2xl sm:text-3xl z-10 pl-2"
       style={{ transform: "translateZ(3rem)" }}
     >
       {name}
@@ -110,9 +108,11 @@ const ProjectTile = ({
       href={project.url}
       target="_blank"
       rel="noreferrer"
-      className={`link overflow-hidden rounded-3xl ${classes}`}
+      className="link overflow-hidden rounded-3xl snap-start"
       style={{
-        maxWidth: isDesktop ? "calc(100vw - 2rem)" : "calc(100vw - 4rem)",
+        maxWidth: animationEnabled
+          ? "calc(100vw - 2rem)"
+          : "calc(100vw - 4rem)",
         flex: "1 0 auto",
         WebkitMaskImage: "-webkit-radial-gradient(white, black)",
       }}

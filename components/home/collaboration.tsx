@@ -1,11 +1,10 @@
 import { gsap, Linear } from "gsap";
-import { MutableRefObject, useEffect, useRef } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { isSmallScreen } from "pages";
+import { isSmallScreen, NO_MOTION_PREFERENCE_QUERY } from "pages";
 
 const COLLABORATION_STYLE = {
-  SLIDING_TEXT:
-    "opacity-20 text-5xl md:text-7xl font-bold whitespace-nowrap transform-gpu",
+  SLIDING_TEXT: "opacity-20 text-5xl md:text-7xl font-bold whitespace-nowrap",
   SECTION:
     "w-full relative select-none tall:py-36 py-48 section-container flex flex-col",
   TITLE: "mt-6 md:mt-8 font-medium text-4xl md:text-5xl text-center",
@@ -14,6 +13,8 @@ const COLLABORATION_STYLE = {
 const CollaborationSection = () => {
   const quoteRef: MutableRefObject<HTMLDivElement> = useRef(null);
   const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
+
+  const [willChange, setwillChange] = useState(false);
 
   const initTextGradientAnimation = (
     targetSection: MutableRefObject<HTMLDivElement>
@@ -32,6 +33,7 @@ const CollaborationSection = () => {
       end: "center center",
       scrub: 0,
       animation: timeline,
+      onToggle: (self) => setwillChange(self.isActive),
     });
   };
 
@@ -61,12 +63,17 @@ const CollaborationSection = () => {
 
   useEffect(() => {
     const textBgAnimation = initTextGradientAnimation(targetSection);
+    let slidingAnimation: ScrollTrigger | undefined;
 
-    const slidingAnimation = initSlidingTextAnimation(targetSection);
+    const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY);
+
+    if (matches) {
+      slidingAnimation = initSlidingTextAnimation(targetSection);
+    }
 
     return () => {
       textBgAnimation.kill();
-      slidingAnimation.kill();
+      slidingAnimation?.kill();
     };
   }, [quoteRef, targetSection]);
 
@@ -79,7 +86,12 @@ const CollaborationSection = () => {
   );
 
   const renderTitle = () => (
-    <h1 ref={quoteRef} className={COLLABORATION_STYLE.TITLE}>
+    <h1
+      ref={quoteRef}
+      className={`${COLLABORATION_STYLE.TITLE} ${
+        willChange ? "will-change-opacity" : ""
+      }`}
+    >
       Interested in <span className="text-strong font-bold">Collaboration</span>
       ?
     </h1>
