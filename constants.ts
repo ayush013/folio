@@ -206,6 +206,23 @@ export enum ItemSize {
 export const TIMELINE: Array<TimelineNodeV2> = [
   {
     type: NodeTypes.CHECKPOINT,
+    title: "2022",
+    size: ItemSize.LARGE,
+    shouldDrawLine: false,
+    alignment: Branch.LEFT,
+  },
+  {
+    type: NodeTypes.CHECKPOINT,
+    title: "Frontend Engineer 2 (Current)",
+    size: ItemSize.SMALL,
+    subtitle: "Frontend Engineering @ core team",
+    image: "/timeline/hotstar.svg",
+    slideImage: "/timeline/hotstar.jpeg",
+    shouldDrawLine: true,
+    alignment: Branch.LEFT,
+  },
+  {
+    type: NodeTypes.CHECKPOINT,
     title: "2021",
     size: ItemSize.LARGE,
     shouldDrawLine: false,
@@ -213,9 +230,10 @@ export const TIMELINE: Array<TimelineNodeV2> = [
   },
   {
     type: NodeTypes.CHECKPOINT,
-    title: "UI Engineer (Current)",
+    title: "UI Engineer",
     size: ItemSize.SMALL,
-    subtitle: "Working on flipkart wholesale platform 😎",
+    subtitle:
+      "Contributed to Server driven UI framework for powering experiences @ Flipkart Wholesale 😎",
     image: "/timeline/flipkart.svg",
     slideImage: "/timeline/flipkart.gif",
     shouldDrawLine: true,
