@@ -1,9 +1,15 @@
+// Copyright Ayush Singh 2021,2022. All Rights Reserved.
+// Project: folio
+// Author contact: https://www.linkedin.com/in/alphaayush/
+// This file is licensed under the MIT License.
+// License text available at https://opensource.org/licenses/MIT
+
 .primary {
   @apply text-gray-900;
 
   background: linear-gradient(90deg, #2193b0 0%, #6dd5ed 50%, #2193b0 100%),
     linear-gradient(0deg, #ffffff, #ffffff);
-    background-size: 200% 100%;
+  background-size: 200% 100%;
 
   &:hover {
     background-position: 100% 0;
@@ -17,7 +23,6 @@
     @apply bg-white text-gray-900 opacity-90;
   }
 }
-
 
 .white {
   @apply bg-white text-gray-900;
