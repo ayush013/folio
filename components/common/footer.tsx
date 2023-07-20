@@ -34,15 +34,21 @@ const Footer = () => {
           classes="mr-3"
           type={ButtonTypes.OUTLINE}
           name="Resume"
-          target="_blank"
-          rel="noreferrer"
+          otherProps={{
+            target: "_blank",
+            rel: "noreferrer",
+          }}
           href="/Ayush_Resume.pdf"
         ></Button>
         <Button
           classes="ml-3"
           type={ButtonTypes.WHITE}
           name="Let's Talk"
-          href={`mailto: ${EMAIL}`}
+          href={SOCIAL_LINKS.topmate}
+          otherProps={{
+            target: "_blank",
+            rel: "noreferrer",
+          }}
         ></Button>
       </div>
       <h2 className="text-center text-sm sm:text-base mt-8">
