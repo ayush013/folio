@@ -81,7 +81,7 @@ export const PROJECTS: IProject[] = [
     blurImage: "/projects/blur/myokr-blur.jpg",
     description: "Marketing site for OKR Platform by huminos",
     gradient: ["#153BB9", "#0E2C8B"],
-    url: "https://www.myokr.co/",
+    url: "https://www.huminos.com/",
     tech: ["react", "next", "gsap", "tailwind"],
   },
   {
@@ -99,7 +99,7 @@ export const PROJECTS: IProject[] = [
     blurImage: "/projects/blur/dl-unify-blur.jpg",
     description: "Built the application from zero to production 🚀",
     gradient: ["#003052", "#167187"],
-    url: "https://dlunify.dltlabs.com/",
+    url: "https://dlunify.com/",
     tech: ["tailwind", "angular", "gsap", "figma"],
   },
   {
@@ -121,6 +121,15 @@ export const PROJECTS: IProject[] = [
     tech: ["javascript", "sass", "svg", "gulp"],
   },
   {
+    name: "AKGEC - College Website",
+    image: "/projects/akgec.jpg",
+    blurImage: "/projects/blur/akgec-blur.jpg",
+    description: "Contributed in overall design and development",
+    gradient: ["#5E4C06", "#746528"],
+    url: "https://www.akgec.ac.in/",
+    tech: ["javascript", "html", "css"],
+  },
+  {
     name: "Alpha Aesthetics",
     image: "/projects/alpha.jpg",
     blurImage: "/projects/blur/alpha-blur.jpg",
@@ -136,15 +145,6 @@ export const PROJECTS: IProject[] = [
     description: "Dark mode dated from 2017 🔥",
     gradient: ["#142D46", "#2E4964"],
     url: "https://farewell18.ayushsingh.net/",
-    tech: ["javascript", "html", "css"],
-  },
-  {
-    name: "AKGEC - College Website",
-    image: "/projects/akgec.jpg",
-    blurImage: "/projects/blur/akgec-blur.jpg",
-    description: "Contributed in overall design and development",
-    gradient: ["#5E4C06", "#746528"],
-    url: "https://www.akgec.ac.in/",
     tech: ["javascript", "html", "css"],
   },
   {
