@@ -213,6 +213,24 @@ export enum ItemSize {
 export const TIMELINE: Array<TimelineNodeV2> = [
   {
     type: NodeTypes.CHECKPOINT,
+    title: "2023",
+    size: ItemSize.LARGE,
+    shouldDrawLine: false,
+    alignment: Branch.LEFT,
+  },
+  {
+    type: NodeTypes.CHECKPOINT,
+    title: "Speaker at React India",
+    size: ItemSize.SMALL,
+    subtitle:
+      "Discussed on Interaction to Next Paint (INP), a Google Core Web Vital metric",
+    image: "/timeline/reactindia.svg",
+    slideImage: "/timeline/reactindia.jpg",
+    shouldDrawLine: true,
+    alignment: Branch.LEFT,
+  },
+  {
+    type: NodeTypes.CHECKPOINT,
     title: "2022",
     size: ItemSize.LARGE,
     shouldDrawLine: false,
@@ -222,7 +240,8 @@ export const TIMELINE: Array<TimelineNodeV2> = [
     type: NodeTypes.CHECKPOINT,
     title: "Frontend Engineer 2 (Current)",
     size: ItemSize.SMALL,
-    subtitle: "Frontend Engineering @ core team",
+    subtitle:
+      "Frontend Engineering @ Core team, solving problems around Livingroom device performance",
     image: "/timeline/hotstar.svg",
     slideImage: "/timeline/hotstar.jpeg",
     shouldDrawLine: true,

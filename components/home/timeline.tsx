@@ -416,7 +416,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
         pin: true,
         pinSpacing: true,
       };
-      duration = timeline.totalDuration() / 15;
+      duration = timeline.totalDuration() / svgCheckpointItems.length;
     } else {
       // Clearing out the right side on mobile devices
       screenContainer.current.innerHTML = "";
@@ -453,6 +453,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
     svgWidth,
     rightBranchX,
     screenContainer,
+    svgCheckpointItems.length,
     isDesktop,
     svgLength,
   ]);
